@@ -1,0 +1,13 @@
+[Unit]
+Description=Audio Guide API
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/audio_guide/server
+EnvironmentFile=/opt/audio_guide/server/.env
+ExecStart=/opt/audio_guide/server/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,21 @@
+name: audio_guide
+description: Player for published audio guides.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  just_audio: ^0.9.42
+  speech_to_text: ^7.0.0
+  yandex_maps_mapkit_lite: ^4.42.0
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true

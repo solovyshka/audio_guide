@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-11T20:40:00Z",
+  "guides": [
+    {
+      "id": "kolomna",
+      "title": "Коломна",
+      "subtitle": "Кремль, посад, Патефонка и Бобренев",
+      "aliases": [
+        "коломна",
+        "коломен",
+        "город коломна",
+        "коломенский кремль",
+        "kolomna",
+        "патефонка",
+        "бобренев",
+        "бобренев монастырь"
+      ],
+      "city": "Коломна",
+      "region": "Московская область",
+      "center": { "lat": 55.1093, "lon": 38.762 },
+      "stopsCount": 13,
+      "durationSec": 841,
+      "language": "ru",
+      "guidePath": "guides/kolomna/guide.json",
+      "contentVersion": 2
+    }
+  ]
+}

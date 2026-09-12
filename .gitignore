@@ -1,0 +1,26 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+*.iml
+
+# Flutter
+app/.dart_tool/
+app/.flutter-plugins
+app/.flutter-plugins-dependencies
+app/.packages
+app/build/
+app/.metadata
+app/android/.gradle/
+app/android/build/
+app/windows/flutter/ephemeral/
+app/web/flutter_bootstrap.js
+*.apk
+app/ios/Pods/
+app/ios/.symlinks/
+
+# Secrets
+**/secrets.dart
+server/.env
