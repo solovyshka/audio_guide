@@ -41,9 +41,11 @@ def normalize_guide(
     guide: CityGuide,
     *,
     content_version: int | None = None,
+    package_id: str | None = None,
+    variant: str | None = None,
 ) -> CityGuide:
     """Fill id, audioPath, lock coords/names from research by order."""
-    city_id = slugify(research.city)
+    city_id = package_id or slugify(research.city)
     stops: list[GuideStop] = []
     for i, src in enumerate(research.stops):
         raw = guide.stops[i] if i < len(guide.stops) else None
@@ -68,10 +70,15 @@ def normalize_guide(
     if not intro.title:
         intro.title = research.city
     version = content_version if content_version is not None else guide.contentVersion or 1
+    title = guide.title or research.city
+    if variant == "short":
+        title = f"{research.city} — короткий маршрут"
+    elif variant == "long":
+        title = f"{research.city} — длинный маршрут"
     return CityGuide(
         id=city_id,
         contentVersion=version,
-        title=guide.title or research.city,
+        title=title,
         subtitle=guide.subtitle or research.subtitle,
         city=research.city,
         region=research.region,
@@ -95,8 +102,15 @@ def write_package(
     *,
     out_root: Path | None = None,
     update_catalog: bool = True,
+    package_id: str | None = None,
+    variant: str | None = None,
 ) -> Path:
-    guide = normalize_guide(research, guide)
+    guide = normalize_guide(
+        research,
+        guide,
+        package_id=package_id,
+        variant=variant,
+    )
     folder = guide_dir(guide.id, out_root)
     (folder / "audio").mkdir(parents=True, exist_ok=True)
     save_json(research, folder / f"{guide.id}.research.json")

@@ -1,0 +1,452 @@
+{
+  "city": "Пафос",
+  "region": "Пафос, Республика Кипр",
+  "center": {
+    "lat": 34.758333,
+    "lon": 32.405556
+  },
+  "subtitle": "Многослойный маршрут от старого города к античному Неа-Пафосу и некрополю",
+  "aliases": [
+    "Paphos",
+    "Pafos",
+    "Πάφος",
+    "Πάφος Κύπρος"
+  ],
+  "stops": [
+    {
+      "name": "Археологический музей района Пафоса",
+      "coordinates": {
+        "lat": 34.77875,
+        "lon": 32.42466
+      },
+      "address": "Griva Digeni Avenue, Ktima, Pafos",
+      "category": "музей",
+      "facts": [
+        "Музей показывает историю района от эпипалеолита до римского времени.",
+        "Экспозиция выстроена хронологически; каждый период выделен отдельным цветом.",
+        "Здесь представлены находки из Неа-Пафоса, Палеа-Пафоса, Куклии и других мест района."
+      ],
+      "dates": [
+        "1964 — музей открыт для публики.",
+        "Вторник–воскресенье, 09:00–16:30; понедельник и государственные праздники — закрыт."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Вход бесплатный; опубликованы доступные входы, выделенные парковочные места и WC.",
+      "sources": [
+        {
+          "title": "Pafos Regional Board of Tourism — Archaeological Museum of the Pafos District",
+          "url": "https://www.visitpafos.org.cy/archaeological-museum-of-the-pafos-district/"
+        }
+      ]
+    },
+    {
+      "name": "Муниципальный рынок Пафоса",
+      "coordinates": {
+        "lat": 34.7733,
+        "lon": 32.42184
+      },
+      "address": "Old Town Pafos, near Kennedy Square",
+      "category": "рынок",
+      "facts": [
+        "Муниципальный фруктовый рынок находится в Старом городе Пафоса.",
+        "Это удобная точка перехода от верхнего города Ktima к Като-Пафосу."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "На остановке Municipal Market (30124) сядьте на городской автобус 610 в направлении Harbour Station; маршрут 610 связывает Municipal Market и Kato Paphos Harbour. Перед поездкой сверяйте актуальное расписание у оператора.",
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Pafos Regional Board of Tourism — Old Town Pafos",
+          "url": "https://www.visitpafos.org.cy/relax-revive-adventure/old-town-pafos/"
+        },
+        {
+          "title": "Pafos Transport Organisation — route 610",
+          "url": "https://www.pafosbuses.com/pafos-city-suburbs-routes-1/610"
+        }
+      ]
+    },
+    {
+      "name": "Автостанция Paphos Harbour",
+      "coordinates": {
+        "lat": 34.75479,
+        "lon": 32.40902
+      },
+      "address": null,
+      "category": "транспорт",
+      "facts": [
+        "Harbour Station — конечная остановка маршрута 610 из Municipal Market.",
+        "Маршрут 611 связывает Harbour Station со станцией Tombs of the Kings.",
+        "Гавань служит транспортным узлом Като-Пафоса."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Pafos Transport Organisation — route 610",
+          "url": "https://www.pafosbuses.com/pafos-city-suburbs-routes-1/610"
+        },
+        {
+          "title": "Pafos Transport Organisation — route 611",
+          "url": "https://www.pafosbuses.com/pafos-city-suburbs-routes-1/611"
+        }
+      ]
+    },
+    {
+      "name": "Средневековый замок Пафоса",
+      "coordinates": {
+        "lat": 34.75425,
+        "lon": 32.40594
+      },
+      "address": "Harbour, Kato Pafos",
+      "category": "крепость",
+      "facts": [
+        "Замок стоит на древнем моле в западной части гавани.",
+        "Франкские правители возвели его в середине XIII века вместо разрушенной византийской крепости Саранта-Колонес.",
+        "Венецианцы разрушили укрепления перед османским завоеванием 1570 года; османы восстановили западную франкскую башню в 1780 году.",
+        "С 1935 года замок является древним памятником и охраняется Департаментом древностей Кипра."
+      ],
+      "dates": [
+        "XIII век — франкская перестройка.",
+        "1570 — венецианское разрушение.",
+        "1780 — османское восстановление.",
+        "1935 — объявлен древним памятником."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "Вернитесь пешком к Harbour Station и сядьте на 611 в направлении Tombs of the Kings Station; выйдите на Tombs of the Kings Bus Station (31940). Маршрут и остановки подтверждены оператором.",
+      "access_info": "Открыт ежедневно: 08:30–17:00 с 16 сентября по 15 апреля и 08:30–19:30 с 16 апреля по 15 сентября; билет €2,50, время и цена могут меняться.",
+      "sources": [
+        {
+          "title": "Pafos Regional Board of Tourism — Pafos Medieval Castle",
+          "url": "https://www.visitpafos.org.cy/points-of-interest/pafos-medieval-castle/"
+        },
+        {
+          "title": "Pafos Transport Organisation — route 611",
+          "url": "https://www.pafosbuses.com/pafos-city-suburbs-routes-1/611"
+        }
+      ]
+    },
+    {
+      "name": "Царские гробницы",
+      "coordinates": {
+        "lat": 34.775,
+        "lon": 32.407
+      },
+      "address": "Kato Pafos",
+      "category": "археологический памятник",
+      "facts": [
+        "Некрополь входит в объект Всемирного наследия ЮНЕСКО «Пафос».",
+        "Монументальные подземные гробницы вырублены в скале и относятся к эллинистическому и римскому времени.",
+        "Здесь хоронили не царей, а высокопоставленных чиновников и аристократов.",
+        "Некоторые гробницы устроены как дома живых: погребальные камеры выходят к перистильному атрию."
+      ],
+      "dates": [
+        "1980 — объект Пафос включён в Список всемирного наследия ЮНЕСКО."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "Пройдите к Tombs of the Kings Bus Station (31940), сядьте на 611 в направлении Harbour Station и выйдите на Harbour Station; затем пешком идите ко входу в Археологический парк. Маршрут 611 официально проходит между этими станциями.",
+      "access_info": "Открыт ежедневно: 08:30–17:00 с 16 сентября по 15 апреля и 08:30–19:30 с 16 апреля по 15 сентября; билет €2,50. Доступ для кресел-колясок частичный: обзор возможен сверху.",
+      "sources": [
+        {
+          "title": "UNESCO World Heritage Centre — Paphos maps",
+          "url": "https://whc.unesco.org/en/list/79/maps/"
+        },
+        {
+          "title": "Visit Cyprus — Tombs of the Kings",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/tombs-of-the-kings/"
+        },
+        {
+          "title": "Pafos Transport Organisation — route 611",
+          "url": "https://www.pafosbuses.com/pafos-city-suburbs-routes-1/611"
+        }
+      ]
+    },
+    {
+      "name": "Археологический парк Като-Пафоса",
+      "coordinates": {
+        "lat": 34.75833,
+        "lon": 32.40556
+      },
+      "address": "Kato Pafos",
+      "category": "археологический парк",
+      "facts": [
+        "Парк охватывает памятники от IV века до н. э. до Средневековья; большинство сохранившихся объектов относится к римскому времени.",
+        "Неа-Пафос основал в конце IV века до н. э. царь Никокл, последний царь Пафоса.",
+        "Во II веке до н. э. Птолемеи перенесли сюда столицу Кипра.",
+        "Пафос внесён в Список всемирного наследия ЮНЕСКО в 1980 году."
+      ],
+      "dates": [
+        "Конец IV века до н. э. — основание Неа-Пафоса.",
+        "II век до н. э. — перенос столицы Кипра Птолемеями.",
+        "1980 — включение в Список всемирного наследия."
+      ],
+      "people": [
+        "Никокл — последний царь Пафоса, связанный с основанием Неа-Пафоса."
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открыт ежедневно: 08:30–17:00 с 16 сентября по 15 апреля и 08:30–19:30 с 16 апреля по 15 сентября; закрыт на Рождество, Новый год и православную Пасху. Билет €4,50; доступ для кресел-колясок частичный.",
+      "sources": [
+        {
+          "title": "UNESCO World Heritage Centre — Paphos",
+          "url": "https://whc.unesco.org/en/list/79/"
+        },
+        {
+          "title": "Visit Cyprus — Archaeological Park of Kato Pafos",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/archaeological-park-of-kato-pafos-paphos/"
+        }
+      ]
+    },
+    {
+      "name": "Базилика Панагия-Лимениотисса",
+      "coordinates": {
+        "lat": 34.75631,
+        "lon": 32.40798
+      },
+      "address": null,
+      "category": "раннехристианская базилика",
+      "facts": [
+        "Руины раннехристианской базилики входят в Археологический парк Пафоса.",
+        "Название означает «Богоматерь гавани».",
+        "Трёхнефная базилика была построена в V веке.",
+        "Сохранились фрагменты цветных мозаичных полов с геометрическим орнаментом."
+      ],
+      "dates": [
+        "V век — строительство базилики."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Посещение входит в маршрут Археологического парка; действуют его сезонные часы и билет. На территории парка обозначены маршруты, удобные для кресел-колясок.",
+      "sources": [
+        {
+          "title": "Pafos Regional Board of Tourism — Archaeological Sites",
+          "url": "https://www.visitpafos.org.cy/a-proud-heritage/archaeological-sites/"
+        },
+        {
+          "title": "Visit Cyprus — Archaeological Park of Kato Pafos",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/archaeological-park-of-kato-pafos-paphos/"
+        }
+      ]
+    },
+    {
+      "name": "Саранта-Колонес — «сорок колонн»",
+      "coordinates": {
+        "lat": 34.75613,
+        "lon": 32.40724
+      },
+      "address": null,
+      "category": "крепость",
+      "facts": [
+        "Саранта-Колонес находится у гавани, к югу от агоры.",
+        "Название связано с гранитными колоннами, входившими в конструкцию укрепления.",
+        "Крепость построили примерно в VII веке для защиты порта и Неа-Пафоса от возможных арабских набегов.",
+        "Укрепление использовалось до разрушительного землетрясения 1223 года."
+      ],
+      "dates": [
+        "Около VII века — строительство.",
+        "1223 — разрушение землетрясением."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Памятник находится в Археологическом парке; действуют его сезонные часы и единый входной билет.",
+      "sources": [
+        {
+          "title": "Pafos Regional Board of Tourism — Archaeological Sites",
+          "url": "https://www.visitpafos.org.cy/a-proud-heritage/archaeological-sites/"
+        },
+        {
+          "title": "Visit Cyprus — Archaeological Park of Kato Pafos",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/archaeological-park-of-kato-pafos-paphos/"
+        }
+      ]
+    },
+    {
+      "name": "Дом Диониса",
+      "coordinates": {
+        "lat": 34.75712,
+        "lon": 32.4075
+      },
+      "address": null,
+      "category": "римская вилла и мозаики",
+      "facts": [
+        "Вилла занимает около 2 000 м²; мозаиками покрыто 556 м².",
+        "Дом построен в начале II века н. э. и был разрушен землетрясениями IV века.",
+        "В нём более 40 помещений и 15 мозаичных полов.",
+        "Название связано с частыми изображениями Диониса — бога вина — в мозаиках."
+      ],
+      "dates": [
+        "Начало II века н. э. — строительство.",
+        "IV век н. э. — разрушение землетрясениями."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Посещение входит в маршрут Археологического парка; действуют его сезонные часы и единый входной билет.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Archaeological Park of Paphos audio guide",
+          "url": "https://visitcyprus.com/wp-content/uploads/files/audio_guides/written_form/Archaeological_Park_of_Paphos_afigisi_en.pdf"
+        },
+        {
+          "title": "Visit Cyprus — Pafos Mosaics",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/pafos-paphos-mosaics/"
+        }
+      ]
+    },
+    {
+      "name": "Вилла Тесея",
+      "coordinates": {
+        "lat": 34.75604,
+        "lon": 32.40514
+      },
+      "address": null,
+      "category": "римская вилла и мозаики",
+      "facts": [
+        "Здание имеет размеры около 120 × 80 м и более 100 помещений вокруг колоннадного двора.",
+        "Самая ранняя мозаика изображает Тесея, убивающего Минотавра; она относится к концу III — началу IV века н. э.",
+        "После землетрясений IV века виллу восстановили; окончательно она была оставлена после арабских набегов VII века.",
+        "В южном крыле сохранились мозаики с Тесеем и Минотавром, а также рождением Ахилла."
+      ],
+      "dates": [
+        "Конец III века н. э. — строительство.",
+        "Конец III — начало IV века н. э. — мозаика Тесея.",
+        "VII век н. э. — окончательное оставление."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [
+        "Резиденция именно римского проконсула — неизвестно; это вывод по масштабу и роскоши здания."
+      ],
+      "next_leg": null,
+      "access_info": "Посещение входит в маршрут Археологического парка; действуют его сезонные часы и единый входной билет.",
+      "sources": [
+        {
+          "title": "Department of Antiquities of Cyprus — Archaeological Sites",
+          "url": "http://www.culture.gov.cy/dmculture/DA/DA.nsf/All/59FFC9310818070EC225719B003A2EB8?OpenDocument="
+        },
+        {
+          "title": "Visit Cyprus — Archaeological Park of Paphos audio guide",
+          "url": "https://visitcyprus.com/wp-content/uploads/files/audio_guides/written_form/Archaeological_Park_of_Paphos_afigisi_en.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Дом Эона",
+      "coordinates": {
+        "lat": 34.75671,
+        "lon": 32.40524
+      },
+      "address": null,
+      "category": "римская вилла и мозаики",
+      "facts": [
+        "Раскопана лишь часть здания; точный план дома пока неизвестен.",
+        "Главный мозаичный пол относится к середине IV века н. э. и состоит из пяти фигурных панелей.",
+        "Панели изображают рождение Диониса, Леду и лебедя, состязание Кассиопеи и нереид, Аполлона и Марсия, а также триумф Диониса.",
+        "Мозаики выполнены мелкими тессерами размером 2–5 мм."
+      ],
+      "dates": [
+        "Середина IV века н. э. — датировка главной мозаики."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [
+        "Полный план и первоначальная функция здания — неизвестно: раскопана только часть дома."
+      ],
+      "next_leg": null,
+      "access_info": "Посещение входит в маршрут Археологического парка; действуют его сезонные часы и единый входной билет.",
+      "sources": [
+        {
+          "title": "Department of Antiquities of Cyprus — Archaeological Sites",
+          "url": "http://www.culture.gov.cy/dmculture/DA/DA.nsf/All/59FFC9310818070EC225719B003A2EB8?OpenDocument="
+        },
+        {
+          "title": "Visit Cyprus — Archaeological Park of Paphos audio guide",
+          "url": "https://visitcyprus.com/wp-content/uploads/files/audio_guides/written_form/Archaeological_Park_of_Paphos_afigisi_en.pdf"
+        }
+      ]
+    },
+    {
+      "name": "Дом Орфея",
+      "coordinates": {
+        "lat": 34.75561,
+        "lon": 32.4037
+      },
+      "address": null,
+      "category": "римская вилла и мозаики",
+      "facts": [
+        "Дом был построен примерно в конце II века н. э. и имел атрий с помещениями вокруг него.",
+        "Из раскопанных комнат только три имеют мозаичные полы.",
+        "Мозаики показывают Геракла и Немейского льва, амазонку с конём и Орфея среди зверей.",
+        "Надпись у Орфея называет Тита Гая Реститута; латинское имя написано греческими буквами."
+      ],
+      "dates": [
+        "Конец II века н. э. — строительство."
+      ],
+      "people": [
+        "Тит Гай Реститут — имя, указанное в греческой надписи у мозаики Орфея."
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Посещение входит в маршрут Археологического парка; действуют его сезонные часы и единый входной билет.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Archaeological Park of Paphos audio guide",
+          "url": "https://visitcyprus.com/wp-content/uploads/files/audio_guides/written_form/Archaeological_Park_of_Paphos_afigisi_en.pdf"
+        },
+        {
+          "title": "Visit Cyprus — Pafos Mosaics",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/pafos-paphos-mosaics/"
+        }
+      ]
+    },
+    {
+      "name": "Агора Неа-Пафоса",
+      "coordinates": {
+        "lat": 34.75932,
+        "lon": 32.40788
+      },
+      "address": null,
+      "category": "античная общественная площадь",
+      "facts": [
+        "От агоры сохранились главным образом фундаменты.",
+        "Площадь представляла собой двор, окружённый четырьмя портиками.",
+        "Лучше всего сохранились постройки западного крыла; здесь находятся одеон и асклепион.",
+        "Комплекс агоры относится ко II веку н. э."
+      ],
+      "dates": [
+        "II век н. э. — датировка комплекса."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Посещение входит в маршрут Археологического парка; действуют его сезонные часы и единый входной билет.",
+      "sources": [
+        {
+          "title": "Department of Antiquities of Cyprus — Archaeological Sites",
+          "url": "http://www.culture.gov.cy/dmculture/DA/DA.nsf/All/59FFC9310818070EC225719B003A2EB8?OpenDocument="
+        }
+      ]
+    }
+  ]
+}

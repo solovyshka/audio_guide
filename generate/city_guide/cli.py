@@ -46,10 +46,25 @@ def main(argv: list[str] | None = None) -> None:
     )
     p_nw.add_argument("--no-catalog", action="store_true")
     p_nw.add_argument("--out-root", type=Path, help="Не content/guides, а другая папка")
+    p_nw.add_argument(
+        "--package-id",
+        help="id пакета; для длинной версии, например moscow-long",
+    )
+    p_nw.add_argument(
+        "--variant",
+        choices=["short", "long"],
+        help="Подписывает title как короткий или длинный маршрут",
+    )
 
     p_api = sub.add_parser("api", help="Полный прогон через OpenAI Responses + web_search")
     p_api.add_argument("city", nargs="+")
     p_api.add_argument("--no-catalog", action="store_true")
+    p_api.add_argument(
+        "--variant",
+        choices=["short", "long"],
+        default="short",
+        help="short: 8–15 точек пешком; long: 15–30 точек и переезды",
+    )
 
     p_list = sub.add_parser(
         "list-cities",
@@ -85,6 +100,8 @@ def main(argv: list[str] | None = None) -> None:
             guide,
             out_root=args.out_root,
             update_catalog=not args.no_catalog and args.out_root is None,
+            package_id=args.package_id,
+            variant=args.variant,
         )
         print(folder / "guide.json")
         return
@@ -93,7 +110,11 @@ def main(argv: list[str] | None = None) -> None:
         from generate.city_guide.openai_pipeline import run_api_city
 
         city = " ".join(args.city).strip()
-        run_api_city(city, update_catalog=not args.no_catalog)
+        run_api_city(
+            city,
+            variant=args.variant,
+            update_catalog=not args.no_catalog,
+        )
         return
 
     if args.cmd == "list-cities":

@@ -1,0 +1,769 @@
+{
+  "city": "Никосия",
+  "region": "Кипр",
+  "center": {
+    "lat": 35.1699,
+    "lon": 33.3612
+  },
+  "subtitle": "Многослойная столица: античность, стены и старый город",
+  "aliases": [
+    "Лефкосия",
+    "Lefkosia",
+    "Nicosia",
+    "Λευκωσία"
+  ],
+  "stops": [
+    {
+      "name": "Кипрский музей",
+      "coordinates": {
+        "lat": 35.17198,
+        "lon": 33.355569
+      },
+      "address": "1 Mouseiou, Nicosia",
+      "category": "археологический музей",
+      "facts": [
+        "Главный и крупнейший археологический музей Кипра показывает развитие цивилизации острова от неолита до ранневизантийского периода VII века.",
+        "Строительство исторического здания началось в 1908 году и завершилось в 1924 году, в британский колониальный период.",
+        "Среди отмечаемых официальным городским гидом экспонатов — статуя Афродиты из Солои и статуя императора Септимия Севера."
+      ],
+      "dates": [
+        "1908",
+        "1924",
+        "VII век"
+      ],
+      "people": [
+        "Септимий Север"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Бесплатно; опубликованные Visit Cyprus часы: вт–пт 08:00–18:00, сб 09:00–17:00, вс 10:00–13:00. Расписание перед визитом следует перепроверить.",
+      "sources": [
+        {
+          "title": "Cyprus Museum — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/cyprus-museum/"
+        },
+        {
+          "title": "Major Landmarks — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/landmarks/"
+        }
+      ]
+    },
+    {
+      "name": "Ворота Пафоса",
+      "coordinates": {
+        "lat": 35.1697,
+        "lon": 33.3509
+      },
+      "address": "Pafos Gate, Nicosia 1010",
+      "category": "городские ворота",
+      "facts": [
+        "Ворота Пафоса — одни из трёх сохранившихся ворот венецианских стен Никосии.",
+        "Они были частью оборонительного кольца старого города XVI века.",
+        "Муниципальный культурный центр расположен у ворот."
+      ],
+      "dates": [
+        "XVI век"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Наружный памятник доступен с городской улицы; режим мероприятий культурного центра нужно уточнять у муниципалитета.",
+      "sources": [
+        {
+          "title": "Sights — Municipality of Nicosia",
+          "url": "https://www.nicosia.org.cy/en-GB/discover/sights/"
+        },
+        {
+          "title": "Cultural / Architectural Sites — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/meet-nicosia-meet-culture/cultural-architectural-sites/"
+        }
+      ]
+    },
+    {
+      "name": "Площадь Элефтерия",
+      "coordinates": {
+        "lat": 35.1673,
+        "lon": 33.3598
+      },
+      "address": "Eleftherias Square, 1011 Nicosia",
+      "category": "городская площадь",
+      "facts": [
+        "Площадь Элефтерия находится у западной части исторического центра.",
+        "Муниципальный туристический ресурс относит площадь к культурно-архитектурным объектам города.",
+        "Здесь указан объект городской скульптуры «Поэт (Glass Man)»."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытое общественное пространство; официальный городской ресурс не заявляет о входном билете.",
+      "sources": [
+        {
+          "title": "Cultural / Architectural Sites — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/meet-nicosia-meet-culture/cultural-architectural-sites/"
+        }
+      ]
+    },
+    {
+      "name": "Пешеходные улицы Ледра и Онасагору",
+      "coordinates": {
+        "lat": 35.1695,
+        "lon": 33.3612
+      },
+      "address": "Ledra and Onasagorou streets, Nicosia",
+      "category": "пешеходная улица",
+      "facts": [
+        "Ледра и Онасагору обозначены туристической службой Кипра как пешеходные улицы.",
+        "Это центральный пеший коридор старого города.",
+        "Для маршрута с ограниченной мобильностью важно учитывать: официальный справочник указывает отсутствие пандусов, лифтов и доступного туалета на этих улицах."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [
+        "Разделение Никосии связано с линией прекращения огня ООН; политико-правовые интерпретации статуса северной части острова различаются — неизвестно."
+      ],
+      "next_leg": null,
+      "access_info": "Пешеходная зона; сведения об универсальной доступности ограничены: Visit Cyprus отмечает отсутствие пандусов и лифтов.",
+      "sources": [
+        {
+          "title": "Ledras–Onasagorou Pedestrian Streets — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/disabled-access-2/ledras-onasagorou-pedestrian-streets/"
+        },
+        {
+          "title": "United Nations Peacekeeping Force in Cyprus",
+          "url": "https://unficyp.unmissions.org/"
+        }
+      ]
+    },
+    {
+      "name": "Смотровая площадка башни Шаколас",
+      "coordinates": {
+        "lat": 35.1694,
+        "lon": 33.3614
+      },
+      "address": "Ledras and Arsinois streets, Shacolas Tower Building, Nicosia",
+      "category": "смотровая площадка",
+      "facts": [
+        "Обсерватория находится на 11-м этаже здания Shacolas Tower.",
+        "Официальный туристический путеводитель заявляет панорамный 360-градусный обзор центра Никосии.",
+        "Площадка расположена на улице Ледра."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Доступ и актуальные часы следует уточнить у оператора площадки; это не уличная смотровая точка.",
+      "sources": [
+        {
+          "title": "11000 Years of Cyprus — Deputy Ministry of Tourism",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/files/11000%20YEARS/11000_YEARS_ENG_WEB_15_10_2021_AMENDED.pdf"
+        },
+        {
+          "title": "Cultural / Architectural Sites — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/meet-nicosia-meet-culture/cultural-architectural-sites/"
+        }
+      ]
+    },
+    {
+      "name": "Муниципальный музей Левентис",
+      "coordinates": {
+        "lat": 35.1706,
+        "lon": 33.36147
+      },
+      "address": "15–17 Ippokratous, Laiki Geitonia, 1011 Nicosia",
+      "category": "исторический музей",
+      "facts": [
+        "Музей рассказывает историю Никосии от доисторического времени до современности.",
+        "В коллекциях более 10 000 предметов: карт, документов, картин, гравюр и костюмов.",
+        "Музей размещён в комплексе трёх отреставрированных исторических зданий.",
+        "В 1991 году музей получил премию European Museum of the Year Award."
+      ],
+      "dates": [
+        "апрель 1989",
+        "1991"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Бесплатно; опубликованные часы: вт–вс 10:00–16:30, закрыт по понедельникам и государственным праздникам. Рекомендуется подтвердить режим работы.",
+      "sources": [
+        {
+          "title": "The Leventis Municipal Museum of Nicosia — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/leventis-municipal-museum-of-lefkosia-nicosia/"
+        }
+      ]
+    },
+    {
+      "name": "Лайки Гитония",
+      "coordinates": {
+        "lat": 35.1711,
+        "lon": 33.3621
+      },
+      "address": "Laiki Geitonia, within the walls, Nicosia",
+      "category": "исторический квартал",
+      "facts": [
+        "Лайки Гитония — традиционный квартал внутри городских стен.",
+        "Дома квартала были отреставрированы, чтобы напоминать о старой Никосии.",
+        "Это пешеходная зона с жилыми домами, художественными лавками и тавернами.",
+        "Здания квартала датируются XVIII веком."
+      ],
+      "dates": [
+        "XVIII век"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Пешеходный квартал; доступ к частным заведениям определяется их собственным режимом работы.",
+      "sources": [
+        {
+          "title": "Laiki Geitonia — Municipality of Nicosia",
+          "url": "https://www.nicosia.org.cy/en-GB/discover/sights/laiki-geitonia/"
+        }
+      ]
+    },
+    {
+      "name": "Церковь Фанеромени",
+      "coordinates": {
+        "lat": 35.1702,
+        "lon": 33.3656
+      },
+      "address": "Phaneromeni, 1011 Nicosia",
+      "category": "церковь",
+      "facts": [
+        "Церковь Фанеромени построена в 1872 году рядом с древним православным женским монастырём.",
+        "Официальный городской гид называет её крупнейшей церковью внутри стен.",
+        "К востоку от церкви находится мраморный мавзолей с останками епископов и других клириков, казнённых османскими властями в 1821 году."
+      ],
+      "dates": [
+        "1872",
+        "1821"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Действующий религиозный объект; посещение следует согласовывать с богослужениями и правилами прихода.",
+      "sources": [
+        {
+          "title": "The Must-Visit Landmarks of Old Town — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/the-must-visit-landmarks-of-old-town/"
+        }
+      ]
+    },
+    {
+      "name": "Культурный фонд Банка Кипра",
+      "coordinates": {
+        "lat": 35.1699,
+        "lon": 33.3651
+      },
+      "address": "86–90 Phaneromenis Street, 1011 Nicosia",
+      "category": "музейный комплекс",
+      "facts": [
+        "В фонде действуют музей истории кипрской чеканки и археологический музей коллекции Георгиоса и Нефели Джабра-Пиеридес.",
+        "Музей истории кипрской чеканки основан в 1995 году и назван единственным учреждением такого рода на Кипре.",
+        "Коллекция Джабра-Пиеридес была передана фонду в 1999 году и размещается здесь с 2002 года."
+      ],
+      "dates": [
+        "1984",
+        "1995",
+        "1999",
+        "2002"
+      ],
+      "people": [
+        "Георгиос Джабра-Пиеридес",
+        "Нефели Джабра-Пиеридес",
+        "Клио Триантафиллидис",
+        "Солон Триантафиллидис"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Фонд сообщает, что его музеи открыты ежедневно; актуальные часы и выставочные условия необходимо проверять перед посещением.",
+      "sources": [
+        {
+          "title": "Museums — Bank of Cyprus Cultural Foundation",
+          "url": "https://www.bankofcyprus.com/en-gb/group/sustainability/society/boc-cultural-foundation/collections2/"
+        },
+        {
+          "title": "Cyprus Insula — Bank of Cyprus",
+          "url": "https://www.bankofcyprus.com/en-gb/group/news-archive/kypros-nisos/"
+        }
+      ]
+    },
+    {
+      "name": "Центр визуальных искусств и исследований (CVAR)",
+      "coordinates": {
+        "lat": 35.1709,
+        "lon": 33.3647
+      },
+      "address": "285 Ermou Street, Nicosia 1017",
+      "category": "музей и исследовательский центр",
+      "facts": [
+        "CVAR включён официальным туристическим ресурсом Никосии в перечень музеев города.",
+        "Центр расположен в старом городе, рядом с кварталом Фанеромени.",
+        "Это самостоятельный музейный пункт в пешем кластере старого города."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Режим посещения и стоимость билетов следует проверять на сайте CVAR перед визитом.",
+      "sources": [
+        {
+          "title": "Museums — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/museums/"
+        },
+        {
+          "title": "CVAR — official website",
+          "url": "https://cvar.severis.org/"
+        }
+      ]
+    },
+    {
+      "name": "Хаммам Омерийе",
+      "coordinates": {
+        "lat": 35.1689,
+        "lon": 33.3667
+      },
+      "address": "8 Tyllirias Square, 1016 Nicosia",
+      "category": "хаммам",
+      "facts": [
+        "Хаммам Омерийе включён муниципальным туристическим ресурсом в число культурно-архитектурных объектов Никосии.",
+        "Он расположен на площади Тиллирия в старом городе.",
+        "Это действующий банный комплекс, а не только объект осмотра."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Посещение зависит от расписания и услуг хаммама; запись и условия необходимо уточнить у оператора.",
+      "sources": [
+        {
+          "title": "Cultural / Architectural Sites — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/meet-nicosia-meet-culture/cultural-architectural-sites/"
+        }
+      ]
+    },
+    {
+      "name": "Мечеть Омерийе",
+      "coordinates": {
+        "lat": 35.1688,
+        "lon": 33.3671
+      },
+      "address": "Tyllirias Square, Nicosia",
+      "category": "мечеть",
+      "facts": [
+        "Мечеть Омерийе отмечена официальным ресурсом Visit Nicosia среди религиозных памятников города.",
+        "Она находится в историческом центре Никосии.",
+        "Памятник представляет мусульманскую составляющую религиозного наследия города."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Религиозный объект: посещение возможно только при соблюдении правил общины и вне времени молитв, если доступ разрешён.",
+      "sources": [
+        {
+          "title": "Religion — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/religion/"
+        }
+      ]
+    },
+    {
+      "name": "Церковь Хрисалиниотисса",
+      "coordinates": {
+        "lat": 35.1718,
+        "lon": 33.3685
+      },
+      "address": "Chrysaliniotissa, Nicosia",
+      "category": "церковь",
+      "facts": [
+        "Церковь Хрисалиниотисса включена Visit Nicosia в перечень древних церквей города.",
+        "Она входит в религиозный маршрут по старой Никосии.",
+        "Памятник находится в восточной части старого города."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Религиозный объект; доступ следует уточнять у прихода и учитывать богослужения.",
+      "sources": [
+        {
+          "title": "Religion — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/religion/"
+        }
+      ]
+    },
+    {
+      "name": "Дом Хаджигеоргакиса Корнесиоса",
+      "coordinates": {
+        "lat": 35.1722,
+        "lon": 33.3679
+      },
+      "address": "20 Patriarchou Gregoriou, Nicosia",
+      "category": "этнографический музей",
+      "facts": [
+        "Двухэтажный особняк построен в 1793 году из местного тёсаного песчаника.",
+        "Это один из наиболее важных сохранившихся памятников XVIII века в Никосии.",
+        "Здание было домом драгомана Хаджигеоргакиса Корнесиоса, казнённого османскими властями в 1809 году.",
+        "Департамент древностей восстановил особняк для Этнологического музея Кипра; в 1988 году он получил награду Europa Nostra."
+      ],
+      "dates": [
+        "1793",
+        "1809",
+        "1988"
+      ],
+      "people": [
+        "Хаджигеоргакис Корнесиос"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Бесплатно; опубликованные часы: вт–пт 08:30–15:30, сб 09:30–16:30. Закрыт по воскресеньям, понедельникам и праздникам; проверьте актуальность.",
+      "sources": [
+        {
+          "title": "House of Hatzigeorgakis Kornesios / Ethnological Museum — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/the-house-of-hatzigeorgakis-kornesios-ethnological-museum/"
+        }
+      ]
+    },
+    {
+      "name": "Старый и новый Архиепископский дворец",
+      "coordinates": {
+        "lat": 35.1733,
+        "lon": 33.3656
+      },
+      "address": "Plateia Archiepiskopou Kyprianou, Nicosia",
+      "category": "архитектурный ансамбль",
+      "facts": [
+        "Старый Архиепископский дворец — двухэтажное здание XVIII века, связанное с современной историей Кипра.",
+        "Новый дворец в неовизантийском стиле построен при архиепископе Макариосе III между 1956 и 1960 годами.",
+        "В новом комплексе находятся офисы архиепископии, резиденция архиепископа, Византийский музей и библиотека.",
+        "После постройки нового дворца в старом размещались Музей народного искусства и Музей национальной борьбы."
+      ],
+      "dates": [
+        "XVIII век",
+        "1956–1960"
+      ],
+      "people": [
+        "Макариос III"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Административно-религиозный комплекс; доступ внутрь отдельных зданий определяется учреждениями комплекса.",
+      "sources": [
+        {
+          "title": "Archbishop’s Palace — Municipality of Nicosia",
+          "url": "https://www.nicosia.org.cy/en-GB/discover/sights/archbishop-palace/"
+        }
+      ]
+    },
+    {
+      "name": "Собор Святого Иоанна",
+      "coordinates": {
+        "lat": 35.1732,
+        "lon": 33.3652
+      },
+      "address": "Plateia Archiepiskopou Kyprianou, Nicosia",
+      "category": "собор",
+      "facts": [
+        "Архиепископ Никифорос реконструировал собор в 1662 году.",
+        "В соборе есть восстановленные фрески XVIII века.",
+        "Фрески изображают библейские сюжеты и обретение гробницы апостола Варнавы в Саламине."
+      ],
+      "dates": [
+        "1662",
+        "XVIII век"
+      ],
+      "people": [
+        "архиепископ Никифорос",
+        "апостол Варнава",
+        "архиепископ Сильвестр"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Действующий православный храм; посещение зависит от богослужений и правил собора.",
+      "sources": [
+        {
+          "title": "The Must-Visit Landmarks of Old Town — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/the-must-visit-landmarks-of-old-town/"
+        }
+      ]
+    },
+    {
+      "name": "Византийский музей",
+      "coordinates": {
+        "lat": 35.1733,
+        "lon": 33.3658
+      },
+      "address": "Plateia Archiepiskopou Kyprianou, within the Archbishopric, Nicosia",
+      "category": "музей религиозного искусства",
+      "facts": [
+        "Музей расположен внутри стен Никосии, в комплексе архиепископии.",
+        "В экспозиции около 230 икон IX–XIX веков, а также церковная утварь, облачения и книги.",
+        "Среди ключевых экспонатов — мозаики VI века из церкви Панагии Канакарии, возвращённые на Кипр после незаконного вывоза.",
+        "В коллекции есть много икон XII века."
+      ],
+      "dates": [
+        "VI век",
+        "IX–XIX века",
+        "XII век"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [
+        "Термины, которыми описывают район происхождения мозаик Канакарии, политически чувствительны; музейный ресурс связывает их с территорией, находящейся вне контроля Республики Кипр — неизвестно."
+      ],
+      "next_leg": null,
+      "access_info": "Опубликованные Visit Cyprus часы: вт–сб 09:30–17:00; входной билет указан как 7 евро для индивидуального посетителя. Актуальные условия нужно проверить.",
+      "sources": [
+        {
+          "title": "Byzantine Museum — Municipality of Nicosia",
+          "url": "https://www.nicosia.org.cy/en-GB/discover/museums/byzantine-museum/"
+        },
+        {
+          "title": "Byzantine Museum — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/byzantine-museum/"
+        }
+      ]
+    },
+    {
+      "name": "Музей национальной борьбы",
+      "coordinates": {
+        "lat": 35.1732,
+        "lon": 33.3655
+      },
+      "address": "Plateia Archiepiskopou Kyprianou, 1016 Nicosia",
+      "category": "исторический музей",
+      "facts": [
+        "Музей расположен на площади Архиепископа Киприану.",
+        "Официальное уведомление Министерства культуры связывает музей с памятью об антиколониальной борьбе ЭОКА 1955–1959 годов.",
+        "Музей находится в комплексе Старого Архиепископского дворца."
+      ],
+      "dates": [
+        "1955–1959"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [
+        "Оценки действий ЭОКА и периода 1955–1959 годов различаются в разных исторических нарративах — неизвестно."
+      ],
+      "next_leg": null,
+      "access_info": "Актуальные часы и условия доступа необходимо подтверждать у учреждения или Министерства культуры.",
+      "sources": [
+        {
+          "title": "National Struggle Museum announcement — Ministry of Culture of Cyprus",
+          "url": "https://enimerosi.moec.gov.cy/archeia/1/ypp15389a"
+        },
+        {
+          "title": "Archbishop’s Palace — Municipality of Nicosia",
+          "url": "https://www.nicosia.org.cy/en-GB/discover/sights/archbishop-palace/"
+        }
+      ]
+    },
+    {
+      "name": "Панкипрская гимназия",
+      "coordinates": {
+        "lat": 35.1731,
+        "lon": 33.3664
+      },
+      "address": "Plateia Archiepiskopou Kyprianou, 1016 Nicosia",
+      "category": "историческое учебное заведение и музей",
+      "facts": [
+        "Панкипрская гимназия основана в 1812 году.",
+        "Её музейные коллекции включают археологическое и нумизматическое собрания, старые карты и старинное оружие.",
+        "В комплексе также упоминаются художественная галерея и музей естественной истории."
+      ],
+      "dates": [
+        "1812"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Учебное заведение и музейный комплекс; часы посещения коллекций необходимо согласовать заранее.",
+      "sources": [
+        {
+          "title": "Sights — Municipality of Nicosia",
+          "url": "https://www.nicosia.org.cy/en-GB/discover/sights/"
+        },
+        {
+          "title": "Major Landmarks — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/landmarks/"
+        }
+      ]
+    },
+    {
+      "name": "Монумент Свободы",
+      "coordinates": {
+        "lat": 35.1731,
+        "lon": 33.3692
+      },
+      "address": "Palaiologou, 1016 Nicosia",
+      "category": "монумент",
+      "facts": [
+        "Монумент Свободы расположен на бастионе Подокатро в системе городских стен.",
+        "Муниципальный туристический ресурс относит его к основным достопримечательностям Никосии.",
+        "Он находится рядом с восточным участком исторического центра."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытый городской памятник; отдельного входного билета муниципальный ресурс не указывает.",
+      "sources": [
+        {
+          "title": "Sights — Municipality of Nicosia",
+          "url": "https://www.nicosia.org.cy/en-GB/discover/sights/"
+        },
+        {
+          "title": "Cultural / Architectural Sites — Visit Nicosia",
+          "url": "https://visitnicosia.com.cy/meet-nicosia-meet-culture/cultural-architectural-sites/"
+        }
+      ]
+    },
+    {
+      "name": "Венецианские стены Никосии",
+      "coordinates": {
+        "lat": 35.1729,
+        "lon": 33.3696
+      },
+      "address": "Old City Walls, Nicosia",
+      "category": "городские укрепления",
+      "facts": [
+        "Сохранившиеся стены старого города построены венецианцами в XVI веке.",
+        "Кольцо стен усилено одиннадцатью бастионами сердцевидной формы и окружено рвом шириной 80 метров.",
+        "Нижняя часть стен укреплена камнем, а после османского завоевания верхняя часть была покрыта камнем.",
+        "Ров используется как общественное пространство: для спорта, садов, скульптурной экспозиции и парковки."
+      ],
+      "dates": [
+        "XIV век",
+        "XVI век"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Большая часть укреплений видна с общественных улиц и рва; доступ на отдельные участки зависит от городской инфраструктуры.",
+      "sources": [
+        {
+          "title": "The Medieval Walls of Lefkosia — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/the-medieval-walls-of-lefkosia-nicosia/"
+        },
+        {
+          "title": "The Medieval Walls — Municipality of Nicosia",
+          "url": "https://www.nicosia.org.cy/en-GB/discover/sights/the-medieval-walls/"
+        }
+      ]
+    },
+    {
+      "name": "Ворота Фамагусты",
+      "coordinates": {
+        "lat": 35.174328,
+        "lon": 33.37106
+      },
+      "address": "Leoforos Athinon, Nicosia",
+      "category": "городские ворота и культурный центр",
+      "facts": [
+        "Ворота Фамагусты — крупнейшие из трёх входов в старую Никосию через венецианские стены.",
+        "Их спроектировал инженер Джулио Саворньяно в 1567 году.",
+        "Первоначально восточные ворота назывались Porta Giuliana; позднее их переименовали по дороге к Фамагусте.",
+        "После реставрации в сводчатом проходе и прилегающих помещениях работает муниципальный мультикультурный центр."
+      ],
+      "dates": [
+        "1567"
+      ],
+      "people": [
+        "Джулио Саворньяно"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Бесплатно; опубликованные часы центра: по будням, октябрь–апрель 10:00–13:00 и 16:00–19:00, май–сентябрь 10:00–13:00 и 17:00–20:00. Закрыт по выходным и праздникам; подтвердите расписание.",
+      "sources": [
+        {
+          "title": "Famagusta Gate — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/famagusta-gate-pyli-ammochostou/"
+        }
+      ]
+    },
+    {
+      "name": "Муниципальный музей печатной графики Хамбиса",
+      "coordinates": {
+        "lat": 35.1747,
+        "lon": 33.3731
+      },
+      "address": "55–59 Ammochostou, Nicosia 1016",
+      "category": "музей искусства",
+      "facts": [
+        "Музей посвящён кипрскому художнику-гравёру Хамбису Цагарису.",
+        "Экспозиция знакомит с искусством печатной графики через работы художников.",
+        "В музее также представлены работы иностранных авторов от XVI века до современности."
+      ],
+      "dates": [
+        "XVI век"
+      ],
+      "people": [
+        "Хамбис Цагарис"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Бесплатно; опубликованный режим меняется по сезонам, музей закрыт по вс–вт и в августе. Перед визитом необходимо подтвердить часы.",
+      "sources": [
+        {
+          "title": "Municipal Hambis Printmaking Museum — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/municipal-hambis-printmaking-museum/"
+        }
+      ]
+    },
+    {
+      "name": "Государственная галерея современного искусства — SPEL",
+      "coordinates": {
+        "lat": 35.1745,
+        "lon": 33.374
+      },
+      "address": "73 Ammochostou Street, 1016 Nicosia",
+      "category": "галерея современного искусства",
+      "facts": [
+        "Галерея SPEL расположена на улице Аммохосту, 73.",
+        "Официальное сообщение Министерства культуры описывает объект как Государственную галерею современного искусства.",
+        "Здание было вновь открыто для публики после реконструкции в 2019 году."
+      ],
+      "dates": [
+        "2019"
+      ],
+      "people": [
+        "Христофорос Савва"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Для прошлых выставок министерство публиковало режим вт–пт 10:00–18:00 и сб 11:00–19:00; это не подтверждение текущих часов, их необходимо проверить перед посещением.",
+      "sources": [
+        {
+          "title": "Past-Forward exhibition programme — Ministry of Culture of Cyprus",
+          "url": "https://enimerosi.moec.gov.cy/archeia/1/ypp12749b"
+        },
+        {
+          "title": "State Gallery reopening notice — Ministry of Culture of Cyprus",
+          "url": "http://enimerosi.moec.gov.cy/archeia/1/ypp8700b"
+        }
+      ]
+    }
+  ]
+}

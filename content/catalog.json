@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-13T12:43:47Z",
+  "updatedAt": "2026-09-13T14:09:25Z",
   "guides": [
     {
       "id": "kolomna",
@@ -30,7 +30,7 @@
     },
     {
       "id": "voronezh",
-      "title": "Воронеж",
+      "title": "Воронеж — короткий маршрут",
       "subtitle": "От петровской верфи к памяти о войне",
       "aliases": [
         "Воронеж",
@@ -49,11 +49,11 @@
       "durationSec": 293,
       "language": "ru",
       "guidePath": "guides/voronezh/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "suzdal",
-      "title": "Суздаль",
+      "title": "Суздаль — короткий маршрут",
       "subtitle": "Кремль, Каменка и монастыри",
       "aliases": [
         "суздаль",
@@ -72,11 +72,11 @@
       "durationSec": 431,
       "language": "ru",
       "guidePath": "guides/suzdal/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "larnaka",
-      "title": "Ларнака",
+      "title": "Ларнака — короткий маршрут",
       "subtitle": "От средневековой крепости к набережной Финикудес и старому городу",
       "aliases": [
         "Ларнака",
@@ -94,11 +94,11 @@
       "durationSec": 297,
       "language": "ru",
       "guidePath": "guides/larnaka/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "pafos",
-      "title": "Пафос",
+      "title": "Пафос — короткий маршрут",
       "subtitle": "Античный Неа-Пафос, мозаики и средневековая гавань",
       "aliases": [
         "Пафос",
@@ -116,11 +116,11 @@
       "durationSec": 280,
       "language": "ru",
       "guidePath": "guides/pafos/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "nikosiya",
-      "title": "Никосия",
+      "title": "Никосия — короткий маршрут",
       "subtitle": "Венецианские стены, старый город и история разделённой столицы",
       "aliases": [
         "Лефкосия",
@@ -137,11 +137,11 @@
       "durationSec": 267,
       "language": "ru",
       "guidePath": "guides/nikosiya/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "moscow",
-      "title": "Москва",
+      "title": "Moscow — короткий маршрут",
       "subtitle": "От Красной площади через Зарядье к Китай-городу",
       "aliases": [
         "Москва",
@@ -158,11 +158,11 @@
       "durationSec": 278,
       "language": "ru",
       "guidePath": "guides/moscow/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "suchzhou",
-      "title": "Аудиогид по Сучжоу",
+      "title": "Сучжоу — короткий маршрут",
       "subtitle": "Классические сады, каналы и старый город Цзяннани",
       "aliases": [
         "苏州",
@@ -180,11 +180,11 @@
       "durationSec": 261,
       "language": "ru",
       "guidePath": "guides/suchzhou/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "troick",
-      "title": "Троицк",
+      "title": "Троицк — короткий маршрут",
       "subtitle": "От усадебного парка и фабрики к научному центру Москвы",
       "aliases": [
         "Троицк (Москва)",
@@ -201,11 +201,11 @@
       "durationSec": 271,
       "language": "ru",
       "guidePath": "guides/troick/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "limasol",
-      "title": "Лимасол",
+      "title": "Лимасол — короткий маршрут",
       "subtitle": "Старый город, средневековая крепость и набережная Средиземного моря",
       "aliases": [
         "Лемесос",
@@ -222,6 +222,135 @@
       "durationSec": 280,
       "language": "ru",
       "guidePath": "guides/limasol/guide.json",
+      "contentVersion": 2
+    },
+    {
+      "id": "nikosiya-long",
+      "title": "Никосия — длинный маршрут",
+      "subtitle": "Многослойная столица: античность, стены и старый город",
+      "aliases": [
+        "Лефкосия",
+        "Lefkosia",
+        "Nicosia",
+        "Λευκωσία"
+      ],
+      "city": "Никосия",
+      "region": "Кипр",
+      "center": {
+        "lat": 35.1699,
+        "lon": 33.3612
+      },
+      "stopsCount": 24,
+      "durationSec": 0,
+      "language": "ru",
+      "guidePath": "guides/nikosiya-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "troick-long",
+      "title": "Троицк — длинный маршрут",
+      "subtitle": "Наукоград: усадебный парк, Десна и физические институты",
+      "aliases": [
+        "Троицк (Москва)",
+        "район Троицк",
+        "Троицкий наукоград"
+      ],
+      "city": "Троицк",
+      "region": "Москва",
+      "center": {
+        "lat": 55.479,
+        "lon": 37.307
+      },
+      "stopsCount": 19,
+      "durationSec": 0,
+      "language": "ru",
+      "guidePath": "guides/troick-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "suchzhou-long",
+      "title": "Сучжоу — длинный маршрут",
+      "subtitle": "Сады ЮНЕСКО, каналы и старый город У",
+      "aliases": [
+        "苏州",
+        "Suzhou",
+        "Сучжоу",
+        "Гусу"
+      ],
+      "city": "Сучжоу",
+      "region": "Цзянсу, Китай",
+      "center": {
+        "lat": 31.299,
+        "lon": 120.5853
+      },
+      "stopsCount": 15,
+      "durationSec": 0,
+      "language": "ru",
+      "guidePath": "guides/suchzhou-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "pafos-long",
+      "title": "Пафос — длинный маршрут",
+      "subtitle": "Многослойный маршрут от старого города к античному Неа-Пафосу и некрополю",
+      "aliases": [
+        "Paphos",
+        "Pafos",
+        "Πάφος",
+        "Πάφος Κύπρος"
+      ],
+      "city": "Пафос",
+      "region": "Пафос, Республика Кипр",
+      "center": {
+        "lat": 34.758333,
+        "lon": 32.405556
+      },
+      "stopsCount": 13,
+      "durationSec": 0,
+      "language": "ru",
+      "guidePath": "guides/pafos-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "voronezh-long",
+      "title": "Воронеж — длинный маршрут",
+      "subtitle": "Пешеходный маршрут на 5–6 часов: исторический центр, университетский квартал и Адмиралтейская набережная",
+      "aliases": [
+        "Воронеж",
+        "город воинской славы",
+        "колыбель российского военно-морского флота"
+      ],
+      "city": "Воронеж",
+      "region": "Воронежская область, Россия",
+      "center": {
+        "lat": 51.6608,
+        "lon": 39.2003
+      },
+      "stopsCount": 19,
+      "durationSec": 0,
+      "language": "ru",
+      "guidePath": "guides/voronezh-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "suzdal-long",
+      "title": "Суздаль — длинный маршрут",
+      "subtitle": "Пешеходный маршрут на 6–8 часов: Заречье, кремль, посад и монастыри",
+      "aliases": [
+        "Суздаль",
+        "Суждаль",
+        "Суздальский кремль"
+      ],
+      "city": "Суздаль",
+      "region": "Владимирская область, Россия",
+      "center": {
+        "lat": 56.4195,
+        "lon": 40.4486
+      },
+      "stopsCount": 21,
+      "durationSec": 0,
+      "language": "ru",
+      "guidePath": "guides/suzdal-long/guide.json",
       "contentVersion": 1
     }
   ]

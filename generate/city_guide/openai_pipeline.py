@@ -15,8 +15,10 @@ from generate.city_guide.prompts import (
 from generate.city_guide.schemas import CityGuide, CityResearch, QAResult
 from generate.city_guide.slug import slugify
 
-MIN_STOPS = int(os.getenv("MIN_STOPS", "8"))
-MAX_STOPS = int(os.getenv("MAX_STOPS", "15"))
+SHORT_MIN_STOPS = int(os.getenv("SHORT_MIN_STOPS", "8"))
+SHORT_MAX_STOPS = int(os.getenv("SHORT_MAX_STOPS", "15"))
+LONG_MIN_STOPS = int(os.getenv("LONG_MIN_STOPS", "15"))
+LONG_MAX_STOPS = int(os.getenv("LONG_MAX_STOPS", "30"))
 QA_RETRIES = int(os.getenv("QA_RETRIES", "2"))
 MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-terra")
 QA_MODEL = os.getenv("OPENAI_QA_MODEL", MODEL)
@@ -47,11 +49,31 @@ def parse(client, model, system, user, schema, web=False):
     return r.output_parsed
 
 
-def research_city(client, city: str) -> CityResearch:
+def _variant_config(variant: str) -> tuple[int, int, str]:
+    if variant == "long":
+        return (
+            LONG_MIN_STOPS,
+            LONG_MAX_STOPS,
+            (
+                "Это длинный маршрут на несколько часов. Собери несколько "
+                "логичных пеших кластеров и добавляй переезды только там, "
+                "где без них маршрут был бы неразумным."
+            ),
+        )
+    return (
+        SHORT_MIN_STOPS,
+        SHORT_MAX_STOPS,
+        "Это короткий маршрут: предпочитай один компактный пеший кластер.",
+    )
+
+
+def research_city(client, city: str, *, variant: str = "short") -> CityResearch:
+    min_stops, max_stops, route_instruction = _variant_config(variant)
     prompt = f"""
 Исследуй город: {city}
 
-Нужно {MIN_STOPS}–{MAX_STOPS} остановок для одного логичного маршрута.
+Нужно {min_stops}–{max_stops} остановок для одного логичного маршрута.
+{route_instruction}
 Выбирай площади, исторические здания, храмы, памятники, музеи, набережные,
 улицы и другие объекты, если они помогают рассказать историю города.
 
@@ -60,7 +82,7 @@ def research_city(client, city: str) -> CityResearch:
     return parse(client, MODEL, RESEARCH_SYSTEM, prompt, CityResearch, web=True)
 
 
-def write_guide(client, research: CityResearch) -> CityGuide:
+def write_guide(client, research: CityResearch, *, package_id: str, variant: str) -> CityGuide:
     payload = json.dumps(dump(research), ensure_ascii=False, indent=2)
     prompt = f"""
 Вот проверенная исследовательская база:
@@ -69,6 +91,10 @@ def write_guide(client, research: CityResearch) -> CityGuide:
 
 Создай конечный CityGuide.
 Количество и порядок остановок должны совпадать с research.
+id гида должен быть строго `{package_id}`.
+Вариант маршрута: `{variant}`. Для long отрази во вступлении пешие кластеры
+и отдельные переезды из `next_leg`, если они есть.
+title должен быть строго «{research.city} — {'длинный маршрут' if variant == 'long' else 'короткий маршрут'}».
 id остановки — стабильный ASCII slug от названия.
 lat/lon/name/category/order возьми из research (не меняй).
 contentVersion=1, language="ru".
@@ -105,21 +131,29 @@ def fix(client, research: CityResearch, guide: CityGuide, result: QAResult) -> C
     return parse(client, MODEL, FIX_SYSTEM, payload, CityGuide)
 
 
-def run_api_city(city: str, *, update_catalog: bool = True) -> Path:
+def run_api_city(
+    city: str, *, variant: str = "short", update_catalog: bool = True
+) -> Path:
     client = _client()
     city_id = slugify(city)
-    print(f"[1/4] Web research: {city}")
-    research = research_city(client, city)
+    package_id = f"{city_id}-long" if variant == "long" else city_id
+    print(f"[1/4] Web research ({variant}): {city}")
+    research = research_city(client, city, variant=variant)
 
     print("[2/4] Генерация аудиогида")
-    guide = write_guide(client, research)
+    guide = write_guide(client, research, package_id=package_id, variant=variant)
 
     for attempt in range(QA_RETRIES + 1):
         print(f"[3/4] QA, попытка {attempt + 1}")
         # Normalize paths before local length/audio checks inside qa
         from generate.city_guide.package import normalize_guide
 
-        guide = normalize_guide(research, guide)
+        guide = normalize_guide(
+            research,
+            guide,
+            package_id=package_id,
+            variant=variant,
+        )
         result = qa(client, research, guide)
         if result.valid:
             print("QA OK")
@@ -128,7 +162,12 @@ def run_api_city(city: str, *, update_catalog: bool = True) -> Path:
             raise RuntimeError(json.dumps(dump(result), ensure_ascii=False, indent=2))
         guide = fix(client, research, guide, result)
 
-    guide = normalize_guide(research, guide)
+    guide = normalize_guide(
+        research,
+        guide,
+        package_id=package_id,
+        variant=variant,
+    )
     final = local_checks(research, guide)
     if not final.valid:
         raise RuntimeError(
@@ -137,11 +176,17 @@ def run_api_city(city: str, *, update_catalog: bool = True) -> Path:
         )
 
     print("[4/4] Сохраняю пакет")
-    folder = write_package(research, guide, update_catalog=update_catalog)
+    folder = write_package(
+        research,
+        guide,
+        update_catalog=update_catalog,
+        package_id=package_id,
+        variant=variant,
+    )
     # also stash under generate/out for convenience
-    out = Path(__file__).resolve().parents[1] / "out" / city_id
+    out = Path(__file__).resolve().parents[1] / "out" / package_id
     out.mkdir(parents=True, exist_ok=True)
-    save_json(research, out / f"{city_id}.research.json")
+    save_json(research, out / f"{package_id}.research.json")
     save_json(guide, out / "guide.json")
     print(f"Готово: {folder / 'guide.json'}")
     print(f"Остановок: {len(guide.stops)}")

@@ -1,0 +1,601 @@
+{
+  "city": "Лимасол",
+  "region": "Кипр",
+  "center": {
+    "lat": 34.6794,
+    "lon": 33.0385
+  },
+  "subtitle": "Старый город, набережная Молос и древний Аматус",
+  "aliases": [
+    "Лимасол",
+    "Лемесос",
+    "Lemesos",
+    "Limassol"
+  ],
+  "stops": [
+    {
+      "name": "Марина Лимасола",
+      "coordinates": {
+        "lat": 34.67087,
+        "lon": 33.03679
+      },
+      "address": "Limassol Marina, Limassol",
+      "category": "набережная",
+      "facts": [
+        "Марина примыкает к старой гавани и находится в пешей доступности от исторического центра и средневекового замка.",
+        "Комплекс рассчитан более чем на 660 прогулочных судов длиной до 115 м.",
+        "В марине устроены пешеходные улицы, мосты, озеленённые пространства, рестораны и культурные площадки."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытое общественное пространство; парковка и велопарковки предусмотрены в комплексе.",
+      "sources": [
+        {
+          "title": "Муниципалитет Лимасола — Limassol Marina",
+          "url": "https://www.limassol.org.cy/en/Marina-Lemesou"
+        }
+      ]
+    },
+    {
+      "name": "Старая гавань Лимасола",
+      "coordinates": {
+        "lat": 34.67121,
+        "lon": 33.04065
+      },
+      "address": "Old Port, Syntagmatos Square, Limassol",
+      "category": "гавань",
+      "facts": [
+        "Старая гавань — официальная начальная и конечная точка городской пешеходной экскурсии муниципалитета.",
+        "Маршрут муниципальной прогулки связывает отсюда Молос, замок, мечеть, собор Святой Напы, рынок и торговую улицу Агиу-Андреу.",
+        "Площадь старой гавани используется для городских культурных мероприятий."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытая площадь; туристический информационный офис указан муниципалитетом как точка старта прогулки.",
+      "sources": [
+        {
+          "title": "Муниципалитет Лимасола — A Stroll in Limassol",
+          "url": "https://www.limassol.org.cy/en/a-stroll-limassol"
+        },
+        {
+          "title": "Муниципалитет Лимасола — фестиваль в Old Port",
+          "url": "https://www.limassol.org.cy/en/news/round-table-cyprus-arts-festival-ifsa-experts-limassol-2019"
+        }
+      ]
+    },
+    {
+      "name": "Старая мельница рожкового дерева",
+      "coordinates": {
+        "lat": 34.67168,
+        "lon": 33.04119
+      },
+      "address": "Vasilissis Street, behind Limassol Medieval Castle",
+      "category": "промышленное наследие",
+      "facts": [
+        "Мельница построена в 1900 году, когда рожковое дерево было важным экспортным товаром Кипра.",
+        "В восстановленной части комплекса сохранено оборудование для переработки рожков.",
+        "Во второй части размещён художественно-выставочный центр Evagoras Lanitis."
+      ],
+      "dates": [
+        "1900"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Вход указан как бесплатный; комплекс работает круглый год, кроме государственных праздников. Актуальный режим следует уточнять заранее.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — The Old Carob Mill",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/the-old-carob-mill/"
+        }
+      ]
+    },
+    {
+      "name": "Средневековый замок Лимасола и Кипрский средневековый музей",
+      "coordinates": {
+        "lat": 34.6722,
+        "lon": 33.04163
+      },
+      "address": "Richardou & Berengarias, near the Old Port, Limassol",
+      "category": "музей",
+      "facts": [
+        "Современный облик крепости создан османами в 1590 году после разрушений от землетрясений 1567 и 1568 годов.",
+        "В замке размещён Кипрский средневековый музей с керамикой, надгробиями, византийскими серебряными изделиями, оружием, крестами и монетами.",
+        "Под восточным залом находится бывшая тюрьма, использовавшаяся до 1950 года."
+      ],
+      "dates": [
+        "1567",
+        "1568",
+        "1590",
+        "1950"
+      ],
+      "people": [],
+      "legends": [
+        "По традиции, именно здесь Ричард Львиное Сердце женился на Беренгарии Наваррской и короновал её королевой Англии в 1191 году."
+      ],
+      "disputed": [
+        "Точное место венчания и коронации Ричарда и Беренгарии в пределах комплекса — неизвестно."
+      ],
+      "next_leg": null,
+      "access_info": "Адрес, координаты, платный вход и часы публикует Visit Cyprus; время работы и тарифы могут меняться.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Lemesos Medieval Castle",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/lemesos-limassol-medieval-castle/"
+        },
+        {
+          "title": "Visit Cyprus — Cyprus Medieval Museum",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/cyprus-medieval-museum-limassol-lemesos-castle/"
+        }
+      ]
+    },
+    {
+      "name": "Церковь Святой Напы",
+      "coordinates": {
+        "lat": 34.67313,
+        "lon": 33.0433
+      },
+      "address": "Agiou Andreou Street, Old Town, Limassol",
+      "category": "храм",
+      "facts": [
+        "Нынешняя церковь построена на руинах более ранней небольшой византийской церкви.",
+        "Современное трёхнефное здание завершено в 1906 году.",
+        "Внутри находятся мраморный иконостас, преимущественно купольные фрески и серебряная икона Святой Напы."
+      ],
+      "dates": [
+        "1906"
+      ],
+      "people": [],
+      "legends": [
+        "Одна из традиций связывает название с найденной в роще иконой Богородицы; другая — с франкским храмом Святой Напы."
+      ],
+      "disputed": [
+        "Происхождение названия храма между двумя приведёнными традициями — неизвестно."
+      ],
+      "next_leg": null,
+      "access_info": "Visit Cyprus указывает свободный вход в разумные часы; по праздникам церковь закрыта.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Agia Napa Church, Lemesos",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/agia-napa-church-lemesos-limassol/"
+        }
+      ]
+    },
+    {
+      "name": "Большая мечеть Кепир",
+      "coordinates": {
+        "lat": 34.67303,
+        "lon": 33.04231
+      },
+      "address": "Kepir Mosque, Old Town, Limassol",
+      "category": "религиозное наследие",
+      "facts": [
+        "Большая мечеть, также называемая Кепир, входит в официальный маршрут городской прогулки муниципалитета.",
+        "Она расположена в историческом квартале между замком, собором Святой Напы и старым рынком."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Осмотр снаружи доступен в ходе городской прогулки; правила посещения действующего религиозного пространства следует уточнить на месте.",
+      "sources": [
+        {
+          "title": "Муниципалитет Лимасола — A Stroll in Limassol",
+          "url": "https://www.limassol.org.cy/en/a-stroll-limassol"
+        }
+      ]
+    },
+    {
+      "name": "Муниципальный рынок Лимасола",
+      "coordinates": {
+        "lat": 34.67418,
+        "lon": 33.04188
+      },
+      "address": "Municipal Market, Old Town, Limassol",
+      "category": "рынок",
+      "facts": [
+        "Муниципальный рынок включён в официальный маршрут прогулки по старому городу.",
+        "Рынок находится в той же исторической пешеходной зоне, что замок, мечеть, собор Святой Напы и улица Агиу-Андреу."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Торговый объект в пешеходной зоне; часы отдельных торговых точек следует уточнять на месте.",
+      "sources": [
+        {
+          "title": "Муниципалитет Лимасола — A Stroll in Limassol",
+          "url": "https://www.limassol.org.cy/en/a-stroll-limassol"
+        }
+      ]
+    },
+    {
+      "name": "Пешеходная улица Агиу-Андреу",
+      "coordinates": {
+        "lat": 34.67412,
+        "lon": 33.04434
+      },
+      "address": "Agiou Andreou Street, Old Town, Limassol",
+      "category": "городская среда",
+      "facts": [
+        "Муниципалитет называет Агиу-Андреу традиционным торговым центром города.",
+        "Улица описана как пешеходная часть старого города.",
+        "Она входит в маршрут, соединяющий старую гавань с ключевыми памятниками центра."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Пешеходная городская улица.",
+      "sources": [
+        {
+          "title": "Муниципалитет Лимасола — A Stroll in Limassol",
+          "url": "https://www.limassol.org.cy/en/a-stroll-limassol"
+        }
+      ]
+    },
+    {
+      "name": "Площадь Героев",
+      "coordinates": {
+        "lat": 34.67749,
+        "lon": 33.04167
+      },
+      "address": "Heroes' Square, Limassol",
+      "category": "площадь",
+      "facts": [
+        "Площадь Героев является адресным ориентиром театра Rialto.",
+        "Площадь лежит в пределах старого центра, связанного муниципальным пешеходным маршрутом с гаванью и Агиу-Андреу."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытое городское пространство.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — мероприятие в Rialto Theatre",
+          "url": "https://www.visitcyprus.com/event/cyprus-a-heaven-on-earth-i-cypriot-folk-dances/"
+        },
+        {
+          "title": "Муниципалитет Лимасола — A Stroll in Limassol",
+          "url": "https://www.limassol.org.cy/en/a-stroll-limassol"
+        }
+      ]
+    },
+    {
+      "name": "Театр Rialto",
+      "coordinates": {
+        "lat": 34.67772,
+        "lon": 33.04134
+      },
+      "address": "Andrea Drousioti 19, Heroes Square, 3040 Limassol",
+      "category": "театр",
+      "facts": [
+        "Театр расположен по адресу Andrea Drousioti 19 на площади Героев.",
+        "Rialto принимает театральные, музыкальные, танцевальные и кинематографические события.",
+        "В программах Visit Cyprus для площадки указаны представления с греческими и английскими субтитрами."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Посещение зависит от афиши и условий конкретного события; расписание и билеты нужно проверять у организатора.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Rialto Theatre, адрес площадки",
+          "url": "https://www.visitcyprus.com/event/cyprus-a-heaven-on-earth-i-cypriot-folk-dances/"
+        }
+      ]
+    },
+    {
+      "name": "Парк скульптур Лимасола",
+      "coordinates": {
+        "lat": 34.67915,
+        "lon": 33.04747
+      },
+      "address": "Molos seafront, Limassol",
+      "category": "искусство",
+      "facts": [
+        "Парк расположен на морском фасаде Молос.",
+        "Скульптуры созданы на месте авторами с Кипра, из Греции и других стран во время симпозиумов 1999, 2000 и 2001 годов.",
+        "Муниципалитет называет парк одним из важных проектов культурного наследия города."
+      ],
+      "dates": [
+        "1999",
+        "2000",
+        "2001"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытая часть набережной Молос.",
+      "sources": [
+        {
+          "title": "Муниципалитет Лимасола — Limassol Sculpture Park",
+          "url": "https://www.limassol.org.cy/en/parko-gliptikis"
+        },
+        {
+          "title": "Visit Cyprus — Multifunctional Seaside Park",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/multifunctional-seaside-park/"
+        }
+      ]
+    },
+    {
+      "name": "Набережная Молос",
+      "coordinates": {
+        "lat": 34.67982,
+        "lon": 33.05026
+      },
+      "address": "Molos, Limassol seafront",
+      "category": "набережная",
+      "facts": [
+        "Многофункциональный приморский парк протянулся примерно на 1 км вдоль связанного участка побережья.",
+        "Здесь есть пешеходные и велодорожки, детские площадки, малый театр, пруды, фонтаны и кафе.",
+        "Проект набережной был призван восстановить связь городского центра с морем."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "От остановки «Agias Theklis – Old Port» сядьте на автобус EMEL №30 в направлении «Parklane Hotel / Megalou Alexandrou». Выйдите на остановке «Paradromos Amathountos» и пройдите к входу в археологический комплекс Аматуса. Сверьте актуальное отправление в расписании EMEL перед поездкой.",
+      "access_info": "Открытая набережная с несколькими входами; предусмотрены пешеходные и велосипедные связи.",
+      "sources": [
+        {
+          "title": "Муниципалитет Лимасола — Sea side Multifunctional Park",
+          "url": "https://www.limassol.org.cy/en/polylitourgiko-parathalasio-parko"
+        },
+        {
+          "title": "Visit Cyprus — Multifunctional Seaside Park",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/multifunctional-seaside-park/"
+        },
+        {
+          "title": "EMEL Limassol Buses — Route 30 MY MALL • PARKLANE HOTEL",
+          "url": "https://limassolbuses.com/el/route-30-my-mall-parklane-%CE%B7otel/"
+        }
+      ]
+    },
+    {
+      "name": "Нижний город Аматуса",
+      "coordinates": {
+        "lat": 34.7125,
+        "lon": 33.1419
+      },
+      "address": "Amathous Archaeological Site, 11 km east of Limassol centre",
+      "category": "археологический памятник",
+      "facts": [
+        "Аматус расположен на южном побережье Кипра, примерно в 7 км к востоку от Лемесоса.",
+        "Следы самой ранней человеческой активности в соседних холмах относятся к неолиту.",
+        "В архаический период Аматус стал одним из царств Кипра и поддерживал торговые связи с Эгеидой и сиро-палестинским побережьем."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Официальный источник указывает билет €2,50; доступна только часть нижнего города для посетителей на инвалидных колясках, имеются специальные санитарные помещения. Режим работы зависит от сезона.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Amathous Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/D20ED526826AB796C225719B00374A92?OpenDocument="
+        },
+        {
+          "title": "Visit Cyprus — Amathous Archaeological Site",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/amathous-archaeological-site/"
+        }
+      ]
+    },
+    {
+      "name": "Агора Аматуса",
+      "coordinates": {
+        "lat": 34.71322,
+        "lon": 33.14212
+      },
+      "address": "Amathous Archaeological Site, lower town",
+      "category": "археология",
+      "facts": [
+        "Агора находится в нижнем городе к востоку от акрополя.",
+        "В римское время её центром был большой мощёный двор.",
+        "Три стороны двора занимали портики; западный портик открывался во двор через тринадцать дорических колонн.",
+        "К северной части западного портика примыкал фонтан или нимфей."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Часть археологического комплекса; применяются общие билет, часы и правила Департамента древностей.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Amathous Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/D20ED526826AB796C225719B00374A92?OpenDocument="
+        }
+      ]
+    },
+    {
+      "name": "Общественные бани Аматуса",
+      "coordinates": {
+        "lat": 34.71305,
+        "lon": 33.14252
+      },
+      "address": "Amathous Archaeological Site, south of the agora",
+      "category": "археология",
+      "facts": [
+        "К югу от агоры расположен общественный банный комплекс — balaneion.",
+        "Бани состоят из закрытой круглой зоны и пристроек.",
+        "Бани и часть западного портика агоры относятся к эллинистическому периоду и являются ранними свидетельствами активности в этой части города."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Осмотр в границах археологического комплекса; доступны только открытые для посетителей участки.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Amathous Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/D20ED526826AB796C225719B00374A92?OpenDocument="
+        }
+      ]
+    },
+    {
+      "name": "Дорога нижнего города Аматуса",
+      "coordinates": {
+        "lat": 34.71276,
+        "lon": 33.14216
+      },
+      "address": "Amathous Archaeological Site, lower town",
+      "category": "археология",
+      "facts": [
+        "Вдоль южной стороны агоры проходила важная дорога, связывавшая её с нижним городом.",
+        "Римская перестройка агоры организовала пространство вокруг центрального мощёного двора.",
+        "За северным портиком располагались здания, которые археологи интерпретируют как важные административные или религиозные помещения."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [
+        "Функция зданий за северным портиком как административных или религиозных — неизвестно."
+      ],
+      "next_leg": null,
+      "access_info": "Осмотр в рамках маршрута по археологическому комплексу.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Amathous Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/D20ED526826AB796C225719B00374A92?OpenDocument="
+        }
+      ]
+    },
+    {
+      "name": "Акрополь Аматуса",
+      "coordinates": {
+        "lat": 34.71372,
+        "lon": 33.14071
+      },
+      "address": "Amathous Archaeological Site, acropolis hill",
+      "category": "археология",
+      "facts": [
+        "На холме акрополя почитали кипрскую богиню, называемую Афродитой как минимум с IV века до н. э.",
+        "Во время персидского господства Аматус занимал проперсидскую позицию, из-за чего был осаждён Онесилом Саламинским.",
+        "Царство Аматуса, как и другие кипрские царства, было упразднено в конце IV века до н. э."
+      ],
+      "dates": [
+        "IV век до н. э."
+      ],
+      "people": [
+        "Онесил Саламинский"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Участок в археологическом комплексе; для посетителей с ограниченной мобильностью официально доступен только нижний город.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Amathous Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/D20ED526826AB796C225719B00374A92?OpenDocument="
+        }
+      ]
+    },
+    {
+      "name": "Римский храм Афродиты",
+      "coordinates": {
+        "lat": 34.71392,
+        "lon": 33.14043
+      },
+      "address": "Amathous Archaeological Site, acropolis",
+      "category": "археология",
+      "facts": [
+        "Римский храм был построен в конце I века н. э. над более ранним эллинистическим храмом.",
+        "По типу это простильный храм с «набатейскими» капителями.",
+        "В V веке н. э. южная часть территории храма использовалась ранними христианами для богослужений.",
+        "К VII веку храм уже был разрушен."
+      ],
+      "dates": [
+        "I век н. э.",
+        "V век н. э.",
+        "VII век н. э."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Осмотр с соблюдением общих правил археологического комплекса; состояние тропы и доступность следует уточнить у Департамента древностей.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Amathous Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/D20ED526826AB796C225719B00374A92?OpenDocument="
+        }
+      ]
+    },
+    {
+      "name": "Раннехристианская базилика Аматуса",
+      "coordinates": {
+        "lat": 34.71384,
+        "lon": 33.14031
+      },
+      "address": "Amathous Archaeological Site, acropolis",
+      "category": "археология",
+      "facts": [
+        "В VII веке на месте разрушенного храма Афродиты возвели большую трёхнефную базилику.",
+        "В комплекс входили нартекс, экзонартекс, пристройки, атрий и цистерна в центре атрия.",
+        "Комплекс был окружён оградой."
+      ],
+      "dates": [
+        "VII век н. э."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Осмотр в составе археологического комплекса; участки на акрополе могут быть менее доступны, чем нижний город.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Amathous Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/D20ED526826AB796C225719B00374A92?OpenDocument="
+        }
+      ]
+    },
+    {
+      "name": "Каменные сосуды Аматуса",
+      "coordinates": {
+        "lat": 34.71398,
+        "lon": 33.14047
+      },
+      "address": "Amathous Archaeological Site, northeast corner of basilica enclosure",
+      "category": "археология",
+      "facts": [
+        "В северо-восточном углу ограды базилики найдены два архаических каменных сосуда.",
+        "Находки связаны с зоной, где ранее находился храмовый комплекс на акрополе.",
+        "Аматусская экспозиция Департамента древностей охватывала историю города от доисторического времени до первых веков христианской эпохи."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Осмотр только по открытым для посетителей маршрутам комплекса; не трогайте археологические остатки.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Amathous Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/D20ED526826AB796C225719B00374A92?OpenDocument="
+        },
+        {
+          "title": "Департамент древностей Кипра — выставка «Amathous of Cyprus, a city most ancient»",
+          "url": "https://www.culture.gov.cy/dmculture/da/da.nsf/page04_new_en/19E5EF59E2F50022C2258036003367C7?OpenDocument="
+        }
+      ]
+    }
+  ]
+}

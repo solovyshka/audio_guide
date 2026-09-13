@@ -32,6 +32,13 @@ class StopResearch(Strict):
         default_factory=list,
         description="Спорные пункты; в тексте — с «— неизвестно».",
     )
+    next_leg: Optional[str] = Field(
+        default=None,
+        description=(
+            "Как добраться к следующему кластеру маршрута, только если нужен "
+            "отдельный переезд. Должно быть подтверждено источниками."
+        ),
+    )
     access_info: Optional[str] = None
     sources: List[Source] = Field(min_length=1)
 
@@ -42,7 +49,7 @@ class CityResearch(Strict):
     center: Coordinates
     subtitle: str
     aliases: List[str]
-    stops: List[StopResearch] = Field(min_length=8, max_length=15)
+    stops: List[StopResearch] = Field(min_length=8, max_length=30)
 
 
 class GuideStop(Strict):
@@ -75,7 +82,7 @@ class CityGuide(Strict):
     center: Coordinates
     aliases: List[str]
     intro: Intro
-    stops: List[GuideStop] = Field(min_length=8, max_length=15)
+    stops: List[GuideStop] = Field(min_length=8, max_length=30)
     durationSec: int = 0
 
 

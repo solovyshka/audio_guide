@@ -1,0 +1,504 @@
+{
+  "city": "Сучжоу",
+  "region": "Цзянсу, Китай",
+  "center": {
+    "lat": 31.299,
+    "lon": 120.5853
+  },
+  "subtitle": "Сады ЮНЕСКО, каналы и старый город У",
+  "aliases": [
+    "苏州",
+    "Suzhou",
+    "Сучжоу",
+    "Гусу"
+  ],
+  "stops": [
+    {
+      "name": "Музей шёлка Сучжоу",
+      "coordinates": {
+        "lat": 31.3291,
+        "lon": 120.6147
+      },
+      "address": "2001 Renmin Road, Сучжоу",
+      "category": "музей",
+      "facts": [
+        "Первый в Китае специализированный музей шёлка основан в 1991 году.",
+        "В шести залах представлены древний и современный шёлк, шелководство, ткачество и крашение.",
+        "Музей показывает традиционное ткачество и коллекции, связанные с шёлковой культурой."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Находится на Renmin Road, рядом с пагодой Бэйсы; перед визитом уточните режим работы у музея.",
+      "sources": [
+        {
+          "title": "Suzhou Silk Museum — муниципальное правительство Сучжоу",
+          "url": "http://english.suzhou.gov.cn/szsenglish/scbwg/201911/4e2be9512cbd4a3f91247be52f5c2145.shtml"
+        },
+        {
+          "title": "Amap — карта Музея шёлка Сучжоу",
+          "url": "https://ditu.amap.com/search?query=%E8%8B%8F%E5%B7%9E%E4%B8%9D%E7%BB%B8%E5%8D%9A%E7%89%A9%E9%A6%86"
+        }
+      ]
+    },
+    {
+      "name": "Художественный музей Сучжоу",
+      "coordinates": {
+        "lat": 31.3288,
+        "lon": 120.6155
+      },
+      "address": "2075 Renmin Road, Сучжоу",
+      "category": "музей",
+      "facts": [
+        "Музей основан Янь Вэньляном в 1972 году.",
+        "Новое здание открылось в 2010 году на северной части Renmin Road.",
+        "В комплексе есть большой выставочный зал и шесть малых и средних залов."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Адрес — 2075 Renmin Road; режим выставок и часы посещения следует проверить перед приходом.",
+      "sources": [
+        {
+          "title": "Suzhou Municipal Center of Public Culture — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/szggwhzx/201911/ccf07ee0a6f0472388a07d630016598a.shtml"
+        },
+        {
+          "title": "Amap — карта Художественного музея Сучжоу",
+          "url": "https://ditu.amap.com/search?query=%E8%8B%8F%E5%B7%9E%E7%BE%8E%E6%9C%AF%E9%A6%86"
+        }
+      ]
+    },
+    {
+      "name": "Музей Сучжоу",
+      "coordinates": {
+        "lat": 31.3266,
+        "lon": 120.626
+      },
+      "address": "204 Dongbei Street, Сучжоу",
+      "category": "музей",
+      "facts": [
+        "Региональный комплексный музей основан в 1960 году на территории дворца принца Чжуна.",
+        "Новое здание по проекту И. М. Пея открылось в 2006 году.",
+        "В постоянных экспозициях представлены бронза, керамика, фарфор, нефрит, шёлк, вышивка, живопись и каллиграфия."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Официальный адрес: 204 Dongbei Street. Обычно открыт 09:00–17:00, последний вход в 16:00; по понедельникам закрыт, кроме праздников.",
+      "sources": [
+        {
+          "title": "Suzhou Museum — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/bwg/201911/fdc603d3ae3040b89ef9b3ed071f8af1.shtml"
+        },
+        {
+          "title": "Amap — карта Музея Сучжоу",
+          "url": "https://ditu.amap.com/search?query=%E8%8B%8F%E5%B7%9E%E5%8D%9A%E7%89%A9%E9%A6%86"
+        }
+      ]
+    },
+    {
+      "name": "Сад скромного чиновника",
+      "coordinates": {
+        "lat": 31.3263,
+        "lon": 120.6248
+      },
+      "address": "Dongbei Street, Гусу, Сучжоу",
+      "category": "классический сад ЮНЕСКО",
+      "facts": [
+        "Площадь сада составляет 5,2 гектара.",
+        "Сад внесён в Список всемирного наследия ЮНЕСКО в 1997 году.",
+        "Вода занимает около одной пятой его площади; многие павильоны расположены у прудов с лотосами."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Ближайшая рекомендованная оператором метро станция — Beisita линии 4, выход 4; далее около 1 км пешком по Xibei Street на восток.",
+      "sources": [
+        {
+          "title": "Classical Gardens of Suzhou — UNESCO",
+          "url": "https://whc.unesco.org/en/list/813/"
+        },
+        {
+          "title": "The Humble Administrator’s Garden — муниципальное правительство Сучжоу",
+          "url": "http://english.suzhou.gov.cn/szsenglish/sjwhyclm/201611/0e774293426145f6b4b00d3a5717c6df.shtml"
+        },
+        {
+          "title": "Suzhou Metro — туристическая информация",
+          "url": "https://www.sz-mtr.com/en/detail/detail.html?class=en_list3&data=en_listMore1&pageTitle=Tickets"
+        }
+      ]
+    },
+    {
+      "name": "Сад Львиная роща",
+      "coordinates": {
+        "lat": 31.3234,
+        "lon": 120.6247
+      },
+      "address": "Yuanlin Road, Гусу, Сучжоу",
+      "category": "классический сад ЮНЕСКО",
+      "facts": [
+        "Площадь сада составляет около 1,1 гектара.",
+        "Он внесён в Список всемирного наследия ЮНЕСКО в 2000 году.",
+        "Сад получил статус объекта национального значения в 2006 году.",
+        "Каменный лабиринт включает 21 пещеру и 9 извилистых троп."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "От остановки Suzhou Museum / Humble Administrator’s Garden / Lion Grove Garden — около 150 м пешком; от Сада скромного чиновника — примерно 3 минуты пешком.",
+      "sources": [
+        {
+          "title": "The Lion Grove Garden — муниципальное правительство Сучжоу",
+          "url": "http://english.suzhou.gov.cn/szsenglish/sjwhyclm/201611/4b2e5a5fe64e4c238ff8f4adbb7b06c4.shtml"
+        },
+        {
+          "title": "Periodic Reporting Cycle 3 — UNESCO",
+          "url": "https://whc.unesco.org/document/217309"
+        }
+      ]
+    },
+    {
+      "name": "Исторический квартал Пинцзян",
+      "coordinates": {
+        "lat": 31.3189,
+        "lon": 120.63
+      },
+      "address": "Pingjiang Road, Сучжоу",
+      "category": "исторический квартал",
+      "facts": [
+        "Квартал занимает около 116,5 гектара в северо-восточной части древнего города.",
+        "Здесь сохранилась планировка «вода и суша параллельны, канал и улица соседствуют».",
+        "Муниципальный источник называет его наиболее типичным и хорошо сохранившимся историко-культурным районом древнего Сучжоу."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытая территория бесплатна и доступна круглосуточно. Для подхода на метро: Lindunlu, линия 1, выход 3; далее около 10 минут пешком.",
+      "sources": [
+        {
+          "title": "Pingjiang Historical Neighbourhood — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/sz4ajjq/201911/39c24a78b929414cb00a80f1ec75865f.shtml"
+        },
+        {
+          "title": "Suzhou Metro — туристическая информация",
+          "url": "https://www.sz-mtr.com/en/detail/detail.html?class=en_list3&data=en_listMore1&pageTitle=Tickets"
+        },
+        {
+          "title": "Amap — карта Pingjiang Road",
+          "url": "https://ditu.amap.com/search?query=%E5%B9%B3%E6%B1%9F%E8%B7%AF"
+        }
+      ]
+    },
+    {
+      "name": "Сад Уединения супругов",
+      "coordinates": {
+        "lat": 31.3184,
+        "lon": 120.6341
+      },
+      "address": "96 Xiaoxinqiao Lane, Сучжоу",
+      "category": "классический сад ЮНЕСКО",
+      "facts": [
+        "Сад расположен в северо-восточном углу старого города.",
+        "Комплекс объединяет жилую часть и два сада — восточный и западный.",
+        "С трёх сторон сад окружён водой; его причалы на севере и юге являются редкой особенностью среди классических садов Сучжоу."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Официальный адрес: 96 Xiaoxinqiao Lane. Уточните часы и билетные условия перед визитом.",
+      "sources": [
+        {
+          "title": "The Couple's Retreat Garden — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/sjwhyclm/201611/92a5d50f82074585afbd1ed737cf7c2a.shtml"
+        },
+        {
+          "title": "Periodic Reporting Cycle 3 — UNESCO",
+          "url": "https://whc.unesco.org/document/217309"
+        }
+      ]
+    },
+    {
+      "name": "Сад мастера сетей",
+      "coordinates": {
+        "lat": 31.3002,
+        "lon": 120.6294
+      },
+      "address": "11 Kuojiatou Lane, Сучжоу",
+      "category": "классический сад ЮНЕСКО",
+      "facts": [
+        "Сад занимает всего около 0,6 гектара и считается выдающимся примером малого сада Сучжоу.",
+        "Он внесён в Список всемирного наследия ЮНЕСКО в 1997 году.",
+        "В период Южной Сун здесь находились Зал десяти тысяч томов и сад «Приют рыбака».",
+        "Двор павильона Peony Studio послужил моделью для Astor Court и Ming Room в Метрополитен-музее Нью-Йорка."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Официальный адрес: 11 Kuojiatou Lane; часы посещения и билеты следует проверить заранее.",
+      "sources": [
+        {
+          "title": "The Master-of-Nets Garden — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/sjwhyclm/201611/94b6801781dd4346a97a6e058c586a21.shtml"
+        },
+        {
+          "title": "Periodic Reporting Cycle 3 — UNESCO",
+          "url": "https://whc.unesco.org/document/217309"
+        }
+      ]
+    },
+    {
+      "name": "Павильон Суровых волн",
+      "coordinates": {
+        "lat": 31.297,
+        "lon": 120.6217
+      },
+      "address": "3 Canglangting Street, Сучжоу",
+      "category": "классический сад ЮНЕСКО",
+      "facts": [
+        "Это один из старейших сохранившихся классических садов Сучжоу.",
+        "Поэт Су Шуньцин приобрёл участок и создал сад в годы правления Цинли (1041–1049).",
+        "Сад добавлен в список ЮНЕСКО в 2000 году.",
+        "Двойная галерея объединяет внешнюю воду и внутренний холм; в ней 108 оконных решёток разного рисунка."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Расположен к югу от Renmin Road. Перед визитом уточните режим работы и вход.",
+      "sources": [
+        {
+          "title": "Canglang Pavilion — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/sjwhyclm/201611/3463a6e6a4694335a3c1faf115718cae.shtml"
+        },
+        {
+          "title": "Periodic Reporting Cycle 3 — UNESCO",
+          "url": "https://whc.unesco.org/document/217309"
+        }
+      ]
+    },
+    {
+      "name": "Живописная зона Паньмэнь",
+      "coordinates": {
+        "lat": 31.2917,
+        "lon": 120.6122
+      },
+      "address": "49 Dongdajie Street, Сучжоу",
+      "category": "городские ворота и исторический парк",
+      "facts": [
+        "Зона находится в юго-западном углу древнего города и занимает 24,68 гектара.",
+        "Её ключевые памятники — пагода Жуйгуан, водно-сухопутные ворота Паньмэнь и мост Умэнь.",
+        "Паньмэнь называют редким в Китае комплексом ворот, через которые в древности проходили и повозки, и суда."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "К следующему кластеру: пешком дойдите до станции Panlilu линии 2, сядьте в поезд в северном направлении до Shantangjie и выйдите через выход 1. Официальная схема Suzhou Metro подтверждает обе станции на линии 2, а оператор метро указывает выход 1 для улицы Шаньтан.",
+      "access_info": "Официальный адрес: 49 Dongdajie Street. Дневной режим, указанный муниципальным источником: 07:00–17:00; актуальные билеты и часы нужно перепроверить.",
+      "sources": [
+        {
+          "title": "Suzhou Pan Gate Scenic Spot — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/sz4ajjq/201911/ec66e5920e1d414e86a5ce68772a7fbf.shtml"
+        },
+        {
+          "title": "Operation route map — Suzhou Metro",
+          "url": "https://www.sz-mtr.com/service/guide/map/index_en.html?T"
+        },
+        {
+          "title": "Suzhou Metro — туристическая информация",
+          "url": "https://www.sz-mtr.com/en/detail/detail.html?class=en_list3&data=en_listMore1&pageTitle=Tickets"
+        }
+      ]
+    },
+    {
+      "name": "Улица Шаньтан",
+      "coordinates": {
+        "lat": 31.3198,
+        "lon": 120.6
+      },
+      "address": "Shantang Street, Гусу, Сучжоу",
+      "category": "историческая улица у канала",
+      "facts": [
+        "Улица находится на северо-западе древнего Сучжоу и существует более 1100 лет.",
+        "Она идёт параллельно реке; здесь сохранились мосты, белёные стены и чёрная черепица.",
+        "Муниципальный источник называет её «улицей № 1 Сучжоу»."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "На метро: Shantangjie, линия 2, выход 1. Открытая часть улицы доступна свободно; Yuhan Hall имеет отдельный билет и режим.",
+      "sources": [
+        {
+          "title": "Shantang Street — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/zglswhmjlm/201611/9d50e9c61a59411f83239d5eb9a65dc7.shtml"
+        },
+        {
+          "title": "Seven-li Shantang Street — муниципальное правительство Сучжоу",
+          "url": "http://english.suzhou.gov.cn/szsenglish/sz4ajjq/201911/b49778c7b2514fc0a1ef1c251f474df6.shtml"
+        },
+        {
+          "title": "Suzhou Metro — туристическая информация",
+          "url": "https://www.sz-mtr.com/en/detail/detail.html?class=en_list3&data=en_listMore1&pageTitle=Tickets"
+        }
+      ]
+    },
+    {
+      "name": "Зал Юйхан",
+      "coordinates": {
+        "lat": 31.3207,
+        "lon": 120.5988
+      },
+      "address": "Shantang Street, Гусу, Сучжоу",
+      "category": "исторический зал",
+      "facts": [
+        "Юйхан — платная часть открытого исторического района Шаньтан.",
+        "Муниципальный туристический маршрут рекомендует в нём знакомство с нематериальным наследием сучжоуского пинтаня.",
+        "Официальный источник указывает отдельные часы работы зала — 08:00–21:00."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Находится в квартале Шаньтан; билет приобретается отдельно от свободной уличной зоны.",
+      "sources": [
+        {
+          "title": "Seven-li Shantang Street — муниципальное правительство Сучжоу",
+          "url": "http://english.suzhou.gov.cn/szsenglish/sz4ajjq/201911/b49778c7b2514fc0a1ef1c251f474df6.shtml"
+        },
+        {
+          "title": "One-day Tour to Suzhou Ancient City Classic — муниципальное правительство Сучжоу",
+          "url": "http://english.suzhou.gov.cn/szsenglish/yty/201911/056a460ac2fa456981bbb46bcef71972.shtml"
+        },
+        {
+          "title": "Amap — карта Yuhan Hall",
+          "url": "https://ditu.amap.com/search?query=%E7%8E%89%E6%B6%B5%E5%A0%82%20%E8%8B%8F%E5%B7%9E"
+        }
+      ]
+    },
+    {
+      "name": "Сад Лююань",
+      "coordinates": {
+        "lat": 31.3173,
+        "lon": 120.5884
+      },
+      "address": "338 Liuyuan Road, Сучжоу",
+      "category": "классический сад ЮНЕСКО",
+      "facts": [
+        "Сад основан в 1593 году, в 21-й год правления императора Ваньли.",
+        "Он входит в число «четырёх знаменитых классических садов» Китая.",
+        "Сад внесён в Список всемирного наследия ЮНЕСКО в 1997 году и в 2010 году получил статус национальной туристической зоны 5A.",
+        "Комплекс разделён на четыре части; северная сосредоточена на бонсай, а западная — на уединённом пейзаже."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "К следующему кластеру: пешком дойдите до Shilu / остановки Guangjiqiao. Оттуда туристический автобус № 1 идёт к остановке Huqiu; затем пройдите около 300 м на север до Южных ворот Тигрового холма. Эта последовательность опубликована муниципальной страницей Тигрового холма.",
+      "access_info": "Расположен за воротами Чанмэнь. Муниципальный маршрут предлагает доехать от Шаньтана около 5 минут на общественном велосипеде либо воспользоваться туристическим маршрутом Suzhou Good Line; билет и часы нужно проверять перед визитом.",
+      "sources": [
+        {
+          "title": "The Lingering Garden — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/sjwhyclm/201611/97a5d9432e954704ab5cc39703c69a49.shtml"
+        },
+        {
+          "title": "Periodic Reporting Cycle 3 — UNESCO",
+          "url": "https://whc.unesco.org/document/217309"
+        },
+        {
+          "title": "One-day Tour to Suzhou Ancient City Classic — муниципальное правительство Сучжоу",
+          "url": "http://english.suzhou.gov.cn/szsenglish/yty/201911/056a460ac2fa456981bbb46bcef71972.shtml"
+        },
+        {
+          "title": "The Tiger Hill Scenic Spot — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/sz5ajjq/201611/9b1909ce503e4597849ea06d8a755c1a.shtml"
+        }
+      ]
+    },
+    {
+      "name": "Тигровый холм",
+      "coordinates": {
+        "lat": 31.3384,
+        "lon": 120.5719
+      },
+      "address": "8 Huqiu Shantang, Сучжоу",
+      "category": "историческая живописная зона",
+      "facts": [
+        "Тигровый холм — национальная туристическая зона 5A площадью более 20 гектаров.",
+        "Муниципальный источник относит его историю к периоду более 2500 лет назад.",
+        "Среди памятников комплекса названы гробница царя У Хэлюя, Мечевой пруд и пагода Тигрового холма.",
+        "У подножия находится сад бонсай с более чем 600 образцами сучжоуского стиля."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Официальный адрес: 8 Huqiu Shantang. Муниципальный источник указывает путь от Shilu: выход 2, около 30 м до Guangjiqiao, туристический автобус № 1 до Huqiu и ещё примерно 300 м пешком к Южным воротам.",
+      "sources": [
+        {
+          "title": "The Tiger Hill Scenic Spot — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/sz5ajjq/201611/9b1909ce503e4597849ea06d8a755c1a.shtml"
+        },
+        {
+          "title": "Amap — карта Tiger Hill",
+          "url": "https://ditu.amap.com/search?query=%E8%99%8E%E4%B8%98%E5%B1%B1%E9%A3%8E%E6%99%AF%E5%8C%BA"
+        }
+      ]
+    },
+    {
+      "name": "Пагода Тигрового холма",
+      "coordinates": {
+        "lat": 31.3419,
+        "lon": 120.5731
+      },
+      "address": "Внутри живописной зоны Тигрового холма, Сучжоу",
+      "category": "пагода",
+      "facts": [
+        "Пагода Тигрового холма первоначально построена в эпоху Пяти династий.",
+        "Муниципальный источник называет её символом древнего Сучжоу.",
+        "Пагода входит в исторические объекты живописной зоны Тигрового холма."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Расположена внутри билетной зоны Тигрового холма; следуйте внутренним указателям после входа через Южные ворота.",
+      "sources": [
+        {
+          "title": "The Tiger Hill Scenic Spot — муниципальное правительство Сучжоу",
+          "url": "https://english.suzhou.gov.cn/szsenglish/sz5ajjq/201611/9b1909ce503e4597849ea06d8a755c1a.shtml"
+        },
+        {
+          "title": "Grand Canal Suzhou Section, a World Heritage Site — муниципальное правительство Сучжоу",
+          "url": "http://english.suzhou.gov.cn/szsenglish/szdtcyb/202411/066c4903706b4f6f934636a3e0bb2357.shtml"
+        },
+        {
+          "title": "Amap — карта пагоды Тигрового холма",
+          "url": "https://ditu.amap.com/search?query=%E8%99%8E%E4%B8%98%E5%A1%94"
+        }
+      ]
+    }
+  ]
+}
