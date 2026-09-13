@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-11T20:40:00Z",
+  "updatedAt": "2026-09-13T11:20:00Z",
   "guides": [
     {
       "id": "kolomna",
@@ -24,6 +24,28 @@
       "language": "ru",
       "guidePath": "guides/kolomna/guide.json",
       "contentVersion": 2
+    },
+    {
+      "id": "voronezh",
+      "title": "Воронеж",
+      "subtitle": "Адмиралтейство, центр и Ротонда",
+      "aliases": [
+        "воронеж",
+        "voronezh",
+        "адмиралтейская площадь",
+        "гото предестинация",
+        "благовещенский собор",
+        "белый бим",
+        "ротонда воронеж"
+      ],
+      "city": "Воронеж",
+      "region": "Воронежская область",
+      "center": { "lat": 51.661, "lon": 39.21 },
+      "stopsCount": 8,
+      "durationSec": 686,
+      "language": "ru",
+      "guidePath": "guides/voronezh/guide.json",
+      "contentVersion": 1
     }
   ]
 }
