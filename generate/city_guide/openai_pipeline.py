@@ -23,6 +23,17 @@ QA_RETRIES = int(os.getenv("QA_RETRIES", "2"))
 MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-terra")
 QA_MODEL = os.getenv("OPENAI_QA_MODEL", MODEL)
 
+COORD_ARBITRATE_SYSTEM = """
+Ты проверяешь координаты остановки аудиогида.
+Тебе дают координаты из research (возможно от LLM) и кандидат из OpenStreetMap.
+Ответь structured JSON:
+- confident=true — исходные research-координаты верны (или ближе к реальному объекту),
+  OSM-кандидат ошибочный/другой объект; менять не нужно.
+- confident=false — research, скорее всего, ошибся; разумнее принять OSM.
+Кратко обоснуй на русском. Не выдумывай факты вне данных запроса.
+""".strip()
+
+
 
 def _client():
     from openai import OpenAI
@@ -82,6 +93,35 @@ def research_city(client, city: str, *, variant: str = "short") -> CityResearch:
     return parse(client, MODEL, RESEARCH_SYSTEM, prompt, CityResearch, web=True)
 
 
+def arbitrate_coords(client, stop, osm_hit, distance_m: float) -> "CoordArbitration":
+    from generate.city_guide.schemas import CoordArbitration
+
+    prompt = f"""
+Остановка: {stop.name}
+Категория: {stop.category}
+Адрес research: {stop.address or "—"}
+Координаты research: lat={stop.coordinates.lat}, lon={stop.coordinates.lon}
+Кандидат OSM: lat={osm_hit.lat}, lon={osm_hit.lon}
+OSM display_name: {osm_hit.display_name}
+Расстояние: {distance_m:.0f} м
+"""
+    return parse(client, QA_MODEL, COORD_ARBITRATE_SYSTEM, prompt, CoordArbitration)
+
+
+def verify_and_maybe_fix_coords(client, research: CityResearch, *, apply: bool = True):
+    from generate.city_guide.osm import DEFAULT_THRESHOLD_M, verify_research_coords
+
+    def _arb(stop, hit, distance_m):
+        return arbitrate_coords(client, stop, hit, distance_m)
+
+    return verify_research_coords(
+        research,
+        threshold_m=DEFAULT_THRESHOLD_M,
+        arbitrate=_arb,
+        apply=apply,
+    )
+
+
 def write_guide(client, research: CityResearch, *, package_id: str, variant: str) -> CityGuide:
     payload = json.dumps(dump(research), ensure_ascii=False, indent=2)
     prompt = f"""
@@ -137,14 +177,20 @@ def run_api_city(
     client = _client()
     city_id = slugify(city)
     package_id = f"{city_id}-long" if variant == "long" else city_id
-    print(f"[1/4] Web research ({variant}): {city}")
+    print(f"[1/5] Web research ({variant}): {city}")
     research = research_city(client, city, variant=variant)
 
-    print("[2/4] Генерация аудиогида")
+    print("[2/5] Сверка координат с OSM")
+    research, osm_checks = verify_and_maybe_fix_coords(client, research, apply=True)
+    applied = sum(1 for c in osm_checks if c.applied)
+    kept = sum(1 for c in osm_checks if c.status == "mismatch_kept")
+    print(f"OSM: applied={applied}, kept_llm={kept}, total={len(osm_checks)}")
+
+    print("[3/5] Генерация аудиогида")
     guide = write_guide(client, research, package_id=package_id, variant=variant)
 
     for attempt in range(QA_RETRIES + 1):
-        print(f"[3/4] QA, попытка {attempt + 1}")
+        print(f"[4/5] QA, попытка {attempt + 1}")
         # Normalize paths before local length/audio checks inside qa
         from generate.city_guide.package import normalize_guide
 
@@ -175,13 +221,19 @@ def run_api_city(
             + json.dumps(dump(final), ensure_ascii=False, indent=2)
         )
 
-    print("[4/4] Сохраняю пакет")
+    print("[5/5] Сохраняю пакет")
     folder = write_package(
         research,
         guide,
         update_catalog=update_catalog,
         package_id=package_id,
         variant=variant,
+    )
+    from generate.city_guide.osm import DEFAULT_THRESHOLD_M, report_payload
+
+    save_json(
+        report_payload(research, osm_checks, threshold_m=DEFAULT_THRESHOLD_M),
+        folder / f"{package_id}.osm-report.json",
     )
     # also stash under generate/out for convenience
     out = Path(__file__).resolve().parents[1] / "out" / package_id

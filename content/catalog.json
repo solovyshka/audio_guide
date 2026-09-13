@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-13T14:09:25Z",
+  "updatedAt": "2026-09-13T15:01:05Z",
   "guides": [
     {
       "id": "kolomna",
@@ -241,7 +241,7 @@
         "lon": 33.3612
       },
       "stopsCount": 24,
-      "durationSec": 0,
+      "durationSec": 741,
       "language": "ru",
       "guidePath": "guides/nikosiya-long/guide.json",
       "contentVersion": 1
@@ -262,7 +262,7 @@
         "lon": 37.307
       },
       "stopsCount": 19,
-      "durationSec": 0,
+      "durationSec": 633,
       "language": "ru",
       "guidePath": "guides/troick-long/guide.json",
       "contentVersion": 1
@@ -284,7 +284,7 @@
         "lon": 120.5853
       },
       "stopsCount": 15,
-      "durationSec": 0,
+      "durationSec": 475,
       "language": "ru",
       "guidePath": "guides/suchzhou-long/guide.json",
       "contentVersion": 1
@@ -306,7 +306,7 @@
         "lon": 32.405556
       },
       "stopsCount": 13,
-      "durationSec": 0,
+      "durationSec": 399,
       "language": "ru",
       "guidePath": "guides/pafos-long/guide.json",
       "contentVersion": 1
@@ -327,7 +327,7 @@
         "lon": 39.2003
       },
       "stopsCount": 19,
-      "durationSec": 0,
+      "durationSec": 553,
       "language": "ru",
       "guidePath": "guides/voronezh-long/guide.json",
       "contentVersion": 1
@@ -348,9 +348,31 @@
         "lon": 40.4486
       },
       "stopsCount": 21,
-      "durationSec": 0,
+      "durationSec": 646,
       "language": "ru",
       "guidePath": "guides/suzdal-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "limasol-long",
+      "title": "Лимасол — длинный маршрут",
+      "subtitle": "Старый город, набережная Молос и древний Аматус",
+      "aliases": [
+        "Лимасол",
+        "Лемесос",
+        "Lemesos",
+        "Limassol"
+      ],
+      "city": "Лимасол",
+      "region": "Кипр",
+      "center": {
+        "lat": 34.6794,
+        "lon": 33.0385
+      },
+      "stopsCount": 20,
+      "durationSec": 617,
+      "language": "ru",
+      "guidePath": "guides/limasol-long/guide.json",
       "contentVersion": 1
     }
   ]

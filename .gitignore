@@ -28,3 +28,8 @@ app/ios/.symlinks/
 **/secrets.dart
 server/.env
 generate/.env
+
+# TTS audio stays on disk/server, not in git
+content/guides/*/audio/
+*.wav
+*.mp3

@@ -121,11 +121,13 @@ AGENT_BATCH_STEPS = """
 1. Возьми следующий город из generate/cities.txt (строки не с #).
 2. WebSearch / WebFetch по городу; собери CityResearch (JSON по схеме).
 3. Сохрани research в content/guides/{id}/{id}.research.json
-4. По WRITER_SYSTEM напиши CityGuide; спорное — с «— неизвестно».
-5. python -m generate.city_guide normalize-write --research … --guide …
+4. python -m generate.city_guide verify-coords …research.json --write
+   (OSM Nominatim + LLM-арбитраж; без ключа — --no-llm только отчёт).
+5. По WRITER_SYSTEM напиши CityGuide; спорное — с «— неизвестно».
+6. python -m generate.city_guide normalize-write --research … --guide …
    (проставит audioPath, запишет guide.json, обновит catalog).
-6. python -m generate.city_guide validate <research> <guide>
-7. Если valid=false — правь guide и снова validate, до OK.
-8. Отметь город: префикс # done: в cities.txt.
-9. TTS и заливка на сервер — отдельно, по просьбе пользователя.
+7. python -m generate.city_guide validate <research> <guide>
+8. Если valid=false — правь guide и снова validate, до OK.
+9. Отметь город: префикс # done: в cities.txt.
+10. TTS и заливка на сервер — отдельно, по просьбе пользователя.
 """.strip()

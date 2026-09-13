@@ -21,14 +21,22 @@
    Длинный пакет получает id `<город>-long`; короткий — обычный id города.
 2. `python -m generate.city_guide list-cities` — следующий без `#`.
 3. Research → `content/guides/{id}/{id}.research.json` (схема `CityResearch`, поля `disputed`, `next_leg`).
-4. Writer → черновик `guide.json` (спорное с «— неизвестно»). Для переезда заполняй `next_leg` только проверенной инструкцией.
-5. ```
+4. Сверка координат с OSM:
+   ```
+   python -m generate.city_guide verify-coords content/guides/{id}/{id}.research.json --write
+   ```
+   Nominatim сравнивает lat/lon; при расхождении > порога (~200 м) LLM решает,
+   уверена ли research. Если нет — подставляются координаты OSM, исходные
+   сохраняются в `llm_coordinates`. Отчёт: `{id}.osm-report.json`.
+   Без ключа OpenAI: `--no-llm` (только отчёт, без записи).
+5. Writer → черновик `guide.json` (спорное с «— неизвестно»). Для переезда заполняй `next_leg` только проверенной инструкцией.
+6. ```
    python -m generate.city_guide normalize-write --research ... --guide ...
    python -m generate.city_guide validate ...research.json .../guide.json
    ```
    Для длинного варианта добавь `--package-id <город>-long` к `normalize-write`.
-6. Пока `valid: false` — правь только `text` / intro, снова validate.
-7. В `cities.txt`: `# done: Город`.
+7. Пока `valid: false` — правь только `text` / intro, снова validate.
+8. В `cities.txt`: `# done: Город`.
 
 ## Не делать в этом цикле
 

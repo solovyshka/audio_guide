@@ -41,6 +41,20 @@ class StopResearch(Strict):
     )
     access_info: Optional[str] = None
     sources: List[Source] = Field(min_length=1)
+    llm_coordinates: Optional[Coordinates] = Field(
+        default=None,
+        description=(
+            "Исходные координаты research до подстановки OSM; "
+            "заполняется только при osm-правке."
+        ),
+    )
+
+
+class CoordArbitration(Strict):
+    confident: bool = Field(
+        description="True, если исходные координаты research верны и менять не нужно.",
+    )
+    reason: str = Field(description="Краткое обоснование на русском.")
 
 
 class CityResearch(Strict):
