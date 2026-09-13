@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-13T11:20:00Z",
+  "updatedAt": "2026-09-13T12:43:47Z",
   "guides": [
     {
       "id": "kolomna",
@@ -18,7 +18,10 @@
       ],
       "city": "Коломна",
       "region": "Московская область",
-      "center": { "lat": 55.1093, "lon": 38.762 },
+      "center": {
+        "lat": 55.1093,
+        "lon": 38.762
+      },
       "stopsCount": 13,
       "durationSec": 841,
       "language": "ru",
@@ -28,23 +31,197 @@
     {
       "id": "voronezh",
       "title": "Воронеж",
-      "subtitle": "Адмиралтейство, центр и Ротонда",
+      "subtitle": "От петровской верфи к памяти о войне",
       "aliases": [
-        "воронеж",
-        "voronezh",
-        "адмиралтейская площадь",
-        "гото предестинация",
-        "благовещенский собор",
-        "белый бим",
-        "ротонда воронеж"
+        "Воронеж",
+        "город Воронеж",
+        "Voronezh",
+        "столица Черноземья",
+        "город Петра I"
       ],
       "city": "Воронеж",
       "region": "Воронежская область",
-      "center": { "lat": 51.661, "lon": 39.21 },
+      "center": {
+        "lat": 51.6606,
+        "lon": 39.2006
+      },
       "stopsCount": 8,
-      "durationSec": 686,
+      "durationSec": 293,
       "language": "ru",
       "guidePath": "guides/voronezh/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "suzdal",
+      "title": "Суздаль",
+      "subtitle": "Кремль, Каменка и монастыри",
+      "aliases": [
+        "суздаль",
+        "suzdal",
+        "суздальский кремль",
+        "спасо-евфимиев монастырь",
+        "покровский монастырь"
+      ],
+      "city": "Суздаль",
+      "region": "Владимирская область",
+      "center": {
+        "lat": 56.4197,
+        "lon": 40.449
+      },
+      "stopsCount": 8,
+      "durationSec": 431,
+      "language": "ru",
+      "guidePath": "guides/suzdal/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "larnaka",
+      "title": "Ларнака",
+      "subtitle": "От средневековой крепости к набережной Финикудес и старому городу",
+      "aliases": [
+        "Ларнака",
+        "Ларнака (Larnaca)",
+        "Ларнака (Larnaka)",
+        "Китион"
+      ],
+      "city": "Ларнака",
+      "region": "Республика Кипр, округ Ларнака",
+      "center": {
+        "lat": 34.9143,
+        "lon": 33.6353
+      },
+      "stopsCount": 8,
+      "durationSec": 297,
+      "language": "ru",
+      "guidePath": "guides/larnaka/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "pafos",
+      "title": "Пафос",
+      "subtitle": "Античный Неа-Пафос, мозаики и средневековая гавань",
+      "aliases": [
+        "Пафос",
+        "Като-Пафос",
+        "Paphos",
+        "Kato Paphos"
+      ],
+      "city": "Пафос",
+      "region": "район Пафос, Кипр",
+      "center": {
+        "lat": 34.7754,
+        "lon": 32.4218
+      },
+      "stopsCount": 8,
+      "durationSec": 280,
+      "language": "ru",
+      "guidePath": "guides/pafos/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "nikosiya",
+      "title": "Никосия",
+      "subtitle": "Венецианские стены, старый город и история разделённой столицы",
+      "aliases": [
+        "Лефкосия",
+        "Lefkosia",
+        "Nicosia"
+      ],
+      "city": "Никосия",
+      "region": "Республика Кипр, район Никосия",
+      "center": {
+        "lat": 35.1698,
+        "lon": 33.3619
+      },
+      "stopsCount": 8,
+      "durationSec": 267,
+      "language": "ru",
+      "guidePath": "guides/nikosiya/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "moscow",
+      "title": "Москва",
+      "subtitle": "От Красной площади через Зарядье к Китай-городу",
+      "aliases": [
+        "Москва",
+        "Moskva",
+        "Moscow"
+      ],
+      "city": "Moscow",
+      "region": "Moscow, Russia",
+      "center": {
+        "lat": 55.7537,
+        "lon": 37.6241
+      },
+      "stopsCount": 8,
+      "durationSec": 278,
+      "language": "ru",
+      "guidePath": "guides/moscow/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "suchzhou",
+      "title": "Аудиогид по Сучжоу",
+      "subtitle": "Классические сады, каналы и старый город Цзяннани",
+      "aliases": [
+        "苏州",
+        "Suzhou",
+        "Су-Чжоу",
+        "Пинцзян"
+      ],
+      "city": "Сучжоу",
+      "region": "провинция Цзянсу, Китай",
+      "center": {
+        "lat": 31.315,
+        "lon": 120.628
+      },
+      "stopsCount": 8,
+      "durationSec": 261,
+      "language": "ru",
+      "guidePath": "guides/suchzhou/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "troick",
+      "title": "Троицк",
+      "subtitle": "От усадебного парка и фабрики к научному центру Москвы",
+      "aliases": [
+        "Троицк (Москва)",
+        "Троицкий административный округ",
+        "Троицкий наукоград"
+      ],
+      "city": "Троицк",
+      "region": "Москва, Троицкий административный округ",
+      "center": {
+        "lat": 55.4846,
+        "lon": 37.3062
+      },
+      "stopsCount": 8,
+      "durationSec": 271,
+      "language": "ru",
+      "guidePath": "guides/troick/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "limasol",
+      "title": "Лимасол",
+      "subtitle": "Старый город, средневековая крепость и набережная Средиземного моря",
+      "aliases": [
+        "Лемесос",
+        "Lemesos",
+        "Limassol"
+      ],
+      "city": "Лимасол",
+      "region": "Кипр",
+      "center": {
+        "lat": 34.675,
+        "lon": 33.042
+      },
+      "stopsCount": 8,
+      "durationSec": 280,
+      "language": "ru",
+      "guidePath": "guides/limasol/guide.json",
       "contentVersion": 1
     }
   ]

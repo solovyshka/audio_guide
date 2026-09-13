@@ -1,0 +1,262 @@
+{
+  "city": "Ларнака",
+  "region": "Республика Кипр, округ Ларнака",
+  "center": {
+    "lat": 34.9143,
+    "lon": 33.6353
+  },
+  "subtitle": "От средневековой крепости к набережной Финикудес и старому городу",
+  "aliases": [
+    "Ларнака",
+    "Ларнака (Larnaca)",
+    "Ларнака (Larnaka)",
+    "Китион"
+  ],
+  "stops": [
+    {
+      "name": "Средневековый замок Ларнаки",
+      "coordinates": {
+        "lat": 34.910513,
+        "lon": 33.637697
+      },
+      "address": "Леофорос Афинон, Ларнака",
+      "category": "fortification",
+      "facts": [
+        "Крепость стоит у южного конца пальмовой набережной Финикудес.",
+        "В её помещениях размещён Средневековый музей Ларнаки.",
+        "Экспозиция охватывает период от раннего христианства IV–VII веков до османского времени XVIII–XIX веков."
+      ],
+      "dates": [
+        "Средние века",
+        "IV–VII века",
+        "XVIII–XIX века"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [
+        "Точное происхождение крепости оспаривается; известная сегодня форма относится к османскому периоду."
+      ],
+      "access_info": "Музей работает круглый год, кроме государственных праздников; расписание и стоимость посещения следует уточнить перед визитом.",
+      "sources": [
+        {
+          "title": "Larnaka Medieval Castle — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/larnaka-larnaca-medieval-castle/"
+        },
+        {
+          "title": "Larnaka Medieval Museum — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/larnaka-larnaca-medieval-museum/"
+        }
+      ]
+    },
+    {
+      "name": "Большая мечеть Джами-Кебир",
+      "coordinates": {
+        "lat": 34.910784,
+        "lon": 33.636433
+      },
+      "address": "Площадь Джами-Кебир, квартал Скала, Ларнака",
+      "category": "religious",
+      "facts": [
+        "Мечеть находится в старом квартале Скала, рядом со средневековой крепостью.",
+        "Здание связано с османским периодом истории Ларнаки.",
+        "Это одна из точек маршрута, показывающих многоконфессиональное прошлое города."
+      ],
+      "dates": [
+        "Османский период"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "Осматривать следует с уважением к действующему религиозному месту; возможность входа зависит от режима работы.",
+      "sources": [
+        {
+          "title": "Self-guided walks in Larnaka — Larnaka Region",
+          "url": "https://www.larnakaregion.com/en/self-guided-walks"
+        },
+        {
+          "title": "Larnaka Walking Tour — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/routes/guided-tours/larnaka-walking-tour/"
+        }
+      ]
+    },
+    {
+      "name": "Набережная Финикудес",
+      "coordinates": {
+        "lat": 34.913139,
+        "lon": 33.638314
+      },
+      "address": "Леофорос Афинон, Ларнака",
+      "category": "waterfront",
+      "facts": [
+        "Финикудес — главная приморская набережная Ларнаки; её название связано с пальмами.",
+        "Променад соединяет район средневековой крепости с городской мариной.",
+        "Официальный культурный маршрут Ларнаки включает прогулку по набережной, старым улицам и историческому торговому центру."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "Открытое общественное пространство, доступное круглосуточно.",
+      "sources": [
+        {
+          "title": "Self-guided walks in Larnaka — Larnaka Region",
+          "url": "https://www.larnakaregion.com/en/self-guided-walks"
+        },
+        {
+          "title": "Larnaka Walking Tour — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/routes/guided-tours/larnaka-walking-tour/"
+        }
+      ]
+    },
+    {
+      "name": "Церковь Святого Лазаря",
+      "coordinates": {
+        "lat": 34.912551,
+        "lon": 33.634933
+      },
+      "address": "Площадь Агиу Лазару, Ларнака",
+      "category": "church",
+      "facts": [
+        "Каменная церковь Святого Лазаря — выдающийся памятник византийской архитектуры Кипра.",
+        "Она была построена византийским императором Львом VI в IX веке и восстановлена в XVII веке.",
+        "Позолоченный иконостас церкви сохранился до наших дней."
+      ],
+      "dates": [
+        "IX век",
+        "XVII век"
+      ],
+      "people": [
+        "Лев VI Мудрый",
+        "Святой Лазарь"
+      ],
+      "legends": [
+        "Согласно церковной традиции, храм стоит над гробницей Лазаря, который после воскрешения жил в Китионе."
+      ],
+      "disputed": [],
+      "access_info": "Вход в церковь бесплатный; часы посещения меняются по сезонам.",
+      "sources": [
+        {
+          "title": "Agios Lazaros Church — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/agios-lazaros-church/"
+        }
+      ]
+    },
+    {
+      "name": "Византийский музей при церкви Святого Лазаря",
+      "coordinates": {
+        "lat": 34.912395,
+        "lon": 33.634708
+      },
+      "address": "Площадь Агиу Лазару, Ларнака",
+      "category": "museum",
+      "facts": [
+        "Музей размещён в сохранившихся кельях южной части портика церкви Святого Лазаря.",
+        "В собрание входят византийские иконы, Евангелия, кресты и другие церковные реликвии из округа Ларнака.",
+        "Музей дополняет посещение церкви рассказом о православной художественной традиции региона."
+      ],
+      "dates": [],
+      "people": [
+        "Святой Лазарь"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "Вход платный; актуальные часы и стоимость следует уточнить перед визитом.",
+      "sources": [
+        {
+          "title": "Agios Lazaros Byzantine Museum — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/agios-lazaros-byzantine-museum/"
+        }
+      ]
+    },
+    {
+      "name": "Музей Пиеридиса",
+      "coordinates": {
+        "lat": 34.916742,
+        "lon": 33.634138
+      },
+      "address": "Зинонос Китиеос, 4, Ларнака",
+      "category": "museum",
+      "facts": [
+        "Музей Пиеридиса считается старейшим частным музеем Кипра.",
+        "Он расположен в родовом доме семьи Пиеридис — колониальном здании 1815 года.",
+        "Коллекция охватывает историю Кипра от 4000 года до н. э. до XV века н. э. и включает раннебронзовую керамику, римское стекло и средневековую посуду."
+      ],
+      "dates": [
+        "1815 год",
+        "4000 год до н. э. — XV век н. э."
+      ],
+      "people": [
+        "Семья Пиеридис"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "Обычно открыт с понедельника по субботу; перед визитом следует проверить актуальный режим работы.",
+      "sources": [
+        {
+          "title": "Pierides Museum — Bank of Cyprus Cultural Foundation — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/pierides-museum-bank-of-cyprus-cultural-foundation/"
+        }
+      ]
+    },
+    {
+      "name": "Площадь Европы",
+      "coordinates": {
+        "lat": 34.918761,
+        "lon": 33.637009
+      },
+      "address": "Площадь Европы, Леофорос Афинон, Ларнака",
+      "category": "square",
+      "facts": [
+        "Площадь Европы расположена у северного конца набережной Финикудес.",
+        "Здесь находятся восстановленные каменные здания бывшей таможни колониального характера.",
+        "Площадь связывает приморский променад с районом марины и культурными площадками города."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "Открытое общественное пространство, доступное круглосуточно.",
+      "sources": [
+        {
+          "title": "Cultural Services — Larnaka Municipality",
+          "url": "https://www.larnaka.org.cy/en/service/services-and-departments/cultural-services/"
+        },
+        {
+          "title": "Self-guided walks in Larnaka — Larnaka Region",
+          "url": "https://www.larnakaregion.com/en/self-guided-walks"
+        }
+      ]
+    },
+    {
+      "name": "Муниципальная художественная галерея Ларнаки",
+      "coordinates": {
+        "lat": 34.918908,
+        "lon": 33.637242
+      },
+      "address": "Площадь Европы, Ларнака",
+      "category": "gallery",
+      "facts": [
+        "Муниципальная художественная галерея размещается в пяти восстановленных каменных складах бывшей таможни на площади Европы.",
+        "Галерея работает в этих зданиях с 1995 года.",
+        "Она является частью культурной инфраструктуры муниципалитета Ларнаки."
+      ],
+      "dates": [
+        "1995 год"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "Режим выставок и часы работы могут меняться; их следует уточнить у муниципальной культурной службы.",
+      "sources": [
+        {
+          "title": "Larnaca Municipal Art Gallery — Larnakarts",
+          "url": "https://larnakarts.cy/en/dimotiki-pinakothiki-larnakas/"
+        },
+        {
+          "title": "Cultural Services — Larnaka Municipality",
+          "url": "https://www.larnaka.org.cy/en/service/services-and-departments/cultural-services/"
+        }
+      ]
+    }
+  ]
+}

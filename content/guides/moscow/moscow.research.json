@@ -1,0 +1,285 @@
+{
+  "city": "Moscow",
+  "region": "Moscow, Russia",
+  "center": {
+    "lat": 55.7537,
+    "lon": 37.6241
+  },
+  "subtitle": "From Red Square through Zaryadye to Kitay-gorod",
+  "aliases": [
+    "Москва",
+    "Moskva",
+    "Moscow"
+  ],
+  "stops": [
+    {
+      "name": "State Historical Museum",
+      "coordinates": {
+        "lat": 55.7553,
+        "lon": 37.6177
+      },
+      "address": "Red Square, 1, Moscow",
+      "category": "museum",
+      "facts": [
+        "The State Historical Museum stands at the north-west end of Red Square.",
+        "It is responsible for Red Square and Saint Basil's Cathedral within the UNESCO property management framework."
+      ],
+      "dates": [
+        "1990"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "Museum admission and opening arrangements are set by the State Historical Museum; Red Square itself is a public pedestrian space subject to event and security restrictions.",
+      "sources": [
+        {
+          "title": "UNESCO Periodic Reporting: Kremlin and Red Square, Moscow",
+          "url": "https://whc.unesco.org/document/164340"
+        },
+        {
+          "title": "Red Square",
+          "url": "https://whc.unesco.org/en/list/545/"
+        }
+      ]
+    },
+    {
+      "name": "Red Square",
+      "coordinates": {
+        "lat": 55.7541,
+        "lon": 37.6205
+      },
+      "address": "Red Square, Moscow",
+      "category": "square",
+      "facts": [
+        "Red Square lies immediately east of the Kremlin walls.",
+        "The Kremlin and Red Square were inscribed on the UNESCO World Heritage List in 1990.",
+        "The square links the State Historical Museum, GUM, Lenin's Mausoleum and Saint Basil's Cathedral."
+      ],
+      "dates": [
+        "1990"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "Public access can be restricted for state ceremonies, events and security operations.",
+      "sources": [
+        {
+          "title": "Kremlin and Red Square, Moscow",
+          "url": "https://whc.unesco.org/en/list/545/"
+        },
+        {
+          "title": "UNESCO Periodic Reporting: Kremlin and Red Square, Moscow",
+          "url": "https://whc.unesco.org/document/164340"
+        }
+      ]
+    },
+    {
+      "name": "Saint Basil's Cathedral",
+      "coordinates": {
+        "lat": 55.7525,
+        "lon": 37.6231
+      },
+      "address": "Red Square, 7, Moscow",
+      "category": "cathedral",
+      "facts": [
+        "The cathedral's formal name is the Cathedral of the Intercession of the Most Holy Theotokos on the Moat.",
+        "It was built on the order of Tsar Ivan IV to commemorate victory over the Kazan Khanate.",
+        "The surviving stone cathedral was built from 1555 to 1561.",
+        "A church over the burial place of Basil the Blessed was added in 1588."
+      ],
+      "dates": [
+        "1555–1561",
+        "1588",
+        "29 June 1561 (12 July, New Style)"
+      ],
+      "people": [
+        "Ivan IV",
+        "Basil the Blessed"
+      ],
+      "legends": [],
+      "disputed": [
+        "The names of the builders, Postnik and Barma, come from later sources; the contemporaneous chronicle of the foundation does not name them."
+      ],
+      "access_info": "The cathedral operates as a State Historical Museum site; confirm timed entry and current opening hours before visiting.",
+      "sources": [
+        {
+          "title": "Saint Basil's Cathedral — State Historical Museum",
+          "url": "https://en.shm.ru/museum/hvb/"
+        },
+        {
+          "title": "History of the Intercession Cathedral — State Historical Museum",
+          "url": "https://shm.ru/kollektsii-i-muzeynyy-kompleks/museum_history/pokrovskiy-sobor/history/"
+        }
+      ]
+    },
+    {
+      "name": "Zaryadye Park Floating Bridge",
+      "coordinates": {
+        "lat": 55.7497,
+        "lon": 37.6294
+      },
+      "address": "Varvarka Street, 6, Moscow",
+      "category": "park",
+      "facts": [
+        "Zaryadye Park opened on 9 September 2017.",
+        "The floating bridge is a boomerang-shaped concrete cantilever more than 140 metres long.",
+        "The bridge projects over the Moskva River but does not connect to the opposite bank.",
+        "The park was built on the former site of the Rossiya Hotel."
+      ],
+      "dates": [
+        "9 September 2017"
+      ],
+      "people": [
+        "Sergey Kuznetsov",
+        "Diller Scofidio + Renfro"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "The bridge is an outdoor public viewpoint; conditions or crowd-control measures may temporarily limit access.",
+      "sources": [
+        {
+          "title": "River Overlook — Zaryadye Park",
+          "url": "https://www.zaryadyepark.ru/en/services/river-overlook/"
+        },
+        {
+          "title": "History of Zaryadye Park",
+          "url": "https://www.zaryadyepark.ru/en/history/history_of_zaryadye_park.html"
+        }
+      ]
+    },
+    {
+      "name": "Chambers of the Romanov Boyars",
+      "coordinates": {
+        "lat": 55.7521,
+        "lon": 37.6314
+      },
+      "address": "Varvarka Street, 10, Building 1, Moscow",
+      "category": "historic house museum",
+      "facts": [
+        "The Chambers are a branch of the State Historical Museum.",
+        "They are the surviving part of a larger boyar estate.",
+        "Their oldest surviving fabric dates to the turn of the 15th and 16th centuries.",
+        "The museum interprets the domestic life of Moscow boyars in the 17th century."
+      ],
+      "dates": [
+        "late 15th–early 16th century",
+        "19th century"
+      ],
+      "people": [
+        "Mikhail Fyodorovich",
+        "Alexander II"
+      ],
+      "legends": [
+        "Tradition holds that the future first Romanov tsar, Mikhail Fyodorovich, was born on this estate."
+      ],
+      "disputed": [
+        "Mikhail Fyodorovich's birth here is presented by official Moscow sources as a tradition rather than a documented certainty."
+      ],
+      "access_info": "Museum: generally open Monday and Wednesday–Sunday; closed Tuesday. Check current hours and tickets before arrival.",
+      "sources": [
+        {
+          "title": "Chambers of the Romanov Boyars — Discover Moscow",
+          "url": "https://um.mos.ru/museums/palaty_boyar_romanovykh/"
+        },
+        {
+          "title": "Romanov Dynasty Heritage — Moscow City Web Site",
+          "url": "https://www.mos.ru/news/item/120943073/"
+        }
+      ]
+    },
+    {
+      "name": "Old English Court",
+      "coordinates": {
+        "lat": 55.7533,
+        "lon": 37.6301
+      },
+      "address": "Varvarka Street, 4A, Moscow",
+      "category": "historic house museum",
+      "facts": [
+        "In 1556, Ivan IV granted an English trading company a merchant property in Zaryadye that became the English Court.",
+        "The site was later called the Old English Court after English merchants received another court near Ilyinsky Gate in 1636.",
+        "The chambers were damaged during fighting in Kitay-gorod in 1612 and were subsequently rebuilt."
+      ],
+      "dates": [
+        "1556",
+        "1612",
+        "1636"
+      ],
+      "people": [
+        "Ivan IV"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "A museum site in the former Zaryadye quarter; verify current visitor hours with the State Historical Museum.",
+      "sources": [
+        {
+          "title": "Mysteries of the Old English Court: Exploring Medieval Moscow",
+          "url": "https://www.mos.ru/en/news/item/76951073/"
+        }
+      ]
+    },
+    {
+      "name": "Church of the Trinity in Nikitniki",
+      "coordinates": {
+        "lat": 55.7547,
+        "lon": 37.6312
+      },
+      "address": "Nikitnikov Lane, 3, Moscow",
+      "category": "church",
+      "facts": [
+        "The church was built in the 1630s on land owned by Moscow merchant Grigory Nikitnikov.",
+        "It is one of the surviving historic churches in the Kitay-gorod area."
+      ],
+      "dates": [
+        "1630s"
+      ],
+      "people": [
+        "Grigory Nikitnikov"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "An active religious site; access to the interior may depend on worship services and church schedules.",
+      "sources": [
+        {
+          "title": "Kitay-gorod",
+          "url": "https://www.britannica.com/place/Kitay-gorod"
+        },
+        {
+          "title": "Kitay-gorod",
+          "url": "https://en.wikipedia.org/wiki/Kitay-gorod"
+        }
+      ]
+    },
+    {
+      "name": "Kitay-gorod Wall at Varvarka",
+      "coordinates": {
+        "lat": 55.7564,
+        "lon": 37.6341
+      },
+      "address": "Kitaygorodsky Proyezd, Moscow",
+      "category": "fortification",
+      "facts": [
+        "Kitay-gorod is a historic central area separated from the Kremlin by Red Square.",
+        "It was historically defined by its fortifications; only fragments of the wall remain.",
+        "Zaryadye is the riverside quarter of historic Kitay-gorod."
+      ],
+      "dates": [
+        "16th century"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "Wall remnants are viewed from public streets; observe barriers and do not climb protected masonry.",
+      "sources": [
+        {
+          "title": "Kitay-gorod",
+          "url": "https://en.wikipedia.org/wiki/Kitay-gorod"
+        },
+        {
+          "title": "Kremlin and Red Square, Moscow",
+          "url": "https://whc.unesco.org/en/list/545/"
+        }
+      ]
+    }
+  ]
+}
