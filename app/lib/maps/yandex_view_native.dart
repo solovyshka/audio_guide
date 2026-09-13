@@ -1,18 +1,24 @@
-import 'package:flutter/material.dart';
+import 'dart:math' as math;
+
+import 'package:flutter/material.dart' hide TextStyle;
+import 'package:yandex_maps_mapkit_lite/image.dart' as mk_image;
 import 'package:yandex_maps_mapkit_lite/mapkit.dart' hide Icon;
 import 'package:yandex_maps_mapkit_lite/mapkit_factory.dart';
 import 'package:yandex_maps_mapkit_lite/yandex_map.dart';
 
 import '../models/guide.dart';
+import 'marker_icon.dart';
 
 class GuideYandexMap extends StatefulWidget {
   const GuideYandexMap({
     super.key,
     required this.guide,
+    required this.currentIndex,
     required this.onStopTap,
   });
 
   final Guide guide;
+  final int currentIndex;
   final ValueChanged<int> onStopTap;
 
   @override
@@ -23,6 +29,7 @@ class _GuideYandexMapState extends State<GuideYandexMap>
     with WidgetsBindingObserver {
   MapWindow? _mapWindow;
   final List<MapObjectTapListener> _tapListeners = [];
+  bool _didMoveCamera = false;
 
   @override
   void initState() {
@@ -34,6 +41,11 @@ class _GuideYandexMapState extends State<GuideYandexMap>
   void didUpdateWidget(GuideYandexMap oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.guide.id != widget.guide.id) {
+      _didMoveCamera = false;
+      _drawStops(moveCamera: true);
+      return;
+    }
+    if (oldWidget.currentIndex != widget.currentIndex) {
       _drawStops();
     }
   }
@@ -55,10 +67,13 @@ class _GuideYandexMapState extends State<GuideYandexMap>
 
   void _onMapCreated(MapWindow mapWindow) {
     _mapWindow = mapWindow;
-    _drawStops();
+    _drawStops(moveCamera: true);
   }
 
-  void _drawStops() {
+  double get _dpr =>
+      View.of(context).devicePixelRatio;
+
+  void _drawStops({bool moveCamera = false}) {
     final mapWindow = _mapWindow;
     if (mapWindow == null) {
       return;
@@ -66,26 +81,58 @@ class _GuideYandexMapState extends State<GuideYandexMap>
     mapWindow.map.mapObjects.clear();
     _tapListeners.clear();
     for (final stop in widget.guide.stops) {
+      final active = stop.order == widget.currentIndex;
       final listener = _StopTapListener((_) {
         widget.onStopTap(stop.order);
       });
       _tapListeners.add(listener);
       final placemark = mapWindow.map.mapObjects.addPlacemark()
         ..geometry = Point(latitude: stop.lat, longitude: stop.lon)
-        ..setText('${stop.order}. ${stop.name}');
+        ..zIndex = active ? 100 : stop.order.toDouble();
+      placemark.setIconWithStyle(
+        mk_image.ImageProvider(
+          () => paintStopMarker(
+            number: stop.order,
+            active: active,
+            devicePixelRatio: _dpr,
+          ),
+          id: 'stop-${stop.order}-${active ? 'on' : 'off'}',
+        ),
+        IconStyle(anchor: const math.Point(0.5, 0.5)),
+      );
+      if (active) {
+        placemark.setTextWithStyle(
+          const TextStyle(
+            size: 12,
+            color: Color(0xFF1F4B3A),
+            outlineWidth: 2.4,
+            outlineColor: Color(0xFFFFFFFF),
+            placement: TextStylePlacement.Bottom,
+            offset: 6,
+            offsetFromIcon: true,
+            textOptional: true,
+          ),
+          text: stop.name,
+        );
+      } else {
+        placemark.setText('');
+      }
       placemark.addTapListener(listener);
     }
-    mapWindow.map.move(
-      CameraPosition(
-        Point(
-          latitude: widget.guide.center.lat,
-          longitude: widget.guide.center.lon,
+    if (moveCamera || !_didMoveCamera) {
+      _didMoveCamera = true;
+      mapWindow.map.move(
+        CameraPosition(
+          Point(
+            latitude: widget.guide.center.lat,
+            longitude: widget.guide.center.lon,
+          ),
+          zoom: 14,
+          azimuth: 0,
+          tilt: 0,
         ),
-        zoom: 14,
-        azimuth: 0,
-        tilt: 0,
-      ),
-    );
+      );
+    }
   }
 
   @override

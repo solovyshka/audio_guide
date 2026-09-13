@@ -21,7 +21,7 @@ class GuidePlayer {
     if (_playlist.isEmpty) {
       return;
     }
-    await _player.setUrl(_playlist.first.audioUrl!);
+    await _setSource(_playlist.first.audioUrl!);
   }
 
   Future<void> playIndex(int nextIndex) async {
@@ -29,8 +29,16 @@ class GuidePlayer {
       return;
     }
     index = nextIndex;
-    await _player.setUrl(_playlist[index].audioUrl!);
+    await _setSource(_playlist[index].audioUrl!);
     await _player.play();
+  }
+
+  Future<void> _setSource(String source) async {
+    if (source.startsWith('http://') || source.startsWith('https://')) {
+      await _player.setUrl(source);
+    } else {
+      await _player.setFilePath(source);
+    }
   }
 
   Future<void> toggle() async {

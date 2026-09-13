@@ -1,5 +1,8 @@
 .env
 .venv/
+generate/samples/
+generate/out/
+generate/.models/
 __pycache__/
 *.pyc
 .idea/
@@ -24,3 +27,4 @@ app/ios/.symlinks/
 # Secrets
 **/secrets.dart
 server/.env
+generate/.env

@@ -6,10 +6,12 @@ class GuideYandexMap extends StatelessWidget {
   const GuideYandexMap({
     super.key,
     required this.guide,
+    required this.currentIndex,
     required this.onStopTap,
   });
 
   final Guide guide;
+  final int currentIndex;
   final ValueChanged<int> onStopTap;
 
   @override

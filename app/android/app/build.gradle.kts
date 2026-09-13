@@ -47,3 +47,29 @@ kotlin {
 flutter {
     source = "../.."
 }
+
+val repoRoot = rootProject.projectDir.resolve("../..")
+
+fun copyApksToRepo(fromDir: java.io.File, fatName: String) {
+    if (!fromDir.exists()) {
+        return
+    }
+    fromDir.listFiles { file -> file.extension == "apk" }?.forEach { apk ->
+        val name = when {
+            apk.name == "app-release.apk" || apk.name == "app-release-unsigned.apk" -> fatName
+            apk.name.startsWith("app-") -> apk.name.replaceFirst("app-", "audio_guide-")
+            else -> apk.name
+        }
+        apk.copyTo(repoRoot.resolve(name), overwrite = true)
+    }
+}
+
+afterEvaluate {
+    tasks.findByName("assembleRelease")?.doLast {
+        copyApksToRepo(layout.buildDirectory.dir("outputs/apk/release").get().asFile, "audio_guide.apk")
+        copyApksToRepo(rootProject.projectDir.resolve("../build/app/outputs/flutter-apk"), "audio_guide.apk")
+    }
+    tasks.findByName("assembleDebug")?.doLast {
+        copyApksToRepo(layout.buildDirectory.dir("outputs/apk/debug").get().asFile, "audio_guide-debug.apk")
+    }
+}

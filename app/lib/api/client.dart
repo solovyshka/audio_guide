@@ -24,14 +24,16 @@ class GuideApi {
     return _decodeList(response);
   }
 
-  Future<Guide> getGuide(String id) async {
+  Future<Map<String, dynamic>> getGuideJson(String id) async {
     final response = await http.get(Uri.parse('$baseUrl/guides/$id'));
     if (response.statusCode != 200) {
       throw Exception('Гид не найден');
     }
-    return Guide.fromJson(
-      jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
-    );
+    return jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+  }
+
+  Future<Guide> getGuide(String id) async {
+    return Guide.fromJson(await getGuideJson(id));
   }
 
   List<GuideSummary> _decodeList(http.Response response) {

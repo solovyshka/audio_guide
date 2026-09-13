@@ -1,0 +1,8 @@
+---
+description: Put built APKs in the repo root, not Desktop
+alwaysApply: true
+---
+
+# APK output
+
+After `flutter build apk`, copy the APK into the repository root (`audio_guide/`), next to `README.md`. Name the fat release `audio_guide.apk`. Split ABI builds: `audio_guide-arm64-v8a-release.apk` (and similar). Do not leave the only copy on the Desktop. APKs are gitignored.

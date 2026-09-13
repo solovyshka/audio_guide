@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'api/client.dart';
 import 'config.dart';
 import 'maps/mapkit_init.dart';
+import 'offline/guide_cache.dart';
 import 'screens/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GuideCache.instance.init();
   await initMapkitIfNeeded(mapkitApiKey);
   runApp(const AudioGuideApp());
 }

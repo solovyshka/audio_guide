@@ -65,7 +65,7 @@ cd C:\Users\user\Desktop\AI_projects\Audio_guide\audio_guide\app
 flutter build apk --release
 ```
 
-Готовый APK: `app\build\app\outputs\flutter-apk\app-release.apk`.
+Готовый файл копируется в корень репозитория: `audio_guide.apk` (git его не берёт). Исходник сборки: `app\build\app\outputs\flutter-apk\`.
 
 ## Java
 

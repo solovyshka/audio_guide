@@ -1,0 +1,6 @@
+edge-tts>=6.1.0
+mutagen>=1.47.0
+num2words>=0.5.14
+silero-stress>=1.4
+# silero: torch numpy (модель лежит в generate/.models)
+

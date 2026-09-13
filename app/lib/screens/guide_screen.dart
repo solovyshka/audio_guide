@@ -6,6 +6,8 @@ import '../config.dart';
 import '../maps/available.dart';
 import '../maps/yandex_view.dart';
 import '../models/guide.dart';
+import '../offline/guide_actions.dart';
+import '../offline/guide_cache.dart';
 
 class GuideScreen extends StatefulWidget {
   const GuideScreen({super.key, required this.api, required this.guideId});
@@ -32,7 +34,16 @@ class _GuideScreenState extends State<GuideScreen> {
 
   Future<void> _open() async {
     try {
-      final guide = await widget.api.getGuide(widget.guideId);
+      Guide? guide;
+      try {
+        guide = await widget.api.getGuide(widget.guideId);
+        guide = await GuideCache.instance.withLocalAudio(guide);
+      } catch (_) {
+        guide = await GuideCache.instance.loadLocal(widget.guideId);
+      }
+      if (guide == null) {
+        throw Exception('Гид не найден');
+      }
       await _player.load(guide);
       if (!mounted) return;
       setState(() => _guide = guide);
@@ -68,23 +79,54 @@ class _GuideScreenState extends State<GuideScreen> {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
+    final list = _StopList(
+      guide: guide,
+      currentIndex: _player.index,
+      onTap: _playIndex,
+    );
     return Scaffold(
-      appBar: AppBar(title: Text(guide.title)),
+      appBar: AppBar(
+        title: Text(guide.title),
+        actions: [
+          PopupMenuButton<GuideMenuAction>(
+            tooltip: 'Ещё',
+            onSelected: (action) async {
+              await handleGuideMenu(
+                context: context,
+                api: widget.api,
+                guide: guide,
+                action: action,
+                loaded: guide,
+              );
+              if (!mounted) {
+                return;
+              }
+              if (action == GuideMenuAction.download ||
+                  action == GuideMenuAction.delete) {
+                await _open();
+              }
+            },
+            itemBuilder: (_) => buildGuideMenuItems(guide),
+          ),
+        ],
+      ),
       body: Column(
         children: [
+          if (_useMap)
+            Expanded(
+              flex: 1,
+              child: ClipRect(
+                child: GuideYandexMap(
+                  guide: guide,
+                  currentIndex: _player.index,
+                  onStopTap: _playIndex,
+                ),
+              ),
+            ),
+          if (_useMap) const Divider(height: 1),
           Expanded(
-            child: _useMap
-                ? GuideYandexMap(
-                    guide: guide,
-                    onStopTap: (index) {
-                      _playIndex(index);
-                    },
-                  )
-                : _StopList(
-                    guide: guide,
-                    currentIndex: _player.index,
-                    onTap: _playIndex,
-                  ),
+            flex: 1,
+            child: list,
           ),
           _PlayerBar(
             player: _player,
@@ -117,7 +159,16 @@ class _StopList extends StatelessWidget {
         final selected = index == currentIndex;
         return ListTile(
           selected: selected,
-          leading: CircleAvatar(child: Text('$index')),
+          selectedTileColor: const Color(0x1F1F4B3A),
+          leading: CircleAvatar(
+            backgroundColor: selected
+                ? const Color(0xFF1F4B3A)
+                : const Color(0xFFE8E4DC),
+            foregroundColor: selected
+                ? Colors.white
+                : const Color(0xFF1F4B3A),
+            child: Text(index == 0 ? 'i' : '$index'),
+          ),
           title: Text(track.title),
           subtitle: Text('${track.durationSec} сек'),
           onTap: () => onTap(index),

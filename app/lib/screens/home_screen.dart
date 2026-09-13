@@ -3,6 +3,8 @@ import 'package:speech_to_text/speech_to_text.dart';
 
 import '../api/client.dart';
 import '../models/guide.dart';
+import '../offline/guide_actions.dart';
+import '../offline/guide_cache.dart';
 import 'guide_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,12 +22,20 @@ class _HomeScreenState extends State<HomeScreen> {
   List<GuideSummary> _guides = [];
   bool _loading = true;
   String? _error;
+  bool _offline = false;
   bool _listening = false;
 
   @override
   void initState() {
     super.initState();
+    GuideCache.instance.addListener(_onCache);
     _loadCatalog();
+  }
+
+  void _onCache() {
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<void> _loadCatalog() async {
@@ -39,9 +49,20 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         _guides = guides;
         _loading = false;
+        _offline = false;
       });
     } catch (error) {
+      final local = await GuideCache.instance.localCatalog();
       if (!mounted) return;
+      if (local.isNotEmpty) {
+        setState(() {
+          _guides = local;
+          _loading = false;
+          _offline = true;
+          _error = null;
+        });
+        return;
+      }
       setState(() {
         _error = error.toString();
         _loading = false;
@@ -62,9 +83,31 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         _guides = guides;
         _loading = false;
+        _offline = false;
       });
     } catch (error) {
+      final needle = query.trim().toLowerCase();
+      final local = await GuideCache.instance.localCatalog();
+      final filtered = needle.isEmpty
+          ? local
+          : local
+              .where(
+                (guide) =>
+                    guide.title.toLowerCase().contains(needle) ||
+                    guide.city.toLowerCase().contains(needle) ||
+                    (guide.subtitle?.toLowerCase().contains(needle) ?? false),
+              )
+              .toList();
       if (!mounted) return;
+      if (filtered.isNotEmpty) {
+        setState(() {
+          _guides = filtered;
+          _loading = false;
+          _offline = true;
+          _error = null;
+        });
+        return;
+      }
       setState(() {
         _error = error.toString();
         _loading = false;
@@ -93,6 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
+    GuideCache.instance.removeListener(_onCache);
     _search.dispose();
     super.dispose();
   }
@@ -120,6 +164,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          if (_offline)
+            const Material(
+              color: Color(0xFFE8E4DC),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Text('Нет сети — показаны скачанные гиды'),
+              ),
+            ),
           Expanded(child: _body()),
         ],
       ),
@@ -149,7 +201,30 @@ class _HomeScreenState extends State<HomeScreen> {
       itemBuilder: (context, index) {
         final guide = _guides[index];
         final minutes = (guide.durationSec / 60).ceil();
+        final cache = GuideCache.instance;
+        final downloading = cache.isDownloading(guide.id);
+        final downloaded = cache.isDownloaded(guide.id);
         return ListTile(
+          leading: downloading
+              ? const SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                )
+              : PopupMenuButton<GuideMenuAction>(
+                  icon: const Icon(Icons.more_vert),
+                  tooltip: 'Ещё',
+                  onSelected: (action) => handleGuideMenu(
+                    context: context,
+                    api: widget.api,
+                    guide: guide,
+                    action: action,
+                  ),
+                  itemBuilder: (_) => buildGuideMenuItems(guide),
+                ),
           title: Text(guide.title),
           subtitle: Text(
             [
@@ -158,6 +233,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ].whereType<String>().join('\n'),
           ),
           isThreeLine: guide.subtitle != null,
+          trailing: downloaded
+              ? const Icon(Icons.download_done, color: Color(0xFF1F4B3A))
+              : null,
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute<void>(

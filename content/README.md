@@ -2,15 +2,20 @@
 
 Раскладка совпадает с контрактом плеера: `catalog.json` — индекс, `guides/{id}/guide.json` — точки и тексты, `guides/{id}/audio/` — mp3.
 
-Озвучка тестового пакета — встроенный голос Windows:
+Озвучка — отдельный кусок пайплайна, `python -m generate.tts`.
+
+Сравнить движки на абзаце Коломны:
 
 ```
-powershell -File content/scripts/tts_sapi.ps1
+python -m pip install -r generate/requirements-tts.txt
+python -m generate.tts list
+python -m generate.tts sample --backends edge,sapi
 ```
 
-Более живой голос, когда есть Python:
+Озвучить весь гид в `generate/out/` (исходную Коломну не перезаписывает):
 
 ```
-python -m pip install edge-tts mutagen
-python content/scripts/tts_from_guide.py content/guides/kolomna/guide.json
+python -m generate.tts guide content/guides/kolomna/guide.json --backend edge
 ```
+
+Старые скрипты `content/scripts/tts_sapi.ps1` и `tts_from_guide.py` ещё работают.
