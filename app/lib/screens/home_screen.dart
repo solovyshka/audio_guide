@@ -5,6 +5,9 @@ import '../api/client.dart';
 import '../models/guide.dart';
 import '../offline/guide_actions.dart';
 import '../offline/guide_cache.dart';
+import '../update/app_release.dart';
+import '../update/app_updater.dart';
+import '../update/update_banner.dart';
 import 'guide_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,12 +27,14 @@ class _HomeScreenState extends State<HomeScreen> {
   String? _error;
   bool _offline = false;
   bool _listening = false;
+  AppRelease? _update;
 
   @override
   void initState() {
     super.initState();
     GuideCache.instance.addListener(_onCache);
     _loadCatalog();
+    _checkUpdate();
   }
 
   void _onCache() {
@@ -115,6 +120,16 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Future<void> _checkUpdate() async {
+    try {
+      final release = await AppUpdater(api: widget.api).latestIfNewer();
+      if (!mounted || release == null) {
+        return;
+      }
+      setState(() => _update = release);
+    } catch (_) {}
+  }
+
   Future<void> _listen() async {
     final available = await _speech.initialize();
     if (!available) {
@@ -164,6 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          if (_update != null) UpdateBanner(release: _update!),
           if (_offline)
             const Material(
               color: Color(0xFFE8E4DC),

@@ -2,7 +2,7 @@ import 'secrets.dart';
 
 const apiBase = String.fromEnvironment(
   'API_BASE',
-  defaultValue: 'http://161.104.53.72',
+  defaultValue: 'http://51.254.219.211',
 );
 
 const mapkitApiKey = String.fromEnvironment(

@@ -2,6 +2,7 @@
 .venv/
 generate/samples/
 generate/out/
+deploy/out/
 generate/.models/
 __pycache__/
 *.pyc
@@ -18,6 +19,7 @@ app/build/
 app/.metadata
 app/android/.gradle/
 app/android/build/
+app/android/key.properties
 app/windows/flutter/ephemeral/
 app/web/flutter_bootstrap.js
 *.apk

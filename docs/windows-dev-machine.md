@@ -105,4 +105,4 @@ JDK 17 ставился через winget в `C:\Program Files\Microsoft\jdk-17.
 
 ## Сервер (не этот ПК)
 
-API и контент: `161.104.53.72` (`brynn`). Код: `/opt/audio_guide`. Python там — системный Linux, не этот Windows 3.12.
+API на FIREBAT: `/opt/audio_guide`. Снаружи плеер ходит на OVH `http://51.254.219.211`. Python на коробке — 3.12 через uv. Это Windows-стек, не сервер.

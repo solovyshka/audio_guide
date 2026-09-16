@@ -1,0 +1,14 @@
+[Unit]
+Description=SSH local forward OVH -> FIREBAT WAN audio-guide
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+ExecStart=/usr/bin/ssh -N -i /home/ubuntu/.ssh/audio_guide_firebat -p 2222 -o BatchMode=yes -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o StrictHostKeyChecking=yes -L 127.0.0.1:18090:127.0.0.1:8090 solovyshka@109.63.220.135
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

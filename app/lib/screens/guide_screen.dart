@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../api/client.dart';
 import '../audio/guide_player.dart';
-import '../config.dart';
-import '../maps/available.dart';
-import '../maps/yandex_view.dart';
+import '../maps/guide_map.dart';
 import '../models/guide.dart';
 import '../offline/guide_actions.dart';
 import '../offline/guide_cache.dart';
@@ -24,7 +22,7 @@ class _GuideScreenState extends State<GuideScreen> {
   Guide? _guide;
   String? _error;
 
-  bool get _useMap => yandexMapsSupported && mapkitApiKey.isNotEmpty;
+  bool get _useMap => true;
 
   @override
   void initState() {
@@ -116,7 +114,7 @@ class _GuideScreenState extends State<GuideScreen> {
             Expanded(
               flex: 1,
               child: ClipRect(
-                child: GuideYandexMap(
+                child: GuideMap(
                   guide: guide,
                   currentIndex: _player.index,
                   onStopTap: _playIndex,

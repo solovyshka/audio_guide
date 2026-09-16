@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 import '../config.dart';
 import '../models/guide.dart';
+import '../update/app_release.dart';
 
 class GuideApi {
   GuideApi({String? baseUrl})
@@ -34,6 +35,16 @@ class GuideApi {
 
   Future<Guide> getGuide(String id) async {
     return Guide.fromJson(await getGuideJson(id));
+  }
+
+  Future<AppRelease?> fetchAppRelease() async {
+    final response = await http.get(Uri.parse('$baseUrl/app/version.json'));
+    if (response.statusCode != 200) {
+      return null;
+    }
+    final payload =
+        jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+    return AppRelease.fromJson(payload);
   }
 
   List<GuideSummary> _decodeList(http.Response response) {
