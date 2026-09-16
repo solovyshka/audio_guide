@@ -42,7 +42,7 @@ class CityResearch(Strict):
     center: Coordinates
     subtitle: str
     aliases: List[str]
-    stops: List[StopResearch] = Field(min_length=8, max_length=15)
+    stops: List[StopResearch] = Field(min_length=6, max_length=15)
 
 
 class GuideStop(Strict):
@@ -75,7 +75,7 @@ class CityGuide(Strict):
     center: Coordinates
     aliases: List[str]
     intro: Intro
-    stops: List[GuideStop] = Field(min_length=8, max_length=15)
+    stops: List[GuideStop] = Field(min_length=6, max_length=15)
     durationSec: int = 0
 
 

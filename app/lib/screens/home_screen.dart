@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import '../api/client.dart';
+import '../models/generate_job.dart';
 import '../models/guide.dart';
 import '../offline/guide_actions.dart';
 import '../offline/guide_cache.dart';
@@ -28,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _offline = false;
   bool _listening = false;
   AppRelease? _update;
+  GenerateJob? _job;
 
   @override
   void initState() {
@@ -194,7 +196,224 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Widget _emptyGenerate(String query) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'По «$query» гида пока нет',
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            FilledButton(
+              onPressed: () => _startGenerate(query, 'short'),
+              child: const Text('Короткий гид'),
+            ),
+            const SizedBox(height: 8),
+            FilledButton.tonal(
+              onPressed: () => _startGenerate(query, 'long'),
+              child: const Text('Длинный гид'),
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'Короткий — 6–8 точек, около часа пешком.\n'
+              'Длинный — 12–15 точек, на 2–4 часа.\n'
+              'Сборка занимает несколько минут.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 13),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _generating(String query) {
+    final job = _job!;
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (job.isActive) const CircularProgressIndicator(),
+            const SizedBox(height: 16),
+            Text(
+              job.isError
+                  ? (job.error ?? 'Не удалось собрать гид')
+                  : 'Собираю ${job.lengthLabel} гид по «$query»',
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              job.step,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 13),
+            ),
+            if (job.isError) ...[
+              const SizedBox(height: 12),
+              FilledButton(
+                onPressed: () => _startGenerate(query, job.length),
+                child: const Text('Повторить'),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _generateMore(String query) {
+    final hasShort = _guides.any((guide) => !guide.id.endsWith('-long'));
+    final hasLong = _guides.any((guide) => guide.id.endsWith('-long'));
+    if (hasShort && hasLong) {
+      return const SizedBox.shrink();
+    }
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
+      child: Column(
+        children: [
+          const Divider(height: 24),
+          Text(
+            'Собрать ещё гид по «$query»',
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 13),
+          ),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            alignment: WrapAlignment.center,
+            children: [
+              if (!hasShort)
+                OutlinedButton(
+                  onPressed: () => _startGenerate(query, 'short'),
+                  child: const Text('Короткий'),
+                ),
+              if (!hasLong)
+                OutlinedButton(
+                  onPressed: () => _startGenerate(query, 'long'),
+                  child: const Text('Длинный'),
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _startGenerate(String city, String length) async {
+    setState(() {
+      _error = null;
+      _job = null;
+    });
+    try {
+      final job = await widget.api.startGenerate(city, length: length);
+      if (!mounted) {
+        return;
+      }
+      setState(() => _job = job);
+      if (await _finishIfDone(job, length)) {
+        return;
+      }
+      if (job.isError) {
+        return;
+      }
+      await _pollJob(job.id, length);
+    } catch (error) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _job = GenerateJob(
+          id: '',
+          city: city,
+          status: 'error',
+          step: 'Ошибка',
+          length: length,
+          error: error.toString(),
+        );
+      });
+    }
+  }
+
+  Future<bool> _finishIfDone(GenerateJob job, String length) async {
+    if (!job.isDone || job.guideId == null) {
+      return false;
+    }
+    if (GenerateJob.idMatchesLength(job.guideId!, length)) {
+      await _openGenerated(job.guideId!);
+      return true;
+    }
+    if (!mounted) {
+      return true;
+    }
+    setState(() {
+      _job = GenerateJob(
+        id: job.id,
+        city: job.city,
+        status: 'error',
+        step: 'Ошибка',
+        length: length,
+        error: 'Сервер открыл другой формат гида, нажмите ещё раз',
+      );
+    });
+    return true;
+  }
+
+  Future<void> _pollJob(String jobId, String length) async {
+    final deadline = DateTime.now().add(const Duration(minutes: 25));
+    while (DateTime.now().isBefore(deadline)) {
+      await Future<void>.delayed(const Duration(seconds: 2));
+      if (!mounted) {
+        return;
+      }
+      final job = await widget.api.generateStatus(jobId);
+      if (!mounted) {
+        return;
+      }
+      setState(() => _job = job);
+      if (await _finishIfDone(job, length)) {
+        return;
+      }
+      if (job.isError) {
+        return;
+      }
+    }
+    if (!mounted) {
+      return;
+    }
+    setState(() {
+      _job = GenerateJob(
+        id: jobId,
+        city: _search.text.trim(),
+        status: 'error',
+        step: 'Ошибка',
+        length: _job?.length ?? 'short',
+        error: 'Сборка слишком долгая, попробуйте ещё раз',
+      );
+    });
+  }
+
+  Future<void> _openGenerated(String guideId) async {
+    await _searchGuides(_search.text);
+    if (!mounted) {
+      return;
+    }
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => GuideScreen(api: widget.api, guideId: guideId),
+      ),
+    );
+  }
+
   Widget _body() {
+    if (_job != null && (_job!.isActive || _job!.isError)) {
+      return _generating(_search.text.trim());
+    }
     if (_loading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -207,14 +426,20 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
     if (_guides.isEmpty) {
-      return const Center(
-        child: Text('По этому месту аудиогида пока нет'),
-      );
+      final query = _search.text.trim();
+      if (query.isEmpty || _offline) {
+        return const Center(child: Text('По этому месту аудиогида пока нет'));
+      }
+      return _emptyGenerate(query);
     }
+    final query = _search.text.trim();
     return ListView.separated(
-      itemCount: _guides.length,
+      itemCount: _guides.length + (query.isNotEmpty && !_offline ? 1 : 0),
       separatorBuilder: (_, __) => const Divider(height: 1),
       itemBuilder: (context, index) {
+        if (index >= _guides.length) {
+          return _generateMore(query);
+        }
         final guide = _guides[index];
         final minutes = (guide.durationSec / 60).ceil();
         final cache = GuideCache.instance;

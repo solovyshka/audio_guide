@@ -4,9 +4,36 @@ import re
 
 from generate.city_guide.schemas import CityGuide, CityResearch, QAError, QAResult
 
+_GENERIC = {
+    "музей",
+    "собор",
+    "церковь",
+    "площадь",
+    "улица",
+    "памятник",
+    "здание",
+    "сквер",
+    "парк",
+    "театр",
+    "проспект",
+    "переулок",
+    "башня",
+    "дом",
+    "усадьба",
+    "монастырь",
+    "храм",
+}
+
 
 def sentence_count(text: str) -> int:
-    parts = [x for x in re.split(r"(?<=[.!?…])\s+", text.strip()) if x]
+    protected = re.sub(r"(?<=\b[A-ZА-ЯЁ])\.", "•", text)
+    protected = re.sub(
+        r"\b(?:в|г|ул|пр|н|тыс|кв|д)\.",
+        lambda match: match.group(0)[:-1] + "•",
+        protected,
+        flags=re.IGNORECASE,
+    )
+    parts = [x for x in re.split(r"(?<=[.!?…])\s+", protected.strip()) if x]
     return len(parts)
 
 
@@ -77,6 +104,23 @@ def local_checks(research: CityResearch, guide: CityGuide) -> QAResult:
                     stop_id=stop.id,
                     type="category",
                     description="Изменена category",
+                )
+            )
+
+        tokens = [
+            w.lower()
+            for w in re.findall(r"[A-Za-zА-Яа-яЁё-]{5,}", src.name)
+            if w.lower() not in _GENERIC
+        ]
+        hay = stop.text.lower()
+        if tokens and not any(token in hay for token in tokens):
+            errors.append(
+                QAError(
+                    stop_id=stop.id,
+                    type="wrong_object",
+                    description=(
+                        f"Текст не про «{src.name}»: нет маркеров {', '.join(tokens[:3])}"
+                    ),
                 )
             )
 

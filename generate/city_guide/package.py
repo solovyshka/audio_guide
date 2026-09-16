@@ -43,7 +43,7 @@ def normalize_guide(
     content_version: int | None = None,
 ) -> CityGuide:
     """Fill id, audioPath, lock coords/names from research by order."""
-    city_id = slugify(research.city)
+    city_id = guide.id if guide.id else slugify(research.city)
     stops: list[GuideStop] = []
     for i, src in enumerate(research.stops):
         raw = guide.stops[i] if i < len(guide.stops) else None

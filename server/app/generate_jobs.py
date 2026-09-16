@@ -1,0 +1,183 @@
+from __future__ import annotations
+
+import os
+import re
+import subprocess
+import sys
+import threading
+import uuid
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from pathlib import Path
+
+from app import store
+
+REPO = Path(__file__).resolve().parents[2]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+from generate.city_guide.length import guide_id_for, parse_length, profile
+from generate.city_guide.slug import slugify
+PYTHON = REPO / "generate" / ".venv" / "bin" / "python"
+OPENAI_PROXY = os.getenv("OPENAI_HTTPS_PROXY", "http://127.0.0.1:8888")
+CITY_RE = re.compile(r"^[\w\s\-.'’«»]+$", re.UNICODE)
+
+
+@dataclass
+class GenerateJob:
+    id: str
+    city: str
+    status: str = "queued"
+    step: str = "В очереди"
+    length: str = "short"
+    guide_id: str | None = None
+    error: str | None = None
+    created_at: str = field(
+        default_factory=lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    )
+
+    def as_dict(self) -> dict:
+        return {
+            "id": self.id,
+            "city": self.city,
+            "status": self.status,
+            "step": self.step,
+            "length": self.length,
+            "guideId": self.guide_id,
+            "error": self.error,
+            "createdAt": self.created_at,
+        }
+
+
+_LOCK = threading.Lock()
+_JOBS: dict[str, GenerateJob] = {}
+
+
+def _existing_guide_id(city: str, length: str) -> str | None:
+    expected = guide_id_for(city, length)
+    if store.load_guide(expected) is not None:
+        return expected
+    return None
+
+
+def _validate_city(city: str) -> str:
+    city = " ".join(city.split())
+    if len(city) < 2 or len(city) > 80:
+        raise ValueError("Название города слишком короткое или длинное")
+    if not CITY_RE.match(city):
+        raise ValueError("Некорректное название города")
+    return city
+
+
+def get_job(job_id: str) -> GenerateJob | None:
+    with _LOCK:
+        return _JOBS.get(job_id)
+
+
+def start_job(city: str, length: str = "short") -> GenerateJob:
+    city = _validate_city(city)
+    length = parse_length(length)
+    existing = _existing_guide_id(city, length)
+    with _LOCK:
+        if existing:
+            job = GenerateJob(
+                id=uuid.uuid4().hex[:12],
+                city=city,
+                length=length,
+                status="done",
+                step="Гид уже есть в каталоге",
+                guide_id=existing,
+            )
+            _JOBS[job.id] = job
+            return job
+        running = [
+            job
+            for job in _JOBS.values()
+            if job.status in {"queued", "running"}
+        ]
+        for job in running:
+            if slugify(job.city) == slugify(city) and job.length == length:
+                return job
+        if running:
+            raise RuntimeError("Уже собирается другой гид, подождите")
+        job = GenerateJob(id=uuid.uuid4().hex[:12], city=city, length=length)
+        _JOBS[job.id] = job
+    thread = threading.Thread(target=_run, args=(job.id,), daemon=True)
+    thread.start()
+    return job
+
+
+def _set(job_id: str, **fields: object) -> None:
+    with _LOCK:
+        job = _JOBS[job_id]
+        for key, value in fields.items():
+            setattr(job, key, value)
+
+
+def _ensure_proxy() -> None:
+    from urllib.error import HTTPError, URLError
+    from urllib.request import ProxyHandler, Request, build_opener
+
+    opener = build_opener(ProxyHandler({"http": OPENAI_PROXY, "https": OPENAI_PROXY}))
+    req = Request("https://api.openai.com/v1/models", method="GET")
+    try:
+        opener.open(req, timeout=12)
+    except HTTPError:
+        return
+    except URLError as error:
+        raise RuntimeError(
+            f"OpenAI недоступен через {OPENAI_PROXY}. "
+            "Проверь ovh-telegram-proxy.service"
+        ) from error
+
+
+def _run(job_id: str) -> None:
+    with _LOCK:
+        city = _JOBS[job_id].city
+        length = _JOBS[job_id].length
+    label = profile(length).label
+    _set(job_id, status="running", step=f"Проверяю прокси OpenAI ({label})")
+    log_lines: list[str] = []
+    try:
+        if not PYTHON.is_file():
+            raise RuntimeError("Нет generate/.venv на FIREBAT")
+        env = os.environ.copy()
+        env["PYTHONUNBUFFERED"] = "1"
+        env["HTTPS_PROXY"] = OPENAI_PROXY
+        env["HTTP_PROXY"] = OPENAI_PROXY
+        env["NO_PROXY"] = "127.0.0.1,localhost,192.168.100.0/24"
+        env.pop("ALL_PROXY", None)
+        _ensure_proxy()
+        proc = subprocess.Popen(
+            [str(PYTHON), "-m", "generate.city_guide", "api", "--length", length, city],
+            cwd=str(REPO),
+            env=env,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        guide_id = guide_id_for(city, length)
+        assert proc.stdout is not None
+        for raw in proc.stdout:
+            line = raw.strip()
+            if not line:
+                continue
+            log_lines.append(line)
+            if line.startswith("GUIDE_ID="):
+                guide_id = line.split("=", 1)[1].strip() or guide_id
+            _set(job_id, step=line[:240])
+        code = proc.wait()
+        if code != 0:
+            errors = [line for line in log_lines if line.startswith("ERROR:")]
+            fails = [line for line in log_lines if line.startswith("QA_FAIL")]
+            if errors:
+                detail = errors[-1].removeprefix("ERROR:").strip()
+            elif fails:
+                detail = "; ".join(item.split(": ", 1)[-1] for item in fails[:4])
+            else:
+                detail = "нет вывода"
+            raise RuntimeError(detail)
+        if store.load_guide(guide_id) is None:
+            raise RuntimeError("Пакет не появился в каталоге")
+        _set(job_id, status="done", step="Готово", guide_id=guide_id)
+    except Exception as error:
+        _set(job_id, status="error", error=str(error)[:500], step="Ошибка")

@@ -10,6 +10,7 @@ from generate.tts.backends.edge import SAMPLE_VOICES as EDGE_VOICES
 from generate.tts.backends.silero import SAMPLE_VOICES as SILERO_VOICES
 from generate.tts.backends.yandex import SAMPLE_VOICES as YANDEX_VOICES
 from generate.tts.envfile import load_env
+from generate.tts.guide_synth import synthesize_guide
 from generate.tts.registry import get_backend
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -102,36 +103,13 @@ def _sample(args) -> None:
 def _guide(args) -> None:
     guide_path = args.guide.resolve()
     data = json.loads(guide_path.read_text(encoding="utf-8"))
-    backend = get_backend(args.backend)
-    ok, reason = backend.available()
-    if not ok:
-        raise SystemExit(f"{args.backend}: {reason}")
     out_dir = args.out_dir or (ROOT / "generate" / "out" / f"{data['id']}-{args.backend}")
-    audio_dir = out_dir / "audio"
-    voice = args.voice or None
-    total = 0
-
-    def render(item: dict, fallback_name: str) -> None:
-        nonlocal total
-        relative = Path(item.get("audioPath") or f"audio/{fallback_name}.{backend.info.extension}")
-        dest = audio_dir / f"{relative.stem}.{backend.info.extension}"
-        seconds = backend.synthesize(item["text"], dest, voice=voice)
-        item["audioPath"] = f"audio/{dest.name}"
-        item["durationSec"] = seconds
-        total += seconds
-        print(f"{dest.name}\t{seconds}s")
-
-    render(data["intro"], "intro")
-    for stop in data["stops"]:
-        render(stop, stop["id"])
-    data["durationSec"] = total
-    out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "guide.json").write_text(
-        json.dumps(data, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    synthesize_guide(
+        guide_path,
+        out_dir,
+        backend_name=args.backend,
+        voice=args.voice or None,
     )
-    print(f"total\t{total}s")
-    print(f"wrote\t{out_dir}")
 
 
 def _intro_excerpt(guide: Path) -> str:

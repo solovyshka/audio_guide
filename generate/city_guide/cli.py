@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[2]
 def main(argv: list[str] | None = None) -> None:
     load_env()
     parser = argparse.ArgumentParser(
-        description="Генерация guide.json (research → текст). Озвучка отдельно: generate.tts",
+        description="Генерация гида: research → текст → TTS. OpenAI ходит через HideMe OpenVPN.",
     )
     sub = parser.add_subparsers(dest="cmd", required=True)
 
@@ -47,9 +47,21 @@ def main(argv: list[str] | None = None) -> None:
     p_nw.add_argument("--no-catalog", action="store_true")
     p_nw.add_argument("--out-root", type=Path, help="Не content/guides, а другая папка")
 
-    p_api = sub.add_parser("api", help="Полный прогон через OpenAI Responses + web_search")
+    p_api = sub.add_parser(
+        "api",
+        help="OpenAI research+writer+QA, затем Silero в content/guides/{id}/",
+    )
     p_api.add_argument("city", nargs="+")
+    p_api.add_argument(
+        "--length",
+        choices=["short", "long"],
+        default="short",
+        help="Короткий (6–8 точек) или длинный (12–15) гид",
+    )
     p_api.add_argument("--no-catalog", action="store_true")
+    p_api.add_argument("--no-tts", action="store_true")
+    p_api.add_argument("--backend", default="silero")
+    p_api.add_argument("--voice", default="xenia")
 
     p_list = sub.add_parser(
         "list-cities",
@@ -65,6 +77,11 @@ def main(argv: list[str] | None = None) -> None:
     p_prompt.add_argument(
         "name",
         choices=["research", "writer", "qa", "fix", "agent"],
+    )
+    p_prompt.add_argument(
+        "--length",
+        choices=["short", "long"],
+        default="short",
     )
 
     args = parser.parse_args(argv)
@@ -93,7 +110,14 @@ def main(argv: list[str] | None = None) -> None:
         from generate.city_guide.openai_pipeline import run_api_city
 
         city = " ".join(args.city).strip()
-        run_api_city(city, update_catalog=not args.no_catalog)
+        run_api_city(
+            city,
+            length=args.length,
+            update_catalog=not args.no_catalog,
+            tts=not args.no_tts,
+            tts_backend=args.backend,
+            tts_voice=args.voice,
+        )
         return
 
     if args.cmd == "list-cities":
@@ -109,10 +133,10 @@ def main(argv: list[str] | None = None) -> None:
         from generate.city_guide import prompts as P
 
         mapping = {
-            "research": P.RESEARCH_SYSTEM,
-            "writer": P.WRITER_SYSTEM,
-            "qa": P.QA_SYSTEM,
-            "fix": P.FIX_SYSTEM,
+            "research": P.research_system(args.length),
+            "writer": P.writer_system(args.length),
+            "qa": P.qa_system(args.length),
+            "fix": P.fix_system(args.length),
             "agent": P.AGENT_BATCH_STEPS,
         }
         print(mapping[args.name])

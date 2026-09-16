@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Аудиогид — скачать</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, sans-serif;
+      background: #eef6f1;
+      color: #143028;
+    }
+    main {
+      width: min(28rem, calc(100% - 2rem));
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(20, 48, 40, 0.08);
+    }
+    h1 { font-size: 1.4rem; margin: 0 0 0.5rem; }
+    p { line-height: 1.45; color: #3a544b; }
+    a.btn {
+      display: block;
+      margin-top: 1.25rem;
+      padding: 0.9rem 1rem;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      background: #1f4b3a;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    small { display: block; margin-top: 1rem; color: #6a7f76; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Аудиогид</h1>
+    <p>Установка с телефона, без магазина приложений. Если прямой файл не качается — открой эту страницу, не ссылку на <code>.apk</code>.</p>
+    <a class="btn" href="/app/update.bin" download="audio_guide.apk">Скачать приложение</a>
+    <small>После загрузки Android спросит разрешение на установку из браузера. Около 125&nbsp;МБ.</small>
+  </main>
+</body>
+</html>

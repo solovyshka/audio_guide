@@ -7,15 +7,16 @@
 
 ```text
 Собери аудиогид по очереди из generate/cities.txt.
-Один город за проход. Промпты: python -m generate.city_guide prompts agent
-и prompts research / writer.
-После текста: normalize-write, затем validate до OK.
+Один город за проход. Формат: короткий (6–8 точек) или длинный (12–15).
+Промпты: python -m generate.city_guide prompts research --length short|long
+и prompts writer --length … После текста: normalize-write, затем validate до OK.
 ```
 
 ## Цикл на город
 
 1. `python -m generate.city_guide list-cities` — следующий без `#`.
-2. Research → `content/guides/{id}/{id}.research.json` (схема `CityResearch`, поле `disputed`).
+2. Research нужного формата → `content/guides/{id}/{id}.research.json`
+   (длинный id = `{slug}-long`).
 3. Writer → черновик `guide.json` (спорное с «— неизвестно»).
 4. ```
    python -m generate.city_guide normalize-write --research ... --guide ...
@@ -26,6 +27,12 @@
 
 ## Не делать в этом цикле
 
-- TTS и upload на сервер — только по отдельной просьбе.
 - Не переписывать Коломну без запроса.
 - Не выдумывать координаты: только из источников в research.
+
+Полный серверный прогон (OpenAI через HideMe OpenVPN + Silero) на FIREBAT:
+
+```
+sudo bash /opt/audio_guide/deploy/secrets/apply-local.sh audio_guide /opt/audio_guide
+bash /opt/audio_guide/deploy/new-city.sh "Город"
+```

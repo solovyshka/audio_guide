@@ -1,0 +1,1 @@
+solovyshka ALL=(root) NOPASSWD: /opt/audio_guide/deploy/vpn/hideme-openai.sh up, /opt/audio_guide/deploy/vpn/hideme-openai.sh status

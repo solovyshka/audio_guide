@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../config.dart';
+import '../models/generate_job.dart';
 import '../models/guide.dart';
 import '../update/app_release.dart';
 
@@ -35,6 +36,42 @@ class GuideApi {
 
   Future<Guide> getGuide(String id) async {
     return Guide.fromJson(await getGuideJson(id));
+  }
+
+  Future<GenerateJob> startGenerate(String city, {String length = 'short'}) async {
+    final response = await http.post(
+      Uri.parse('$baseUrl/guides/generate'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'city': city, 'length': length}),
+    );
+    if (response.statusCode != 200 && response.statusCode != 202) {
+      throw Exception(_errorMessage(response, 'Не удалось начать сборку гида'));
+    }
+    return GenerateJob.fromJson(
+      jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+    );
+  }
+
+  Future<GenerateJob> generateStatus(String jobId) async {
+    final response = await http.get(Uri.parse('$baseUrl/guides/jobs/$jobId'));
+    if (response.statusCode != 200) {
+      throw Exception(_errorMessage(response, 'Не удалось узнать статус сборки'));
+    }
+    return GenerateJob.fromJson(
+      jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+    );
+  }
+
+  String _errorMessage(http.Response response, String fallback) {
+    try {
+      final payload =
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      final detail = payload['detail'];
+      if (detail is String && detail.isNotEmpty) {
+        return detail;
+      }
+    } catch (_) {}
+    return '$fallback (${response.statusCode})';
   }
 
   Future<AppRelease?> fetchAppRelease() async {

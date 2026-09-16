@@ -10,7 +10,7 @@
 
 На FIREBAT: `git pull` → `sudo systemctl restart audio-guide`. Не править файлы руками (кроме секретов).
 
-**Не класть в git:** `.env`, пароль Postgres, ключ админки, ключ MapKit. Большие mp3 лучше держать только на диске, в git — JSON; wav тестовых пакетов пока в репозитории.
+**Не класть в git:** `.env`, пароль Postgres, ключ админки, ключ MapKit. Озвучка (`*.wav`, `*.mp3`) только на диске сервера; в git — JSON гидов.
 
 ## Ключи и что платное
 
@@ -51,6 +51,19 @@ curl -sS "http://51.254.219.211/guides/search?q=коломна"
 
 Секреты: `bash /opt/audio_guide/deploy/secrets/apply-local.sh audio_guide /opt/audio_guide audio-guide`.
 
+В приложении по пустому поиску можно нажать «Собрать аудиогид» — API на FIREBAT запускает тот же пайплайн в фоне.
+
+## Новый город (текст + озвучка)
+
+На FIREBAT OpenAI идёт через HideMe OpenVPN (split-tunnel только на `api.openai.com`, не полный шлюз). Ключ — в `/opt/secrets/audio_guide/.env`.
+
+```
+sudo bash /opt/audio_guide/deploy/secrets/apply-local.sh audio_guide /opt/audio_guide
+bash /opt/audio_guide/deploy/new-city.sh "Сергиев Посад"
+```
+
+Пакет появится в `content/guides/{id}/` (json + wav) и в `catalog.json`. API его подхватит без рестарта.
+
 ## Локальная машина (Windows)
 
 Версии SDK, PATH и env на этом ПК: [docs/windows-dev-machine.md](docs/windows-dev-machine.md).
@@ -64,6 +77,6 @@ bash /opt/audio_guide/deploy/install-android-toolchain.sh   # один раз
 bash /opt/audio_guide/deploy/build-apk.sh
 ```
 
-Готовый файл: `http://51.254.219.211/app/audio_guide.apk`. В приложении, если на сервере больший `versionCode`, появляется кнопка «Обновить». Первый раз APK ставится вручную; дальше — эта кнопка. Подпись одна и та же (keystore у `solovyshka` на FIREBAT). Старый APK с Windows (debug-ключ) один раз удалить и поставить заново.
+Готовый файл: страница [http://51.254.219.211/app/](http://51.254.219.211/app/) (скачивание без `.apk` в адресе — MegaFon часто режет прямой apk). В приложении, если на сервере больший `versionCode`, появляется кнопка «Обновить». Первый раз ставится вручную; дальше — эта кнопка. Подпись одна и та же (keystore у `solovyshka` на FIREBAT). Старый APK с Windows (debug-ключ) один раз удалить и поставить заново.
 
 Локально: `cd app && flutter build apk --release` — копия в корень репозитория `audio_guide.apk`.

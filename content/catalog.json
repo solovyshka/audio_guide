@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-13T12:43:47Z",
+  "updatedAt": "2026-09-16T17:00:00Z",
   "guides": [
     {
       "id": "kolomna",
@@ -223,6 +223,25 @@
       "language": "ru",
       "guidePath": "guides/limasol/guide.json",
       "contentVersion": 1
+    },
+    {
+      "id": "tula",
+      "title": "Исторический центр и ключевые объекты Тулы",
+      "subtitle": "Исторический центр и ключевые объекты Тулы",
+      "aliases": [
+        "Тула"
+      ],
+      "city": "Тула",
+      "region": "Тульская область",
+      "center": {
+        "lat": 54.193122,
+        "lon": 37.617348
+      },
+      "stopsCount": 11,
+      "durationSec": 371,
+      "language": "ru",
+      "guidePath": "guides/tula/guide.json",
+      "contentVersion": 2
     }
   ]
 }

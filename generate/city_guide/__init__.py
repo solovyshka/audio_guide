@@ -1,4 +1,4 @@
-"""City guide text pipeline: research → guide.json (TTS separately)."""
+"""City guide pipeline: research → guide.json → TTS."""
 
 from generate.city_guide.prompts import AGENT_BATCH_STEPS, RESEARCH_SYSTEM, WRITER_SYSTEM
 

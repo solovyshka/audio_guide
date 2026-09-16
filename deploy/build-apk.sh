@@ -111,7 +111,7 @@ Path("$ROOT/deploy/out").mkdir(parents=True, exist_ok=True)
 payload = {
     "versionCode": int("$VERSION_CODE"),
     "versionName": "$VERSION_NAME",
-    "apkUrl": "$PUBLIC_BASE/app/audio_guide.apk",
+    "apkUrl": "$PUBLIC_BASE/app/update.bin",
     "sizeBytes": int("$SIZE"),
 }
 text = json.dumps(payload, indent=2) + "\n"
@@ -124,13 +124,16 @@ if [ "${SKIP_PUBLISH:-0}" = "1" ]; then
   exit 0
 fi
 
-scp -o BatchMode=yes -o ConnectTimeout=20 "$APK" "$ROOT/deploy/out/version.json" "$OVH_HOST:/tmp/"
+scp -o BatchMode=yes -o ConnectTimeout=20 "$APK" "$ROOT/deploy/out/version.json" "$ROOT/deploy/app-index.html" "$OVH_HOST:/tmp/"
 ssh -o BatchMode=yes -o ConnectTimeout=20 "$OVH_HOST" 'sudo install -d -m 755 /var/www/audio-guide-app
 sudo install -m 644 /tmp/audio_guide.apk /var/www/audio-guide-app/audio_guide.apk
+sudo ln -sfn audio_guide.apk /var/www/audio-guide-app/update.bin
 sudo install -m 644 /tmp/version.json /var/www/audio-guide-app/version.json
-rm -f /tmp/audio_guide.apk /tmp/version.json
+sudo install -m 644 /tmp/app-index.html /var/www/audio-guide-app/index.html
+rm -f /tmp/audio_guide.apk /tmp/version.json /tmp/app-index.html
 curl -sS -m 10 -o /dev/null -w "version=%{http_code}\n" http://127.0.0.1/app/version.json
-curl -sS -m 10 -o /dev/null -w "apk=%{http_code} size=%{size_download}\n" http://127.0.0.1/app/audio_guide.apk
+curl -sS -m 10 -o /dev/null -w "page=%{http_code}\n" http://127.0.0.1/app/
+curl -sS -m 10 -o /dev/null -w "update=%{http_code} size=%{size_download}\n" http://127.0.0.1/app/update.bin
 '
 
-echo "Published $VERSION_NAME+$VERSION_CODE -> $PUBLIC_BASE/app/audio_guide.apk"
+echo "Published $VERSION_NAME+$VERSION_CODE -> $PUBLIC_BASE/app/"

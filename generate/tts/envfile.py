@@ -4,15 +4,27 @@ import os
 from pathlib import Path
 
 _LOADED = False
+_ROOT = Path(__file__).resolve().parents[2]
+
+
+def env_candidates() -> list[Path]:
+    return [
+        Path("/opt/secrets/audio_guide/.env"),
+        _ROOT / "generate" / ".env",
+        _ROOT / ".env",
+    ]
 
 
 def load_env() -> None:
     global _LOADED
     if _LOADED:
         return
-    root = Path(__file__).resolve().parents[2]
-    for path in (root / ".env", root / "generate" / ".env"):
-        if not path.is_file():
+    for path in env_candidates():
+        try:
+            readable = path.is_file() and os.access(path, os.R_OK)
+        except OSError:
+            continue
+        if not readable:
             continue
         for raw in path.read_text(encoding="utf-8").splitlines():
             line = raw.strip()
