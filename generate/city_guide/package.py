@@ -101,6 +101,12 @@ def write_package(
     (folder / "audio").mkdir(parents=True, exist_ok=True)
     save_json(research, folder / f"{guide.id}.research.json")
     save_json(guide, folder / "guide.json")
+    try:
+        from generate.city_guide.static_map import ensure_map_image
+
+        ensure_map_image(folder, guide.stops)
+    except Exception:
+        pass
     if update_catalog and out_root is None:
         upsert_catalog(guide)
     return folder

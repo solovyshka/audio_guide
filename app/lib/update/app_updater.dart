@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'package:open_filex/open_filex.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../api/client.dart';
+import '../net/chunked_download.dart';
 import 'app_release.dart';
 
 class AppUpdater {
@@ -38,29 +38,16 @@ class AppUpdater {
     final dir = Directory('${tmp.path}/updates');
     await dir.create(recursive: true);
     final file = File('${dir.path}/audio_guide.apk');
-    if (await file.exists()) {
-      await file.delete();
-    }
-    final request = http.Request('GET', Uri.parse(release.apkUrl));
-    final client = http.Client();
+    final client = downloadClient();
     try {
-      final response = await client.send(request);
-      if (response.statusCode != 200) {
-        throw Exception('Не удалось скачать обновление (${response.statusCode})');
-      }
-      final total = response.contentLength;
-      final sink = file.openWrite();
-      var received = 0;
-      try {
-        await for (final chunk in response.stream) {
-          sink.add(chunk);
-          received += chunk.length;
-          onProgress?.call(received, total ?? release.sizeBytes);
-        }
-        await sink.flush();
-      } finally {
-        await sink.close();
-      }
+      await downloadFile(
+        client: client,
+        url: release.apkUrl,
+        dest: file,
+        chunkSize: 4 * 1024 * 1024,
+        expectedSize: release.sizeBytes,
+        onProgress: onProgress,
+      );
     } finally {
       client.close();
     }

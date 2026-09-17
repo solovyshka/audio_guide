@@ -27,6 +27,17 @@ class Stop(Track):
     order: int = 0
 
 
+class MapBounds(BaseModel):
+    lat_min: float = Field(alias="latMin")
+    lat_max: float = Field(alias="latMax")
+    lon_min: float = Field(alias="lonMin")
+    lon_max: float = Field(alias="lonMax")
+    width: int = 650
+    height: int = 450
+
+    model_config = ConfigDict(populate_by_name=True, ser_json_by_alias=True)
+
+
 class GuideSummary(BaseModel):
     id: str
     title: str
@@ -46,6 +57,8 @@ class GuideSummary(BaseModel):
 class Guide(GuideSummary):
     intro: Track
     stops: list[Stop]
+    map_url: str | None = Field(default=None, alias="mapUrl")
+    map_bounds: MapBounds | None = Field(default=None, alias="mapBounds")
 
 
 def public_audio_url(base: str, guide_id: str, audio_path: str | None) -> str | None:
@@ -53,6 +66,10 @@ def public_audio_url(base: str, guide_id: str, audio_path: str | None) -> str | 
         return None
     path = audio_path.lstrip("/")
     return f"{base.rstrip('/')}/media/guides/{guide_id}/{path}"
+
+
+def public_map_url(base: str, guide_id: str) -> str:
+    return f"{base.rstrip('/')}/guides/{guide_id}/map.png"
 
 
 def guide_from_package(raw: dict[str, Any], base_url: str) -> Guide:
@@ -83,6 +100,19 @@ def guide_from_package(raw: dict[str, Any], base_url: str) -> Guide:
             )
         )
     center = raw.get("center") or {}
+    map_bounds = None
+    if stops:
+        from app.static_map import bounds_for_stops
+
+        box = bounds_for_stops(stops)
+        map_bounds = MapBounds(
+            lat_min=box.lat_min,
+            lat_max=box.lat_max,
+            lon_min=box.lon_min,
+            lon_max=box.lon_max,
+            width=box.width,
+            height=box.height,
+        )
     return Guide(
         id=guide_id,
         title=raw["title"],
@@ -97,4 +127,6 @@ def guide_from_package(raw: dict[str, Any], base_url: str) -> Guide:
         content_version=raw.get("contentVersion", 1),
         intro=intro,
         stops=stops,
+        map_url=public_map_url(base_url, guide_id),
+        map_bounds=map_bounds,
     )

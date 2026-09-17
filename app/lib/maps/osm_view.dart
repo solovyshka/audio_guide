@@ -4,6 +4,8 @@ import 'package:latlong2/latlong.dart';
 
 import '../models/guide.dart';
 import 'stop_chip.dart';
+import 'user_dot.dart';
+import 'user_location.dart';
 
 class GuideOsmMap extends StatefulWidget {
   const GuideOsmMap({
@@ -11,11 +13,13 @@ class GuideOsmMap extends StatefulWidget {
     required this.guide,
     required this.currentIndex,
     required this.onStopTap,
+    this.user,
   });
 
   final Guide guide;
   final int currentIndex;
   final ValueChanged<int> onStopTap;
+  final UserFix? user;
 
   @override
   State<GuideOsmMap> createState() => _GuideOsmMapState();
@@ -44,6 +48,7 @@ class _GuideOsmMapState extends State<GuideOsmMap> {
   @override
   Widget build(BuildContext context) {
     final stops = widget.guide.stops;
+    final user = widget.user;
     return FlutterMap(
       mapController: _controller,
       options: MapOptions(
@@ -70,6 +75,19 @@ class _GuideOsmMapState extends State<GuideOsmMap> {
                 ],
                 color: idleStroke.withValues(alpha: 0.55),
                 strokeWidth: 3,
+              ),
+            ],
+          ),
+        if (user != null && (user.accuracy ?? 0) > 8)
+          CircleLayer(
+            circles: [
+              CircleMarker(
+                point: LatLng(user.lat, user.lon),
+                radius: (user.accuracy ?? 20).clamp(8, 80),
+                useRadiusInMeter: true,
+                color: const Color(0x332A7DE1),
+                borderColor: const Color(0x662A7DE1),
+                borderStrokeWidth: 1,
               ),
             ],
           ),
@@ -113,6 +131,13 @@ class _GuideOsmMapState extends State<GuideOsmMap> {
                     ],
                   ),
                 ),
+              ),
+            if (user != null)
+              Marker(
+                point: LatLng(user.lat, user.lon),
+                width: 28,
+                height: 28,
+                child: const UserDot(),
               ),
           ],
         ),

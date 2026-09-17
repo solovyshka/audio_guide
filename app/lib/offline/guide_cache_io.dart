@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
 import '../api/client.dart';
 import '../models/guide.dart';
+import '../net/chunked_download.dart';
 import 'download_progress.dart';
 
 class GuideCache extends ChangeNotifier {
@@ -29,7 +29,6 @@ class GuideCache extends ChangeNotifier {
         continue;
       }
       if (entity.path.endsWith('.download')) {
-        await entity.delete(recursive: true);
         continue;
       }
       final id = _idFromDir(entity);
@@ -100,6 +99,8 @@ class GuideCache extends ChangeNotifier {
         jsonDecode(await manifestFile.readAsString()) as Map<String, dynamic>;
     final files = (manifest['files'] as Map<String, dynamic>?) ?? {};
     final introPath = await _existingPath(dir, files['intro'] as String?);
+    final mapPath = await _existingPath(dir, files['map'] as String?) ??
+        await _existingPath(dir, 'map.png');
     final stops = <Stop>[];
     for (final stop in guide.stops) {
       final local = await _existingPath(dir, files[stop.id] as String?);
@@ -134,6 +135,8 @@ class GuideCache extends ChangeNotifier {
         durationSec: guide.intro.durationSec,
       ),
       stops: stops,
+      mapUrl: mapPath ?? guide.mapUrl,
+      mapBounds: guide.mapBounds,
     );
   }
 
@@ -164,9 +167,6 @@ class GuideCache extends ChangeNotifier {
     final root = await _root();
     await root.create(recursive: true);
     final staging = Directory('${root.path}/$id.download');
-    if (await staging.exists()) {
-      await staging.delete(recursive: true);
-    }
     await staging.create(recursive: true);
 
     final payload = await api.getGuideJson(id);
@@ -188,7 +188,7 @@ class GuideCache extends ChangeNotifier {
       }
     }
 
-    final client = http.Client();
+    final client = downloadClient();
     try {
       for (var i = 0; i < tracks.length; i++) {
         final track = tracks[i];
@@ -200,7 +200,28 @@ class GuideCache extends ChangeNotifier {
         notifyListeners();
         final relative = _relativeAudioPath(id, track.url);
         files[track.key] = relative;
-        await _fetchFile(client, track.url, File('${staging.path}/$relative'));
+        await downloadFile(
+          client: client,
+          url: track.url,
+          dest: File('${staging.path}/$relative'),
+        );
+      }
+      final mapUrl = guide.mapUrl;
+      if (mapUrl != null && mapUrl.isNotEmpty) {
+        _progress[id] = DownloadProgress(
+          completed: tracks.length,
+          total: tracks.length + 1,
+          label: 'Карта',
+        );
+        notifyListeners();
+        try {
+          await downloadFile(
+            client: client,
+            url: mapUrl,
+            dest: File('${staging.path}/map.png'),
+          );
+          files['map'] = 'map.png';
+        } catch (_) {}
       }
     } finally {
       client.close();
@@ -286,24 +307,4 @@ String _relativeAudioPath(String guideId, String url) {
   }
   final name = segments.isEmpty ? 'track.bin' : segments.last;
   return 'audio/$name';
-}
-
-Future<void> _fetchFile(http.Client client, String url, File dest) async {
-  await dest.parent.create(recursive: true);
-  final tmp = File('${dest.path}.part');
-  final request = http.Request('GET', Uri.parse(url));
-  final response = await client.send(request);
-  if (response.statusCode != 200) {
-    throw Exception('Не удалось скачать аудио (${response.statusCode})');
-  }
-  final sink = tmp.openWrite();
-  try {
-    await sink.addStream(response.stream);
-  } finally {
-    await sink.close();
-  }
-  if (await dest.exists()) {
-    await dest.delete();
-  }
-  await tmp.rename(dest.path);
 }

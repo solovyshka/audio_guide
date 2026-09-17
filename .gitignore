@@ -35,3 +35,5 @@ generate/.env
 *.wav
 *.mp3
 content/guides/**/audio/
+content/guides/**/map.png
+content/guides/**/map.jpg

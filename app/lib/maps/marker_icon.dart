@@ -61,3 +61,28 @@ Future<ui.Image> paintStopMarker({
   final picture = recorder.endRecording();
   return picture.toImage(size, size);
 }
+
+Future<ui.Image> paintUserMarker({required double devicePixelRatio}) async {
+  final size = (22 * devicePixelRatio).round().clamp(48, 128);
+  final recorder = ui.PictureRecorder();
+  final canvas = Canvas(recorder);
+  final center = Offset(size / 2, size / 2);
+  canvas.drawCircle(
+    center,
+    size / 2 - devicePixelRatio,
+    Paint()
+      ..color = const Color(0xFFFFFFFF)
+      ..style = PaintingStyle.fill
+      ..isAntiAlias = true,
+  );
+  canvas.drawCircle(
+    center,
+    size / 2 - 3.2 * devicePixelRatio,
+    Paint()
+      ..color = const Color(0xFF2A7DE1)
+      ..style = PaintingStyle.fill
+      ..isAntiAlias = true,
+  );
+  final picture = recorder.endRecording();
+  return picture.toImage(size, size);
+}

@@ -94,7 +94,7 @@ class _UpdateBannerState extends State<UpdateBanner> {
               Padding(
                 padding: const EdgeInsets.only(top: 4, right: 8),
                 child: Text(
-                  _error!,
+                  _friendlyError(_error!),
                   style: const TextStyle(color: Colors.white70, fontSize: 12),
                 ),
               ),
@@ -103,4 +103,15 @@ class _UpdateBannerState extends State<UpdateBanner> {
       ),
     );
   }
+}
+
+String _friendlyError(String error) {
+  final lower = error.toLowerCase();
+  if (lower.contains('connection closed') ||
+      lower.contains('clientexception') ||
+      lower.contains('timeout') ||
+      lower.contains('broken pipe')) {
+    return 'Сеть оборвала загрузку. Нажмите «Обновить» ещё раз.';
+  }
+  return error.replaceFirst('Exception: ', '');
 }

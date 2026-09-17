@@ -83,11 +83,22 @@ PY
 fi
 
 flutter pub get
-flutter build apk --release --no-tree-shake-icons "${DEFINE_ARGS[@]}"
+flutter build apk --release --no-tree-shake-icons --split-per-abi "${DEFINE_ARGS[@]}"
 
 APK="$ROOT/audio_guide.apk"
-SRC="$APP/build/app/outputs/flutter-apk/app-release.apk"
-cp -f "$SRC" "$APK"
+ARM64="$APP/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk"
+if [ ! -f "$ARM64" ]; then
+  echo "arm64 APK not found: $ARM64" >&2
+  exit 1
+fi
+cp -f "$ARM64" "$APK"
+cp -f "$ARM64" "$ROOT/audio_guide-arm64-v8a-release.apk"
+for abi in armeabi-v7a x86_64; do
+  split="$APP/build/app/outputs/flutter-apk/app-${abi}-release.apk"
+  if [ -f "$split" ]; then
+    cp -f "$split" "$ROOT/audio_guide-${abi}-release.apk"
+  fi
+done
 
 VERSION_LINE="$(python3 - "$APP/pubspec.yaml" <<'PY'
 from pathlib import Path

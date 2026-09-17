@@ -73,6 +73,12 @@ def main(argv: list[str] | None = None) -> None:
         default=ROOT / "generate" / "cities.txt",
     )
 
+    p_maps = sub.add_parser(
+        "maps",
+        help="Скачать статичную карту (PNG) для гида или всех гидов",
+    )
+    p_maps.add_argument("guide_id", nargs="?")
+
     p_prompt = sub.add_parser("prompts", help="Печать system-промптов для агента")
     p_prompt.add_argument(
         "name",
@@ -127,6 +133,31 @@ def main(argv: list[str] | None = None) -> None:
             sys.exit(1)
         for city in read_cities_list(path):
             print(city)
+        return
+
+    if args.cmd == "maps":
+        from generate.city_guide.static_map import ensure_map_image
+
+        root = ROOT / "content" / "guides"
+        if args.guide_id:
+            folders = [root / args.guide_id]
+        else:
+            folders = sorted(path for path in root.iterdir() if path.is_dir())
+        failed = 0
+        for folder in folders:
+            guide_file = folder / "guide.json"
+            if not guide_file.exists():
+                print(f"skip {folder.name}: no guide.json")
+                continue
+            guide = load_guide(guide_file)
+            path = ensure_map_image(folder, guide.stops)
+            if path is None:
+                failed += 1
+                print(f"fail {folder.name}")
+            else:
+                print(path)
+        if failed:
+            sys.exit(1)
         return
 
     if args.cmd == "prompts":

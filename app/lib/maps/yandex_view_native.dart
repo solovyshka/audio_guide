@@ -8,6 +8,7 @@ import 'package:yandex_maps_mapkit_lite/yandex_map.dart';
 
 import '../models/guide.dart';
 import 'marker_icon.dart';
+import 'user_location.dart';
 
 class GuideYandexMap extends StatefulWidget {
   const GuideYandexMap({
@@ -15,11 +16,13 @@ class GuideYandexMap extends StatefulWidget {
     required this.guide,
     required this.currentIndex,
     required this.onStopTap,
+    this.user,
   });
 
   final Guide guide;
   final int currentIndex;
   final ValueChanged<int> onStopTap;
+  final UserFix? user;
 
   @override
   State<GuideYandexMap> createState() => _GuideYandexMapState();
@@ -46,6 +49,11 @@ class _GuideYandexMapState extends State<GuideYandexMap>
       return;
     }
     if (oldWidget.currentIndex != widget.currentIndex) {
+      _drawStops();
+      return;
+    }
+    if (oldWidget.user?.lat != widget.user?.lat ||
+        oldWidget.user?.lon != widget.user?.lon) {
       _drawStops();
     }
   }
@@ -118,6 +126,19 @@ class _GuideYandexMapState extends State<GuideYandexMap>
         placemark.setText('');
       }
       placemark.addTapListener(listener);
+    }
+    final user = widget.user;
+    if (user != null) {
+      final me = mapWindow.map.mapObjects.addPlacemark()
+        ..geometry = Point(latitude: user.lat, longitude: user.lon)
+        ..zIndex = 200;
+      me.setIconWithStyle(
+        mk_image.ImageProvider(
+          () => paintUserMarker(devicePixelRatio: _dpr),
+          id: 'user-dot',
+        ),
+        IconStyle(anchor: const math.Point(0.5, 0.5)),
+      );
     }
     if (moveCamera || !_didMoveCamera) {
       _didMoveCamera = true;

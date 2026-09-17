@@ -1,3 +1,5 @@
+import '../config.dart';
+
 class LatLon {
   const LatLon({required this.lat, required this.lon});
 
@@ -121,18 +123,28 @@ class Guide extends GuideSummary {
     required super.center,
     required this.intro,
     required this.stops,
+    this.mapUrl,
+    this.mapBounds,
   });
 
   final Track intro;
   final List<Stop> stops;
+  final String? mapUrl;
+  final MapBounds? mapBounds;
+
+  bool get hasSnapshot => mapUrl != null && mapUrl!.isNotEmpty;
+
+  MapBounds get bounds => mapBounds ?? MapBounds.fromStops(stops);
 
   factory Guide.fromJson(Map<String, dynamic> json) {
+    final id = json['id'] as String;
     final stops = (json['stops'] as List<dynamic>)
         .map((item) => Stop.fromJson(item as Map<String, dynamic>))
         .toList()
       ..sort((a, b) => a.order.compareTo(b.order));
+    final rawBounds = json['mapBounds'] ?? json['map_bounds'];
     return Guide(
-      id: json['id'] as String,
+      id: id,
       title: json['title'] as String,
       subtitle: json['subtitle'] as String?,
       city: json['city'] as String? ?? json['title'] as String,
@@ -143,8 +155,64 @@ class Guide extends GuideSummary {
       center: LatLon.fromJson(json['center'] as Map<String, dynamic>),
       intro: Track.fromJson(json['intro'] as Map<String, dynamic>),
       stops: stops,
+      mapUrl: (json['mapUrl'] ?? json['map_url']) as String? ??
+          '$apiBase/guides/$id/map.png',
+      mapBounds: rawBounds is Map<String, dynamic>
+          ? MapBounds.fromJson(rawBounds)
+          : null,
     );
   }
 
   List<Track> get playlist => [intro, ...stops];
 }
+
+class MapBounds {
+  const MapBounds({
+    required this.latMin,
+    required this.latMax,
+    required this.lonMin,
+    required this.lonMax,
+    this.width = 650,
+    this.height = 450,
+  });
+
+  final double latMin;
+  final double latMax;
+  final double lonMin;
+  final double lonMax;
+  final int width;
+  final int height;
+
+  factory MapBounds.fromJson(Map<String, dynamic> json) {
+    return MapBounds(
+      latMin: ((json['latMin'] ?? json['lat_min']) as num).toDouble(),
+      latMax: ((json['latMax'] ?? json['lat_max']) as num).toDouble(),
+      lonMin: ((json['lonMin'] ?? json['lon_min']) as num).toDouble(),
+      lonMax: ((json['lonMax'] ?? json['lon_max']) as num).toDouble(),
+      width: ((json['width'] ?? 650) as num).toInt(),
+      height: ((json['height'] ?? 450) as num).toInt(),
+    );
+  }
+
+  factory MapBounds.fromStops(List<Stop> stops) {
+    const pad = 0.22;
+    const minLatSpan = 0.004;
+    const minLonSpan = 0.006;
+    final lats = stops.map((stop) => stop.lat);
+    final lons = stops.map((stop) => stop.lon);
+    final latMin = lats.reduce((a, b) => a < b ? a : b);
+    final latMax = lats.reduce((a, b) => a > b ? a : b);
+    final lonMin = lons.reduce((a, b) => a < b ? a : b);
+    final lonMax = lons.reduce((a, b) => a > b ? a : b);
+    final latPad = _max((latMax - latMin) * pad, minLatSpan / 2);
+    final lonPad = _max((lonMax - lonMin) * pad, minLonSpan / 2);
+    return MapBounds(
+      latMin: latMin - latPad,
+      latMax: latMax + latPad,
+      lonMin: lonMin - lonPad,
+      lonMax: lonMax + lonPad,
+    );
+  }
+}
+
+double _max(double a, double b) => a > b ? a : b;
