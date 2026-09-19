@@ -15,7 +15,7 @@ if [ ! -f /opt/secrets/audio_guide/.env ]; then
   cat > /opt/secrets/audio_guide/.env <<EOF
 ADMIN_API_KEY=${KEY}
 CONTENT_DIR=/opt/audio_guide/content
-PUBLIC_BASE_URL=http://51.254.219.211
+PUBLIC_BASE_URL=https://audio.solovyshka.com
 HOST=127.0.0.1
 PORT=8090
 DATABASE_URL=

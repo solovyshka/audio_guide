@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import '../api/client.dart';
@@ -129,14 +130,61 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  Future<void> _checkUpdate() async {
+  Future<void> _checkUpdate({bool manual = false}) async {
     try {
-      final release = await AppUpdater(api: widget.api).latestIfNewer();
-      if (!mounted || release == null) {
+      final checked = await AppUpdater(api: widget.api).check();
+      if (!mounted) {
         return;
       }
-      setState(() => _update = release);
-    } catch (_) {}
+      if (checked.newer != null) {
+        setState(() => _update = checked.newer);
+        if (manual) {
+          _toast(
+            'Доступна ${checked.remote.versionName} (${checked.remote.versionCode})',
+          );
+        }
+        return;
+      }
+      if (manual) {
+        _toast(
+          'Сейчас ${checked.local.version} (${checked.local.buildNumber}), '
+          'сервер ${checked.remote.versionName} (${checked.remote.versionCode})',
+        );
+      }
+    } catch (_) {
+      if (!mounted || !manual) {
+        return;
+      }
+      _toast('Не удалось проверить обновление');
+    }
+  }
+
+  Future<void> _showVersion() async {
+    final info = await PackageInfo.fromPlatform();
+    if (!mounted) {
+      return;
+    }
+    await showDialog<void>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Версия'),
+          content: Text('${info.version} (${info.buildNumber})'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Закрыть'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _toast(String message) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message)));
   }
 
   Future<void> _listen() async {
@@ -168,7 +216,32 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Аудиогид')),
+      appBar: AppBar(
+        title: const Text('Аудиогид'),
+        actions: [
+          PopupMenuButton<String>(
+            tooltip: 'Меню',
+            icon: const Icon(Icons.more_vert),
+            onSelected: (value) {
+              if (value == 'version') {
+                _showVersion();
+              } else if (value == 'update') {
+                _checkUpdate(manual: true);
+              }
+            },
+            itemBuilder: (context) => const [
+              PopupMenuItem<String>(
+                value: 'version',
+                child: Text('Версия'),
+              ),
+              PopupMenuItem<String>(
+                value: 'update',
+                child: Text('Проверить обновления'),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Padding(

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
 import 'dart:typed_data';
@@ -133,12 +134,18 @@ Future<_Piece> _getRange(
       }
       final total = _totalOf(response, start);
       final builder = BytesBuilder(copy: false);
-      await for (final chunk in response.stream.timeout(
-        const Duration(seconds: 45),
-      )) {
-        builder.add(chunk);
-        if (builder.length >= length) {
-          break;
+      try {
+        await for (final chunk in response.stream.timeout(
+          const Duration(seconds: 20),
+        )) {
+          builder.add(chunk);
+          if (builder.length >= length) {
+            break;
+          }
+        }
+      } on TimeoutException {
+        if (builder.isEmpty) {
+          rethrow;
         }
       }
       var data = builder.takeBytes();

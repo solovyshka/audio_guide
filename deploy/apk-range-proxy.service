@@ -1,0 +1,18 @@
+[Unit]
+Description=Audio guide APK range proxy (MegaFon 32K HTTP cap)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=www-data
+Environment=APK_PATH=/var/www/audio-guide-app/audio_guide.apk
+Environment=APK_RANGE_MAX=16384
+Environment=APK_PROXY_HOST=127.0.0.1
+Environment=APK_PROXY_PORT=8098
+ExecStart=/usr/bin/python3 /opt/audio_guide_ovh/apk-range-proxy.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

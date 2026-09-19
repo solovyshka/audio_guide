@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     database_url: str = ""
     admin_api_key: str = ""
     content_dir: Path = Path(__file__).resolve().parents[2] / "content"
-    public_base_url: str = "http://51.254.219.211"
+    public_base_url: str = "https://audio.solovyshka.com"
     host: str = "0.0.0.0"
     port: int = 8000
 

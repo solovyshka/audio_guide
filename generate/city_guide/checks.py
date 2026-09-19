@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 
+from generate.city_guide.geo import bbox_diagonal_m, decimal_places
 from generate.city_guide.schemas import CityGuide, CityResearch, QAError, QAResult
 
 _GENERIC = {
@@ -148,6 +149,33 @@ def local_checks(research: CityResearch, guide: CityGuide) -> QAResult:
                     stop_id=stop.id,
                     type="disputed",
                     description="В research есть disputed, в тексте нет «неизвестно»",
+                )
+            )
+
+        if decimal_places(stop.lat) < 3 or decimal_places(stop.lon) < 3:
+            errors.append(
+                QAError(
+                    stop_id=stop.id,
+                    type="coarse_coordinates",
+                    description=(
+                        f"Слишком грубые координаты {stop.lat}, {stop.lon} "
+                        "— похоже на выдуманный центр, а не точку объекта"
+                    ),
+                )
+            )
+
+    points = [src.coordinates for src in research.stops]
+    if len(points) >= 12:
+        span = bbox_diagonal_m(points)
+        if span < 1200:
+            errors.append(
+                QAError(
+                    type="coords_clustered",
+                    description=(
+                        f"Все {len(points)} точек в квадрате {span:.0f} м. "
+                        "Для длинного маршрута координаты, скорее всего, свалили "
+                        "в одну кучу у выдуманного центра"
+                    ),
                 )
             )
 

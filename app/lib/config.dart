@@ -2,7 +2,7 @@ import 'secrets.dart';
 
 const apiBase = String.fromEnvironment(
   'API_BASE',
-  defaultValue: 'http://51.254.219.211',
+  defaultValue: 'https://audio.solovyshka.com',
 );
 
 const mapkitApiKey = String.fromEnvironment(

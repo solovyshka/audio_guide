@@ -14,20 +14,31 @@ class AppUpdater {
 
   final GuideApi _api;
 
-  Future<AppRelease?> latestIfNewer() async {
-    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) {
-      return null;
-    }
+  Future<PackageInfo> localInfo() => PackageInfo.fromPlatform();
+
+  Future<AppRelease> remoteRelease() async {
     final remote = await _api.fetchAppRelease();
     if (remote == null || remote.apkUrl.isEmpty) {
-      return null;
-    }
-    final info = await PackageInfo.fromPlatform();
-    final local = int.tryParse(info.buildNumber) ?? 0;
-    if (remote.versionCode <= local) {
-      return null;
+      throw Exception('Сервер не отдал version.json');
     }
     return remote;
+  }
+
+  Future<AppRelease?> latestIfNewer() async {
+    final checked = await check();
+    return checked.newer;
+  }
+
+  Future<({AppRelease remote, AppRelease? newer, PackageInfo local})>
+      check() async {
+    final remote = await remoteRelease();
+    final info = await localInfo();
+    final localCode = int.tryParse(info.buildNumber) ?? 0;
+    final newer = !kIsWeb &&
+        defaultTargetPlatform == TargetPlatform.android &&
+        (remote.versionCode > localCode ||
+            _nameNewer(remote.versionName, info.version));
+    return (remote: remote, newer: newer ? remote : null, local: info);
   }
 
   Future<File> download(
@@ -63,4 +74,18 @@ class AppUpdater {
       throw Exception(result.message);
     }
   }
+}
+
+bool _nameNewer(String remote, String local) {
+  final a = remote.split('.').map((part) => int.tryParse(part) ?? 0).toList();
+  final b = local.split('.').map((part) => int.tryParse(part) ?? 0).toList();
+  final n = a.length > b.length ? a.length : b.length;
+  for (var i = 0; i < n; i++) {
+    final left = i < a.length ? a[i] : 0;
+    final right = i < b.length ? b[i] : 0;
+    if (left != right) {
+      return left > right;
+    }
+  }
+  return false;
 }

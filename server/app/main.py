@@ -1,5 +1,8 @@
-from fastapi import FastAPI
+from pathlib import Path
+
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
@@ -22,3 +25,11 @@ if media_root.exists():
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.get("/app/version.json")
+def app_version() -> FileResponse:
+    path = Path(__file__).resolve().parents[2] / "deploy" / "out" / "version.json"
+    if not path.is_file():
+        raise HTTPException(status_code=404, detail="version.json missing")
+    return FileResponse(path, media_type="application/json")

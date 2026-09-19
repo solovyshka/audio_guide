@@ -410,6 +410,10 @@ def run_api_city(
     city_id = guide_id_for(city, length)
     print(f"[1/5] Web research: {city} ({spec.label})")
     research = research_city(client, city, length)
+    from generate.city_guide.geo import snap_research_coords
+
+    print("уточняю координаты по OSM")
+    research = snap_research_coords(research)
 
     print(f"[2/5] Сборка {spec.label} текста")
     guide = _stamp(research, write_guide(client, research, length), length)

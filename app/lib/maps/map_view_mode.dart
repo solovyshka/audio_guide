@@ -1,1 +1,1 @@
-enum MapViewMode { snapshot, osm, yandex }
+enum MapViewMode { osm, yandex }

@@ -78,12 +78,12 @@ class _GuideOsmMapState extends State<GuideOsmMap> {
               ),
             ],
           ),
-        if (user != null && (user.accuracy ?? 0) > 8)
+        if (user != null && (user.accuracy ?? 0) > 4)
           CircleLayer(
             circles: [
               CircleMarker(
                 point: LatLng(user.lat, user.lon),
-                radius: (user.accuracy ?? 20).clamp(8, 80),
+                radius: (user.accuracy ?? 20).clamp(6, 120),
                 useRadiusInMeter: true,
                 color: const Color(0x332A7DE1),
                 borderColor: const Color(0x662A7DE1),
@@ -135,8 +135,9 @@ class _GuideOsmMapState extends State<GuideOsmMap> {
             if (user != null)
               Marker(
                 point: LatLng(user.lat, user.lon),
-                width: 28,
-                height: 28,
+                width: 18,
+                height: 18,
+                alignment: Alignment.center,
                 child: const UserDot(),
               ),
           ],

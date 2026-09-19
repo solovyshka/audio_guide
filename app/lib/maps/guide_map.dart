@@ -5,8 +5,8 @@ import '../models/guide.dart';
 import 'available.dart';
 import 'map_view_mode.dart';
 import 'map_view_prefs.dart';
+import 'location_hint.dart';
 import 'osm_view.dart';
-import 'snapshot_view.dart';
 import 'user_location.dart';
 import 'yandex_view.dart';
 
@@ -61,17 +61,8 @@ class _GuideMapState extends State<GuideMap> {
   }
 
   MapViewMode _fallback(MapViewMode? wanted) {
-    if (wanted == MapViewMode.snapshot && widget.guide.hasSnapshot) {
-      return MapViewMode.snapshot;
-    }
     if (wanted == MapViewMode.yandex && _hasYandex) {
       return MapViewMode.yandex;
-    }
-    if (wanted == MapViewMode.osm) {
-      return MapViewMode.osm;
-    }
-    if (widget.guide.hasSnapshot) {
-      return MapViewMode.snapshot;
     }
     return MapViewMode.osm;
   }
@@ -97,10 +88,18 @@ class _GuideMapState extends State<GuideMap> {
                 alignment: Alignment.topCenter,
                 child: _MapSwitcher(
                   mode: _mode,
-                  hasSnapshot: widget.guide.hasSnapshot,
                   hasYandex: _hasYandex,
                   onChanged: _select,
                 ),
+              ),
+            ),
+            const Positioned(
+              left: 8,
+              right: 8,
+              bottom: 8,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: LocationHint(),
               ),
             ),
           ],
@@ -112,13 +111,6 @@ class _GuideMapState extends State<GuideMap> {
   Widget _body() {
     final user = UserLocation.instance.fix;
     switch (_mode) {
-      case MapViewMode.snapshot:
-        return GuideSnapshotMap(
-          guide: widget.guide,
-          currentIndex: widget.currentIndex,
-          onStopTap: widget.onStopTap,
-          user: user,
-        );
       case MapViewMode.yandex:
         return GuideYandexMap(
           guide: widget.guide,
@@ -140,13 +132,11 @@ class _GuideMapState extends State<GuideMap> {
 class _MapSwitcher extends StatelessWidget {
   const _MapSwitcher({
     required this.mode,
-    required this.hasSnapshot,
     required this.hasYandex,
     required this.onChanged,
   });
 
   final MapViewMode mode;
-  final bool hasSnapshot;
   final bool hasYandex;
   final ValueChanged<MapViewMode> onChanged;
 
@@ -160,8 +150,6 @@ class _MapSwitcher extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (hasSnapshot)
-              _chip('Картинка', MapViewMode.snapshot),
             _chip('OSM', MapViewMode.osm),
             if (hasYandex) _chip('Яндекс', MapViewMode.yandex),
           ],

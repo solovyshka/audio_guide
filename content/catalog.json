@@ -1,7 +1,30 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-19T05:51:00Z",
+  "updatedAt": "2026-09-19T18:05:00Z",
   "guides": [
+    {
+      "id": "gazgoldernaya",
+      "title": "Газгольдерная 10 · тест меток",
+      "subtitle": "Пять точек вокруг дома, чтобы проверить карту",
+      "aliases": [
+        "газгольдерная",
+        "газгольдерная 10",
+        "профит",
+        "газгольдер",
+        "gazgoldernaya"
+      ],
+      "city": "Москва",
+      "region": "ЮВАО, Нижегородский район",
+      "center": {
+        "lat": 55.727184,
+        "lon": 37.735768
+      },
+      "stopsCount": 5,
+      "durationSec": 99,
+      "language": "ru",
+      "guidePath": "guides/gazgoldernaya/guide.json",
+      "contentVersion": 1
+    },
     {
       "id": "kolomna",
       "title": "Коломна",
@@ -39,14 +62,14 @@
       "city": "Коломна",
       "region": "Московская область",
       "center": {
-        "lat": 55.084,
-        "lon": 38.753
+        "lat": 55.10113,
+        "lon": 38.76374
       },
       "stopsCount": 18,
       "durationSec": 805,
       "language": "ru",
       "guidePath": "guides/kolomna-long/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "voronezh",
@@ -261,6 +284,26 @@
       "durationSec": 371,
       "language": "ru",
       "guidePath": "guides/tula/guide.json",
+      "contentVersion": 2
+    },
+    {
+      "id": "tula-long",
+      "title": "Тула · длинный",
+      "subtitle": "Фактическая основа для аудиогида по историческому центру Тулы",
+      "aliases": [
+        "Тула",
+        "Тула длинный"
+      ],
+      "city": "Тула",
+      "region": "Тульская область",
+      "center": {
+        "lat": 54.195279,
+        "lon": 37.620578
+      },
+      "stopsCount": 13,
+      "durationSec": 401,
+      "language": "ru",
+      "guidePath": "guides/tula-long/guide.json",
       "contentVersion": 2
     }
   ]

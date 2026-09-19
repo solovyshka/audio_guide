@@ -75,7 +75,18 @@ class GuideApi {
   }
 
   Future<AppRelease?> fetchAppRelease() async {
-    final response = await http.get(Uri.parse('$baseUrl/app/version.json'));
+    final uri = Uri.parse('$baseUrl/app/version.json').replace(
+      queryParameters: {
+        't': DateTime.now().millisecondsSinceEpoch.toString(),
+      },
+    );
+    final response = await http.get(
+      uri,
+      headers: const {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+      },
+    );
     if (response.statusCode != 200) {
       return null;
     }

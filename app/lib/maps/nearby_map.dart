@@ -3,6 +3,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../models/guide.dart';
+import 'location_hint.dart';
 import 'stop_chip.dart';
 import 'user_dot.dart';
 import 'user_location.dart';
@@ -203,8 +204,9 @@ class _NearbyMapState extends State<NearbyMap> {
                   if (user != null)
                     Marker(
                       point: LatLng(user.lat, user.lon),
-                      width: 28,
-                      height: 28,
+                      width: 18,
+                      height: 18,
+                      alignment: Alignment.center,
                       child: const UserDot(),
                     ),
                 ],
@@ -212,15 +214,11 @@ class _NearbyMapState extends State<NearbyMap> {
             ],
           ),
           if (user == null)
-            const IgnorePointer(
-              child: ColoredBox(
-                color: Color(0x88E8E4DC),
-                child: Center(
-                  child: Text(
-                    'Определяю местоположение…',
-                    style: TextStyle(fontWeight: FontWeight.w600),
-                  ),
-                ),
+            const Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 10),
+                child: LocationHint(),
               ),
             ),
         ],

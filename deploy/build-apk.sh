@@ -8,7 +8,7 @@ DEVELOP="${DEVELOP:-$HOME/develop}"
 ANDROID_SDK="${ANDROID_HOME:-$HOME/Android/Sdk}"
 FLUTTER_ROOT="${FLUTTER_ROOT:-$DEVELOP/flutter}"
 SECRETS="${SECRETS:-$HOME/.local/share/audio_guide}"
-PUBLIC_BASE="${PUBLIC_BASE_URL:-http://51.254.219.211}"
+PUBLIC_BASE="${PUBLIC_BASE_URL:-https://audio.solovyshka.com}"
 OVH_HOST="${OVH_HOST:-ubuntu@51.254.219.211}"
 
 export JAVA_HOME="${JAVA_HOME:-$(dirname "$(dirname "$(readlink -f "$(command -v java)")")")}"
@@ -100,14 +100,23 @@ for abi in armeabi-v7a x86_64; do
   fi
 done
 
-VERSION_LINE="$(python3 - "$APP/pubspec.yaml" <<'PY'
-from pathlib import Path
-import re, sys
-text = Path(sys.argv[1]).read_text()
-m = re.search(r"^version:\s*([0-9.]+)\+([0-9]+)", text, re.M)
-if not m:
-    raise SystemExit("pubspec version not found")
-print(m.group(1), m.group(2))
+# Split ABI APKs get versionCode = abiCode*1000 + pubspec plus
+# (arm64-v8a → 2xxx). The phone compares PackageInfo.buildNumber
+# to version.json, so publish the code aapt writes into the APK.
+AAPT="$(ls -1 "$ANDROID_SDK"/build-tools/*/aapt 2>/dev/null | sort | tail -1)"
+if [ -z "$AAPT" ] || [ ! -x "$AAPT" ]; then
+  echo "aapt not found under $ANDROID_SDK/build-tools" >&2
+  exit 1
+fi
+VERSION_LINE="$(python3 - "$APK" "$AAPT" <<'PY'
+import re, subprocess, sys
+apk, aapt = sys.argv[1], sys.argv[2]
+text = subprocess.check_output([aapt, "dump", "badging", apk], text=True)
+code = re.search(r"versionCode='(\d+)'", text)
+name = re.search(r"versionName='([^']+)'", text)
+if not code or not name:
+    raise SystemExit("aapt did not report versionCode/versionName")
+print(name.group(1), code.group(1))
 PY
 )"
 VERSION_NAME="${VERSION_LINE%% *}"

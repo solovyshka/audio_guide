@@ -42,12 +42,13 @@
   <main>
     <h1>Аудиогид</h1>
     <p>Установка с телефона, без магазина приложений. Если прямой файл не качается — открой эту страницу, не ссылку на <code>.apk</code>.</p>
-    <a class="btn" href="#" id="download" download="audio_guide.apk">Скачать приложение</a>
+    <a class="btn" href="/app/update.bin" id="download" download="audio_guide.apk">Скачать приложение</a>
     <small id="hint">После загрузки Android спросит разрешение на установку из браузера. Если связь оборвётся — нажмите ещё раз, файл качается кусками.</small>
   </main>
   <script>
     const url = "/app/update.bin";
-    const chunk = 4 * 1024 * 1024;
+    const https = location.protocol === "https:";
+    const chunk = https ? 4 * 1024 * 1024 : 16 * 1024;
     const btn = document.getElementById("download");
     const hint = document.getElementById("hint");
     btn.addEventListener("click", async (event) => {
@@ -85,14 +86,21 @@
       let last = null;
       for (let i = 0; i < 8; i++) {
         try {
-          const response = await fetch(url, {
-            headers: { Range: "bytes=" + start + "-" + end },
-            cache: "no-store",
-          });
-          if (!response.ok && response.status !== 206) {
-            throw new Error("HTTP " + response.status);
+          const ctrl = new AbortController();
+          const timer = setTimeout(function () { ctrl.abort(); }, 25000);
+          try {
+            const response = await fetch(url, {
+              headers: { Range: "bytes=" + start + "-" + end },
+              cache: "no-store",
+              signal: ctrl.signal,
+            });
+            if (!response.ok && response.status !== 206) {
+              throw new Error("HTTP " + response.status);
+            }
+            return await response.arrayBuffer();
+          } finally {
+            clearTimeout(timer);
           }
-          return await response.arrayBuffer();
         } catch (error) {
           last = error;
           await new Promise((resolve) => setTimeout(resolve, 600 * (i + 1)));
