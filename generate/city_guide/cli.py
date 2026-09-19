@@ -56,7 +56,7 @@ def main(argv: list[str] | None = None) -> None:
         "--length",
         choices=["short", "long"],
         default="short",
-        help="Короткий (6–8 точек) или длинный (12–15) гид",
+        help="Короткий (6–8 точек) или длинный (15–30) гид",
     )
     p_api.add_argument("--no-catalog", action="store_true")
     p_api.add_argument("--no-tts", action="store_true")

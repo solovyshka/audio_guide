@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-16T17:00:00Z",
+  "updatedAt": "2026-09-19T05:51:00Z",
   "guides": [
     {
       "id": "kolomna",
@@ -27,6 +27,26 @@
       "language": "ru",
       "guidePath": "guides/kolomna/guide.json",
       "contentVersion": 2
+    },
+    {
+      "id": "kolomna-long",
+      "title": "Коломна · длинный",
+      "subtitle": "Историко-культурное ядро Коломны с дополнениями",
+      "aliases": [
+        "Коломна",
+        "Коломна длинный"
+      ],
+      "city": "Коломна",
+      "region": "Московская область",
+      "center": {
+        "lat": 55.084,
+        "lon": 38.753
+      },
+      "stopsCount": 18,
+      "durationSec": 805,
+      "language": "ru",
+      "guidePath": "guides/kolomna-long/guide.json",
+      "contentVersion": 1
     },
     {
       "id": "voronezh",

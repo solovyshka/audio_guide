@@ -20,10 +20,12 @@ from generate.city_guide.schemas import (
     CityGuide,
     CityResearch,
     GuideStop,
+    Intro,
     QAResult,
     StopResearch,
     Strict,
 )
+from generate.city_guide.slug import stop_slug
 
 QA_RETRIES = int(os.getenv("QA_RETRIES", "4"))
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4.1")
@@ -58,6 +60,11 @@ def _models(length: str) -> tuple[type[CityResearch], type[CityGuide]]:
 
 
 class _StopText(Strict):
+    text: str
+
+
+class _IntroText(Strict):
+    title: str
     text: str
 
 
@@ -123,9 +130,110 @@ def research_city(client, city: str, length: str = "short") -> CityResearch:
     return parse(client, MODEL, research_system(length), prompt, research_model, web=True)
 
 
-def write_guide(client, research: CityResearch, length: str = "short") -> CityGuide:
-    _, guide_model = _models(length)
+def _next_line(names: list[str], index: int) -> str:
+    if index + 1 >= len(names):
+        return "Это последняя точка: маршрут здесь заканчивается."
+    return f"Последняя фраза ведёт только к следующей точке: {names[index + 1]}."
+
+
+def _write_stop_text(
+    client,
+    src: StopResearch,
+    *,
+    length: str,
+    ending: str,
+    notes: list[str] | None = None,
+) -> str:
     spec = profile(length)
+    extra = ""
+    if notes:
+        extra = f"\nЗамечания QA: {json.dumps(notes, ensure_ascii=False)}\n"
+    prompt = f"""
+Перепиши ТОЛЬКО текст этой остановки.
+
+{spec.writer_block}
+
+Объект: {src.name}
+Категория: {src.category}
+Факты: {json.dumps(src.facts, ensure_ascii=False)}
+Даты: {json.dumps(src.dates, ensure_ascii=False)}
+Люди: {json.dumps(src.people, ensure_ascii=False)}
+Легенды: {json.dumps(src.legends, ensure_ascii=False)}
+Disputed: {json.dumps(src.disputed, ensure_ascii=False)}
+{extra}
+Текст должен быть про «{src.name}», не про соседние здания.
+{spec.min_sentences}–{spec.max_sentences} предложений, примерно {spec.min_stop_chars}–{spec.max_stop_chars} знаков.
+{ending}
+Спорное пометь «— неизвестно».
+"""
+    return parse(client, MODEL, writer_system(length), prompt, _StopText).text
+
+
+def _write_guide_by_stops(
+    client, research: CityResearch, length: str
+) -> CityGuide:
+    spec = profile(length)
+    names = [item.name for item in research.stops]
+    route = "; ".join(f"{i + 1}. {name}" for i, name in enumerate(names))
+    print(f"пишу intro ({len(research.stops)} точек)")
+    intro = parse(
+        client,
+        MODEL,
+        writer_system(length),
+        f"""
+Город: {research.city}
+Подзаголовок: {research.subtitle}
+Маршрут: {route}
+
+{spec.writer_block}
+
+Напиши только intro: title и text.
+{spec.min_intro}–{spec.max_intro} знаков.
+Не описывай каждую точку подробно — зачем этот длинный круг и сколько остановок.
+Не выдумывай факты вне research.
+""",
+        _IntroText,
+    )
+    stops: list[GuideStop] = []
+    for index, src in enumerate(research.stops):
+        print(f"пишу остановку {index + 1}/{len(research.stops)}: {src.name}")
+        text = _write_stop_text(
+            client,
+            src,
+            length=length,
+            ending=_next_line(names, index),
+        )
+        stops.append(
+            GuideStop(
+                id=stop_slug(src.name),
+                name=src.name,
+                lat=src.coordinates.lat,
+                lon=src.coordinates.lon,
+                category=src.category,
+                order=index + 1,
+                text=text,
+            )
+        )
+    return CityGuide(
+        id=guide_id_for(research.city, length),
+        contentVersion=1,
+        title=f"{research.city} · длинный",
+        subtitle=research.subtitle,
+        city=research.city,
+        region=research.region,
+        language="ru",
+        center=research.center,
+        aliases=list(research.aliases or []),
+        intro=Intro(title=intro.title, text=intro.text),
+        stops=stops,
+    )
+
+
+def write_guide(client, research: CityResearch, length: str = "short") -> CityGuide:
+    spec = profile(length)
+    if spec.key == "long":
+        return _write_guide_by_stops(client, research, length)
+    _, guide_model = _models(length)
     payload = json.dumps(dump(research), ensure_ascii=False, indent=2)
     prompt = f"""
 Вот проверенная исследовательская база:
@@ -249,41 +357,17 @@ def rewrite_stop(
     notes: list[str],
     length: str = "short",
 ) -> GuideStop:
-    spec = profile(length)
-    src = next(
-        (item for i, item in enumerate(research.stops) if guide.stops[i].id == stop.id),
-        None,
-    )
-    if src is None:
+    idx = next((i for i, item in enumerate(guide.stops) if item.id == stop.id), None)
+    if idx is None or idx >= len(research.stops):
         return stop
-    idx = next(i for i, item in enumerate(guide.stops) if item.id == stop.id)
-    nxt = guide.stops[idx + 1].name if idx + 1 < len(guide.stops) else None
-    ending = (
-        "Это последняя точка: маршрут здесь заканчивается."
-        if nxt is None
-        else f"Последняя фраза ведёт только к следующей точке: {nxt}."
+    text = _write_stop_text(
+        client,
+        research.stops[idx],
+        length=length,
+        ending=_next_line([item.name for item in research.stops], idx),
+        notes=notes,
     )
-    prompt = f"""
-Перепиши ТОЛЬКО текст этой остановки.
-
-{spec.writer_block}
-
-Объект: {src.name}
-Категория: {src.category}
-Факты: {json.dumps(src.facts, ensure_ascii=False)}
-Даты: {json.dumps(src.dates, ensure_ascii=False)}
-Люди: {json.dumps(src.people, ensure_ascii=False)}
-Легенды: {json.dumps(src.legends, ensure_ascii=False)}
-Disputed: {json.dumps(src.disputed, ensure_ascii=False)}
-Замечания QA: {json.dumps(notes, ensure_ascii=False)}
-
-Текст должен быть про «{src.name}», не про соседние здания.
-{spec.min_sentences}–{spec.max_sentences} предложений, примерно {spec.min_stop_chars}–{spec.max_stop_chars} знаков.
-{ending}
-Спорное пометь «— неизвестно».
-"""
-    rewritten = parse(client, MODEL, writer_system(length), prompt, _StopText)
-    return stop.model_copy(update={"text": rewritten.text})
+    return stop.model_copy(update={"text": text})
 
 
 def _rewrite_flagged(
@@ -360,7 +444,7 @@ def run_api_city(
                 break
             _save_draft(city_id, research, guide)
             raise RuntimeError(f"QA не пропустил текст: {_qa_summary(result)}")
-        if attempt >= 2:
+        if spec.key == "long" or attempt >= 2:
             guide = _stamp(
                 research,
                 _rewrite_flagged(client, research, guide, result, length),

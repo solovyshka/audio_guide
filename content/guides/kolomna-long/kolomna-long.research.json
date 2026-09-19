@@ -1,0 +1,501 @@
+{
+  "city": "Коломна",
+  "region": "Московская область",
+  "center": {
+    "lat": 55.084,
+    "lon": 38.753
+  },
+  "subtitle": "Историко-культурное ядро Коломны с дополнениями",
+  "aliases": [],
+  "stops": [
+    {
+      "name": "Коломенский кремль",
+      "coordinates": {
+        "lat": 55.0828,
+        "lon": 38.7574
+      },
+      "address": "г. Коломна, ул. Лажечникова",
+      "category": "fortification (кремль)",
+      "facts": [
+        "Построен 1525–1531 гг. по приказу Василия III как южная твердыня Московского княжества",
+        "Занимает площадь около 24 гектаров",
+        "Сохранились кирпичные стены с семью башнями, включая знаменитую Пятницкую",
+        "Внутри кремля находятся Успенский собор, Ново‑Голутвинский монастырь, музей трамваев, краеведческий музей"
+      ],
+      "dates": [
+        "1525–1531 (постройка)"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "территория свободна для прогулок, музеи въ внутри по расписанию",
+      "sources": [
+        {
+          "title": "Туризм Администрации Коломны",
+          "url": "https://www.kolomnagrad.ru/turizm.html"
+        },
+        {
+          "title": "Путеводитель Подмосковья: топ-25 достоприм.",
+          "url": "https://welcome.mosreg.ru/stories/top-25-dostoprimecatel-nostej-kolomny-cto-posmotret-в-starinnom-gorode-za-vyhodnye"
+        }
+      ]
+    },
+    {
+      "name": "Успенский кафедральный собор",
+      "coordinates": {
+        "lat": 55.0825,
+        "lon": 38.7578
+      },
+      "address": "г. Коломна, ул. Лазарева, 14",
+      "category": "church (собор)",
+      "facts": [
+        "Современное здание построено 1672–1682 гг. артелью каменных дел мастера Мелентия Алексеева",
+        "Расположен внутри кремля"
+      ],
+      "dates": [
+        "1672–1682"
+      ],
+      "people": [
+        "Мелентий Алексеев (мастер)"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "вход по музейному режиму (смотр на сайте музея)",
+      "sources": [
+        {
+          "title": "Администрация Коломны — туризм",
+          "url": "https://www.kolomnagrad.ru/turizm.html"
+        }
+      ]
+    },
+    {
+      "name": "Свято‑Троицкий Ново‑Голутвинский монастырь",
+      "coordinates": {
+        "lat": 55.0822,
+        "lon": 38.7585
+      },
+      "address": "внутри территории кремля",
+      "category": "monastery",
+      "facts": [
+        "Монастырь расположен в пределах кремля",
+        "Связан с историей Сергия Радонежского и князя Дмитрия Донского (по преданию)"
+      ],
+      "dates": [],
+      "people": [
+        "Сергий Радонежский (предание)",
+        "Дмитрий Донской (предание)"
+      ],
+      "legends": [
+        "По преданию Сергий Радонежский выбрал место и участвовал в закладке Богоявленского собора по просьбе Дмитрия Донского"
+      ],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Путеводитель Подмосковья: достопр.",
+          "url": "https://welcome.mosreg.ru/stories/top-10-dostoprimecatel-nostej-kolomny"
+        },
+        {
+          "title": "Путеводитель Подмосковья: топ‑25",
+          "url": "https://welcome.mosreg.ru/stories/top-25-dostoprimecatel-nostej-kolomny-cto-posmotret-в-starinnom-gorode-za-vyhodnye"
+        }
+      ]
+    },
+    {
+      "name": "Дом купцов Лажечниковых (усадьба)",
+      "coordinates": {
+        "lat": 55.0826,
+        "lon": 38.756
+      },
+      "address": "Коломна, ул. Лажечникова, д. 15",
+      "category": "house / estate",
+      "facts": [
+        "Исторический памятник середины XVIII–XIX вв.",
+        "Состоит в структуре музея‑заповедника «Коломенский кремль»"
+      ],
+      "dates": [
+        "XVIII–XIX вв."
+      ],
+      "people": [
+        "купцы Лажечниковы (антропоним)"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Историко‑культурный музей‑заповедник",
+          "url": "https://kolomnamuzej.ru/"
+        }
+      ]
+    },
+    {
+      "name": "Коломенский краеведческий музей",
+      "coordinates": {
+        "lat": 55.0827,
+        "lon": 38.757
+      },
+      "address": "Коломна, ул. Лажечникова, 15",
+      "category": "museum",
+      "facts": [
+        "Учреждение является отделом музея‑заповедника «Коломенский кремль»"
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Турист‑инфо центр VisitKolomna",
+          "url": "https://kolomnavisit.ru/ru/about/tic/"
+        }
+      ]
+    },
+    {
+      "name": "Музей трамваев",
+      "coordinates": {
+        "lat": 55.0829,
+        "lon": 38.758
+      },
+      "address": "",
+      "category": "museum",
+      "facts": [
+        "Расположен внутри кремля",
+        "Освещает историю коломенского трамвая"
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Путеводитель Подмосковья: топ‑25",
+          "url": "https://welcome.mosreg.ru/stories/top-25-dostoprimecatel-nostej-kolomny-cto-posmotret-в-starinnom-gorode-za-выходные"
+        }
+      ]
+    },
+    {
+      "name": "Музей «Коломенская пастила»",
+      "coordinates": {
+        "lat": 55.082,
+        "lon": 38.759
+      },
+      "address": "",
+      "category": "museum",
+      "facts": [
+        "Раскрывает секреты приготовления пастилы, рассказывает о традициях чаепития",
+        "Связан с интересом Достоевского к пастиле"
+      ],
+      "dates": [],
+      "people": [
+        "Фёдор Достоевский (любит пастилу)"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Путеводитель Подмосковья: достопримеч.",
+          "url": "https://welcome.mosreg.ru/stories/top-10-dostoprimecatel-nostej-kolomny"
+        }
+      ]
+    },
+    {
+      "name": "Музей «Душистыя радости»",
+      "coordinates": {
+        "lat": 55.082,
+        "lon": 38.76
+      },
+      "address": "",
+      "category": "museum",
+      "facts": [
+        "Интерактивный музей связанных с мыловарением и гигиеническими традициями прошлого"
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Путеводитель Подмосковья: достопримеч.",
+          "url": "https://welcome.mosreg.ru/stories/top-10-dostoprimecatel-nostej-kolomny"
+        }
+      ]
+    },
+    {
+      "name": "Пожарная каланча (пожарная часть с каланчой)",
+      "coordinates": {
+        "lat": 55.0835,
+        "lon": 38.7595
+      },
+      "address": "",
+      "category": "monument / civic building",
+      "facts": [
+        "Здание XVIII века, выполнено в классическом стиле"
+      ],
+      "dates": [
+        "XVIII век"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Администрация Коломны — туризм",
+          "url": "https://www.kolomnagrad.ru/turizm.html"
+        }
+      ]
+    },
+    {
+      "name": "Торговые ряды",
+      "coordinates": {
+        "lat": 55.083,
+        "lon": 38.7575
+      },
+      "address": "",
+      "category": "civic building / trade",
+      "facts": [
+        "Построены в первой половине XIX века"
+      ],
+      "dates": [
+        "первая половина XIX в."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Администрация Коломны — туризм",
+          "url": "https://www.kolomnagrad.ru/turizm.html"
+        }
+      ]
+    },
+    {
+      "name": "Дома купцов Шевлягина и Мещанинова",
+      "coordinates": {
+        "lat": 55.0832,
+        "lon": 38.758
+      },
+      "address": "",
+      "category": "house / civic building",
+      "facts": [
+        "Дома в стиле барокко"
+      ],
+      "dates": [],
+      "people": [
+        "купцы Шевлягин и Мещанинов"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Администрация Коломны — туризм",
+          "url": "https://www.kolomnagrad.ru/turizm.html"
+        }
+      ]
+    },
+    {
+      "name": "Михаило‑Архангельский храм",
+      "coordinates": {
+        "lat": 55.0845,
+        "lon": 38.756
+      },
+      "address": "ул. Гражданская, 71",
+      "category": "church",
+      "facts": [
+        "Главный храм на берегу реки Коломенки напротив Михайловских ворот кремля",
+        "Реконструирован 1828–1833 гг. по проекту Фёдора Шестакова"
+      ],
+      "dates": [
+        "1828–1833"
+      ],
+      "people": [
+        "Фёдор Шестаков (архитектор)"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Путеводитель Подмосковья маршрут",
+          "url": "https://welcome.mosreg.ru/route/kolomna---za-odin-den-progulka-po-istoriceskomu-centru-goroda"
+        }
+      ]
+    },
+    {
+      "name": "Храм Воскресения Словущего",
+      "coordinates": {
+        "lat": 55.0838,
+        "lon": 38.759
+      },
+      "address": "ул. Дмитрия Донского, 16",
+      "category": "church",
+      "facts": [
+        "Первые упоминания относятся к XIV веку",
+        "По преданию считается местом, где Дмитрий Донской венчался"
+      ],
+      "dates": [
+        "XIV век (упоминания)"
+      ],
+      "people": [
+        "Дмитрий Донской (по предположению венчание)"
+      ],
+      "legends": [
+        "Считается, что здесь венчался Дмитрий Донской"
+      ],
+      "disputed": [
+        "нет подтверждения документами"
+      ],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Прогулка по историческому центру",
+          "url": "https://welcome.mosreg.ru/route/kolomna---za-odin-den-progulka-po-istoriceskomu-centru-goroda"
+        }
+      ]
+    },
+    {
+      "name": "Мемориал «Коломенцам, отдавшим жизнь за Родину 1941–1945»",
+      "coordinates": {
+        "lat": 55.085,
+        "lon": 38.754
+      },
+      "address": "",
+      "category": "monument",
+      "facts": [
+        "Построен 1970 г.",
+        "Содержит Вечный огонь"
+      ],
+      "dates": [
+        "1970"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Администрация Коломны — туризм",
+          "url": "https://www.kolomnagrad.ru/turizm.html"
+        }
+      ]
+    },
+    {
+      "name": "Памятник князю Дмитрию Донскому",
+      "coordinates": {
+        "lat": 55.0852,
+        "lon": 38.7545
+      },
+      "address": "",
+      "category": "monument",
+      "facts": [
+        "Первое в России конное изваяние Дмитрия Донского",
+        "Открыт 22 мая 2007 г.",
+        "Создан скульптором Александром Рукавишниковым"
+      ],
+      "dates": [
+        "22 мая 2007"
+      ],
+      "people": [
+        "Александр Рукавишников (скульптор)"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Администрация Коломны — туризм",
+          "url": "https://www.kolomnagrad.ru/turizm.html"
+        }
+      ]
+    },
+    {
+      "name": "Старо‑Голутвинский монастырь",
+      "coordinates": {
+        "lat": 55.08,
+        "lon": 38.76
+      },
+      "address": "",
+      "category": "monastery",
+      "facts": [
+        "Основан в XIV веке",
+        "Перемещён в 1799 г. в Коломну архиереем Платоном"
+      ],
+      "dates": [
+        "XIV век (основание)",
+        "1799 (перенос)"
+      ],
+      "people": [
+        "митрополит Платон"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Администрация Коломны — туризм",
+          "url": "https://www.kolomnagrad.ru/turizm.html"
+        }
+      ]
+    },
+    {
+      "name": "Брусенский Успенский женский монастырь",
+      "coordinates": {
+        "lat": 55.082,
+        "lon": 38.7595
+      },
+      "address": "",
+      "category": "monastery",
+      "facts": [
+        "Основан в конце XVII века",
+        "Имеет Воздвиженский собор в стиле нарышкинского барокко и классицизма"
+      ],
+      "dates": [
+        "конец XVII в."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Администрация Коломны — туризм",
+          "url": "https://www.kolomnagrad.ru/turizm.html"
+        },
+        {
+          "title": "Архитектура Коломны",
+          "url": "https://ru.wikipedia.org/wiki/Архитектура_Коломны"
+        }
+      ]
+    },
+    {
+      "name": "Парк Мира",
+      "coordinates": {
+        "lat": 55.088,
+        "lon": 38.76
+      },
+      "address": "",
+      "category": "park",
+      "facts": [
+        "Исторически обозначен в Википедии как городской парк"
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": "",
+      "sources": [
+        {
+          "title": "Википедия: Коломна",
+          "url": "https://ru.wikipedia.org/wiki/Коломна"
+        }
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@
 
 ```text
 Собери аудиогид по очереди из generate/cities.txt.
-Один город за проход. Формат: короткий (6–8 точек) или длинный (12–15).
+Один город за проход. Формат: короткий (6–8 точек) или длинный (15–30).
 Промпты: python -m generate.city_guide prompts research --length short|long
 и prompts writer --length … После текста: normalize-write, затем validate до OK.
 ```

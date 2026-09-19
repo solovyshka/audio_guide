@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import '../api/client.dart';
+import '../maps/nearby_map.dart';
 import '../models/generate_job.dart';
 import '../models/guide.dart';
 import '../offline/guide_actions.dart';
@@ -24,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final _search = TextEditingController();
   final _speech = SpeechToText();
   List<GuideSummary> _guides = [];
+  List<GuideSummary> _catalog = [];
   bool _loading = true;
   String? _error;
   bool _offline = false;
@@ -55,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (!mounted) return;
       setState(() {
         _guides = guides;
+        _catalog = guides;
         _loading = false;
         _offline = false;
       });
@@ -64,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (local.isNotEmpty) {
         setState(() {
           _guides = local;
+          _catalog = local;
           _loading = false;
           _offline = true;
           _error = null;
@@ -89,6 +93,9 @@ class _HomeScreenState extends State<HomeScreen> {
       if (!mounted) return;
       setState(() {
         _guides = guides;
+        if (query.trim().isEmpty) {
+          _catalog = guides;
+        }
         _loading = false;
         _offline = false;
       });
@@ -190,6 +197,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text('Нет сети — показаны скачанные гиды'),
               ),
             ),
+          SizedBox(
+            height: 240,
+            child: NearbyMap(
+              guides: _catalog.isNotEmpty ? _catalog : _guides,
+              onGuideTap: (guide) {
+                Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        GuideScreen(api: widget.api, guideId: guide.id),
+                  ),
+                );
+              },
+            ),
+          ),
+          const Divider(height: 1),
           Expanded(child: _body()),
         ],
       ),
@@ -220,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 12),
             const Text(
               'Короткий — 6–8 точек, около часа пешком.\n'
-              'Длинный — 12–15 точек, на 2–4 часа.\n'
+              'Длинный — 15–30 точек, на 3–6 часов.\n'
               'Сборка занимает несколько минут.',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 13),
@@ -399,9 +421,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _openGenerated(String guideId) async {
-    await _searchGuides(_search.text);
+    await _loadCatalog();
     if (!mounted) {
       return;
+    }
+    if (_search.text.trim().isNotEmpty) {
+      await _searchGuides(_search.text);
+      if (!mounted) {
+        return;
+      }
     }
     await Navigator.of(context).push(
       MaterialPageRoute<void>(
