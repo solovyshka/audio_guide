@@ -148,6 +148,9 @@ class GuideCache extends ChangeNotifier {
         'sights': [
           for (final place in city.sights) _placeJson(place),
         ],
+        'nature': [
+          for (final place in city.nature) _placeJson(place),
+        ],
         'culture': [
           for (final place in city.culture) _placeJson(place),
         ],

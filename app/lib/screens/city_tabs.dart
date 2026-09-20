@@ -53,6 +53,7 @@ class CityTabs extends StatelessWidget {
               Tab(text: 'История'),
               Tab(text: 'Настоящее'),
               Tab(text: 'Места'),
+              Tab(text: 'Природа'),
               Tab(text: 'Культура'),
               Tab(text: 'Досуг'),
               Tab(text: 'Короткий'),
@@ -66,7 +67,8 @@ class CityTabs extends StatelessWidget {
             children: [
               _history(context),
               _present(context),
-              _places(context, city.sights, 'Достопримечательности пока не собраны'),
+              _places(context, city.sights, 'Городские достопримечательности пока не собраны'),
+              _places(context, city.nature, 'Парки и смотровые пока не собраны'),
               _places(context, city.culture, 'Музеи и театры пока не собраны'),
               _places(context, city.leisure, 'Кофе, кондитерские и рестораны пока не собраны'),
               _guideTab(context, city.guides.short, 'Короткий аудиогид'),

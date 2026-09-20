@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from collections import Counter
 from typing import List, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 class Strict(BaseModel):
@@ -134,6 +135,7 @@ class CityDossier(Strict):
     history: HistoryBlock
     present: PresentBlock
     sights: List[CityPlace] = Field(default_factory=list)
+    nature: List[CityPlace] = Field(default_factory=list)
     culture: List[CityPlace] = Field(default_factory=list)
     leisure: List[CityPlace] = Field(default_factory=list)
     guides: CityGuides = Field(default_factory=CityGuides)
@@ -161,5 +163,39 @@ class CityDossierGen(Strict):
     history: HistoryBlockGen
     present: PresentBlockGen
     sights: List[CityPlace] = Field(min_length=6, max_length=14)
+    nature: List[CityPlace] = Field(default_factory=list, max_length=14)
     culture: List[CityPlace] = Field(min_length=4, max_length=12)
-    leisure: List[CityPlace] = Field(min_length=6, max_length=14)
+    leisure: List[CityPlace] = Field(min_length=3, max_length=24)
+
+    @model_validator(mode="after")
+    def leisure_caps_per_kind(self):
+        counts = Counter((item.kind or "").strip().lower() for item in self.leisure)
+        problems: list[str] = []
+        for kind in ("coffee", "pastry", "restaurant"):
+            n = counts.get(kind, 0)
+            if n < 1:
+                problems.append(f"нет {kind}")
+            elif n > 4:
+                problems.append(f"{kind} {n}/4")
+        extra = sorted(k for k in counts if k not in {"coffee", "pastry", "restaurant"})
+        if extra:
+            problems.append("лишние kind: " + ", ".join(extra))
+        if problems:
+            raise ValueError(
+                "Досуг: до 4 coffee/pastry/restaurant с рейтингом > 4.5; "
+                + "; ".join(problems)
+            )
+        return self
+
+    @model_validator(mode="after")
+    def nature_kinds(self):
+        extra = sorted(
+            {
+                (item.kind or "").strip().lower()
+                for item in self.nature
+                if (item.kind or "").strip().lower() not in {"park", "viewpoint"}
+            }
+        )
+        if extra:
+            raise ValueError("Природа: только park или viewpoint, не " + ", ".join(extra))
+        return self

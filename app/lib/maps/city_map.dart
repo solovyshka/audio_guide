@@ -96,6 +96,8 @@ class _CityMapState extends State<CityMap> {
         return Icons.headset;
       case PlaceGroup.food:
         return Icons.restaurant;
+      case PlaceGroup.nature:
+        return Icons.park;
       case PlaceGroup.sight:
         return Icons.account_balance;
     }

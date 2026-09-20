@@ -111,6 +111,7 @@ class City(CitySummary):
     history: HistoryBlock = Field(default_factory=HistoryBlock)
     present: PresentBlock = Field(default_factory=PresentBlock)
     sights: list[CityPlace] = []
+    nature: list[CityPlace] = []
     culture: list[CityPlace] = []
     leisure: list[CityPlace] = []
 
@@ -239,6 +240,7 @@ def city_from_package(raw: dict[str, Any]) -> City:
             economy=present_raw.get("economy") or "",
         ),
         sights=places("sights"),
+        nature=places("nature"),
         culture=places("culture"),
         leisure=places("leisure"),
     )

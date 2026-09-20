@@ -515,7 +515,8 @@ def run_api_city(
     return folder
 
 
-_SIGHT_KINDS = {"sight", "viewpoint"}
+_SIGHT_KINDS = {"sight"}
+_NATURE_KINDS = {"park", "viewpoint"}
 _CULTURE_KINDS = {"museum", "theater", "culture"}
 _LEISURE_KINDS = {"coffee", "pastry", "restaurant"}
 
@@ -523,7 +524,9 @@ _LEISURE_KINDS = {"coffee", "pastry", "restaurant"}
 def _normalize_place(place: CityPlace, fallback: str) -> CityPlace:
     kind = (place.kind or fallback).strip().lower()
     if fallback == "sight" and kind not in _SIGHT_KINDS:
-        kind = "viewpoint" if "смотр" in place.summary.lower() else "sight"
+        kind = "sight"
+    elif fallback == "nature" and kind not in _NATURE_KINDS:
+        kind = "park" if "парк" in place.summary.lower() or "сквер" in place.name.lower() else "viewpoint"
     elif fallback == "culture" and kind not in _CULTURE_KINDS:
         kind = "museum"
     elif fallback == "leisure" and kind not in _LEISURE_KINDS:
@@ -541,10 +544,12 @@ def _dossier_from_gen(raw: CityDossierGen, city_id: str) -> CityDossier:
     from generate.city_guide.geo import snap_city_places
 
     sights = [_normalize_place(item, "sight") for item in raw.sights]
+    nature = [_normalize_place(item, "nature") for item in raw.nature]
     culture = [_normalize_place(item, "culture") for item in raw.culture]
     leisure = [_normalize_place(item, "leisure") for item in raw.leisure]
     print("уточняю координаты POI по OSM")
     sights = snap_city_places(raw.city, sights)
+    nature = snap_city_places(raw.city, nature)
     culture = snap_city_places(raw.city, culture)
     leisure = snap_city_places(raw.city, leisure)
     aliases = list(dict.fromkeys([*(raw.aliases or []), raw.city, raw.title]))
@@ -569,6 +574,7 @@ def _dossier_from_gen(raw: CityDossierGen, city_id: str) -> CityDossier:
             economy=raw.present.economy,
         ),
         sights=sights,
+        nature=nature,
         culture=culture,
         leisure=leisure,
         guides=CityGuides(),
@@ -580,7 +586,8 @@ def research_dossier(client, city: str) -> CityDossier:
     prompt = f"""
 Собери досье города: {city}
 
-Нужны история, настоящее, достопримечательности, культура и досуг.
+Нужны история, настоящее, городские места, парки и смотровые, культура и досуг.
+Места, природу и досуг бери с карт по стране города, не из OSM.
 Координаты каждого места — самого объекта.
 id места — ASCII slug.
 """

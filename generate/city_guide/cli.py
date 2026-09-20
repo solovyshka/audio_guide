@@ -82,7 +82,17 @@ def main(argv: list[str] | None = None) -> None:
     p_prompt = sub.add_parser("prompts", help="Печать system-промптов для агента")
     p_prompt.add_argument(
         "name",
-        choices=["research", "writer", "qa", "fix", "agent", "dossier"],
+        choices=[
+            "research",
+            "writer",
+            "qa",
+            "fix",
+            "agent",
+            "dossier",
+            "leisure",
+            "sights",
+            "nature",
+        ],
     )
     p_prompt.add_argument(
         "--length",
@@ -181,6 +191,9 @@ def main(argv: list[str] | None = None) -> None:
             "fix": P.fix_system(args.length),
             "agent": P.AGENT_BATCH_STEPS,
             "dossier": P.DOSSIER_SYSTEM,
+            "leisure": P.LEISURE_RESEARCH,
+            "sights": P.SIGHTS_RESEARCH,
+            "nature": P.NATURE_RESEARCH,
         }
         print(mapping[args.name])
         return

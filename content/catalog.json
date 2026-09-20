@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-09-20T07:23:37Z",
+  "updatedAt": "2026-09-20T10:55:00Z",
   "guides": [
     {
       "id": "gazgoldernaya",
@@ -318,7 +318,8 @@
         "город коломна",
         "коломенский кремль",
         "kolomna",
-        "патефонка"
+        "патефонка",
+        "бобренев"
       ],
       "city": "Коломна",
       "region": "Московская область",
@@ -330,7 +331,7 @@
         "short": "kolomna",
         "long": "kolomna-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 5,
       "language": "ru"
     },
     {

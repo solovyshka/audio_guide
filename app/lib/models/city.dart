@@ -71,7 +71,7 @@ class CityPresent {
   }
 }
 
-enum PlaceGroup { guide, food, sight }
+enum PlaceGroup { guide, food, sight, nature }
 
 class CityPlace {
   const CityPlace({
@@ -96,6 +96,9 @@ class CityPlace {
       case 'pastry':
       case 'restaurant':
         return PlaceGroup.food;
+      case 'park':
+      case 'viewpoint':
+        return PlaceGroup.nature;
       case 'guide':
         return PlaceGroup.guide;
       default:
@@ -187,6 +190,7 @@ class City extends CitySummary {
     this.history = const CityHistory(),
     this.present = const CityPresent(),
     this.sights = const [],
+    this.nature = const [],
     this.culture = const [],
     this.leisure = const [],
   });
@@ -194,12 +198,14 @@ class City extends CitySummary {
   final CityHistory history;
   final CityPresent present;
   final List<CityPlace> sights;
+  final List<CityPlace> nature;
   final List<CityPlace> culture;
   final List<CityPlace> leisure;
 
   List<CityPlace> get mapPlaces {
     final pins = <CityPlace>[
       ...sights,
+      ...nature,
       ...culture,
       ...leisure,
     ];
@@ -244,6 +250,7 @@ class City extends CitySummary {
       history: CityHistory.fromJson(json['history'] as Map<String, dynamic>?),
       present: CityPresent.fromJson(json['present'] as Map<String, dynamic>?),
       sights: places('sights'),
+      nature: places('nature'),
       culture: places('culture'),
       leisure: places('leisure'),
     );

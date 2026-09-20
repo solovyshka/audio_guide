@@ -38,7 +38,7 @@ class _CityScreenState extends State<CityScreen>
   @override
   void initState() {
     super.initState();
-    _tabs = TabController(length: 7, vsync: this);
+    _tabs = TabController(length: 8, vsync: this);
     _guides = widget.guides;
     GuideCache.instance.addListener(_onCache);
     _open();
@@ -107,11 +107,13 @@ class _CityScreenState extends State<CityScreen>
     }
     var index = 2;
     if (place.group == PlaceGroup.guide) {
-      index = city.guides.short != null ? 5 : 6;
+      index = city.guides.short != null ? 6 : 7;
     } else if (place.group == PlaceGroup.food) {
-      index = 4;
-    } else if (city.culture.any((item) => item.id == place.id)) {
+      index = 5;
+    } else if (place.group == PlaceGroup.nature) {
       index = 3;
+    } else if (city.culture.any((item) => item.id == place.id)) {
+      index = 4;
     }
     setState(() => _selectedPlaceId = place.id);
     _tabs.animateTo(index);
