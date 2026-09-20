@@ -73,7 +73,7 @@ def _client():
 
     if not os.getenv("OPENAI_API_KEY"):
         raise RuntimeError(
-            "Не задан OPENAI_API_KEY (generate/.env или /opt/secrets/audio_guide/.env)"
+            "Не задан OPENAI_API_KEY"
         )
     timeout = float(os.getenv("OPENAI_TIMEOUT", "600"))
     return OpenAI(timeout=timeout)

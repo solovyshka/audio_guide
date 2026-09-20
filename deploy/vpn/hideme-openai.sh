@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # HideMyName OpenVPN split-tunnel for OpenAI only (no full redirect-gateway).
-# .ovpn lives under /opt/secrets — never in git.
+# .ovpn is outside git. Set HIDEME_OVPN_CONF or use the host secrets vault.
 #
 # Usage:
 #   sudo bash deploy/vpn/hideme-openai.sh up
@@ -79,7 +79,7 @@ resolve_ips() {
 do_up() {
   need_root
   if [[ -z "$CONF" || ! -f "$CONF" ]]; then
-    echo "hideme-openai: missing .ovpn (set HIDEME_OVPN_CONF or put netherlands-split.ovpn in /opt/secrets/vpn/)" >&2
+    echo "hideme-openai: missing .ovpn (set HIDEME_OVPN_CONF)" >&2
     exit 1
   fi
   if is_up; then
