@@ -48,7 +48,18 @@ class AppUpdater {
     final tmp = await getTemporaryDirectory();
     final dir = Directory('${tmp.path}/updates');
     await dir.create(recursive: true);
-    final file = File('${dir.path}/audio_guide.apk');
+    final file = File('${dir.path}/audio_guide-${release.versionCode}.apk');
+    if (await dir.exists()) {
+      await for (final entity in dir.list()) {
+        final path = entity.path;
+        if (path == file.path || path == '${file.path}.part') {
+          continue;
+        }
+        try {
+          await entity.delete();
+        } catch (_) {}
+      }
+    }
     final client = downloadClient();
     try {
       await downloadFile(
@@ -61,6 +72,13 @@ class AppUpdater {
       );
     } finally {
       client.close();
+    }
+    final size = await file.length();
+    if (release.sizeBytes != null && size != release.sizeBytes) {
+      await file.delete();
+      throw Exception(
+        'Скачанный файл неполный ($size из ${release.sizeBytes} байт)',
+      );
     }
     return file;
   }

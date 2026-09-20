@@ -4,7 +4,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import '../api/client.dart';
-import '../maps/city_map.dart';
 import '../maps/user_location.dart';
 import '../models/city.dart';
 import '../models/generate_job.dart';
@@ -13,7 +12,7 @@ import '../offline/guide_cache.dart';
 import '../update/app_release.dart';
 import '../update/app_updater.dart';
 import '../update/update_banner.dart';
-import 'city_tabs.dart';
+import 'city_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.api});
@@ -24,29 +23,22 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> {
   final _search = TextEditingController();
   final _speech = SpeechToText();
   final _distance = const Distance();
-  late final TabController _tabs;
   List<CitySummary> _cities = [];
-  List<CitySummary> _catalog = [];
   List<GuideSummary> _guides = [];
-  City? _city;
-  String? _selectedPlaceId;
   bool _loading = true;
   String? _error;
   bool _offline = false;
   bool _listening = false;
-  bool _userPicked = false;
   AppRelease? _update;
   GenerateJob? _job;
 
   @override
   void initState() {
     super.initState();
-    _tabs = TabController(length: 7, vsync: this);
     GuideCache.instance.addListener(_onCache);
     UserLocation.instance
       ..addListener(_onLocation)
@@ -62,10 +54,28 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   void _onLocation() {
-    if (!mounted || _userPicked || _search.text.trim().isNotEmpty) {
-      return;
+    if (mounted) {
+      setState(() {});
     }
-    _selectNearest();
+  }
+
+  List<CitySummary> _sorted(List<CitySummary> cities) {
+    final user = UserLocation.instance.fix;
+    if (user == null || cities.isEmpty) {
+      return cities;
+    }
+    final scored = [
+      for (final city in cities)
+        (
+          city: city,
+          meters: _distance.as(
+            LengthUnit.Meter,
+            LatLng(user.lat, user.lon),
+            LatLng(city.center.lat, city.center.lon),
+          ),
+        ),
+    ]..sort((a, b) => a.meters.compareTo(b.meters));
+    return [for (final item in scored) item.city];
   }
 
   Future<void> _loadCatalog() async {
@@ -82,12 +92,10 @@ class _HomeScreenState extends State<HomeScreen>
       if (!mounted) return;
       setState(() {
         _cities = cities;
-        _catalog = cities;
         _guides = guides;
         _loading = false;
         _offline = false;
       });
-      await _selectNearest();
     } catch (error) {
       final local = await GuideCache.instance.localCities();
       final localGuides = await GuideCache.instance.localCatalog();
@@ -95,13 +103,11 @@ class _HomeScreenState extends State<HomeScreen>
       if (local.isNotEmpty) {
         setState(() {
           _cities = local;
-          _catalog = local;
           _guides = localGuides;
           _loading = false;
           _offline = true;
           _error = null;
         });
-        await _selectNearest();
         return;
       }
       setState(() {
@@ -117,7 +123,6 @@ class _HomeScreenState extends State<HomeScreen>
       _loading = true;
       _error = null;
       _job = null;
-      _userPicked = needle.isNotEmpty;
     });
     try {
       final cities = needle.isEmpty
@@ -126,22 +131,9 @@ class _HomeScreenState extends State<HomeScreen>
       if (!mounted) return;
       setState(() {
         _cities = cities;
-        if (needle.isEmpty) {
-          _catalog = cities;
-          _userPicked = false;
-        }
         _loading = false;
         _offline = false;
       });
-      if (needle.isEmpty) {
-        await _selectNearest();
-        return;
-      }
-      if (cities.length == 1) {
-        await _openCity(cities.first.id);
-        return;
-      }
-      setState(() => _city = null);
     } catch (error) {
       final local = await GuideCache.instance.localCities();
       final filtered = needle.isEmpty
@@ -164,80 +156,26 @@ class _HomeScreenState extends State<HomeScreen>
           _offline = true;
           _error = null;
         });
-        if (filtered.length == 1) {
-          await _openCity(filtered.first.id);
-        } else {
-          setState(() => _city = null);
-        }
         return;
       }
       setState(() {
         _cities = [];
-        _city = null;
         _error = error.toString();
         _loading = false;
       });
     }
   }
 
-  Future<void> _selectNearest() async {
-    if (_userPicked || _catalog.isEmpty) {
-      return;
-    }
-    final user = UserLocation.instance.fix;
-    CitySummary pick = _catalog.first;
-    if (user != null) {
-      var best = double.infinity;
-      for (final city in _catalog) {
-        final meters = _distance.as(
-          LengthUnit.Meter,
-          LatLng(user.lat, user.lon),
-          LatLng(city.center.lat, city.center.lon),
-        );
-        if (meters < best) {
-          best = meters;
-          pick = city;
-        }
-      }
-    }
-    if (_city?.id == pick.id) {
-      return;
-    }
-    await _openCity(pick.id);
-  }
-
-  Future<void> _openCity(String id) async {
-    try {
-      final city = await widget.api.getCity(id);
-      await GuideCache.instance.saveCity(city);
-      if (!mounted) return;
-      setState(() {
-        _city = city;
-        _selectedPlaceId = null;
-        _error = null;
-        _loading = false;
-      });
-      if (_tabs.index != 0) {
-        _tabs.index = 0;
-      }
-    } catch (_) {
-      final local = await GuideCache.instance.loadLocalCity(id);
-      if (!mounted) return;
-      if (local != null) {
-        setState(() {
-          _city = local;
-          _selectedPlaceId = null;
-          _offline = true;
-          _loading = false;
-        });
-        return;
-      }
-      setState(() {
-        _city = null;
-        _error = 'Не удалось загрузить город';
-        _loading = false;
-      });
-    }
+  Future<void> _openCity(CitySummary item) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => CityScreen(
+          api: widget.api,
+          cityId: item.id,
+          guides: _guides,
+        ),
+      ),
+    );
   }
 
   Future<void> _checkUpdate({bool manual = false}) async {
@@ -323,30 +261,14 @@ class _HomeScreenState extends State<HomeScreen>
       ..removeListener(_onLocation)
       ..detach();
     _search.dispose();
-    _tabs.dispose();
     super.dispose();
   }
-
-  void _onPlaceTap(CityPlace place) {
-    var index = 2;
-    if (place.group == PlaceGroup.guide) {
-      index = city.guides.short != null ? 5 : 6;
-    } else if (place.group == PlaceGroup.food) {
-      index = 4;
-    } else if (_city!.culture.any((item) => item.id == place.id)) {
-      index = 3;
-    }
-    setState(() => _selectedPlaceId = place.id);
-    _tabs.animateTo(index);
-  }
-
-  City get city => _city!;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_city?.title ?? 'Город'),
+        title: const Text('Города'),
         actions: [
           PopupMenuButton<String>(
             tooltip: 'Меню',
@@ -396,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen>
               color: Color(0xFFE8E4DC),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Text('Нет сети — показан сохранённый город'),
+                child: Text('Нет сети — показаны сохранённые города'),
               ),
             ),
           Expanded(child: _body()),
@@ -448,7 +370,7 @@ class _HomeScreenState extends State<HomeScreen>
             Text(
               job.isError
                   ? (job.error ?? 'Не удалось собрать город')
-                  : 'Собираю ${job.lengthLabel} «$query»',
+                  : 'Собираю город «$query»',
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
@@ -510,25 +432,25 @@ class _HomeScreenState extends State<HomeScreen>
       return false;
     }
     final cityId = job.cityId;
+    if (mounted) {
+      setState(() => _job = null);
+    }
+    await _loadCatalog();
+    if (!mounted) {
+      return true;
+    }
     if (cityId != null && cityId.isNotEmpty) {
-      if (mounted) {
-        setState(() => _job = null);
-      }
-      await _loadCatalog();
-      if (!mounted) {
-        return true;
-      }
-      await _openCity(cityId);
-      return true;
+      await Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (_) => CityScreen(
+            api: widget.api,
+            cityId: cityId,
+            guides: _guides,
+          ),
+        ),
+      );
     }
-    if (job.guideId != null) {
-      if (mounted) {
-        setState(() => _job = null);
-      }
-      await _loadCatalog();
-      return true;
-    }
-    return false;
+    return true;
   }
 
   Future<void> _pollJob(String jobId) async {
@@ -565,63 +487,12 @@ class _HomeScreenState extends State<HomeScreen>
     });
   }
 
-  Widget _cityList() {
-    return ListView.separated(
-      itemCount: _cities.length,
-      separatorBuilder: (_, __) => const Divider(height: 1),
-      itemBuilder: (context, index) {
-        final item = _cities[index];
-        return ListTile(
-          leading: const Icon(Icons.location_city),
-          title: Text(item.title),
-          subtitle: Text(
-            [
-              if (item.subtitle != null) item.subtitle,
-              if (item.region != null) item.region,
-            ].whereType<String>().join('\n'),
-          ),
-          isThreeLine: item.subtitle != null && item.region != null,
-          onTap: () {
-            _userPicked = true;
-            _openCity(item.id);
-          },
-        );
-      },
-    );
-  }
-
   Widget _body() {
     if (_job != null && (_job!.isActive || _job!.isError)) {
       return _generating(_search.text.trim());
     }
-    if (_loading && _city == null) {
+    if (_loading) {
       return const Center(child: CircularProgressIndicator());
-    }
-    if (_city != null) {
-      return Column(
-        children: [
-          SizedBox(
-            height: 240,
-            child: CityMap(
-              city: _city!,
-              selectedId: _selectedPlaceId,
-              onPlaceTap: _onPlaceTap,
-            ),
-          ),
-          const Divider(height: 1),
-          Expanded(
-            child: CityTabs(
-              city: _city!,
-              controller: _tabs,
-              api: widget.api,
-              guides: _guides,
-              offline: _offline,
-              selectedPlaceId: _selectedPlaceId,
-              onGenerate: () => _startGenerate(_city!.city),
-            ),
-          ),
-        ],
-      );
     }
     if (_error != null && _cities.isEmpty) {
       final query = _search.text.trim();
@@ -642,6 +513,26 @@ class _HomeScreenState extends State<HomeScreen>
       }
       return _emptyGenerate(query);
     }
-    return _cityList();
+    final cities = _sorted(_cities);
+    return ListView.separated(
+      itemCount: cities.length,
+      separatorBuilder: (_, __) => const Divider(height: 1),
+      itemBuilder: (context, index) {
+        final item = cities[index];
+        return ListTile(
+          leading: const Icon(Icons.location_city_outlined),
+          title: Text(item.title),
+          subtitle: Text(
+            [
+              if (item.subtitle != null) item.subtitle,
+              if (item.region != null) item.region,
+            ].whereType<String>().join('\n'),
+          ),
+          isThreeLine: item.subtitle != null && item.region != null,
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () => _openCity(item),
+        );
+      },
+    );
   }
 }
