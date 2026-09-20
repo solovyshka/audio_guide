@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-09-20T10:55:00Z",
+  "updatedAt": "2026-09-20T12:50:18Z",
   "guides": [
     {
       "id": "gazgoldernaya",
@@ -305,6 +305,204 @@
       "language": "ru",
       "guidePath": "guides/tula-long/guide.json",
       "contentVersion": 2
+    },
+    {
+      "id": "suzdal-long",
+      "title": "Суздаль · длинный",
+      "subtitle": "Кремль, Каменка и монастыри: длинный маршрут",
+      "aliases": [
+        "Суздаль",
+        "Суздаль длинный",
+        "суздаль",
+        "suzdal"
+      ],
+      "city": "Суздаль",
+      "region": "Владимирская область",
+      "center": {
+        "lat": 56.4197,
+        "lon": 40.449
+      },
+      "stopsCount": 17,
+      "durationSec": 898,
+      "language": "ru",
+      "guidePath": "guides/suzdal-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "voronezh-long",
+      "title": "Воронеж · длинный",
+      "subtitle": "Историческое ядро правого берега и соседние ансамбли",
+      "aliases": [
+        "Воронеж",
+        "Воронеж длинный"
+      ],
+      "city": "Воронеж",
+      "region": "Воронежская область",
+      "center": {
+        "lat": 51.6606,
+        "lon": 39.2006
+      },
+      "stopsCount": 20,
+      "durationSec": 801,
+      "language": "ru",
+      "guidePath": "guides/voronezh-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "troick-long",
+      "title": "Троицк · длинный",
+      "subtitle": "От спортивного парка и Десны через фабрику к научному югу Троицка",
+      "aliases": [
+        "Троицк (Москва)",
+        "Троицкий административный округ",
+        "Троицкий наукоград"
+      ],
+      "city": "Троицк",
+      "region": "Москва, Троицкий административный округ",
+      "center": {
+        "lat": 55.4846,
+        "lon": 37.3062
+      },
+      "stopsCount": 15,
+      "durationSec": 588,
+      "language": "ru",
+      "guidePath": "guides/troick-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "moscow-long",
+      "title": "Москва · длинный",
+      "subtitle": "Красная площадь, Зарядье и Китай-город",
+      "aliases": [
+        "Москва",
+        "Москва длинный",
+        "Moskva",
+        "Moscow"
+      ],
+      "city": "Москва",
+      "region": "город федерального значения",
+      "center": {
+        "lat": 55.7537,
+        "lon": 37.6241
+      },
+      "stopsCount": 20,
+      "durationSec": 840,
+      "language": "ru",
+      "guidePath": "guides/moscow-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "larnaka-long",
+      "title": "Ларнака · длинный",
+      "subtitle": "От замка и Финикудес к Китиону, акведуку Камарес и Солёному озеру",
+      "aliases": [
+        "Ларнака",
+        "Ларнака (Larnaca)",
+        "Ларнака (Larnaka)",
+        "Китион"
+      ],
+      "city": "Ларнака",
+      "region": "Республика Кипр, округ Ларнака",
+      "center": {
+        "lat": 34.9143,
+        "lon": 33.6353
+      },
+      "stopsCount": 17,
+      "durationSec": 721,
+      "language": "ru",
+      "guidePath": "guides/larnaka-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "pafos-long",
+      "title": "Пафос · длинный",
+      "subtitle": "Неа-Пафос: парк, гавань, музеи Ктимы и гробницы царей",
+      "aliases": [
+        "Пафос",
+        "Като-Пафос",
+        "Paphos",
+        "Kato Paphos",
+        "Неа-Пафос",
+        "Πάφος",
+        "Pafos",
+        "Пафос длинный"
+      ],
+      "city": "Пафос",
+      "region": "район Пафос, Кипр",
+      "center": {
+        "lat": 34.7754,
+        "lon": 32.4218
+      },
+      "stopsCount": 17,
+      "durationSec": 698,
+      "language": "ru",
+      "guidePath": "guides/pafos-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "nikosiya-long",
+      "title": "Никосия · длинный",
+      "subtitle": "Венецианские стены и южный старый город Лефкосии",
+      "aliases": [
+        "Лефкосия",
+        "Lefkosia",
+        "Nicosia"
+      ],
+      "city": "Никосия",
+      "region": "Республика Кипр, район Никосия",
+      "center": {
+        "lat": 35.1698,
+        "lon": 33.3619
+      },
+      "stopsCount": 18,
+      "durationSec": 719,
+      "language": "ru",
+      "guidePath": "guides/nikosiya-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "limasol-long",
+      "title": "Лимасол · длинный",
+      "subtitle": "Старый город, замок, набережная Молос и марина",
+      "aliases": [
+        "Лемесос",
+        "Lemesos",
+        "Limassol",
+        "Λεμεσός"
+      ],
+      "city": "Лимасол",
+      "region": "Республика Кипр, округ Лимасол",
+      "center": {
+        "lat": 34.675,
+        "lon": 33.042
+      },
+      "stopsCount": 16,
+      "durationSec": 649,
+      "language": "ru",
+      "guidePath": "guides/limasol-long/guide.json",
+      "contentVersion": 1
+    },
+    {
+      "id": "suchzhou-long",
+      "title": "Сучжоу · длинный",
+      "subtitle": "Пинцзян, классические сады и каналы старого города",
+      "aliases": [
+        "苏州",
+        "Suzhou",
+        "Су-Чжоу",
+        "Пинцзян"
+      ],
+      "city": "Сучжоу",
+      "region": "провинция Цзянсу, Китай",
+      "center": {
+        "lat": 31.315,
+        "lon": 120.628
+      },
+      "stopsCount": 19,
+      "durationSec": 775,
+      "language": "ru",
+      "guidePath": "guides/suchzhou-long/guide.json",
+      "contentVersion": 1
     }
   ],
   "cities": [
@@ -337,7 +535,7 @@
     {
       "id": "voronezh",
       "title": "Воронеж",
-      "subtitle": "От петровской верфи к памяти о войне",
+      "subtitle": "Петровская верфь, водохранилище и город воинской славы",
       "aliases": [
         "Воронеж",
         "город Воронеж",
@@ -353,15 +551,15 @@
       },
       "guides": {
         "short": "voronezh",
-        "long": null
+        "long": "voronezh-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     },
     {
       "id": "suzdal",
       "title": "Суздаль",
-      "subtitle": "Кремль, Каменка и монастыри",
+      "subtitle": "Кремль, Каменка и монастыри Золотого кольца",
       "aliases": [
         "суздаль",
         "suzdal",
@@ -377,20 +575,23 @@
       },
       "guides": {
         "short": "suzdal",
-        "long": null
+        "long": "suzdal-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     },
     {
       "id": "larnaka",
       "title": "Ларнака",
-      "subtitle": "От средневековой крепости к набережной Финикудес и старому городу",
+      "subtitle": "Китион, Святой Лазарь, Финикудес и солёное озеро",
       "aliases": [
         "Ларнака",
         "Ларнака (Larnaca)",
         "Ларнака (Larnaka)",
-        "Китион"
+        "Китион",
+        "Скала",
+        "Λάρνακα",
+        "Larnaka"
       ],
       "city": "Ларнака",
       "region": "Республика Кипр, округ Ларнака",
@@ -400,20 +601,23 @@
       },
       "guides": {
         "short": "larnaka",
-        "long": null
+        "long": "larnaka-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     },
     {
       "id": "pafos",
       "title": "Пафос",
-      "subtitle": "Античный Неа-Пафос, мозаики и средневековая гавань",
+      "subtitle": "Неа-Пафос, мозаики ЮНЕСКО и средневековая гавань",
       "aliases": [
         "Пафос",
         "Като-Пафос",
         "Paphos",
-        "Kato Paphos"
+        "Kato Paphos",
+        "Неа-Пафос",
+        "Πάφος",
+        "Pafos"
       ],
       "city": "Пафос",
       "region": "район Пафос, Кипр",
@@ -423,19 +627,22 @@
       },
       "guides": {
         "short": "pafos",
-        "long": null
+        "long": "pafos-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     },
     {
       "id": "nikosiya",
       "title": "Никосия",
-      "subtitle": "Венецианские стены, старый город и история разделённой столицы",
+      "subtitle": "Ледра, венецианские стены и разделённая столица",
       "aliases": [
+        "Никосия",
         "Лефкосия",
         "Lefkosia",
-        "Nicosia"
+        "Nicosia",
+        "Λευκωσία",
+        "Lefkoşa"
       ],
       "city": "Никосия",
       "region": "Республика Кипр, район Никосия",
@@ -445,9 +652,9 @@
       },
       "guides": {
         "short": "nikosiya",
-        "long": null
+        "long": "nikosiya-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     },
     {
@@ -460,16 +667,16 @@
         "Moscow"
       ],
       "city": "Москва",
-      "region": "Moscow, Russia",
+      "region": "город федерального значения",
       "center": {
         "lat": 55.7537,
         "lon": 37.6241
       },
       "guides": {
         "short": "moscow",
-        "long": null
+        "long": "moscow-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     },
     {
@@ -490,9 +697,9 @@
       },
       "guides": {
         "short": "suchzhou",
-        "long": null
+        "long": "suchzhou-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     },
     {
@@ -512,39 +719,44 @@
       },
       "guides": {
         "short": "troick",
-        "long": null
+        "long": "troick-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     },
     {
       "id": "limasol",
       "title": "Лимасол",
-      "subtitle": "Старый город, средневековая крепость и набережная Средиземного моря",
+      "subtitle": "Старый город, замок, Молос и марина",
       "aliases": [
+        "Лимасол",
         "Лемесос",
         "Lemesos",
-        "Limassol"
+        "Limassol",
+        "Λεμεσός"
       ],
       "city": "Лимасол",
-      "region": "Кипр",
+      "region": "Республика Кипр, округ Лимасол",
       "center": {
         "lat": 34.675,
         "lon": 33.042
       },
       "guides": {
         "short": "limasol",
-        "long": null
+        "long": "limasol-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     },
     {
       "id": "tula",
       "title": "Тула",
-      "subtitle": "Исторический центр и ключевые объекты Тулы",
+      "subtitle": "Кремль, оружие, пряник и набережная Упы",
       "aliases": [
-        "Тула"
+        "Тула",
+        "tula",
+        "тульский кремль",
+        "город-герой Тула"
       ],
       "city": "Тула",
       "region": "Тульская область",
@@ -556,7 +768,7 @@
         "short": "tula",
         "long": "tula-long"
       },
-      "contentVersion": 1,
+      "contentVersion": 2,
       "language": "ru"
     }
   ]
