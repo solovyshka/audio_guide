@@ -1,0 +1,35 @@
+{
+  "id": "troick",
+  "contentVersion": 1,
+  "title": "Троицк",
+  "subtitle": "От усадебного парка и фабрики к научному центру Москвы",
+  "city": "Троицк",
+  "region": "Москва, Троицкий административный округ",
+  "language": "ru",
+  "center": {
+    "lat": 55.4846,
+    "lon": 37.3062
+  },
+  "aliases": [
+    "Троицк (Москва)",
+    "Троицкий административный округ",
+    "Троицкий наукоград"
+  ],
+  "history": {
+    "founded": "",
+    "summary": "",
+    "events": []
+  },
+  "present": {
+    "summary": "",
+    "population": "",
+    "economy": ""
+  },
+  "sights": [],
+  "culture": [],
+  "leisure": [],
+  "guides": {
+    "short": "troick",
+    "long": null
+  }
+}

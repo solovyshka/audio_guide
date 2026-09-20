@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../api/client.dart';
+import '../models/city.dart';
 import '../models/guide.dart';
 import 'download_progress.dart';
 
@@ -20,6 +21,12 @@ class GuideCache extends ChangeNotifier {
   DownloadProgress? progressOf(String id) => null;
 
   Future<List<GuideSummary>> localCatalog() async => [];
+
+  Future<List<CitySummary>> localCities() async => [];
+
+  Future<City?> loadLocalCity(String id) async => null;
+
+  Future<void> saveCity(City city) async {}
 
   Future<Guide?> loadLocal(String id) async => null;
 

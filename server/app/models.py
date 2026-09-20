@@ -61,6 +61,60 @@ class Guide(GuideSummary):
     map_bounds: MapBounds | None = Field(default=None, alias="mapBounds")
 
 
+class HistoryEvent(BaseModel):
+    year: str
+    text: str
+
+
+class HistoryBlock(BaseModel):
+    founded: str = ""
+    summary: str = ""
+    events: list[HistoryEvent] = []
+
+
+class PresentBlock(BaseModel):
+    summary: str = ""
+    population: str = ""
+    economy: str = ""
+
+
+class CityPlace(BaseModel):
+    id: str
+    name: str
+    lat: float
+    lon: float
+    kind: str
+    summary: str = ""
+
+
+class CityGuides(BaseModel):
+    short: str | None = None
+    long: str | None = None
+
+
+class CitySummary(BaseModel):
+    id: str
+    title: str
+    subtitle: str | None = None
+    city: str
+    region: str | None = None
+    aliases: list[str] = []
+    center: LatLon
+    guides: CityGuides = Field(default_factory=CityGuides)
+    content_version: int = Field(alias="contentVersion")
+    language: str = "ru"
+
+    model_config = ConfigDict(populate_by_name=True, ser_json_by_alias=True)
+
+
+class City(CitySummary):
+    history: HistoryBlock = Field(default_factory=HistoryBlock)
+    present: PresentBlock = Field(default_factory=PresentBlock)
+    sights: list[CityPlace] = []
+    culture: list[CityPlace] = []
+    leisure: list[CityPlace] = []
+
+
 def public_audio_url(base: str, guide_id: str, audio_path: str | None) -> str | None:
     if not audio_path:
         return None
@@ -129,4 +183,62 @@ def guide_from_package(raw: dict[str, Any], base_url: str) -> Guide:
         stops=stops,
         map_url=public_map_url(base_url, guide_id),
         map_bounds=map_bounds,
+    )
+
+
+def city_from_package(raw: dict[str, Any]) -> City:
+    center = raw.get("center") or {}
+    guides_raw = raw.get("guides") or {}
+    history_raw = raw.get("history") or {}
+    present_raw = raw.get("present") or {}
+    events = [
+        HistoryEvent(year=item.get("year", ""), text=item.get("text", ""))
+        for item in history_raw.get("events") or []
+        if isinstance(item, dict)
+    ]
+
+    def places(key: str) -> list[CityPlace]:
+        out: list[CityPlace] = []
+        for item in raw.get(key) or []:
+            if not isinstance(item, dict):
+                continue
+            out.append(
+                CityPlace(
+                    id=item["id"],
+                    name=item["name"],
+                    lat=float(item["lat"]),
+                    lon=float(item["lon"]),
+                    kind=item.get("kind", "sight"),
+                    summary=item.get("summary") or "",
+                )
+            )
+        return out
+
+    return City(
+        id=raw["id"],
+        title=raw["title"],
+        subtitle=raw.get("subtitle"),
+        city=raw.get("city", raw["title"]),
+        region=raw.get("region"),
+        aliases=raw.get("aliases") or [],
+        center=LatLon(lat=center.get("lat", 0), lon=center.get("lon", 0)),
+        guides=CityGuides(
+            short=guides_raw.get("short"),
+            long=guides_raw.get("long"),
+        ),
+        content_version=raw.get("contentVersion", 1),
+        language=raw.get("language", "ru"),
+        history=HistoryBlock(
+            founded=history_raw.get("founded") or "",
+            summary=history_raw.get("summary") or "",
+            events=events,
+        ),
+        present=PresentBlock(
+            summary=present_raw.get("summary") or "",
+            population=present_raw.get("population") or "",
+            economy=present_raw.get("economy") or "",
+        ),
+        sights=places("sights"),
+        culture=places("culture"),
+        leisure=places("leisure"),
     )

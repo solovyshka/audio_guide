@@ -1,3 +1,3 @@
-from app.routers import guides
+from app.routers import cities, guides
 
-__all__ = ["guides"]
+__all__ = ["cities", "guides"]

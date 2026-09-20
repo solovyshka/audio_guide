@@ -6,7 +6,7 @@ import time
 import urllib.parse
 import urllib.request
 
-from generate.city_guide.schemas import CityResearch, Coordinates, StopResearch
+from generate.city_guide.schemas import CityPlace, CityResearch, Coordinates, StopResearch
 
 _UA = "audio-guide/1.0 (github.com/solovyshka/audio_guide)"
 _EARTH_M = 6371000.0
@@ -87,3 +87,25 @@ def snap_research_coords(research: CityResearch) -> CityResearch:
         lon=sum(item.coordinates.lon for item in stops) / len(stops),
     )
     return research.model_copy(update={"stops": stops, "center": center})
+
+
+def snap_city_places(city: str, places: list[CityPlace]) -> list[CityPlace]:
+    out: list[CityPlace] = []
+    for place in places:
+        found = nominatim(place.name, city)
+        time.sleep(1.1)
+        if found is None:
+            out.append(place)
+            continue
+        current = Coordinates(lat=place.lat, lon=place.lon)
+        drift = haversine_m(current, found)
+        if place.lat == 0 and place.lon == 0 or drift > 800:
+            print(
+                f"геокод {place.name}: "
+                f"{place.lat:.5f},{place.lon:.5f} → "
+                f"{found.lat:.5f},{found.lon:.5f} ({drift:.0f} м)"
+            )
+            out.append(place.model_copy(update={"lat": found.lat, "lon": found.lon}))
+        else:
+            out.append(place)
+    return out

@@ -1,0 +1,37 @@
+{
+  "id": "suzdal",
+  "contentVersion": 1,
+  "title": "Суздаль",
+  "subtitle": "Кремль, Каменка и монастыри",
+  "city": "Суздаль",
+  "region": "Владимирская область",
+  "language": "ru",
+  "center": {
+    "lat": 56.4197,
+    "lon": 40.449
+  },
+  "aliases": [
+    "суздаль",
+    "suzdal",
+    "суздальский кремль",
+    "спасо-евфимиев монастырь",
+    "покровский монастырь"
+  ],
+  "history": {
+    "founded": "",
+    "summary": "",
+    "events": []
+  },
+  "present": {
+    "summary": "",
+    "population": "",
+    "economy": ""
+  },
+  "sights": [],
+  "culture": [],
+  "leisure": [],
+  "guides": {
+    "short": "suzdal",
+    "long": null
+  }
+}

@@ -88,3 +88,78 @@ class QAError(Strict):
 class QAResult(Strict):
     valid: bool
     errors: List[QAError] = Field(default_factory=list)
+
+
+class HistoryEvent(Strict):
+    year: str
+    text: str
+
+
+class HistoryBlock(Strict):
+    founded: str
+    summary: str
+    events: List[HistoryEvent] = Field(default_factory=list)
+
+
+class PresentBlock(Strict):
+    summary: str
+    population: str
+    economy: str
+
+
+class CityPlace(Strict):
+    id: str = ""
+    name: str
+    lat: float
+    lon: float
+    kind: str
+    summary: str = ""
+
+
+class CityGuides(Strict):
+    short: Optional[str] = None
+    long: Optional[str] = None
+
+
+class CityDossier(Strict):
+    id: str
+    contentVersion: int = 1
+    title: str
+    subtitle: str = ""
+    city: str
+    region: str = ""
+    language: str = "ru"
+    center: Coordinates
+    aliases: List[str] = Field(default_factory=list)
+    history: HistoryBlock
+    present: PresentBlock
+    sights: List[CityPlace] = Field(default_factory=list)
+    culture: List[CityPlace] = Field(default_factory=list)
+    leisure: List[CityPlace] = Field(default_factory=list)
+    guides: CityGuides = Field(default_factory=CityGuides)
+
+
+class HistoryBlockGen(Strict):
+    founded: str
+    summary: str = Field(min_length=400, max_length=2500)
+    events: List[HistoryEvent] = Field(min_length=5, max_length=12)
+
+
+class PresentBlockGen(Strict):
+    summary: str = Field(min_length=200, max_length=1600)
+    population: str
+    economy: str
+
+
+class CityDossierGen(Strict):
+    title: str
+    subtitle: str
+    city: str
+    region: str
+    aliases: List[str]
+    center: Coordinates
+    history: HistoryBlockGen
+    present: PresentBlockGen
+    sights: List[CityPlace] = Field(min_length=6, max_length=14)
+    culture: List[CityPlace] = Field(min_length=4, max_length=12)
+    leisure: List[CityPlace] = Field(min_length=6, max_length=14)

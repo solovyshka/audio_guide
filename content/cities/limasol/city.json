@@ -1,0 +1,35 @@
+{
+  "id": "limasol",
+  "contentVersion": 1,
+  "title": "Лимасол",
+  "subtitle": "Старый город, средневековая крепость и набережная Средиземного моря",
+  "city": "Лимасол",
+  "region": "Кипр",
+  "language": "ru",
+  "center": {
+    "lat": 34.675,
+    "lon": 33.042
+  },
+  "aliases": [
+    "Лемесос",
+    "Lemesos",
+    "Limassol"
+  ],
+  "history": {
+    "founded": "",
+    "summary": "",
+    "events": []
+  },
+  "present": {
+    "summary": "",
+    "population": "",
+    "economy": ""
+  },
+  "sights": [],
+  "culture": [],
+  "leisure": [],
+  "guides": {
+    "short": "limasol",
+    "long": null
+  }
+}

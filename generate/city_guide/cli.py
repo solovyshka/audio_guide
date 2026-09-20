@@ -49,14 +49,14 @@ def main(argv: list[str] | None = None) -> None:
 
     p_api = sub.add_parser(
         "api",
-        help="OpenAI research+writer+QA, затем Silero в content/guides/{id}/",
+        help="Досье города + короткий и длинный гид (Silero). --length short|long — только один маршрут.",
     )
     p_api.add_argument("city", nargs="+")
     p_api.add_argument(
         "--length",
-        choices=["short", "long"],
-        default="short",
-        help="Короткий (6–8 точек) или длинный (15–30) гид",
+        choices=["short", "long", "city"],
+        default="city",
+        help="city — досье и оба гида; short/long — только один маршрут",
     )
     p_api.add_argument("--no-catalog", action="store_true")
     p_api.add_argument("--no-tts", action="store_true")
@@ -82,7 +82,7 @@ def main(argv: list[str] | None = None) -> None:
     p_prompt = sub.add_parser("prompts", help="Печать system-промптов для агента")
     p_prompt.add_argument(
         "name",
-        choices=["research", "writer", "qa", "fix", "agent"],
+        choices=["research", "writer", "qa", "fix", "agent", "dossier"],
     )
     p_prompt.add_argument(
         "--length",
@@ -113,17 +113,28 @@ def main(argv: list[str] | None = None) -> None:
         return
 
     if args.cmd == "api":
-        from generate.city_guide.openai_pipeline import run_api_city
-
         city = " ".join(args.city).strip()
-        run_api_city(
-            city,
-            length=args.length,
-            update_catalog=not args.no_catalog,
-            tts=not args.no_tts,
-            tts_backend=args.backend,
-            tts_voice=args.voice,
-        )
+        if args.length == "city":
+            from generate.city_guide.openai_pipeline import run_api_city_batch
+
+            run_api_city_batch(
+                city,
+                update_catalog=not args.no_catalog,
+                tts=not args.no_tts,
+                tts_backend=args.backend,
+                tts_voice=args.voice,
+            )
+        else:
+            from generate.city_guide.openai_pipeline import run_api_city
+
+            run_api_city(
+                city,
+                length=args.length,
+                update_catalog=not args.no_catalog,
+                tts=not args.no_tts,
+                tts_backend=args.backend,
+                tts_voice=args.voice,
+            )
         return
 
     if args.cmd == "list-cities":
@@ -169,6 +180,7 @@ def main(argv: list[str] | None = None) -> None:
             "qa": P.qa_system(args.length),
             "fix": P.fix_system(args.length),
             "agent": P.AGENT_BATCH_STEPS,
+            "dossier": P.DOSSIER_SYSTEM,
         }
         print(mapping[args.name])
         return

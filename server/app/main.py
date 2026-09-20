@@ -6,7 +6,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
-from app.routers import guides
+from app.routers import cities, guides
 
 app = FastAPI(title="Audio Guide API", version="0.1.0")
 app.add_middleware(
@@ -16,6 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.include_router(guides.router)
+app.include_router(cities.router)
 
 media_root = settings.content_dir
 if media_root.exists():

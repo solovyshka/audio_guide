@@ -1,0 +1,36 @@
+{
+  "id": "pafos",
+  "contentVersion": 1,
+  "title": "Пафос",
+  "subtitle": "Античный Неа-Пафос, мозаики и средневековая гавань",
+  "city": "Пафос",
+  "region": "район Пафос, Кипр",
+  "language": "ru",
+  "center": {
+    "lat": 34.7754,
+    "lon": 32.4218
+  },
+  "aliases": [
+    "Пафос",
+    "Като-Пафос",
+    "Paphos",
+    "Kato Paphos"
+  ],
+  "history": {
+    "founded": "",
+    "summary": "",
+    "events": []
+  },
+  "present": {
+    "summary": "",
+    "population": "",
+    "economy": ""
+  },
+  "sights": [],
+  "culture": [],
+  "leisure": [],
+  "guides": {
+    "short": "pafos",
+    "long": null
+  }
+}

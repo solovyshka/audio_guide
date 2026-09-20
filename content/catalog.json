@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "updatedAt": "2026-09-19T18:05:00Z",
+  "version": 2,
+  "updatedAt": "2026-09-20T07:23:37Z",
   "guides": [
     {
       "id": "gazgoldernaya",
@@ -305,6 +305,258 @@
       "language": "ru",
       "guidePath": "guides/tula-long/guide.json",
       "contentVersion": 2
+    }
+  ],
+  "cities": [
+    {
+      "id": "kolomna",
+      "title": "Коломна",
+      "subtitle": "Кремль, посад, пастила и Москва-река",
+      "aliases": [
+        "коломна",
+        "коломен",
+        "город коломна",
+        "коломенский кремль",
+        "kolomna",
+        "патефонка"
+      ],
+      "city": "Коломна",
+      "region": "Московская область",
+      "center": {
+        "lat": 55.1093,
+        "lon": 38.762
+      },
+      "guides": {
+        "short": "kolomna",
+        "long": "kolomna-long"
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "voronezh",
+      "title": "Воронеж",
+      "subtitle": "От петровской верфи к памяти о войне",
+      "aliases": [
+        "Воронеж",
+        "город Воронеж",
+        "Voronezh",
+        "столица Черноземья",
+        "город Петра I"
+      ],
+      "city": "Воронеж",
+      "region": "Воронежская область",
+      "center": {
+        "lat": 51.6606,
+        "lon": 39.2006
+      },
+      "guides": {
+        "short": "voronezh",
+        "long": null
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "suzdal",
+      "title": "Суздаль",
+      "subtitle": "Кремль, Каменка и монастыри",
+      "aliases": [
+        "суздаль",
+        "suzdal",
+        "суздальский кремль",
+        "спасо-евфимиев монастырь",
+        "покровский монастырь"
+      ],
+      "city": "Суздаль",
+      "region": "Владимирская область",
+      "center": {
+        "lat": 56.4197,
+        "lon": 40.449
+      },
+      "guides": {
+        "short": "suzdal",
+        "long": null
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "larnaka",
+      "title": "Ларнака",
+      "subtitle": "От средневековой крепости к набережной Финикудес и старому городу",
+      "aliases": [
+        "Ларнака",
+        "Ларнака (Larnaca)",
+        "Ларнака (Larnaka)",
+        "Китион"
+      ],
+      "city": "Ларнака",
+      "region": "Республика Кипр, округ Ларнака",
+      "center": {
+        "lat": 34.9143,
+        "lon": 33.6353
+      },
+      "guides": {
+        "short": "larnaka",
+        "long": null
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "pafos",
+      "title": "Пафос",
+      "subtitle": "Античный Неа-Пафос, мозаики и средневековая гавань",
+      "aliases": [
+        "Пафос",
+        "Като-Пафос",
+        "Paphos",
+        "Kato Paphos"
+      ],
+      "city": "Пафос",
+      "region": "район Пафос, Кипр",
+      "center": {
+        "lat": 34.7754,
+        "lon": 32.4218
+      },
+      "guides": {
+        "short": "pafos",
+        "long": null
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "nikosiya",
+      "title": "Никосия",
+      "subtitle": "Венецианские стены, старый город и история разделённой столицы",
+      "aliases": [
+        "Лефкосия",
+        "Lefkosia",
+        "Nicosia"
+      ],
+      "city": "Никосия",
+      "region": "Республика Кипр, район Никосия",
+      "center": {
+        "lat": 35.1698,
+        "lon": 33.3619
+      },
+      "guides": {
+        "short": "nikosiya",
+        "long": null
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "moscow",
+      "title": "Москва",
+      "subtitle": "От Красной площади через Зарядье к Китай-городу",
+      "aliases": [
+        "Москва",
+        "Moskva",
+        "Moscow"
+      ],
+      "city": "Москва",
+      "region": "Moscow, Russia",
+      "center": {
+        "lat": 55.7537,
+        "lon": 37.6241
+      },
+      "guides": {
+        "short": "moscow",
+        "long": null
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "suchzhou",
+      "title": "Сучжоу",
+      "subtitle": "Классические сады, каналы и старый город Цзяннани",
+      "aliases": [
+        "苏州",
+        "Suzhou",
+        "Су-Чжоу",
+        "Пинцзян"
+      ],
+      "city": "Сучжоу",
+      "region": "провинция Цзянсу, Китай",
+      "center": {
+        "lat": 31.315,
+        "lon": 120.628
+      },
+      "guides": {
+        "short": "suchzhou",
+        "long": null
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "troick",
+      "title": "Троицк",
+      "subtitle": "От усадебного парка и фабрики к научному центру Москвы",
+      "aliases": [
+        "Троицк (Москва)",
+        "Троицкий административный округ",
+        "Троицкий наукоград"
+      ],
+      "city": "Троицк",
+      "region": "Москва, Троицкий административный округ",
+      "center": {
+        "lat": 55.4846,
+        "lon": 37.3062
+      },
+      "guides": {
+        "short": "troick",
+        "long": null
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "limasol",
+      "title": "Лимасол",
+      "subtitle": "Старый город, средневековая крепость и набережная Средиземного моря",
+      "aliases": [
+        "Лемесос",
+        "Lemesos",
+        "Limassol"
+      ],
+      "city": "Лимасол",
+      "region": "Кипр",
+      "center": {
+        "lat": 34.675,
+        "lon": 33.042
+      },
+      "guides": {
+        "short": "limasol",
+        "long": null
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "tula",
+      "title": "Тула",
+      "subtitle": "Исторический центр и ключевые объекты Тулы",
+      "aliases": [
+        "Тула"
+      ],
+      "city": "Тула",
+      "region": "Тульская область",
+      "center": {
+        "lat": 54.193122,
+        "lon": 37.617348
+      },
+      "guides": {
+        "short": "tula",
+        "long": "tula-long"
+      },
+      "contentVersion": 1,
+      "language": "ru"
     }
   ]
 }

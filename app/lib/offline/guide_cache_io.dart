@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../api/client.dart';
+import '../models/city.dart';
 import '../models/guide.dart';
 import '../net/chunked_download.dart';
 import 'download_progress.dart';
@@ -73,6 +74,88 @@ class GuideCache extends ChangeNotifier {
       }
     }
     return guides;
+  }
+
+  Future<List<CitySummary>> localCities() async {
+    final root = await _citiesRoot();
+    if (!await root.exists()) {
+      return [];
+    }
+    final cities = <CitySummary>[];
+    await for (final entity in root.list()) {
+      if (entity is! Directory) {
+        continue;
+      }
+      final file = File('${entity.path}/city.json');
+      if (!await file.exists()) {
+        continue;
+      }
+      try {
+        cities.add(
+          City.fromJson(
+            jsonDecode(await file.readAsString()) as Map<String, dynamic>,
+          ),
+        );
+      } catch (_) {
+        continue;
+      }
+    }
+    return cities;
+  }
+
+  Future<City?> loadLocalCity(String id) async {
+    final safe = _safeId(id);
+    final file = File('${(await _citiesRoot()).path}/$safe/city.json');
+    if (!await file.exists()) {
+      return null;
+    }
+    return City.fromJson(
+      jsonDecode(await file.readAsString()) as Map<String, dynamic>,
+    );
+  }
+
+  Future<void> saveCity(City city) async {
+    final safe = _safeId(city.id);
+    final dir = Directory('${(await _citiesRoot()).path}/$safe');
+    await dir.create(recursive: true);
+    await File('${dir.path}/city.json').writeAsString(
+      const JsonEncoder.withIndent('  ').convert({
+        'id': city.id,
+        'title': city.title,
+        'subtitle': city.subtitle,
+        'city': city.city,
+        'region': city.region,
+        'aliases': city.aliases,
+        'center': {'lat': city.center.lat, 'lon': city.center.lon},
+        'guides': {
+          'short': city.guides.short,
+          'long': city.guides.long,
+        },
+        'contentVersion': city.contentVersion,
+        'history': {
+          'founded': city.history.founded,
+          'summary': city.history.summary,
+          'events': [
+            for (final event in city.history.events)
+              {'year': event.year, 'text': event.text},
+          ],
+        },
+        'present': {
+          'summary': city.present.summary,
+          'population': city.present.population,
+          'economy': city.present.economy,
+        },
+        'sights': [
+          for (final place in city.sights) _placeJson(place),
+        ],
+        'culture': [
+          for (final place in city.culture) _placeJson(place),
+        ],
+        'leisure': [
+          for (final place in city.leisure) _placeJson(place),
+        ],
+      }),
+    );
   }
 
   Future<Guide?> loadLocal(String id) async {
@@ -249,6 +332,11 @@ class GuideCache extends ChangeNotifier {
     return Directory('${docs.path}/guides');
   }
 
+  Future<Directory> _citiesRoot() async {
+    final docs = await getApplicationDocumentsDirectory();
+    return Directory('${docs.path}/cities');
+  }
+
   Future<String?> _existingPath(Directory dir, String? relative) async {
     if (relative == null || relative.contains('..')) {
       return null;
@@ -307,4 +395,15 @@ String _relativeAudioPath(String guideId, String url) {
   }
   final name = segments.isEmpty ? 'track.bin' : segments.last;
   return 'audio/$name';
+}
+
+Map<String, Object> _placeJson(CityPlace place) {
+  return {
+    'id': place.id,
+    'name': place.name,
+    'lat': place.lat,
+    'lon': place.lon,
+    'kind': place.kind,
+    'summary': place.summary,
+  };
 }

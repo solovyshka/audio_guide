@@ -1,0 +1,35 @@
+{
+  "id": "nikosiya",
+  "contentVersion": 1,
+  "title": "Никосия",
+  "subtitle": "Венецианские стены, старый город и история разделённой столицы",
+  "city": "Никосия",
+  "region": "Республика Кипр, район Никосия",
+  "language": "ru",
+  "center": {
+    "lat": 35.1698,
+    "lon": 33.3619
+  },
+  "aliases": [
+    "Лефкосия",
+    "Lefkosia",
+    "Nicosia"
+  ],
+  "history": {
+    "founded": "",
+    "summary": "",
+    "events": []
+  },
+  "present": {
+    "summary": "",
+    "population": "",
+    "economy": ""
+  },
+  "sights": [],
+  "culture": [],
+  "leisure": [],
+  "guides": {
+    "short": "nikosiya",
+    "long": null
+  }
+}

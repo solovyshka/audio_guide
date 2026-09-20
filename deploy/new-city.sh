@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# New city on FIREBAT: OpenAI (HideMe OpenVPN split-tunnel) → prompts → Silero TTS.
-# Usage: bash /opt/audio_guide/deploy/new-city.sh "Сергиев Посад" [short|long]
+# New city on FIREBAT: dossier + short/long guides + Silero TTS in one pass.
+# Usage: bash /opt/audio_guide/deploy/new-city.sh "Сергиев Посад"
+# Optional second arg short|long rebuilds only that guide.
 set -euo pipefail
 
 APP="$(cd "$(dirname "$0")/.." && pwd)"
@@ -32,4 +33,8 @@ else
 fi
 
 cd "$APP"
-"$PY" -m generate.city_guide api --length "${2:-short}" "$1"
+if [ "${2:-}" = "short" ] || [ "${2:-}" = "long" ]; then
+  "$PY" -m generate.city_guide api --length "$2" "$1"
+else
+  "$PY" -m generate.city_guide api "$1"
+fi

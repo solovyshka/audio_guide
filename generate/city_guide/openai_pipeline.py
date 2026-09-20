@@ -8,24 +8,40 @@ from typing import List
 from pydantic import Field
 
 from generate.city_guide.checks import local_checks
-from generate.city_guide.package import dump, load_guide, save_json, upsert_catalog, write_package
+from generate.city_guide.package import (
+    dump,
+    guide_package_ready,
+    load_city,
+    load_guide,
+    save_json,
+    upsert_catalog,
+    write_city,
+    write_package,
+)
 from generate.city_guide.length import guide_id_for, parse_length, profile
 from generate.city_guide.prompts import (
+    DOSSIER_SYSTEM,
     fix_system,
     qa_system,
     research_system,
     writer_system,
 )
 from generate.city_guide.schemas import (
+    CityDossier,
+    CityDossierGen,
     CityGuide,
+    CityGuides,
+    CityPlace,
     CityResearch,
     GuideStop,
+    HistoryBlock,
     Intro,
+    PresentBlock,
     QAResult,
     StopResearch,
     Strict,
 )
-from generate.city_guide.slug import stop_slug
+from generate.city_guide.slug import slugify, stop_slug
 
 QA_RETRIES = int(os.getenv("QA_RETRIES", "4"))
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4.1")
@@ -496,4 +512,173 @@ def run_api_city(
     print(f"GUIDE_ID={guide.id}")
     print(f"Готово: {folder / 'guide.json'}")
     print(f"Остановок: {len(guide.stops)}")
+    return folder
+
+
+_SIGHT_KINDS = {"sight", "viewpoint"}
+_CULTURE_KINDS = {"museum", "theater", "culture"}
+_LEISURE_KINDS = {"coffee", "pastry", "restaurant"}
+
+
+def _normalize_place(place: CityPlace, fallback: str) -> CityPlace:
+    kind = (place.kind or fallback).strip().lower()
+    if fallback == "sight" and kind not in _SIGHT_KINDS:
+        kind = "viewpoint" if "смотр" in place.summary.lower() else "sight"
+    elif fallback == "culture" and kind not in _CULTURE_KINDS:
+        kind = "museum"
+    elif fallback == "leisure" and kind not in _LEISURE_KINDS:
+        kind = "restaurant"
+    return place.model_copy(
+        update={
+            "id": stop_slug(place.id or place.name),
+            "kind": kind,
+            "summary": (place.summary or "").strip(),
+        }
+    )
+
+
+def _dossier_from_gen(raw: CityDossierGen, city_id: str) -> CityDossier:
+    from generate.city_guide.geo import snap_city_places
+
+    sights = [_normalize_place(item, "sight") for item in raw.sights]
+    culture = [_normalize_place(item, "culture") for item in raw.culture]
+    leisure = [_normalize_place(item, "leisure") for item in raw.leisure]
+    print("уточняю координаты POI по OSM")
+    sights = snap_city_places(raw.city, sights)
+    culture = snap_city_places(raw.city, culture)
+    leisure = snap_city_places(raw.city, leisure)
+    aliases = list(dict.fromkeys([*(raw.aliases or []), raw.city, raw.title]))
+    return CityDossier(
+        id=city_id,
+        contentVersion=1,
+        title=raw.title or raw.city,
+        subtitle=raw.subtitle,
+        city=raw.city,
+        region=raw.region,
+        language="ru",
+        center=raw.center,
+        aliases=aliases,
+        history=HistoryBlock(
+            founded=raw.history.founded,
+            summary=raw.history.summary,
+            events=list(raw.history.events),
+        ),
+        present=PresentBlock(
+            summary=raw.present.summary,
+            population=raw.present.population,
+            economy=raw.present.economy,
+        ),
+        sights=sights,
+        culture=culture,
+        leisure=leisure,
+        guides=CityGuides(),
+    )
+
+
+def research_dossier(client, city: str) -> CityDossier:
+    city_id = slugify(city)
+    prompt = f"""
+Собери досье города: {city}
+
+Нужны история, настоящее, достопримечательности, культура и досуг.
+Координаты каждого места — самого объекта.
+id места — ASCII slug.
+"""
+    raw = parse(client, MODEL, DOSSIER_SYSTEM, prompt, CityDossierGen, web=True)
+    return _dossier_from_gen(raw, city_id)
+
+
+def _ensure_guide(
+    city: str,
+    length: str,
+    *,
+    update_catalog: bool,
+    tts: bool,
+    tts_backend: str,
+    tts_voice: str,
+):
+    from generate.city_guide.package import guide_dir
+    from generate.tts.guide_synth import synthesize_guide
+
+    guide_id = guide_id_for(city, length)
+    folder = guide_dir(guide_id)
+    if (folder / "guide.json").exists():
+        if tts and not (folder / "audio" / "intro.wav").is_file():
+            print(f"пакет {guide_id} есть, озвучиваю недостающее")
+            synthesize_guide(
+                folder / "guide.json",
+                folder,
+                backend_name=tts_backend,
+                voice=tts_voice or None,
+            )
+            guide = load_guide(folder / "guide.json")
+            if update_catalog:
+                upsert_catalog(guide)
+        else:
+            print(f"гид {guide_id} уже есть")
+        return guide_id
+    print(f"собираю {length} гид {guide_id}")
+    run_api_city(
+        city,
+        length=length,
+        update_catalog=update_catalog,
+        tts=tts,
+        tts_backend=tts_backend,
+        tts_voice=tts_voice,
+    )
+    return guide_id if (folder / "guide.json").exists() else None
+
+
+def run_api_city_batch(
+    city: str,
+    *,
+    update_catalog: bool = True,
+    tts: bool = True,
+    tts_backend: str = "silero",
+    tts_voice: str = "xenia",
+) -> Path:
+    city_id = slugify(city)
+    existing = load_city(city_id)
+    need_dossier = existing is None or not (existing.history.summary or "").strip()
+    if need_dossier:
+        print(f"[1/4] Досье города: {city}")
+        _require_openai_network()
+        client = _client()
+        dossier = research_dossier(client, city)
+    else:
+        print(f"[1/4] Досье {city_id} уже есть, не переписываю")
+        dossier = existing
+
+    print("[2/4] Короткий аудиогид")
+    short_id = _ensure_guide(
+        city,
+        "short",
+        update_catalog=update_catalog,
+        tts=tts,
+        tts_backend=tts_backend,
+        tts_voice=tts_voice,
+    )
+    print("[3/4] Длинный аудиогид")
+    long_id = _ensure_guide(
+        city,
+        "long",
+        update_catalog=update_catalog,
+        tts=tts,
+        tts_backend=tts_backend,
+        tts_voice=tts_voice,
+    )
+    dossier = dossier.model_copy(
+        update={
+            "guides": CityGuides(
+                short=short_id,
+                long=long_id,
+            )
+        }
+    )
+    print("[4/4] Сохраняю city.json")
+    folder = write_city(dossier)
+    print(f"CITY_ID={dossier.id}")
+    if short_id:
+        print(f"GUIDE_ID={short_id}")
+    print(f"Готово: {folder / 'city.json'}")
     return folder

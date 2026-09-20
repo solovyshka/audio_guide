@@ -1,0 +1,37 @@
+{
+  "id": "voronezh",
+  "contentVersion": 1,
+  "title": "Воронеж",
+  "subtitle": "От петровской верфи к памяти о войне",
+  "city": "Воронеж",
+  "region": "Воронежская область",
+  "language": "ru",
+  "center": {
+    "lat": 51.6606,
+    "lon": 39.2006
+  },
+  "aliases": [
+    "Воронеж",
+    "город Воронеж",
+    "Voronezh",
+    "столица Черноземья",
+    "город Петра I"
+  ],
+  "history": {
+    "founded": "",
+    "summary": "",
+    "events": []
+  },
+  "present": {
+    "summary": "",
+    "population": "",
+    "economy": ""
+  },
+  "sights": [],
+  "culture": [],
+  "leisure": [],
+  "guides": {
+    "short": "voronezh",
+    "long": null
+  }
+}

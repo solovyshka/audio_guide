@@ -1,0 +1,33 @@
+{
+  "id": "tula",
+  "contentVersion": 1,
+  "title": "Тула",
+  "subtitle": "Исторический центр и ключевые объекты Тулы",
+  "city": "Тула",
+  "region": "Тульская область",
+  "language": "ru",
+  "center": {
+    "lat": 54.193122,
+    "lon": 37.617348
+  },
+  "aliases": [
+    "Тула"
+  ],
+  "history": {
+    "founded": "",
+    "summary": "",
+    "events": []
+  },
+  "present": {
+    "summary": "",
+    "population": "",
+    "economy": ""
+  },
+  "sights": [],
+  "culture": [],
+  "leisure": [],
+  "guides": {
+    "short": "tula",
+    "long": "tula-long"
+  }
+}

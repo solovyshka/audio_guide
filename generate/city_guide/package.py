@@ -4,7 +4,13 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from generate.city_guide.schemas import CityGuide, CityResearch, Coordinates, GuideStop
+from generate.city_guide.schemas import (
+    CityDossier,
+    CityGuide,
+    CityResearch,
+    Coordinates,
+    GuideStop,
+)
 from generate.city_guide.slug import slugify, stop_slug
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -140,6 +146,68 @@ def upsert_catalog(guide: CityGuide) -> None:
             break
     else:
         guides.append(entry)
+    save_json(data, CATALOG)
+
+
+def guide_package_ready(guide_id: str) -> bool:
+    folder = guide_dir(guide_id)
+    if not (folder / "guide.json").exists():
+        return False
+    return (folder / "audio" / "intro.wav").is_file()
+
+
+def city_dir(city_id: str) -> Path:
+    return CONTENT / "cities" / city_id
+
+
+def load_city(city_id: str) -> CityDossier | None:
+    path = city_dir(city_id) / "city.json"
+    if not path.exists():
+        return None
+    return CityDossier.model_validate_json(path.read_text(encoding="utf-8"))
+
+
+def write_city(dossier: CityDossier) -> Path:
+    folder = city_dir(dossier.id)
+    save_json(dossier, folder / "city.json")
+    upsert_city_catalog(dossier)
+    return folder
+
+
+def _city_catalog_entry(dossier: CityDossier) -> dict:
+    return {
+        "id": dossier.id,
+        "title": dossier.title,
+        "subtitle": dossier.subtitle,
+        "aliases": dossier.aliases,
+        "city": dossier.city,
+        "region": dossier.region,
+        "center": {"lat": dossier.center.lat, "lon": dossier.center.lon},
+        "guides": {
+            "short": dossier.guides.short,
+            "long": dossier.guides.long,
+        },
+        "contentVersion": dossier.contentVersion,
+        "language": dossier.language,
+    }
+
+
+def upsert_city_catalog(dossier: CityDossier) -> None:
+    if CATALOG.exists():
+        data = json.loads(CATALOG.read_text(encoding="utf-8"))
+    else:
+        data = {"version": 2, "updatedAt": "", "guides": [], "cities": []}
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    data["updatedAt"] = now
+    data["version"] = 2
+    entry = _city_catalog_entry(dossier)
+    cities = data.setdefault("cities", [])
+    for i, item in enumerate(cities):
+        if item.get("id") == dossier.id:
+            cities[i] = entry
+            break
+    else:
+        cities.append(entry)
     save_json(data, CATALOG)
 
 

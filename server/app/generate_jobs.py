@@ -28,8 +28,9 @@ class GenerateJob:
     city: str
     status: str = "queued"
     step: str = "В очереди"
-    length: str = "short"
+    length: str = "city"
     guide_id: str | None = None
+    city_id: str | None = None
     error: str | None = None
     created_at: str = field(
         default_factory=lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -43,6 +44,7 @@ class GenerateJob:
             "step": self.step,
             "length": self.length,
             "guideId": self.guide_id,
+            "cityId": self.city_id,
             "error": self.error,
             "createdAt": self.created_at,
         }
@@ -59,6 +61,27 @@ def _existing_guide_id(city: str, length: str) -> str | None:
     return None
 
 
+def _existing_city_id(city: str) -> str | None:
+    city_id = slugify(city)
+    loaded = store.load_city(city_id)
+    if loaded is None:
+        return None
+    if not (loaded.history.summary or "").strip():
+        return None
+    short_ok = loaded.guides.short and store.load_guide(loaded.guides.short)
+    long_ok = loaded.guides.long and store.load_guide(loaded.guides.long)
+    if short_ok and long_ok:
+        return city_id
+    return None
+
+
+def _parse_job_length(length: str | None) -> str:
+    raw = (length or "city").strip().lower()
+    if raw in {"city", "город", "batch", "dossier"}:
+        return "city"
+    return parse_length(raw)
+
+
 def _validate_city(city: str) -> str:
     city = " ".join(city.split())
     if len(city) < 2 or len(city) > 80:
@@ -73,11 +96,24 @@ def get_job(job_id: str) -> GenerateJob | None:
         return _JOBS.get(job_id)
 
 
-def start_job(city: str, length: str = "short") -> GenerateJob:
+def start_job(city: str, length: str = "city") -> GenerateJob:
     city = _validate_city(city)
-    length = parse_length(length)
-    existing = _existing_guide_id(city, length)
+    length = _parse_job_length(length)
+    existing_city = _existing_city_id(city) if length == "city" else None
+    existing = None if length == "city" else _existing_guide_id(city, length)
     with _LOCK:
+        if existing_city:
+            job = GenerateJob(
+                id=uuid.uuid4().hex[:12],
+                city=city,
+                length=length,
+                status="done",
+                step="Город уже есть в каталоге",
+                city_id=existing_city,
+                guide_id=guide_id_for(city, "short"),
+            )
+            _JOBS[job.id] = job
+            return job
         if existing:
             job = GenerateJob(
                 id=uuid.uuid4().hex[:12],
@@ -134,7 +170,7 @@ def _run(job_id: str) -> None:
     with _LOCK:
         city = _JOBS[job_id].city
         length = _JOBS[job_id].length
-    label = profile(length).label
+    label = "город" if length == "city" else profile(length).label
     _set(job_id, status="running", step=f"Проверяю прокси OpenAI ({label})")
     log_lines: list[str] = []
     try:
@@ -147,15 +183,20 @@ def _run(job_id: str) -> None:
         env["NO_PROXY"] = "127.0.0.1,localhost,192.168.100.0/24"
         env.pop("ALL_PROXY", None)
         _ensure_proxy()
+        cmd = [str(PYTHON), "-m", "generate.city_guide", "api"]
+        if length != "city":
+            cmd.extend(["--length", length])
+        cmd.append(city)
         proc = subprocess.Popen(
-            [str(PYTHON), "-m", "generate.city_guide", "api", "--length", length, city],
+            cmd,
             cwd=str(REPO),
             env=env,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
         )
-        guide_id = guide_id_for(city, length)
+        guide_id = None if length == "city" else guide_id_for(city, length)
+        city_id = slugify(city)
         assert proc.stdout is not None
         for raw in proc.stdout:
             line = raw.strip()
@@ -164,6 +205,8 @@ def _run(job_id: str) -> None:
             log_lines.append(line)
             if line.startswith("GUIDE_ID="):
                 guide_id = line.split("=", 1)[1].strip() or guide_id
+            if line.startswith("CITY_ID="):
+                city_id = line.split("=", 1)[1].strip() or city_id
             _set(job_id, step=line[:240])
         code = proc.wait()
         if code != 0:
@@ -176,6 +219,17 @@ def _run(job_id: str) -> None:
             else:
                 detail = "нет вывода"
             raise RuntimeError(detail)
+        if length == "city":
+            if store.load_city(city_id) is None:
+                raise RuntimeError("Пакет города не появился в каталоге")
+            _set(
+                job_id,
+                status="done",
+                step="Готово",
+                city_id=city_id,
+                guide_id=guide_id,
+            )
+            return
         if store.load_guide(guide_id) is None:
             raise RuntimeError("Пакет не появился в каталоге")
         _set(job_id, status="done", step="Готово", guide_id=guide_id)

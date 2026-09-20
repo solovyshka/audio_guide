@@ -145,19 +145,40 @@ WRITER_SYSTEM = writer_system(SHORT)
 QA_SYSTEM = qa_system(SHORT)
 FIX_SYSTEM = fix_system(SHORT)
 
+DOSSIER_SYSTEM = """
+Ты собираешь досье города для русскоязычного аудиогида.
+Корень приложения — город, не список гидов. Не пиши аудиотексты маршрута.
+
+Используй веб-поиск. Не выдумывай даты, население, названия заведений
+и координаты. Если факт не подтверждён — пропусти его.
+
+Нужны семь блоков:
+1) history: когда появился город (founded), 8–12 предложений summary,
+   5–10 главных дат (year + одно предложение).
+2) present: население, чем живёт, экономика — 5–8 предложений,
+   отдельные поля population и economy короткой строкой.
+3) sights: 6–12 достопримечательностей и смотровых. kind = sight или viewpoint.
+   У каждой lat/lon объекта, не центра города, и 2–4 предложения summary.
+4) culture: 4–10 музеев, театров, культурных узлов.
+   kind = museum, theater или culture.
+5) leisure: 6–12 мест. Специалити-кофе, кондитерские, рестораны
+   (местная кухня предпочтительна, не сетевые фастфуды).
+   kind = coffee, pastry или restaurant.
+6–7) Короткие и длинные аудиогиды соберёт другой шаг — в досье их нет.
+
+id места — стабильный ASCII slug от названия.
+Координаты — самого объекта, не меньше 4 знаков после запятой.
+Не добавляй часы работы и цены.
+""".strip()
+
+
 AGENT_BATCH_STEPS = f"""
-Батч из чата (один город за проход):
+Батч из чата (один город за проход — досье, POI и оба гида):
 1. Возьми следующий город из generate/cities.txt (строки не с #).
-2. Уточни формат: короткий ({profile(SHORT).min_stops}–{profile(SHORT).max_stops}
-   точек) или длинный ({profile(LONG).min_stops}–{profile(LONG).max_stops}).
-   Промпт: python -m generate.city_guide prompts research --length short|long
-3. WebSearch / WebFetch по городу; собери CityResearch (JSON по схеме).
-4. Сохрани research в content/guides/{{id}}/{{id}}.research.json
-   (длинный id = {{slug}}-long).
-5. По writer-промпту того же --length напиши CityGuide; спорное — с «— неизвестно».
-6. python -m generate.city_guide normalize-write --research … --guide …
-7. python -m generate.city_guide validate <research> <guide>
-8. Если valid=false — правь guide и снова validate, до OK.
-9. Отметь город: префикс # done: в cities.txt.
-10. TTS и заливка на сервер — отдельно, по просьбе пользователя.
+2. python -m generate.city_guide api "Город"
+   (без --length: research досье → POI → короткий и длинный гид → TTS).
+3. Уже лежащие пакеты гидов не переозвучивай: пайплайн допишет city.json
+   и ссылки, TTS только если нет audio/intro.wav.
+4. Тестовая Газгольдерная в каталог городов не попадает.
+5. Отметь город: префикс # done: в cities.txt.
 """.strip()

@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from app.config import settings
-from app.models import Guide, GuideSummary, guide_from_package
+from app.models import City, CitySummary, Guide, GuideSummary, city_from_package, guide_from_package
 
 
 def _catalog_path() -> Path:
@@ -49,6 +49,59 @@ def search_guides(query: str) -> list[GuideSummary]:
         return catalog
 
     scored: list[tuple[int, GuideSummary]] = []
+    for item in catalog:
+        aliases = [alias.lower() for alias in item.aliases]
+        haystack = " ".join([item.id, item.title, item.city, *aliases]).lower()
+        if needle == item.id.lower() or needle in aliases:
+            scored.append((100, item))
+        elif needle in haystack or any(needle in alias for alias in aliases):
+            scored.append((80, item))
+        elif any(alias in needle for alias in aliases if len(alias) >= 4):
+            scored.append((60, item))
+    scored.sort(key=lambda pair: pair[0], reverse=True)
+    return [item for _, item in scored]
+
+
+def _city_summary(raw: dict) -> CitySummary:
+    return CitySummary(
+        id=raw["id"],
+        title=raw["title"],
+        subtitle=raw.get("subtitle"),
+        city=raw.get("city", raw["title"]),
+        region=raw.get("region"),
+        aliases=raw.get("aliases") or [],
+        center=raw.get("center") or {"lat": 0, "lon": 0},
+        guides=raw.get("guides") or {},
+        content_version=raw.get("contentVersion", 1),
+        language=raw.get("language", "ru"),
+    )
+
+
+def load_cities() -> list[CitySummary]:
+    path = _catalog_path()
+    if not path.exists():
+        return []
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    items = payload.get("cities")
+    if isinstance(items, list) and items:
+        return [_city_summary(raw) for raw in items if isinstance(raw, dict) and raw.get("id") != "gazgoldernaya"]
+    return []
+
+
+def load_city(city_id: str) -> City | None:
+    path = settings.content_dir / "cities" / city_id / "city.json"
+    if not path.exists():
+        return None
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return city_from_package(raw)
+
+
+def search_cities(query: str) -> list[CitySummary]:
+    needle = query.strip().lower()
+    catalog = load_cities()
+    if not needle:
+        return catalog
+    scored: list[tuple[int, CitySummary]] = []
     for item in catalog:
         aliases = [alias.lower() for alias in item.aliases]
         haystack = " ".join([item.id, item.title, item.city, *aliases]).lower()
