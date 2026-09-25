@@ -42,11 +42,11 @@
   <main>
     <h1>Аудиогид</h1>
     <p>Установка с телефона, без магазина приложений. Если прямой файл не качается — открой эту страницу, не ссылку на <code>.apk</code>.</p>
-    <a class="btn" href="/app/update.bin" id="download" download="audio_guide.apk">Скачать приложение</a>
+    <a class="btn" href="update.bin" id="download" download="audio_guide.apk">Скачать приложение</a>
     <small id="hint">После загрузки Android спросит разрешение на установку из браузера. Если связь оборвётся — нажмите ещё раз, файл качается кусками.</small>
   </main>
   <script>
-    const url = "/app/update.bin";
+    const url = "update.bin";
     const https = location.protocol === "https:";
     const chunk = https ? 4 * 1024 * 1024 : 16 * 1024;
     const btn = document.getElementById("download");

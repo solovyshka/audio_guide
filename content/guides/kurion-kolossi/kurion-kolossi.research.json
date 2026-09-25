@@ -1,0 +1,757 @@
+{
+  "city": "Курион и Колосси",
+  "region": "район Лимасол, Республика Кипр",
+  "center": {
+    "lat": 34.665,
+    "lon": 32.91
+  },
+  "subtitle": "Античный город на скале и франкская командория среди сахарных плантаций",
+  "aliases": [
+    "Kourion",
+    "Curium",
+    "Κούριον",
+    "Kolossi",
+    "Κολόσσι",
+    "Kourion and Kolossi"
+  ],
+  "stops": [
+    {
+      "name": "Акрополь древнего Куриона: вход и панорама",
+      "coordinates": {
+        "lat": 34.665644,
+        "lon": 32.885683
+      },
+      "address": "Kourion Archaeological Site, Episkopi, Limassol District",
+      "category": "археологический памятник",
+      "facts": [
+        "Курион был одним из важнейших городов-царств древнего Кипра и контролировал плодородную долину реки Курис.",
+        "Археологический парк объединяет основные памятники города на холме-акрополе.",
+        "Остатки на холме относятся главным образом к эллинистическому, римскому и раннехристианскому времени."
+      ],
+      "dates": [
+        "конец IV века до н. э. — конец эллинистического периода: время более раннего общественного здания под агорой",
+        "50–330 н. э. — римский период Куриона",
+        "330–конец VII века н. э. — раннехристианский период"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Главный вход археологического комплекса. Департамент древностей указывает ежедневную работу: 08:30–17:00 с 16 сентября по 15 апреля и 08:30–19:30 с 16 апреля по 15 сентября; последний билет за 30 минут до закрытия, вход €4,50. Почти вся территория доступна на кресле-коляске; для западной части предусмотрен специальный вход, который открывает смотритель. Часы и тарифы проверяйте перед визитом.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kourion Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/CB2E60AEDED0A248C225719B0038B505?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — Curium Archaeological Site, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665644&mlon=32.885683#map=19/34.665644/32.885683"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Греко-римский театр Куриона",
+      "coordinates": {
+        "lat": 34.664192,
+        "lon": 32.887889
+      },
+      "address": "Kourion Archaeological Site, acropolis",
+      "category": "античный театр",
+      "facts": [
+        "Первый театр был построен во II веке до н. э.; сохранившийся облик включает римские перестройки II и III веков н. э.",
+        "Зрительские места в полукруглом театроне вмещали около 3 500 человек.",
+        "Департамент древностей реконструировал зрительские места в 1961 году; театр снова используется для культурных событий."
+      ],
+      "dates": [
+        "II век до н. э. — строительство первого театра",
+        "II–III века н. э. — римские расширения и перестройки",
+        "1961 — реконструкция зрительских мест Департаментом древностей"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Памятник находится внутри платного археологического комплекса; действуют его сезонные часы, билет и правила доступа. Во время мероприятий отдельные зоны могут быть недоступны.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kourion: The Theatre",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/CB2E60AEDED0A248C225719B0038B505?OpenDocument="
+        },
+        {
+          "title": "Visit Cyprus — Kourion Archaeological Site",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/kourion-archaeological-site/"
+        },
+        {
+          "title": "OpenStreetMap — Kourion Theatre, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.664192&mlon=32.887889#map=19/34.664192/32.887889"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Дом Евстолия",
+      "coordinates": {
+        "lat": 34.664731,
+        "lon": 32.885159
+      },
+      "address": "Kourion Archaeological Site, south-east edge of the acropolis",
+      "category": "римская вилла и бани",
+      "facts": [
+        "Комплекс был монументальным частным домом конца IV — начала V века н. э.; в нём более 35 помещений вокруг двух дворов и небольшой банный комплекс.",
+        "Мозаичные надписи называют владельца Евстолия и сообщают о его христианской идентичности.",
+        "После устройства мозаик и бань здание стало общественным местом отдыха."
+      ],
+      "dates": [
+        "конец IV — начало V века н. э. — строительство дома",
+        "начало V века н. э. — завершение основных мозаичных полов"
+      ],
+      "people": [
+        "Евстолий Курианин — владелец, названный в мозаичных надписях."
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Осмотр проходит по настилам и обозначенному маршруту археологического комплекса. Действуют общий билет и сезонные часы Куриона.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Archaeological Site of Kourion, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Archaeological_Site_of_Kourion_afigisi_en.pdf"
+        },
+        {
+          "title": "Департамент древностей Кипра — Kourion Archaeological Site",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/CB2E60AEDED0A248C225719B0038B505?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — дом у театра Куриона, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.664731&mlon=32.885159#map=19/34.664731/32.885159"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Бани Дома Евстолия",
+      "coordinates": {
+        "lat": 34.66495,
+        "lon": 32.88496
+      },
+      "address": "House of Eustolios, Kourion Archaeological Site",
+      "category": "римские бани",
+      "facts": [
+        "Бани занимали более высокий северный уровень комплекса Евстолия.",
+        "В последовательность помещений входили раздевальня и холодная баня, тёплая баня и горячая баня.",
+        "От тёплой и горячей бань сохранились гипокаусты — подпольные пространства, по которым циркулировал горячий воздух."
+      ],
+      "dates": [
+        "начало V века н. э. — мозаики и банный комплекс в нынешней форме"
+      ],
+      "people": [
+        "Евстолий Курианин — даритель бань городу по мозаичной надписи."
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Это часть Дома Евстолия внутри археологического комплекса; ходите только по проложенным настилам и не заходите на кладку.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Archaeological Site of Kourion, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Archaeological_Site_of_Kourion_afigisi_en.pdf"
+        },
+        {
+          "title": "OpenStreetMap — Дом Евстолия, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.664950&mlon=32.884960#map=19/34.664950/32.884960"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Раннехристианская епископская базилика Куриона",
+      "coordinates": {
+        "lat": 34.66637,
+        "lon": 32.884072
+      },
+      "address": "Kourion Archaeological Site, central acropolis",
+      "category": "раннехристианская базилика",
+      "facts": [
+        "Трёхнефная базилика была кафедральной церковью Куриона.",
+        "Она была построена в начале V века н. э.; в VI веке в здании появились новые мозаичные и мраморные полы.",
+        "В середине VII века базилика была разрушена во время арабских набегов."
+      ],
+      "dates": [
+        "начало V века н. э. — строительство",
+        "VI век н. э. — новые полы и архитектурные изменения",
+        "середина VII века н. э. — разрушение"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Памятник находится в центральной части открытого археологического маршрута. Действуют общий билет и сезонные часы Куриона; каменистое покрытие требует устойчивой обуви.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kourion: The Early Christian Basilica",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/CB2E60AEDED0A248C225719B0038B505?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — Kourion Episcopal Basilica, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.666370&mlon=32.884072#map=19/34.666370/32.884072"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Атрий и баптистерий базилики",
+      "coordinates": {
+        "lat": 34.666046,
+        "lon": 32.884231
+      },
+      "address": "Kourion Archaeological Site, north of the episcopal basilica",
+      "category": "раннехристианская архитектура",
+      "facts": [
+        "К северу от базилики располагались атрий и баптистерий.",
+        "Баптистерий имел форму небольшой трёхнефной базилики с нартексом.",
+        "Западнее нартекс соединял храм с диакониконом и епископским домом."
+      ],
+      "dates": [
+        "V–VI века н. э. — использование комплекса кафедральной базилики"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Остатки расположены рядом с базиликой и осматриваются по общему маршруту комплекса. Не сходите с настилов и ограждённых троп.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kourion: The Early Christian Basilica",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/CB2E60AEDED0A248C225719B0038B505?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — информационная точка Episcopal Basilica, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.666046&mlon=32.884231#map=19/34.666046/32.884231"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Римская агора Куриона",
+      "coordinates": {
+        "lat": 34.66652,
+        "lon": 32.884604
+      },
+      "address": "Kourion Archaeological Site, central acropolis",
+      "category": "античная общественная площадь",
+      "facts": [
+        "Сохранившаяся римская агора относится к началу III века н. э. и получила дополнения в раннехристианскую эпоху.",
+        "Агора была построена на месте более раннего общественного здания, использовавшегося от конца IV века до н. э. до конца эллинистического периода.",
+        "Площадь была обрамлена портиками с мраморными колоннами."
+      ],
+      "dates": [
+        "конец IV века до н. э. — конец эллинистического периода: более раннее общественное здание",
+        "начало III века н. э. — римская агора",
+        "раннехристианский период — дополнения"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытая археологическая зона внутри комплекса; посещается по его общему билету и расписанию.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kourion: The Agora",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/CB2E60AEDED0A248C225719B0038B505?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — Roman agora, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.666520&mlon=32.884604#map=19/34.666520/32.884604"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Римский нимфей Куриона",
+      "coordinates": {
+        "lat": 34.66722,
+        "lon": 32.88421
+      },
+      "address": "Kourion Archaeological Site, north-west side of the agora",
+      "category": "античное водное сооружение",
+      "facts": [
+        "Нимфей находился в северо-западном крыле агоры и снабжал город водой.",
+        "Сооружение относится по меньшей мере к I веку н. э. и включает апсидные фонтаны и цистерны.",
+        "Нимфей был посвящён нимфам — покровительницам воды — и окончательно оставлен в середине VII века."
+      ],
+      "dates": [
+        "I век н. э. — начало сооружения",
+        "середина VII века н. э. — оставление"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Осмотр в пределах археологического комплекса; доступ осуществляется по обозначенной пешеходной траектории.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kourion: The Nymphaeum",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/CB2E60AEDED0A248C225719B0038B505?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — The Roman Nymphaeum, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.667220&mlon=32.884210#map=19/34.667220/32.884210"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Дом Ахилла",
+      "coordinates": {
+        "lat": 34.668527,
+        "lon": 32.882456
+      },
+      "address": "Kourion Archaeological Site, north-west end near B6",
+      "category": "римская вилла и мозаики",
+      "facts": [
+        "Сохранившаяся часть Дома Ахилла — римская вилла первой половины IV века н. э. с перистильным двором.",
+        "Несколько помещений украшали мозаики; наиболее известная показывает, как Ахилл открывает Одиссею свою личность при дворе Ликомеда на Скиросе.",
+        "Дом расположен у северо-западной оконечности Куриона, рядом со старой дорогой Лимасол—Пафос."
+      ],
+      "dates": [
+        "первая половина IV века н. э."
+      ],
+      "people": [
+        "Ахилл",
+        "Одиссей",
+        "Ликомед"
+      ],
+      "legends": [
+        "Мозаика обращается к греческому мифу о скрывавшемся на Скиросе Ахилле."
+      ],
+      "disputed": [
+        "Назначение здания как гражданского приёмного центра для почётных гостей — неизвестно; такую интерпретацию предлагают раскопщики."
+      ],
+      "next_leg": null,
+      "access_info": "Памятник расположен на пешеходном маршруте северо-западного участка Куриона. Посещение по общему билету комплекса.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kourion: The House of Achilles",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/CB2E60AEDED0A248C225719B0038B505?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — House of Achilles, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.668527&mlon=32.882456#map=19/34.668527/32.882456"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Дом гладиаторов",
+      "coordinates": {
+        "lat": 34.668092,
+        "lon": 32.883033
+      },
+      "address": "Kourion Archaeological Site, east of the House of Achilles",
+      "category": "римская вилла и мозаики",
+      "facts": [
+        "Римский дом второй половины III века н. э. стоял в нескольких метрах к востоку от Дома Ахилла.",
+        "Его центральный двор окружали галереи и помещения; мозаики восточного и южного крыла включают редкую для Кипра сцену гладиаторского боя.",
+        "Землетрясения IV века разрушили здание."
+      ],
+      "dates": [
+        "вторая половина III века н. э. — строительство",
+        "IV век н. э. — разрушение землетрясениями"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "Здесь заканчивается пеший кластер древнего Куриона. Для обязательного автомобильного переезда к Колосси вызовите такси или используйте арендованный автомобиль: двигайтесь на восток по направлению Лимасол—Пафос, затем к Kolossi Castle (34.665195, 32.934344). Официальные страницы Visit Cyprus помещают Курион в 19 км к западу от Лимасола на дороге к Пафосу, а Колосси — в 14 км к западу от Лимасола на той же дороге; перед выездом проверьте навигацию и дорожную обстановку.",
+      "access_info": "Последняя точка пешеходного кластера Куриона; далее маршрут продолжается только после автомобильного переезда. Действует общий билет археологического комплекса.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kourion: The House of the Gladiators",
+          "url": "https://www.culture.gov.cy/dmculture/DA/DA.nsf/All/CB2E60AEDED0A248C225719B0038B505?OpenDocument="
+        },
+        {
+          "title": "Visit Cyprus — Kourion Archaeological Site",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/kourion-archaeological-site/"
+        },
+        {
+          "title": "Visit Cyprus — Kolossi Medieval Castle",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/kolossi-medieval-castle/"
+        },
+        {
+          "title": "OpenStreetMap — House of Gladiators, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.668092&mlon=32.883033#map=19/34.668092/32.883033"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Замок Колосси: внешний обход",
+      "coordinates": {
+        "lat": 34.665195,
+        "lon": 32.934344
+      },
+      "address": "Kolossi Castle, Kolossi, Limassol District, 4632",
+      "category": "средневековая крепость",
+      "facts": [
+        "Замок стоит на южной окраине деревни Колосси, на прибрежной равнине к западу от Лимасола.",
+        "Это трёхэтажное квадратное укрепление франкского периода.",
+        "Первый замок построил Орден госпитальеров в 1210 году как резиденцию Великой командории."
+      ],
+      "dates": [
+        "1210 — строительство первого замка",
+        "1306–1313 — краткое владение тамплиеров",
+        "1425–1426 — разрушение во время мамлюкских набегов"
+      ],
+      "people": [
+        "госпитальеры — Орден Святого Иоанна Иерусалимского",
+        "тамплиеры"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Департамент древностей указывает ежедневную работу: 08:30–17:00 с 16 сентября по 15 апреля и 08:30–19:30 с 16 апреля по 15 сентября; вход €2,50. Замок не приспособлен для кресел-колясок. Проверяйте часы, тариф и возможные временные закрытия перед визитом.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kolossi Castle",
+          "url": "https://www.culture.gov.cy/dmculture/da/da.nsf/bfd21a0aeaede07fc2256fd300252d70/715c0a5218c174dfc225719900331a09?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — Kolossi Castle, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665195&mlon=32.934344#map=19/34.665195/32.934344"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Восточный фасад и гербы Колосси",
+      "coordinates": {
+        "lat": 34.665249,
+        "lon": 32.934438
+      },
+      "address": "Kolossi Castle, east facade",
+      "category": "средневековая геральдика",
+      "facts": [
+        "На восточном фасаде вмонтирована резная мраморная плита с крестовидной композицией гербов.",
+        "На ней представлены гербы Иерусалима, Кипра, Малой Армении и старый герб Лузиньянов.",
+        "Плита также включает гербы великих магистров Жана де Ластика и Жака де Милли, а внизу — герб Луи де Маньяка."
+      ],
+      "dates": [
+        "1393 — король Кипра одновременно носил титулы короля Иерусалима и Малой Армении",
+        "1454 — Жак де Милли сменил Жана де Ластика; замок связан с Луи де Маньяком"
+      ],
+      "people": [
+        "Луи де Маньяк",
+        "Жан де Ластик",
+        "Жак де Милли"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Фасад осматривается снаружи в пределах территории памятника. Не прикасайтесь к резной плите и кладке.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Kolossi Castle, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Kolossi_Castle_afigisi_en.pdf"
+        },
+        {
+          "title": "OpenStreetMap — Kolossi Castle, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665249&mlon=32.934438#map=20/34.665249/32.934438"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Первый этаж: сводчатые залы и цистерны",
+      "coordinates": {
+        "lat": 34.665273,
+        "lon": 32.933957
+      },
+      "address": "Kolossi Castle, ground floor",
+      "category": "средневековая архитектура",
+      "facts": [
+        "Первый этаж разделён на три сводчатых зала, соединённые арочными проходами.",
+        "Отверстия в полу ведут к подземным цистернам для воды.",
+        "Главные ворота достигались по каменной лестнице и подъёмному мосту; над ними находится машикуля с отверстиями для обороны."
+      ],
+      "dates": [
+        "1454 — нынешнее здание замка"
+      ],
+      "people": [
+        "Луи де Маньяк — великий командор, построивший существующий замок."
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Внутри узкие лестницы и неровное историческое покрытие; замок официально отмечен как недоступный для кресел-колясок. Следуйте указаниям смотрителей.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Kolossi Castle, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Kolossi_Castle_afigisi_en.pdf"
+        },
+        {
+          "title": "OpenStreetMap — Kolossi Castle, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665273&mlon=32.933957#map=20/34.665273/32.933957"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Второй этаж: зал с фреской Распятия",
+      "coordinates": {
+        "lat": 34.665273,
+        "lon": 32.933957
+      },
+      "address": "Kolossi Castle, second floor",
+      "category": "средневековое искусство",
+      "facts": [
+        "Второй этаж состоит из двух залов; в западном находится большой простой камин.",
+        "На южной стене восточного зала сохранилась фреска Распятия с Девой Марией и Иоанном.",
+        "Фреска XV–XVI веков защищена стеклом после консервации Департаментом древностей."
+      ],
+      "dates": [
+        "XV–XVI века — датировка фрески Распятия"
+      ],
+      "people": [
+        "Луи де Маньяк — его fleur-de-lis показан в левом нижнем углу фрески.",
+        "Иоанн Богослов"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Посещение зависит от допуска в интерьер и указаний персонала. Фреску нельзя трогать или фотографировать с использованием вспышки.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Kolossi Castle, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Kolossi_Castle_afigisi_en.pdf"
+        },
+        {
+          "title": "OpenStreetMap — Kolossi Castle, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665273&mlon=32.933957#map=20/34.665273/32.933957"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Третий этаж и крыша замка Колосси",
+      "coordinates": {
+        "lat": 34.665273,
+        "lon": 32.933957
+      },
+      "address": "Kolossi Castle, upper floor and roof",
+      "category": "средневековая крепость",
+      "facts": [
+        "На третий этаж ведёт внутренняя винтовая лестница из 33 ступеней; здесь два зала с каминами и восемью окнами.",
+        "На плоскую крышу ведёт ещё одна винтовая лестница из 35 ступеней.",
+        "На крыше сохранились оборонительные отверстия и 19 зубцов."
+      ],
+      "dates": [
+        "1454 — строительство нынешней башни-замка"
+      ],
+      "people": [
+        "Луи де Маньяк — его герб присутствует у верхних каминов."
+      ],
+      "legends": [],
+      "disputed": [
+        "Функция двух залов третьего этажа как столовой и спальни — неизвестно; это вероятная интерпретация, приведённая в официальном путеводителе."
+      ],
+      "next_leg": null,
+      "access_info": "Подъём на верхние уровни возможен только по узким винтовым лестницам и зависит от фактического режима доступа. При ветре, дожде или ограничениях персонала крыша может быть закрыта.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Kolossi Castle, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Kolossi_Castle_afigisi_en.pdf"
+        },
+        {
+          "title": "OpenStreetMap — Kolossi Castle, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665273&mlon=32.933957#map=20/34.665273/32.933957"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Руины первого замка и колодец",
+      "coordinates": {
+        "lat": 34.665351,
+        "lon": 32.934538
+      },
+      "address": "Kolossi Castle archaeological grounds, east and south-east of the keep",
+      "category": "археологические руины",
+      "facts": [
+        "Руины первого замка XIII века лежат к востоку, югу и юго-западу от существующей башни.",
+        "Среди этих остатков выделяется колодец.",
+        "Существующая башня была построена на руинах более раннего замка после разрушений 1425–1426 годов."
+      ],
+      "dates": [
+        "XIII век — первый замок",
+        "1425–1426 — разрушения",
+        "1454 — строительство существующей башни"
+      ],
+      "people": [
+        "Луи де Маньяк"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Осматривайте остатки только с открытых дорожек на территории памятника; не подходите к неограждённым раскопам и колодцу.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Kolossi Castle, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Kolossi_Castle_afigisi_en.pdf"
+        },
+        {
+          "title": "OpenStreetMap — Kolossi Castle, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665351&mlon=32.934538#map=20/34.665351/32.934538"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Средневековая сахароварня Колосси",
+      "coordinates": {
+        "lat": 34.665096,
+        "lon": 32.934711
+      },
+      "address": "Kolossi Castle archaeological grounds, east of the keep",
+      "category": "промышленное наследие",
+      "facts": [
+        "К востоку от замка сохранились остатки завода по переработке сахарного тростника с плантаций региона.",
+        "Главное здание сахароварни XIV века — длинный узкий каменный сводчатый зал.",
+        "Надпись на южной внешней стене сообщает о ремонте в 1591 году, когда губернатором Кипра был Мурад-паша."
+      ],
+      "dates": [
+        "XIV век — датировка сахароварни и плантаций",
+        "1591 — ремонт сахароварни"
+      ],
+      "people": [
+        "Мурад-паша — губернатор Кипра в 1591 году."
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Сахароварня — часть археологической зоны замка; осмотр только с разрешённых троп. Действуют часы и билет Колосси.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kolossi Castle: Sugar refinery plant",
+          "url": "https://www.culture.gov.cy/dmculture/da/da.nsf/bfd21a0aeaede07fc2256fd300252d70/715c0a5218c174dfc225719900331a09?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — Sugar-Mill, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665096&mlon=32.934711#map=20/34.665096/32.934711"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Водяная мельница сахароварни",
+      "coordinates": {
+        "lat": 34.665404,
+        "lon": 32.934656
+      },
+      "address": "Kolossi Castle archaeological grounds, north of the sugar refinery",
+      "category": "средневековая промышленность",
+      "facts": [
+        "К северу от сахароварни находятся руины мельницы для дробления сахарного тростника.",
+        "Воду к мельнице подавал средневековый акведук от реки Курис.",
+        "Мельничный камень дробил очищенный и нарезанный тростник; сок затем варили в больших котлах."
+      ],
+      "dates": [
+        "XIV век — сахарное производство комплекса"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Руины находятся на территории Колосси; сохраняйте дистанцию от кладки и осматривайте их с открытого маршрута.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Kolossi Castle, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Kolossi_Castle_afigisi_en.pdf"
+        },
+        {
+          "title": "Департамент древностей Кипра — Kolossi Castle: Sugar refinery plant",
+          "url": "https://www.culture.gov.cy/dmculture/da/da.nsf/bfd21a0aeaede07fc2256fd300252d70/715c0a5218c174dfc225719900331a09?OpenDocument="
+        },
+        {
+          "title": "OpenStreetMap — Sugar-Mill, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665404&mlon=32.934656#map=20/34.665404/32.934656"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Акведук Колосси",
+      "coordinates": {
+        "lat": 34.665702,
+        "lon": 32.934461
+      },
+      "address": "Kolossi Castle archaeological grounds, north of the sugar mill",
+      "category": "средневековое водное сооружение",
+      "facts": [
+        "К северу от сахароварни и мельницы сохранились остатки акведука.",
+        "Акведук подавал воду реки Курис к водяной мельнице сахарного производства.",
+        "Сахарный комплекс, мельница и акведук показывают, что Колосси был не только укреплением, но и производственным центром."
+      ],
+      "dates": [
+        "XIV век — средневековый сахарный комплекс"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Сохранившиеся элементы акведука хрупкие; осмотр только с доступных дорожек на территории памятника.",
+      "sources": [
+        {
+          "title": "Департамент древностей Кипра — Kolossi Castle: Sugar refinery plant",
+          "url": "https://www.culture.gov.cy/dmculture/da/da.nsf/bfd21a0aeaede07fc2256fd300252d70/715c0a5218c174dfc225719900331a09?OpenDocument="
+        },
+        {
+          "title": "Visit Cyprus — Kolossi Castle, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Kolossi_Castle_afigisi_en.pdf"
+        },
+        {
+          "title": "OpenStreetMap — Historic aqueduct, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.665702&mlon=32.934461#map=20/34.665702/32.934461"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Церковь Святого Евстафия",
+      "coordinates": {
+        "lat": 34.664768,
+        "lon": 32.935198
+      },
+      "address": "Church of St Efstathios, near Kolossi Castle",
+      "category": "византийская церковь",
+      "facts": [
+        "Небольшая византийская церковь Святого Евстафия находится примерно в 100 метрах от замка.",
+        "Она относится к XII веку и была изменена в XV веке.",
+        "Церковь завершает пеший кластер Колосси, связывающий замок с производственными постройками и религиозным памятником."
+      ],
+      "dates": [
+        "XII век — строительство церкви",
+        "XV век — изменения здания"
+      ],
+      "people": [
+        "госпитальеры — Орден Святого Иоанна Иерусалимского"
+      ],
+      "legends": [],
+      "disputed": [
+        "Использование церкви как места богослужения госпитальеров — неизвестно; такая связь предложена на основании герба Луи де Маньяка, который Р. Ганнис видел в апсиде в 1936 году."
+      ],
+      "next_leg": null,
+      "access_info": "Церковь находится рядом с замком. Доступ в интерьер и правила посещения религиозного здания необходимо уточнить на месте; внешний осмотр возможен с общественной дороги.",
+      "sources": [
+        {
+          "title": "Visit Cyprus — Kolossi Castle, written audio guide",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Kolossi_Castle_afigisi_en.pdf"
+        },
+        {
+          "title": "OpenStreetMap — церковь Святого Евстафия, координаты",
+          "url": "https://www.openstreetmap.org/?mlat=34.664768&mlon=32.935198#map=20/34.664768/32.935198"
+        }
+      ],
+      "llm_coordinates": null
+    }
+  ]
+}

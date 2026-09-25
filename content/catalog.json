@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-09-20T12:50:18Z",
+  "updatedAt": "2026-09-25T08:45:38Z",
   "guides": [
     {
       "id": "gazgoldernaya",
@@ -137,7 +137,7 @@
       "durationSec": 297,
       "language": "ru",
       "guidePath": "guides/larnaka/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "pafos",
@@ -159,7 +159,7 @@
       "durationSec": 280,
       "language": "ru",
       "guidePath": "guides/pafos/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "nikosiya",
@@ -180,7 +180,7 @@
       "durationSec": 267,
       "language": "ru",
       "guidePath": "guides/nikosiya/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "moscow",
@@ -265,7 +265,7 @@
       "durationSec": 280,
       "language": "ru",
       "guidePath": "guides/limasol/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "tula",
@@ -411,7 +411,7 @@
       "durationSec": 721,
       "language": "ru",
       "guidePath": "guides/larnaka-long/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "pafos-long",
@@ -437,7 +437,7 @@
       "durationSec": 698,
       "language": "ru",
       "guidePath": "guides/pafos-long/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "nikosiya-long",
@@ -458,7 +458,7 @@
       "durationSec": 719,
       "language": "ru",
       "guidePath": "guides/nikosiya-long/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "limasol-long",
@@ -480,7 +480,7 @@
       "durationSec": 649,
       "language": "ru",
       "guidePath": "guides/limasol-long/guide.json",
-      "contentVersion": 1
+      "contentVersion": 2
     },
     {
       "id": "suchzhou-long",
@@ -503,6 +503,110 @@
       "language": "ru",
       "guidePath": "guides/suchzhou-long/guide.json",
       "contentVersion": 1
+    },
+    {
+      "id": "lefkara",
+      "title": "Лефкара",
+      "subtitle": "Кружево, серебро и каменные улицы исторической горной деревни",
+      "aliases": [
+        "Пано-Лефкара",
+        "Лефкара",
+        "Pano Lefkara",
+        "Lefkara",
+        "Πάνω Λεύκαρα"
+      ],
+      "city": "Лефкара",
+      "region": "Республика Кипр, округ Ларнака",
+      "center": {
+        "lat": 34.8658211,
+        "lon": 33.3085
+      },
+      "stopsCount": 8,
+      "durationSec": 300,
+      "language": "ru",
+      "guidePath": "guides/lefkara/guide.json",
+      "contentVersion": 2
+    },
+    {
+      "id": "lefkara-long",
+      "title": "Лефкара · длинный",
+      "subtitle": "Кружево, серебро и часовни вокруг Пано-Лефкары",
+      "aliases": [
+        "Лефкара",
+        "Лефкара длинный",
+        "Пано-Лефкара",
+        "Lefkara"
+      ],
+      "city": "Лефкара",
+      "region": "Республика Кипр, округ Ларнака",
+      "center": {
+        "lat": 34.8665517,
+        "lon": 33.3068524
+      },
+      "stopsCount": 15,
+      "durationSec": 535,
+      "language": "ru",
+      "guidePath": "guides/lefkara-long/guide.json",
+      "contentVersion": 2
+    },
+    {
+      "id": "kurion-kolossi",
+      "title": "Курион и Колосси — длинный маршрут",
+      "subtitle": "Античный город на скале и франкская командория среди сахарных плантаций",
+      "aliases": [
+        "Курион",
+        "Курион и Колосси",
+        "Kourion",
+        "Curium",
+        "Kolossi",
+        "Κούριον",
+        "Κολόσσι"
+      ],
+      "city": "Курион и Колосси",
+      "region": "Республика Кипр, округ Лимасол",
+      "center": {
+        "lat": 34.665,
+        "lon": 32.91
+      },
+      "stopsCount": 20,
+      "durationSec": 672,
+      "language": "ru",
+      "guidePath": "guides/kurion-kolossi/guide.json",
+      "contentVersion": 2,
+      "routeMode": "mixed",
+      "routeDistanceKm": 6.2,
+      "estimatedDurationMin": 300,
+      "routeNotice": "Два пеших кластера; между Курионом и Колосси обязателен автомобильный переезд.",
+      "reviewedAt": "2026-09-25"
+    },
+    {
+      "id": "troodos",
+      "title": "Троодос — длинный маршрут",
+      "subtitle": "Омодос, горные тропы, Киккский монастырь и старая Какопетрия",
+      "aliases": [
+        "Троодос",
+        "Troodos",
+        "Troodos Mountains",
+        "Τρόοδος",
+        "Омодос",
+        "Какопетрия"
+      ],
+      "city": "Троодос",
+      "region": "Горный массив Троодос, Республика Кипр",
+      "center": {
+        "lat": 34.924239,
+        "lon": 32.880879
+      },
+      "stopsCount": 15,
+      "durationSec": 527,
+      "language": "ru",
+      "guidePath": "guides/troodos/guide.json",
+      "contentVersion": 2,
+      "routeMode": "driving",
+      "routeDistanceKm": 44.2,
+      "estimatedDurationMin": 480,
+      "routeNotice": "Автомобильный маршрут по четырём удалённым кластерам; перед поездкой проверяйте состояние горных дорог.",
+      "reviewedAt": "2026-09-25"
     }
   ],
   "cities": [
@@ -603,7 +707,7 @@
         "short": "larnaka",
         "long": "larnaka-long"
       },
-      "contentVersion": 2,
+      "contentVersion": 3,
       "language": "ru"
     },
     {
@@ -629,7 +733,7 @@
         "short": "pafos",
         "long": "pafos-long"
       },
-      "contentVersion": 2,
+      "contentVersion": 3,
       "language": "ru"
     },
     {
@@ -654,7 +758,7 @@
         "short": "nikosiya",
         "long": "nikosiya-long"
       },
-      "contentVersion": 2,
+      "contentVersion": 3,
       "language": "ru"
     },
     {
@@ -745,7 +849,7 @@
         "short": "limasol",
         "long": "limasol-long"
       },
-      "contentVersion": 2,
+      "contentVersion": 3,
       "language": "ru"
     },
     {
@@ -769,6 +873,82 @@
         "long": "tula-long"
       },
       "contentVersion": 2,
+      "language": "ru"
+    },
+    {
+      "id": "lefkara",
+      "title": "Лефкара",
+      "subtitle": "Кружево лефкаритика, серебро и каменные улицы",
+      "aliases": [
+        "Лефкара",
+        "Пано-Лефкара",
+        "Като-Лефкара",
+        "Lefkara",
+        "Pano Lefkara",
+        "Kato Lefkara",
+        "Πάνω Λεύκαρα",
+        "Λεύκαρα"
+      ],
+      "city": "Лефкара",
+      "region": "Республика Кипр, округ Ларнака",
+      "center": {
+        "lat": 34.8665517,
+        "lon": 33.3068524
+      },
+      "guides": {
+        "short": "lefkara",
+        "long": "lefkara-long"
+      },
+      "contentVersion": 2,
+      "language": "ru"
+    },
+    {
+      "id": "kurion-kolossi",
+      "title": "Курион и Колосси",
+      "subtitle": "Античный город на скале, средневековый замок и сахарные плантации",
+      "aliases": [
+        "Курион",
+        "Курион и Колосси",
+        "Kourion",
+        "Curium",
+        "Kolossi",
+        "Κούριον",
+        "Κολόσσι"
+      ],
+      "city": "Курион и Колосси",
+      "region": "Республика Кипр, округ Лимасол",
+      "center": {
+        "lat": 34.665,
+        "lon": 32.91
+      },
+      "guides": {
+        "long": "kurion-kolossi"
+      },
+      "contentVersion": 1,
+      "language": "ru"
+    },
+    {
+      "id": "troodos",
+      "title": "Троодос",
+      "subtitle": "Омодос, горные тропы, Киккский монастырь и старая Какопетрия",
+      "aliases": [
+        "Троодос",
+        "Troodos",
+        "Troodos Mountains",
+        "Τρόοδος",
+        "Омодос",
+        "Какопетрия"
+      ],
+      "city": "Троодос",
+      "region": "Горный массив Троодос, Республика Кипр",
+      "center": {
+        "lat": 34.924239,
+        "lon": 32.880879
+      },
+      "guides": {
+        "long": "troodos"
+      },
+      "contentVersion": 1,
       "language": "ru"
     }
   ]

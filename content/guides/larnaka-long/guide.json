@@ -1,11 +1,16 @@
 {
   "id": "larnaka-long",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "title": "Ларнака · длинный",
   "subtitle": "От замка и Финикудес к Китиону, акведуку Камарес и Солёному озеру",
   "city": "Ларнака",
   "region": "Республика Кипр, округ Ларнака",
   "language": "ru",
+  "routeMode": "mixed",
+  "routeDistanceKm": 12.3,
+  "estimatedDurationMin": 300,
+  "routeNotice": "Центр проходится пешком; к Камаресу, Солёному озеру и Хала-Султан-Текке удобнее ехать.",
+  "reviewedAt": "2026-09-25",
   "center": {
     "lat": 34.9143,
     "lon": 33.6353

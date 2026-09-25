@@ -10,6 +10,7 @@ FLUTTER_ROOT="${FLUTTER_ROOT:-$DEVELOP/flutter}"
 SECRETS="${SECRETS:-$HOME/.local/share/audio_guide}"
 PUBLIC_BASE="${PUBLIC_BASE_URL:-https://audio.solovyshka.com}"
 OVH_HOST="${OVH_HOST:-ubuntu@51.254.219.211}"
+VDS_HOST="${VDS_HOST:-root@135.106.218.22}"
 
 export JAVA_HOME="${JAVA_HOME:-$(dirname "$(dirname "$(readlink -f "$(command -v java)")")")}"
 export ANDROID_HOME="$ANDROID_SDK"
@@ -144,8 +145,8 @@ if [ "${SKIP_PUBLISH:-0}" = "1" ]; then
   exit 0
 fi
 
-scp -o BatchMode=yes -o ConnectTimeout=20 "$APK" "$ROOT/deploy/out/version.json" "$ROOT/deploy/app-index.html" "$OVH_HOST:/tmp/"
-ssh -o BatchMode=yes -o ConnectTimeout=20 "$OVH_HOST" 'sudo install -d -m 755 /var/www/audio-guide-app
+if scp -o BatchMode=yes -o ConnectTimeout=20 "$APK" "$ROOT/deploy/out/version.json" "$ROOT/deploy/app-index.html" "$OVH_HOST:/tmp/"; then
+  ssh -o BatchMode=yes -o ConnectTimeout=20 "$OVH_HOST" 'sudo install -d -m 755 /var/www/audio-guide-app
 sudo install -m 644 /tmp/audio_guide.apk /var/www/audio-guide-app/audio_guide.apk
 sudo ln -sfn audio_guide.apk /var/www/audio-guide-app/update.bin
 sudo install -m 644 /tmp/version.json /var/www/audio-guide-app/version.json
@@ -155,5 +156,17 @@ curl -sS -m 10 -o /dev/null -w "version=%{http_code}\n" http://127.0.0.1/app/ver
 curl -sS -m 10 -o /dev/null -w "page=%{http_code}\n" http://127.0.0.1/app/
 curl -sS -m 10 -o /dev/null -w "update=%{http_code} size=%{size_download}\n" http://127.0.0.1/app/update.bin
 '
+else
+  echo "OVH publish skipped: $OVH_HOST unreachable" >&2
+fi
 
-echo "Published $VERSION_NAME+$VERSION_CODE -> $PUBLIC_BASE/app/"
+scp -o BatchMode=yes -o ConnectTimeout=20 "$APK" "$ROOT/deploy/out/version.json" "$ROOT/deploy/app-index.html" "$VDS_HOST:/tmp/"
+ssh -o BatchMode=yes -o ConnectTimeout=20 "$VDS_HOST" 'sudo install -d -m 755 /var/www/audio-guide-app
+sudo install -m 644 /tmp/audio_guide.apk /var/www/audio-guide-app/audio_guide.apk
+sudo ln -sfn audio_guide.apk /var/www/audio-guide-app/update.bin
+sudo install -m 644 /tmp/version.json /var/www/audio-guide-app/version.json
+sudo install -m 644 /tmp/app-index.html /var/www/audio-guide-app/index.html
+rm -f /tmp/audio_guide.apk /tmp/version.json /tmp/app-index.html
+'
+
+echo "Published $VERSION_NAME+$VERSION_CODE -> $PUBLIC_BASE/app/ and VDS /audio/app/"

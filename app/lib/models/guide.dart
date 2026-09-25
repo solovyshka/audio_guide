@@ -1,4 +1,4 @@
-import '../config.dart';
+import '../net/api_door.dart';
 
 class LatLon {
   const LatLon({required this.lat, required this.lon});
@@ -24,6 +24,11 @@ class GuideSummary {
     required this.durationSec,
     required this.contentVersion,
     required this.center,
+    this.routeMode,
+    this.routeDistanceKm,
+    this.estimatedDurationMin,
+    this.routeNotice,
+    this.reviewedAt,
   });
 
   final String id;
@@ -34,6 +39,11 @@ class GuideSummary {
   final int durationSec;
   final int contentVersion;
   final LatLon center;
+  final String? routeMode;
+  final double? routeDistanceKm;
+  final int? estimatedDurationMin;
+  final String? routeNotice;
+  final String? reviewedAt;
 
   factory GuideSummary.fromJson(Map<String, dynamic> json) {
     return GuideSummary(
@@ -46,6 +56,11 @@ class GuideSummary {
       contentVersion:
           (json['contentVersion'] ?? json['content_version'] ?? 1) as int,
       center: LatLon.fromJson(json['center'] as Map<String, dynamic>),
+      routeMode: json['routeMode'] as String?,
+      routeDistanceKm: (json['routeDistanceKm'] as num?)?.toDouble(),
+      estimatedDurationMin: (json['estimatedDurationMin'] as num?)?.toInt(),
+      routeNotice: json['routeNotice'] as String?,
+      reviewedAt: json['reviewedAt'] as String?,
     );
   }
 }
@@ -121,6 +136,11 @@ class Guide extends GuideSummary {
     required super.durationSec,
     required super.contentVersion,
     required super.center,
+    super.routeMode,
+    super.routeDistanceKm,
+    super.estimatedDurationMin,
+    super.routeNotice,
+    super.reviewedAt,
     required this.intro,
     required this.stops,
     this.mapUrl,
@@ -153,10 +173,15 @@ class Guide extends GuideSummary {
       contentVersion:
           (json['contentVersion'] ?? json['content_version'] ?? 1) as int,
       center: LatLon.fromJson(json['center'] as Map<String, dynamic>),
+      routeMode: json['routeMode'] as String?,
+      routeDistanceKm: (json['routeDistanceKm'] as num?)?.toDouble(),
+      estimatedDurationMin: (json['estimatedDurationMin'] as num?)?.toInt(),
+      routeNotice: json['routeNotice'] as String?,
+      reviewedAt: json['reviewedAt'] as String?,
       intro: Track.fromJson(json['intro'] as Map<String, dynamic>),
       stops: stops,
       mapUrl: (json['mapUrl'] ?? json['map_url']) as String? ??
-          '$apiBase/guides/$id/map.png',
+          '${ApiDoor.current}/guides/$id/map.png',
       mapBounds: rawBounds is Map<String, dynamic>
           ? MapBounds.fromJson(rawBounds)
           : null,

@@ -43,6 +43,7 @@ class AppUpdater {
 
   Future<File> download(
     AppRelease release, {
+    String? url,
     void Function(int received, int? total)? onProgress,
   }) async {
     final tmp = await getTemporaryDirectory();
@@ -64,7 +65,7 @@ class AppUpdater {
     try {
       await downloadFile(
         client: client,
-        url: release.apkUrl,
+        url: url ?? release.apkUrl,
         dest: file,
         chunkSize: 4 * 1024 * 1024,
         expectedSize: release.sizeBytes,

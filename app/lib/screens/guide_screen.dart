@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../api/client.dart';
+import '../content/content_pack.dart';
 import '../audio/guide_player.dart';
 import '../maps/guide_map.dart';
 import '../models/guide.dart';
@@ -32,12 +33,12 @@ class _GuideScreenState extends State<GuideScreen> {
 
   Future<void> _open() async {
     try {
-      Guide? guide;
+      Guide? guide = ContentPack.instance.guide(widget.guideId);
       try {
-        guide = await widget.api.getGuide(widget.guideId);
+        guide ??= await widget.api.getGuide(widget.guideId);
         guide = await GuideCache.instance.withLocalAudio(guide);
       } catch (_) {
-        guide = await GuideCache.instance.loadLocal(widget.guideId);
+        guide ??= await GuideCache.instance.loadLocal(widget.guideId);
       }
       if (guide == null) {
         throw Exception('Гид не найден');
@@ -122,6 +123,8 @@ class _GuideScreenState extends State<GuideScreen> {
               ),
             ),
           if (_useMap) const Divider(height: 1),
+          if (guide.routeMode != null || guide.routeNotice != null)
+            _RouteInfo(guide: guide),
           Expanded(
             flex: 1,
             child: list,
@@ -131,6 +134,49 @@ class _GuideScreenState extends State<GuideScreen> {
             onChanged: () => setState(() {}),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _RouteInfo extends StatelessWidget {
+  const _RouteInfo({required this.guide});
+
+  final Guide guide;
+
+  @override
+  Widget build(BuildContext context) {
+    final mode = switch (guide.routeMode) {
+      'walking' => 'Пешком',
+      'driving' => 'На автомобиле',
+      'mixed' => 'Пешком и на автомобиле',
+      _ => guide.routeMode,
+    };
+    final details = <String>[
+      if (mode != null && mode.isNotEmpty) mode,
+      if (guide.routeDistanceKm != null) '${guide.routeDistanceKm} км',
+      if (guide.estimatedDurationMin != null)
+        'около ${guide.estimatedDurationMin} мин',
+    ];
+    return Material(
+      color: Theme.of(context).colorScheme.surfaceContainerLow,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (details.isNotEmpty)
+              Text(
+                details.join(' · '),
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+            if (guide.routeNotice != null && guide.routeNotice!.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(guide.routeNotice!),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -159,12 +205,9 @@ class _StopList extends StatelessWidget {
           selected: selected,
           selectedTileColor: const Color(0x1F1F4B3A),
           leading: CircleAvatar(
-            backgroundColor: selected
-                ? const Color(0xFF1F4B3A)
-                : const Color(0xFFE8E4DC),
-            foregroundColor: selected
-                ? Colors.white
-                : const Color(0xFF1F4B3A),
+            backgroundColor:
+                selected ? const Color(0xFF1F4B3A) : const Color(0xFFE8E4DC),
+            foregroundColor: selected ? Colors.white : const Color(0xFF1F4B3A),
             child: Text(index == 0 ? 'i' : '$index'),
           ),
           title: Text(track.title),

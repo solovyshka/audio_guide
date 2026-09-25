@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections import Counter
-from typing import List, Optional
+from typing import Any, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -34,6 +34,8 @@ class StopResearch(Strict):
         description="Спорные пункты; в тексте — с «— неизвестно».",
     )
     access_info: Optional[str] = None
+    next_leg: Optional[str] = None
+    llm_coordinates: Optional[Any] = None
     sources: List[Source] = Field(min_length=1)
 
 
@@ -78,6 +80,11 @@ class CityGuide(Strict):
     intro: Intro
     stops: List[GuideStop] = Field(min_length=6, max_length=30)
     durationSec: int = 0
+    routeMode: Optional[str] = None
+    routeDistanceKm: Optional[float] = None
+    estimatedDurationMin: Optional[int] = None
+    routeNotice: Optional[str] = None
+    reviewedAt: Optional[str] = None
 
 
 class QAError(Strict):
@@ -139,6 +146,8 @@ class CityDossier(Strict):
     culture: List[CityPlace] = Field(default_factory=list)
     leisure: List[CityPlace] = Field(default_factory=list)
     guides: CityGuides = Field(default_factory=CityGuides)
+    reviewedAt: Optional[str] = None
+    sourceUrls: List[str] = Field(default_factory=list)
 
 
 class HistoryBlockGen(Strict):

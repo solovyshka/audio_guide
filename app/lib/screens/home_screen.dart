@@ -4,6 +4,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import '../api/client.dart';
+import '../content/content_pack.dart';
 import '../maps/user_location.dart';
 import '../models/city.dart';
 import '../models/generate_job.dart';
@@ -35,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _listening = false;
   AppRelease? _update;
   GenerateJob? _job;
+  bool _refreshingJson = false;
 
   @override
   void initState() {
@@ -84,17 +86,15 @@ class _HomeScreenState extends State<HomeScreen> {
       _error = null;
     });
     try {
-      final cities = await widget.api.listCities();
-      List<GuideSummary> guides = [];
-      try {
-        guides = await widget.api.listGuides();
-      } catch (_) {}
+      final cities = ContentPack.instance.cities;
+      final guides = ContentPack.instance.guides;
       if (!mounted) return;
       setState(() {
         _cities = cities;
         _guides = guides;
         _loading = false;
         _offline = false;
+        _error = cities.isEmpty ? 'В сборке нет городов' : null;
       });
     } catch (error) {
       final local = await GuideCache.instance.localCities();
@@ -125,9 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _job = null;
     });
     try {
-      final cities = needle.isEmpty
-          ? await widget.api.listCities()
-          : await widget.api.searchCities(needle);
+      final cities = ContentPack.instance.search(needle);
       if (!mounted) return;
       setState(() {
         _cities = cities;
@@ -176,6 +174,35 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _refreshJson() async {
+    if (_refreshingJson) {
+      return;
+    }
+    setState(() => _refreshingJson = true);
+    try {
+      await ContentPack.instance.refresh(widget.api);
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _cities = ContentPack.instance.search(_search.text);
+        _guides = ContentPack.instance.guides;
+        _offline = false;
+        _error = null;
+      });
+      _toast('JSON обновлён');
+    } catch (_) {
+      if (!mounted) {
+        return;
+      }
+      _toast('Не удалось обновить JSON');
+    } finally {
+      if (mounted) {
+        setState(() => _refreshingJson = false);
+      }
+    }
   }
 
   Future<void> _checkUpdate({bool manual = false}) async {
@@ -242,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     setState(() => _listening = true);
     await _speech.listen(
-      localeId: 'ru_RU',
+      listenOptions: SpeechListenOptions(localeId: 'ru_RU'),
       onResult: (result) {
         _search.text = result.recognizedWords;
         if (result.finalResult) {
@@ -290,6 +317,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text('Проверить обновления'),
               ),
             ],
+          ),
+          IconButton(
+            tooltip: 'Обновить JSON',
+            onPressed: _refreshingJson ? null : _refreshJson,
+            icon: _refreshingJson
+                ? const SizedBox(
+                    width: 18,
+                    height: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : const Icon(Icons.sync),
           ),
         ],
       ),

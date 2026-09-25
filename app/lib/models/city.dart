@@ -146,6 +146,8 @@ class CitySummary {
     required this.center,
     this.guides = const CityGuides(),
     this.contentVersion = 1,
+    this.reviewedAt,
+    this.sourceUrls = const [],
   });
 
   final String id;
@@ -157,6 +159,8 @@ class CitySummary {
   final LatLon center;
   final CityGuides guides;
   final int contentVersion;
+  final String? reviewedAt;
+  final List<String> sourceUrls;
 
   factory CitySummary.fromJson(Map<String, dynamic> json) {
     return CitySummary(
@@ -172,6 +176,10 @@ class CitySummary {
       guides: CityGuides.fromJson(json['guides'] as Map<String, dynamic>?),
       contentVersion:
           (json['contentVersion'] ?? json['content_version'] ?? 1) as int,
+      reviewedAt: json['reviewedAt'] as String?,
+      sourceUrls: (json['sourceUrls'] as List<dynamic>? ?? [])
+          .whereType<String>()
+          .toList(),
     );
   }
 }
@@ -187,6 +195,8 @@ class City extends CitySummary {
     required super.center,
     super.guides,
     super.contentVersion,
+    super.reviewedAt,
+    super.sourceUrls,
     this.history = const CityHistory(),
     this.present = const CityPresent(),
     this.sights = const [],
@@ -213,7 +223,7 @@ class City extends CitySummary {
       pins.insert(
         0,
         CityPlace(
-          id: 'guide-${id}',
+          id: 'guide-$id',
           name: 'Аудиогид',
           lat: center.lat,
           lon: center.lon,
@@ -247,6 +257,8 @@ class City extends CitySummary {
       center: summary.center,
       guides: summary.guides,
       contentVersion: summary.contentVersion,
+      reviewedAt: summary.reviewedAt,
+      sourceUrls: summary.sourceUrls,
       history: CityHistory.fromJson(json['history'] as Map<String, dynamic>?),
       present: CityPresent.fromJson(json['present'] as Map<String, dynamic>?),
       sights: places('sights'),

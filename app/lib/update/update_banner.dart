@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../net/api_door.dart';
 import 'app_release.dart';
 import 'app_updater.dart';
 
@@ -15,13 +16,16 @@ class UpdateBanner extends StatefulWidget {
 class _UpdateBannerState extends State<UpdateBanner> {
   final _updater = AppUpdater();
   bool _busy = false;
+  String? _door;
   int _received = 0;
   int? _total;
   String? _error;
 
-  Future<void> _run() async {
+  Future<void> _run(String door) async {
+    final label = ApiDoor.shortLabel(door);
     setState(() {
       _busy = true;
+      _door = door;
       _error = null;
       _received = 0;
       _total = widget.release.sizeBytes;
@@ -29,6 +33,7 @@ class _UpdateBannerState extends State<UpdateBanner> {
     try {
       final file = await _updater.download(
         widget.release,
+        url: ApiDoor.updateUrl(door),
         onProgress: (received, total) {
           if (!mounted) {
             return;
@@ -44,7 +49,7 @@ class _UpdateBannerState extends State<UpdateBanner> {
       if (!mounted) {
         return;
       }
-      setState(() => _error = error.toString());
+      setState(() => _error = '$label: $error');
     } finally {
       if (mounted) {
         setState(() => _busy = false);
@@ -72,13 +77,16 @@ class _UpdateBannerState extends State<UpdateBanner> {
                     style: const TextStyle(color: Colors.white),
                   ),
                 ),
-                TextButton(
-                  onPressed: _busy ? null : _run,
-                  child: Text(
-                    _busy ? 'Скачиваю…' : 'Обновить',
-                    style: const TextStyle(color: Colors.white),
+                for (final door in _updateDoors)
+                  TextButton(
+                    onPressed: _busy ? null : () => _run(door),
+                    child: Text(
+                      _busy && _door == door
+                          ? 'Скачиваю ${ApiDoor.shortLabel(door)}…'
+                          : ApiDoor.shortLabel(door),
+                      style: const TextStyle(color: Colors.white),
+                    ),
                   ),
-                ),
               ],
             ),
             if (_busy)
@@ -103,6 +111,16 @@ class _UpdateBannerState extends State<UpdateBanner> {
       ),
     );
   }
+}
+
+List<String> get _updateDoors {
+  final doors = [...ApiDoor.doors];
+  doors.sort((a, b) {
+    final ar = ApiDoor.shortLabel(a) == 'RU' ? 0 : 1;
+    final br = ApiDoor.shortLabel(b) == 'RU' ? 0 : 1;
+    return ar.compareTo(br);
+  });
+  return doors;
 }
 
 String _friendlyError(String error) {

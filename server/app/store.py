@@ -29,6 +29,11 @@ def load_catalog() -> list[GuideSummary]:
                 duration_sec=raw.get("durationSec", 0),
                 language=raw.get("language", "ru"),
                 content_version=raw.get("contentVersion", 1),
+                route_mode=raw.get("routeMode"),
+                route_distance_km=raw.get("routeDistanceKm"),
+                estimated_duration_min=raw.get("estimatedDurationMin"),
+                route_notice=raw.get("routeNotice"),
+                reviewed_at=raw.get("reviewedAt"),
             )
         )
     return items
@@ -74,6 +79,8 @@ def _city_summary(raw: dict) -> CitySummary:
         guides=raw.get("guides") or {},
         content_version=raw.get("contentVersion", 1),
         language=raw.get("language", "ru"),
+        reviewed_at=raw.get("reviewedAt"),
+        source_urls=raw.get("sourceUrls") or [],
     )
 
 

@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 
 import 'api/client.dart';
 import 'config.dart';
+import 'content/content_pack.dart';
 import 'maps/mapkit_init.dart';
+import 'net/api_door.dart';
 import 'offline/guide_cache.dart';
 import 'screens/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await ApiDoor.select();
+  await ContentPack.instance.load();
   await GuideCache.instance.init();
   await initMapkitIfNeeded(mapkitApiKey);
   runApp(const AudioGuideApp());

@@ -50,6 +50,11 @@ class GuideSummary(BaseModel):
     duration_sec: int = Field(alias="durationSec")
     language: str = "ru"
     content_version: int = Field(alias="contentVersion")
+    route_mode: str | None = Field(default=None, alias="routeMode")
+    route_distance_km: float | None = Field(default=None, alias="routeDistanceKm")
+    estimated_duration_min: int | None = Field(default=None, alias="estimatedDurationMin")
+    route_notice: str | None = Field(default=None, alias="routeNotice")
+    reviewed_at: str | None = Field(default=None, alias="reviewedAt")
 
     model_config = ConfigDict(populate_by_name=True, ser_json_by_alias=True)
 
@@ -103,6 +108,8 @@ class CitySummary(BaseModel):
     guides: CityGuides = Field(default_factory=CityGuides)
     content_version: int = Field(alias="contentVersion")
     language: str = "ru"
+    reviewed_at: str | None = Field(default=None, alias="reviewedAt")
+    source_urls: list[str] = Field(default_factory=list, alias="sourceUrls")
 
     model_config = ConfigDict(populate_by_name=True, ser_json_by_alias=True)
 
@@ -180,6 +187,11 @@ def guide_from_package(raw: dict[str, Any], base_url: str) -> Guide:
         duration_sec=intro.duration_sec + sum(s.duration_sec for s in stops),
         language=raw.get("language", "ru"),
         content_version=raw.get("contentVersion", 1),
+        route_mode=raw.get("routeMode"),
+        route_distance_km=raw.get("routeDistanceKm"),
+        estimated_duration_min=raw.get("estimatedDurationMin"),
+        route_notice=raw.get("routeNotice"),
+        reviewed_at=raw.get("reviewedAt"),
         intro=intro,
         stops=stops,
         map_url=public_map_url(base_url, guide_id),
@@ -229,6 +241,8 @@ def city_from_package(raw: dict[str, Any]) -> City:
         ),
         content_version=raw.get("contentVersion", 1),
         language=raw.get("language", "ru"),
+        reviewed_at=raw.get("reviewedAt"),
+        source_urls=raw.get("sourceUrls") or [],
         history=HistoryBlock(
             founded=history_raw.get("founded") or "",
             summary=history_raw.get("summary") or "",

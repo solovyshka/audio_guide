@@ -1,11 +1,16 @@
 {
   "id": "limasol",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "title": "Лимасол",
   "subtitle": "Старый город, средневековая крепость и набережная Средиземного моря",
   "city": "Лимасол",
   "region": "Кипр",
   "language": "ru",
+  "routeMode": "walking",
+  "routeDistanceKm": 2.1,
+  "estimatedDurationMin": 120,
+  "routeNotice": "Компактный пеший маршрут по старому городу, гавани и набережной Молос.",
+  "reviewedAt": "2026-09-25",
   "center": {
     "lat": 34.675,
     "lon": 33.042

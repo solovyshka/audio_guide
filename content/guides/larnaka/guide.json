@@ -1,11 +1,16 @@
 {
   "id": "larnaka",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "title": "Ларнака",
   "subtitle": "От средневековой крепости к набережной Финикудес и старому городу",
   "city": "Ларнака",
   "region": "Республика Кипр, округ Ларнака",
   "language": "ru",
+  "routeMode": "walking",
+  "routeDistanceKm": 1.6,
+  "estimatedDurationMin": 90,
+  "routeNotice": "Компактный пеший маршрут по приморскому центру Ларнаки.",
+  "reviewedAt": "2026-09-25",
   "center": {
     "lat": 34.9143,
     "lon": 33.6353

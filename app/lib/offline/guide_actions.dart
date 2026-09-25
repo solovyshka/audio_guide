@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../api/client.dart';
+import '../content/content_pack.dart';
 import '../models/guide.dart';
 import '../screens/guide_text_screen.dart';
 import 'guide_cache.dart';
@@ -66,10 +67,13 @@ Future<void> openGuideText(
       builder: (_) => const Center(child: CircularProgressIndicator()),
     );
     try {
-      try {
-        guide = await api.getGuide(summary.id);
-      } catch (_) {
-        guide = await GuideCache.instance.loadLocal(summary.id);
+      guide = ContentPack.instance.guide(summary.id);
+      if (guide == null) {
+        try {
+          guide = await api.getGuide(summary.id);
+        } catch (_) {
+          guide = await GuideCache.instance.loadLocal(summary.id);
+        }
       }
     } finally {
       if (context.mounted) {

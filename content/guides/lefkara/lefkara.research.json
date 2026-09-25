@@ -1,0 +1,336 @@
+{
+  "city": "Пано-Лефкара",
+  "region": "Республика Кипр, округ Ларнака",
+  "center": {
+    "lat": 34.8658211,
+    "lon": 33.3085
+  },
+  "subtitle": "Кружево, серебро и каменные улицы исторической горной деревни",
+  "aliases": [
+    "Пано-Лефкара",
+    "Лефкара",
+    "Pano Lefkara",
+    "Lefkara",
+    "Πάνω Λεύκαρα"
+  ],
+  "stops": [
+    {
+      "name": "Часовня Преображения Спасителя (Сотира)",
+      "coordinates": {
+        "lat": 34.8632793,
+        "lon": 33.3029612
+      },
+      "address": "гора Сотира, к юго-западу от Пано-Лефкары, Кипр",
+      "category": "chapel",
+      "facts": [
+        "Часовня Преображения Спасителя, известная как Сотира, стоит к юго-западу от Лефкары и дала имя горе.",
+        "Муниципальный источник датирует церковь Сотиры XIV веком.",
+        "Основателем часовни муниципальный источник называет отца Гавриила, которого также считает основателем большой церкви Святого Креста."
+      ],
+      "dates": [
+        "XIV век"
+      ],
+      "people": [
+        "отец Гавриил"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Муниципалитет описывает пеший подъём, начинающийся у памятника павшим; альтернативно к часовне можно подъехать по дороге. Часы открытия не опубликованы.",
+      "sources": [
+        {
+          "title": "Chapels — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/history-culture/churches/chapels"
+        },
+        {
+          "title": "Soter Christ Metamorphosis Chapel — OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/630347976"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Пешеходная улица Кентитаридон",
+      "coordinates": {
+        "lat": 34.8662845,
+        "lon": 33.3059566
+      },
+      "address": "улица Кентитаридон, Пано-Лефкара 7700, Кипр",
+      "category": "historic_street",
+      "facts": [
+        "Кентитаридон — мощёная пешеходная улица в исторической застройке Пано-Лефкары.",
+        "Муниципалитет описывает улицы старой Лефкары как узкие и мощёные; они поднимаются от источника Пиги по склону среди каменных стен и старых переулков.",
+        "Традиция изготовления кружева Lefkaritika практикуется в Лефкаре как минимум с XIV века.",
+        "В 2009 году Lefkaritika было внесено в Репрезентативный список нематериального культурного наследия человечества ЮНЕСКО."
+      ],
+      "dates": [
+        "XIV век",
+        "2009 год"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Это открытая пешеходная улица с каменной мостовой; для маршрута нужна удобная обувь.",
+      "sources": [
+        {
+          "title": "Folk Architecture — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/history-culture/folk-architecture"
+        },
+        {
+          "title": "Lefkara laces or Lefkaritika — UNESCO",
+          "url": "https://ich.unesco.org/en/RL/lefkara-laces-or-lefkaritika-00255"
+        },
+        {
+          "title": "Kentitaridon pedestrian street — OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/347823515"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Музей традиционной вышивки и серебряного дела Лефкары",
+      "coordinates": {
+        "lat": 34.8652454,
+        "lon": 33.3061589
+      },
+      "address": "Xeni Anastasiadi 9, Пано-Лефкара 7700, Кипр",
+      "category": "museum",
+      "facts": [
+        "Музей размещается в доме Пацалоса, названном по имени его последнего владельца.",
+        "Здание построено из местного белого известняка; его части относятся к XIX и началу XX века.",
+        "На первом этаже показаны сельская столовая и кладовая с большими сосудами и сельскохозяйственными орудиями.",
+        "На верхнем этаже представлены обстановка состоятельного дома, традиционные костюмы, украшения, серебряные изделия и старинная вышивка Lefkaritika.",
+        "Департамент древностей приобрёл дом в 1983 году, а после реставрации музей открылся в августе 1988 года."
+      ],
+      "dates": [
+        "XIX — начало XX века",
+        "1983 год",
+        "август 1988 года"
+      ],
+      "people": [
+        "Стелиос Иоанну",
+        "семья Пацалос"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Visit Cyprus указывает бесплатный вход и сезонный режим: 08:30–16:00 с 16 сентября по 15 апреля и 09:30–17:00 с 16 апреля по 15 сентября; закрыт в некоторые государственные праздники. Источник рекомендует проверить режим перед визитом.",
+      "sources": [
+        {
+          "title": "Local Museum of Traditional Embroidery and Silversmith-work — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/museums-galleries-rural/local-museum-of-traditional-embroidery-and-silversmith-work-lefkara/"
+        },
+        {
+          "title": "Museum of Lefkara — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/visitors/guided-tour/museum-of-lefkara"
+        },
+        {
+          "title": "Museum of Folk Art, Embroidery and Silversmithing Lefkara — OpenStreetMap",
+          "url": "https://www.openstreetmap.org/node/4437658090"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Лефкарский центр ремёсел",
+      "coordinates": {
+        "lat": 34.862945,
+        "lon": 33.306923
+      },
+      "address": "Agiou Georgiou 7, Пано-Лефкара 7700, Кипр",
+      "category": "craft_center",
+      "facts": [
+        "Центр ремёсел Лефкары создан для сохранения, развития и продолжения местных традиций вышивки и серебряного дела.",
+        "Центр обучает молодёжь и поощряет её заниматься этими ремёслами.",
+        "В его работе заявлены помощь мастерам, профессиональное обучение и участие в выставках и культурных событиях на Кипре и за рубежом."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Larnaka Region указывает режим 10:00–13:00 и 14:00–17:00 ежедневно, кроме среды; учреждение закрыто в государственные праздники. Режим и вход следует уточнить перед визитом, поскольку источник предупреждает о возможных изменениях.",
+      "sources": [
+        {
+          "title": "Lefkara Handicraft Centre — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/lefkara-handicraft-centre"
+        },
+        {
+          "title": "Lefkara Handicraft Centre — Larnaka Region",
+          "url": "https://larnakaregion.com/directory/product/lefkara-handicraft-centre"
+        },
+        {
+          "title": "Lefkara Handicraft Centre — Larnakarts",
+          "url": "https://larnakarts.cy/en/venue/lefkara-handicraft-centre/"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Источник Пиги (Пии)",
+      "coordinates": {
+        "lat": 34.8645898,
+        "lon": 33.3082145
+      },
+      "address": "юго-восточная нижняя часть Пано-Лефкары, Кипр",
+      "category": "spring",
+      "facts": [
+        "Пиги, или Пии, — природный источник в нижней юго-восточной части деревни; вода в нём течёт круглый год.",
+        "Муниципалитет считает район Пиги ядром первоначального поселения.",
+        "Дома Лефкары и улицы исторической части поднимаются от этого источника по склону.",
+        "От Пиги начинается мощёная дорога к Като-Лефкаре."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Это наружная точка на муниципальном маршруте. Муниципалитет сообщает, что отсюда начинается мощёная дорога в Като-Лефкару; пригодность воды для питья не подтверждена источником.",
+      "sources": [
+        {
+          "title": "Folk Architecture — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/history-culture/folk-architecture"
+        },
+        {
+          "title": "Nearby Routes — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/visitors/nearby-routes"
+        },
+        {
+          "title": "Pigi spring — OpenStreetMap",
+          "url": "https://www.openstreetmap.org/node/9430860777"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Церковь Святого Креста (Тимиу-Ставру)",
+      "coordinates": {
+        "lat": 34.8658211,
+        "lon": 33.3085
+      },
+      "address": "Пано-Лефкара 7700, Кипр",
+      "category": "church",
+      "facts": [
+        "Церковь Святого Креста доминирует в центре Лефкары и датируется XIV веком.",
+        "Восточную часть храма византинист Афанасиос Папагеоргиу датировал XIV веком по сохранившимся за иконостасом фрескам.",
+        "Муниципальный источник приводит письменное свидетельство о епископе Лефкары Ольвианосе в 1307 году и метрическую надпись Ольвианоса на нижней части серебряного креста.",
+        "Резной деревянный иконостас был создан в 1760 году.",
+        "В скрытой полости иконостаса хранится большой деревянный крест, покрытый серебром и позолотой."
+      ],
+      "dates": [
+        "1307 год",
+        "XIV век",
+        "1760 год"
+      ],
+      "people": [
+        "Афанасиос Папагеоргиу",
+        "епископ Ольвианос",
+        "святая Елена"
+      ],
+      "legends": [
+        "По местному преданию, крест в Лефкару перенесла святая Елена во время пребывания на Кипре; также считается, что в его центре находится частица Истинного Креста."
+      ],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Муниципальная страница описывает храм и его реликвию, но не публикует часы посещения; возможность осмотра интерьера следует уточнить на месте.",
+      "sources": [
+        {
+          "title": "Church of the Holy Cross — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/visitors/guided-tour/church-of-the-holy-cross"
+        },
+        {
+          "title": "Churches — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/history-culture/churches"
+        },
+        {
+          "title": "Timiou Stavrou church — OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/347829047"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Часовня Святого Тимофея",
+      "coordinates": {
+        "lat": 34.863508,
+        "lon": 33.3142637
+      },
+      "address": "дорога к Като-Лефкаре, Пано-Лефкара, Кипр",
+      "category": "chapel",
+      "facts": [
+        "Часовня Святого Тимофея находится у входа в деревню на пути к Като-Лефкаре.",
+        "Муниципалитет относит её к числу примерно 18 часовен, построенных жителями в разных районах Лефкары и её окрестностях.",
+        "Муниципальный маршрут от источника Пиги к Като-Лефкаре проходит по мощёной дороге."
+      ],
+      "dates": [],
+      "people": [
+        "святой Тимофей"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Наружный осмотр возможен по дороге между Пано- и Като-Лефкарой; часы и правила входа в часовню муниципальный источник не публикует.",
+      "sources": [
+        {
+          "title": "Chapels — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/history-culture/churches/chapels"
+        },
+        {
+          "title": "Nearby Routes — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/visitors/nearby-routes"
+        },
+        {
+          "title": "Agios Timotheos — OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/1022674794"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Часовня Архангела Михаила",
+      "coordinates": {
+        "lat": 34.8610979,
+        "lon": 33.3160509
+      },
+      "address": "Като-Лефкара 7710, Кипр",
+      "category": "chapel",
+      "facts": [
+        "Внутри часовни Архангела Михаила сохранились фрески.",
+        "Муниципальный источник называет часовню единственным остатком почитаемого монастыря Асоматос в Лефкаре.",
+        "Византинист Афанасиос Папагеоргиу датировал монастырь Асоматос XII веком.",
+        "Visit Cyprus сообщает, что фрески часовни в Като-Лефкаре относятся к XII и XV векам.",
+        "Муниципалитет указывает, что от Пиги до Като-Лефкары ведёт мощёная дорога длиной 1 км."
+      ],
+      "dates": [
+        "XII век",
+        "XV век"
+      ],
+      "people": [
+        "Афанасиос Папагеоргиу",
+        "архангел Михаил"
+      ],
+      "legends": [],
+      "disputed": [
+        "Муниципальный текст описывает часовню у входа в Лефкару, а Visit Cyprus прямо относит её к Като-Лефкаре; координаты поставлены для здания в Като-Лефкаре."
+      ],
+      "next_leg": null,
+      "access_info": "Часовня находится у Като-Лефкары, в пешей досягаемости по мощёной дороге от Пиги. Часы и правила входа не опубликованы; осмотр фресок следует согласовать на месте.",
+      "sources": [
+        {
+          "title": "Chapels — Lefkara Municipality",
+          "url": "https://lefkara.org.cy/en/history-culture/churches/chapels"
+        },
+        {
+          "title": "Lefkara village — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/places-to-go/villages/lefkara-village-3/"
+        },
+        {
+          "title": "Archangelos Michael chapel — OpenStreetMap",
+          "url": "https://www.openstreetmap.org/way/1022674795"
+        }
+      ],
+      "llm_coordinates": null
+    }
+  ]
+}

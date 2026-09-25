@@ -1,11 +1,16 @@
 {
   "id": "nikosiya-long",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "title": "Никосия · длинный",
   "subtitle": "Венецианские стены и южный старый город Лефкосии",
   "city": "Никосия",
   "region": "Республика Кипр, район Никосия",
   "language": "ru",
+  "routeMode": "walking",
+  "routeDistanceKm": 3.6,
+  "estimatedDurationMin": 210,
+  "routeNotice": "Пеший маршрут по южной части Лефкосии; учитывайте режим музеев и действующих храмов.",
+  "reviewedAt": "2026-09-25",
   "center": {
     "lat": 35.1698,
     "lon": 33.3619

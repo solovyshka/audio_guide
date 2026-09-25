@@ -1,0 +1,436 @@
+{
+  "city": "Лефкара",
+  "region": "Республика Кипр, округ Ларнака",
+  "center": {
+    "lat": 34.8665517,
+    "lon": 33.3068524
+  },
+  "subtitle": "Кружево, серебро и часовни вокруг Пано-Лефкары",
+  "aliases": [
+    "Лефкара",
+    "Пано-Лефкара",
+    "Lefkara",
+    "Pano Lefkara"
+  ],
+  "stops": [
+    {
+      "name": "Часовня Преображения Спасителя (Сотира)",
+      "coordinates": {
+        "lat": 34.8632793,
+        "lon": 33.3029612
+      },
+      "address": null,
+      "category": "chapel",
+      "facts": [
+        "Часовня стоит к юго-западу от Пано-Лефкары и дала имя горе.",
+        "Муниципальный источник датирует церковь XIV веком и называет основателем отца Гавриила."
+      ],
+      "dates": [
+        "XIV век"
+      ],
+      "people": [
+        "отец Гавриил"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Lefkara municipality",
+          "url": "https://www.lefkara.org.cy/"
+        }
+      ]
+    },
+    {
+      "name": "Пешеходная улица Кентитаридон",
+      "coordinates": {
+        "lat": 34.8662845,
+        "lon": 33.3059566
+      },
+      "address": null,
+      "category": "historic_street",
+      "facts": [
+        "Кентитаридон — мощёная пешеходная улица в старой застройке Пано-Лефкары.",
+        "Вышивку лефкаритика практикуют здесь как минимум с XIV века.",
+        "В 2009 году лефкаритику внесли в список нематериального наследия ЮНЕСКО."
+      ],
+      "dates": [
+        "XIV век",
+        "2009"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "UNESCO Lefkaritika",
+          "url": "https://ich.unesco.org/en/RL/lefkara-laces-or-lefkaritika-00255"
+        }
+      ]
+    },
+    {
+      "name": "Музей традиционной вышивки и серебряного дела",
+      "coordinates": {
+        "lat": 34.8652454,
+        "lon": 33.3061589
+      },
+      "address": "Pano Lefkara 7700",
+      "category": "museum",
+      "facts": [
+        "Музей занимает дом Пацалоса из местного белого известняка.",
+        "Департамент древностей приобрёл дом в 1983 году, музей открылся в августе 1988 года.",
+        "Наверху показывают костюмы, серебро и старинную вышивку лефкаритика. Вход бесплатный."
+      ],
+      "dates": [
+        "1983",
+        "1988"
+      ],
+      "people": [
+        "Пацалос"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Visit Cyprus museum",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/museums-galleries-rural/local-museum-of-traditional-embroidery-and-silversmith-work-lefkara/"
+        }
+      ]
+    },
+    {
+      "name": "Лефкарский центр ремёсел",
+      "coordinates": {
+        "lat": 34.862945,
+        "lon": 33.306923
+      },
+      "address": null,
+      "category": "craft_center",
+      "facts": [
+        "Центр создан, чтобы сохранять вышивку и серебряное дело и учить им молодёжь.",
+        "Муниципальный источник предупреждает, что режим может меняться, а среда бывает выходной."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Lefkara municipality crafts",
+          "url": "https://www.lefkara.org.cy/"
+        }
+      ]
+    },
+    {
+      "name": "Площадь Васоса Лиссаридиса",
+      "coordinates": {
+        "lat": 34.8675322,
+        "lon": 33.3054489
+      },
+      "address": null,
+      "category": "square",
+      "facts": [
+        "Площадь в Пано-Лефкаре носит имя Васоса Лиссаридиса.",
+        "Он родился в Пано-Лефкаре 13 мая 1920 года и умер в Никосии 26 апреля 2021 года.",
+        "Был личным врачом архиепископа Макариоса III и председателем палаты представителей в 1985–1991 годах."
+      ],
+      "dates": [
+        "1920",
+        "1985–1991",
+        "2021"
+      ],
+      "people": [
+        "Васос Лиссаридис",
+        "Макариос III"
+      ],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Wikipedia Vassos Lyssarides",
+          "url": "https://en.wikipedia.org/wiki/Vassos_Lyssarides"
+        }
+      ]
+    },
+    {
+      "name": "Источник Пиги",
+      "coordinates": {
+        "lat": 34.8645898,
+        "lon": 33.3082145
+      },
+      "address": null,
+      "category": "spring",
+      "facts": [
+        "Пиги, или Пии, — источник в нижней юго-восточной части деревни, вода течёт круглый год.",
+        "Муниципалитет считает этот район ядром первоначального поселения.",
+        "Отсюда начинается мощёная дорога к Като-Лефкаре длиной около километра."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Lefkara municipality",
+          "url": "https://www.lefkara.org.cy/"
+        }
+      ]
+    },
+    {
+      "name": "Церковь Святого Креста",
+      "coordinates": {
+        "lat": 34.865966,
+        "lon": 33.3093533
+      },
+      "address": null,
+      "category": "church",
+      "facts": [
+        "Церковь Святого Креста доминирует в центре Пано-Лефкары и датируется XIV веком.",
+        "Афанасиос Папагеоргиу относил восточную часть к XIV веку по фрескам за иконостасом.",
+        "Резной деревянный иконостас создан в 1760 году. В скрытой полости хранится большой деревянный крест, покрытый серебром и позолотой."
+      ],
+      "dates": [
+        "XIV век",
+        "1760"
+      ],
+      "people": [
+        "Афанасиос Папагеоргиу"
+      ],
+      "legends": [
+        "По преданию, крест перенесла в Лефкару святая Елена, и в его центре находится частица Истинного Креста."
+      ],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Pano Lefkara",
+          "url": "https://en.wikipedia.org/wiki/Pano_Lefkara"
+        }
+      ]
+    },
+    {
+      "name": "Часовня Панагии Ливадиотиссы",
+      "coordinates": {
+        "lat": 34.874612,
+        "lon": 33.3116081
+      },
+      "address": null,
+      "category": "chapel",
+      "facts": [
+        "Часовня Панагии Ливадиотиссы стоит к северу от Пано-Лефкары, по дороге в сторону Корноса.",
+        "Перед ней открывается вид на долину реки Сиркати и скалу Курвелос."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Cyprus Alive Pano Lefkara",
+          "url": "https://www.cyprusalive.com/en/village/larnaka-lefkara-pano"
+        }
+      ]
+    },
+    {
+      "name": "Часовня Святого Тимофея",
+      "coordinates": {
+        "lat": 34.8635081,
+        "lon": 33.3142637
+      },
+      "address": null,
+      "category": "chapel",
+      "facts": [
+        "Часовня Святого Тимофея стоит у входа в деревню на пути к Като-Лефкаре.",
+        "Муниципалитет относит её к числу примерно 18 часовен вокруг Лефкары.",
+        "К ней ведёт мощёная дорога от источника Пиги."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Lefkara municipality",
+          "url": "https://www.lefkara.org.cy/"
+        }
+      ]
+    },
+    {
+      "name": "Часовня Архангела Михаила",
+      "coordinates": {
+        "lat": 34.8610979,
+        "lon": 33.3160493
+      },
+      "address": null,
+      "category": "chapel",
+      "facts": [
+        "Часовня стоит в Като-Лефкаре, внутри сохранились фрески XII и XV веков.",
+        "Муниципальный источник называет её остатком монастыря Асоматос, который Папагеоргиу датировал XII веком."
+      ],
+      "dates": [
+        "XII век",
+        "XV век"
+      ],
+      "people": [
+        "Афанасиос Папагеоргиу"
+      ],
+      "legends": [],
+      "disputed": [
+        "Муниципальный текст описывает часовню у входа в Лефкару, а часть путеводителей прямо относит её к Като-Лефкаре."
+      ],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Visit Cyprus / municipality notes via Cyprus Alive",
+          "url": "https://www.cyprusalive.com/en/village/larnaka-lefkara-pano"
+        }
+      ]
+    },
+    {
+      "name": "Като-Лефкара",
+      "coordinates": {
+        "lat": 34.8626953,
+        "lon": 33.3163912
+      },
+      "address": null,
+      "category": "village",
+      "facts": [
+        "Като-Лефкара — нижняя деревня примерно в километре от Пано-Лефкары.",
+        "Разделение на верхнюю и нижнюю деревни прослеживают с османского времени."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Pano Lefkara",
+          "url": "https://en.wikipedia.org/wiki/Pano_Lefkara"
+        }
+      ]
+    },
+    {
+      "name": "Церковь Иоанна Предтечи в Като-Дрисе",
+      "coordinates": {
+        "lat": 34.8559075,
+        "lon": 33.2857757
+      },
+      "address": null,
+      "category": "church",
+      "facts": [
+        "Храм Тимиу Продрому стоит в Като-Дрисе, деревне к юго-западу от Лефкары.",
+        "В Като-Дрисе в 1134 году родился Неофит Кипрский. Деревня изображена на кипрской банкноте в один фунт."
+      ],
+      "dates": [
+        "1134"
+      ],
+      "people": [
+        "Неофит Кипрский"
+      ],
+      "legends": [],
+      "disputed": [
+        "Дом, где Неофит, по преданию, провёл ночь перед уходом в монахи, в деревне показывают, но это не этот храм; точное здание в маршруте не закрепляем."
+      ],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Kato Drys",
+          "url": "https://en.wikipedia.org/wiki/Kato_Drys"
+        }
+      ]
+    },
+    {
+      "name": "Монастырь Агиос-Минас",
+      "coordinates": {
+        "lat": 34.840245,
+        "lon": 33.28606
+      },
+      "address": "Vavla",
+      "category": "monastery",
+      "facts": [
+        "Монастырь Агиос-Минас стоит у деревни Вавла и датируется XV веком.",
+        "Здание смешивает византийские и готические черты: стрельчатый свод и боковые портики.",
+        "На северной и южной стенах — большие образы Георгия и Мины 1757 года. Вход в храм бесплатный, нужна скромная одежда."
+      ],
+      "dates": [
+        "XV век",
+        "1757"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Visit Cyprus Agios Minas",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/sites-monuments/agios-minas-convent-2/"
+        }
+      ]
+    },
+    {
+      "name": "Неолитическое поселение Хирокития",
+      "coordinates": {
+        "lat": 34.796834,
+        "lon": 33.3435677
+      },
+      "address": null,
+      "category": "archaeological_site",
+      "facts": [
+        "Хирокития — поселение керамического и докерамического неолита на излучине реки Марони.",
+        "Круглые дома из камня и сырца и оборонительная стена относятся к VII–IV тысячелетиям до нашей эры.",
+        "Объект внесён в список всемирного наследия ЮНЕСКО в 1998 году по критериям ii, iii и iv."
+      ],
+      "dates": [
+        "VII–IV тысячелетия до н. э.",
+        "1998"
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "UNESCO Choirokoitia",
+          "url": "https://whc.unesco.org/en/list/848/"
+        }
+      ]
+    },
+    {
+      "name": "Монастырь Ставровуни",
+      "coordinates": {
+        "lat": 34.8863765,
+        "lon": 33.4356605
+      },
+      "address": null,
+      "category": "monastery",
+      "facts": [
+        "Ставровуни стоит на отдельной вершине к востоку от Лефкары и считается одним из старейших монастырей Кипра.",
+        "Женщин в монастырь не пускают. Дорога от Лефкары идёт отдельно от пешего круга по деревне."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [
+        "По преданию, обитель основала святая Елена в IV веке, оставив здесь частицу Креста."
+      ],
+      "disputed": [],
+      "access_info": null,
+      "sources": [
+        {
+          "title": "Nominatim Stavrovouni Monastery",
+          "url": "https://nominatim.openstreetmap.org/"
+        },
+        {
+          "title": "Stavrovouni tradition",
+          "url": "https://en.wikipedia.org/wiki/Stavrovouni_Monastery"
+        }
+      ]
+    }
+  ]
+}

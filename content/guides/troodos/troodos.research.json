@@ -1,0 +1,503 @@
+{
+  "city": "Троодос",
+  "region": "Горный массив Троодос, Республика Кипр",
+  "center": {
+    "lat": 34.924239,
+    "lon": 32.880879
+  },
+  "subtitle": "Автомобильный маршрут через винную деревню Омодос, высокогорный Троодос, Киккский монастырь и Какопетрию",
+  "aliases": [
+    "Troodos",
+    "Τρόοδος",
+    "Troodos Mountains",
+    "Троодос, Кипр"
+  ],
+  "stops": [
+    {
+      "name": "Мощёная площадь Омодоса",
+      "coordinates": {
+        "lat": 34.848775,
+        "lon": 32.809106
+      },
+      "address": "Omodos, Limassol District, Cyprus",
+      "category": "village_square",
+      "facts": [
+        "Омодос — винодельческая деревня района Крассохория на склонах Троодоса, расположенная примерно на высоте 800 метров.",
+        "На старых картах деревня отмечена как Homodos и Homoclos; Visit Cyprus связывает современное имя с греческим словом «odos» — «дорога».",
+        "Площадь, старые каменные дома, винодельни, средневековый пресс и монастырь Святого Креста расположены рядом друг с другом."
+      ],
+      "dates": [
+        "Франкский период — Омодос уже существовал."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытое пространство в центре деревни; осмотр местных заведений и музеев зависит от их собственного режима работы.",
+      "sources": [
+        {
+          "title": "Omodos village — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/villages-rural/omodos-village-2/"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Монастырь Тимьос-Ставрос (Святого Креста), Омодос",
+      "coordinates": {
+        "lat": 34.848847,
+        "lon": 32.809027
+      },
+      "address": "Plateia Omodos, Omodos, Limassol District, Cyprus",
+      "category": "monastery",
+      "facts": [
+        "Монастырь Тимьос-Ставрос находится у центральной площади Омодоса.",
+        "Visit Cyprus отмечает старые иконы и резные деревянные элементы монастыря.",
+        "Омодос входит в официальный религиозный маршрут почитания Святого Креста на Кипре."
+      ],
+      "dates": [
+        "14 сентября — в Омодосе проходит трёхдневная ярмарка, посвящённая Святому Кресту."
+      ],
+      "people": [],
+      "legends": [
+        "Официальный религиозный маршрут Visit Cyprus сообщает о хранимой в Омодосе части верёвки, которой, согласно традиции, был связан Иисус."
+      ],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Действующее религиозное место: вход и доступ к реликвиям следует согласовывать с режимом монастыря; во время богослужений соблюдайте правила храма.",
+      "sources": [
+        {
+          "title": "Omodos village — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/villages-rural/omodos-village-2/"
+        },
+        {
+          "title": "Worship of the Holy Cross in Cyprus Religious Route — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/religious-routes-2/worship-of-the-holy-cross-in-cyprus-religious-route-2/"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Средневековый винный пресс Линос-ту-Харилау",
+      "coordinates": {
+        "lat": 34.848642,
+        "lon": 32.809392
+      },
+      "address": "Linou Street, Omodos, Limassol District, Cyprus",
+      "category": "wine_heritage",
+      "facts": [
+        "Средневековый винный пресс относится к достопримечательностям, собранным в историческом центре Омодоса.",
+        "Он связывает маршрут с винодельческой традицией деревни, известной также производством зивании.",
+        "Официальный туристический портал перечисляет пресс рядом с площадью, старинными домами, винодельнями и монастырём Святого Креста."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "Для следующего кластера нужен автомобиль: Троодосская площадь находится в другой высокогорной части маршрута. Введите в навигатор опубликованную точку Troodos Square (34.924239, 32.880879); Visit Cyprus указывает, что к Омодосу ведут E601 либо связка B8, E802 и F825, но не публикует единый маршрут до площади. Не задавайте время в пути заранее и перед выездом проверьте состояние горных дорог.",
+      "access_info": "Это частный/локальный объект в исторической застройке; часы и возможность входа не опубликованы на официальной странице деревни, поэтому уточняйте на месте.",
+      "sources": [
+        {
+          "title": "Omodos village — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/villages-rural/omodos-village-2/"
+        },
+        {
+          "title": "Linos tou Charilaou location pin",
+          "url": "https://www.atlasobscura.com/places/linos-tou-charilaou-omodos-wine-press"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Экологический информационный центр Троодоса",
+      "coordinates": {
+        "lat": 34.924758,
+        "lon": 32.880389
+      },
+      "address": "Plateia Troodous, Troodos, Cyprus",
+      "category": "visitor_center",
+      "facts": [
+        "Центр у площади Троодоса знакомит с экологическим значением национального парка, топографией горного массива и доступными занятиями.",
+        "В нём есть выставочная галерея и кинозал о геологии, флоре и фауне Троодоса.",
+        "От центра начинается небольшой ботанико-геологический маршрут."
+      ],
+      "dates": [
+        "Ноябрь–март: понедельник–пятница 09:00–14:30.",
+        "Июнь–август: понедельник–пятница 09:00–14:30, суббота–воскресенье 10:00–16:00.",
+        "Сентябрь–октябрь: понедельник–пятница 09:00–14:30, воскресенье 10:00–16:00."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Работает круглый год, закрыт в государственные праздники, кроме 15 августа; опубликованный билет — €1 для взрослых и детей от 6 лет. Официальный портал предупреждает, что часы и цена могут меняться.",
+      "sources": [
+        {
+          "title": "Troodos Environmental Centre — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/nature/excursions/troodos-environmental-centre/"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Площадь Троодоса",
+      "coordinates": {
+        "lat": 34.924239,
+        "lon": 32.880879
+      },
+      "address": "Troodos Square, Troodos, Cyprus",
+      "category": "mountain_hub",
+      "facts": [
+        "Площадь Троодоса служит стартовой точкой кругового маршрута Аталанти.",
+        "Здесь есть магазины, рестораны, общественные туалеты и отели.",
+        "Площадь расположена рядом с информационным центром Троодосского национального лесного парка."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Открытое общественное пространство; используйте парковку и сервисы площади перед выходом на длинные тропы.",
+      "sources": [
+        {
+          "title": "Atalanti (Circular) nature trail — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/atalanti-circular-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail/"
+        },
+        {
+          "title": "Cyprus Nature Trails guide — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2023/09/hiking_WEB_ONLY.pdf"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Начало тропы Аталанти",
+      "coordinates": {
+        "lat": 34.924239,
+        "lon": 32.880879
+      },
+      "address": "Troodos Square, Troodos National Forest Park, Cyprus",
+      "category": "nature_trail",
+      "facts": [
+        "Круговая тропа Аталанти начинается и заканчивается на площади Троодоса.",
+        "Маршрут длиной 14 км огибает гору Хионистра на высоте примерно 1700–1750 метров.",
+        "На тропе находятся чёрные сосны, можжевельник возрастом около 800 лет, панорамные точки и вход в закрытый с 1982 года хромовый рудник."
+      ],
+      "dates": [
+        "1982 — хромовый рудник, отмеченный на тропе, выведен из эксплуатации."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Официальная оценка сложности — 2 из 3, ориентировочная продолжительность — 4–5 часов. На девятом километре маршрут пересекает дорогу Troodos–Prodromos; следуйте указателям и не заменяйте их навигационным сокращением.",
+      "sources": [
+        {
+          "title": "Atalanti (Circular) nature trail — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/atalanti-circular-lemesos-limassol-lefkosia-nicosia-districts-troodos-forest-nature-trail/"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Начало тропы Артемиды",
+      "coordinates": {
+        "lat": 34.933166,
+        "lon": 32.871986
+      },
+      "address": "Troodos–Prodromos Road, near Chionistra junction, Troodos, Cyprus",
+      "category": "nature_trail",
+      "facts": [
+        "Старт тропы Артемиды расположен в 300 метрах от перекрёстка дороги на Хионистру с дорогой Troodos–Prodromos.",
+        "Круговой маршрут длиной 7 км идёт вокруг Хионистры на средней высоте 1850 метров.",
+        "На маршруте можно увидеть две чёрные сосны возрастом более 500 лет, редкую флору и геологические породы, включая дунит, гарцбургит и пироксенит.",
+        "Здесь сохранились руины временных венецианских укреплений 1571 года."
+      ],
+      "dates": [
+        "1571 — датировка временных венецианских укреплений на тропе."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "Для переезда к Киккскому монастырю нужен автомобиль. От парковки вернитесь к Troodos Square, затем следуйте опубликованной Visit Cyprus последовательности: подъём на запад к повороту на Mount Olympos, спуск к Prodromos, поворот к Pinewood и дорога над Pedoulas к Kykkos Monastery. Этот официальный маршрут проходит по асфальтированным дорогам; не подставляйте непроверенные номера дорог или время в пути.",
+      "access_info": "Официальная оценка сложности — 1 из 3, ориентировочная продолжительность — 2,5–3 часа. Парковка есть у старта; возьмите воду и учитывайте высоту, погоду и возможное закрытие горных дорог.",
+      "sources": [
+        {
+          "title": "Artemis (Circular) nature trail — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/nature/nature-trails-2/artemis-circular-lemesos-limassol-district-troodos-forest-nature-trail/"
+        },
+        {
+          "title": "Troodos Square–Stavros tis Psokas Cycling Route — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/cycling-rural/troodos-square-stavros-tis-psokas-cycling-route/"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Киккский монастырь Богородицы",
+      "coordinates": {
+        "lat": 34.98334,
+        "lon": 32.741299
+      },
+      "address": "Kykkos Monastery, Marathasa Valley, Cyprus",
+      "category": "monastery",
+      "facts": [
+        "Киккский монастырь стоит в долине Марафаса на горной вершине высотой 1318 метров.",
+        "Обитель посвящена Богородице и хранит икону, которую традиция приписывает евангелисту Луке.",
+        "Монастырь многократно горел, поэтому первоначальное здание не сохранилось.",
+        "Архиепископ Макариос III, первый президент Кипра, был здесь послушником."
+      ],
+      "dates": [
+        "Конец XI века — основание монастыря при императоре Алексее I Комнине.",
+        "8 сентября — ярмарка Рождества Богородицы.",
+        "15 августа — ярмарка Успения Богородицы."
+      ],
+      "people": [
+        "Алексей I Комнин",
+        "Архиепископ Макариос III"
+      ],
+      "legends": [
+        "Согласно монастырской традиции, отшельник Исайя исцелил дочь Алексея I Комнина и в награду попросил для Кипра икону Богородицы."
+      ],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Ноябрь–май: 10:00–16:00; июнь–октябрь: 10:00–18:00. Работает круглый год, но закрыт в государственные праздники; вход бесплатный. Часы следует проверить перед поездкой.",
+      "sources": [
+        {
+          "title": "Kykkos Monastery — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/kykkos-monastery/"
+        },
+        {
+          "title": "Holy Monastery of Kykkos — history",
+          "url": "http://www.kykkos.org.cy/kykkos-museum.cy.net/eg-istoriko.html"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Музей Киккского монастыря",
+      "coordinates": {
+        "lat": 34.98334,
+        "lon": 32.741299
+      },
+      "address": "Kykkos Monastery, Marathasa Valley, Cyprus",
+      "category": "museum",
+      "facts": [
+        "Музей является частью Киккского монастыря и хранит иконы, богослужебные сосуды, рукописи и кипрские древности.",
+        "По данным самого монастыря, экспозиция включает древности, раннехристианские, византийские и поствизантийские предметы, иконы, фрески, резьбу, рукописи, документы и книги.",
+        "Вход в музей расположен с северной стороны большого внутреннего двора монастыря."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Ноябрь–май: ежедневно 10:00–16:00; июнь–октябрь: ежедневно 10:00–18:00. Опубликованная цена — €5, для групп €3; закрыт в государственные праздники. Уточняйте актуальный режим перед визитом.",
+      "sources": [
+        {
+          "title": "Museum of Kykkos Monastery — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/museums-galleries/museum-of-kykkos-monastery/"
+        },
+        {
+          "title": "Holy Monastery of Kykkos — Museum guide",
+          "url": "http://www.kykkos.org.cy/kykkos-museum.cy.net/eg-odigos-mousiou.html"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Могила архиепископа Макариоса III на Трони",
+      "coordinates": {
+        "lat": 34.98306,
+        "lon": 32.73139
+      },
+      "address": "Throni, near Kykkos Monastery, Cyprus",
+      "category": "memorial",
+      "facts": [
+        "Макариос III был погребён на вершине Трони к западу от Киккского монастыря.",
+        "Официальный аудиогид Visit Cyprus описывает путь от парковки по широкой восходящей дорожке, затем по более узкому подъёму к гробнице.",
+        "У мемориала находится бронзовая статуя Макариоса III работы кипрского скульптора Никоса Коциаманиса."
+      ],
+      "dates": [
+        "1977 — год смерти Макариоса III и устройства его могилы."
+      ],
+      "people": [
+        "Архиепископ Макариос III",
+        "Никос Коциаманис"
+      ],
+      "legends": [],
+      "disputed": [],
+      "next_leg": "Для перехода к Какопетрии нужен автомобиль: это отдельный кластер в долине Солеа. Спуститесь к парковке Трони по описанной официальным аудиогидом дорожке, затем постройте маршрут до Old Kakopetria (34.986418, 32.904651). Не назначайте время в пути и перед выездом сверяйте дорожные условия.",
+      "access_info": "От парковки предусмотрен подъём пешком; на участке есть лестницы и уклон. Ведите себя как в мемориальном месте и не рассчитывайте на опубликованный режим внутреннего посещения.",
+      "sources": [
+        {
+          "title": "Monastery of Kykkos — written audio guide, Visit Cyprus",
+          "url": "https://www.visitcyprus.com/wp-content/uploads/2016/03/Monastery_of_Kykkos_afigisi_en.pdf"
+        },
+        {
+          "title": "Memorial Park location pin",
+          "url": "http://wikimapia.org/21091895/Memorial-Park-%CE%9F-%CF%84%CE%AC%CF%86%CE%BF%CF%82-%CF%84%CE%BF%CF%85-%CF%80%CF%81%CF%8E%CF%84%CE%BF%CF%85-%CE%A0%CF%81%CF%8C%CE%B4%CF%81%CE%BF%CF%85-%CF%84%CE%B7%CF%82-%CE%9A%CF%85%CF%80%CF%81%CE%B9%CE%B1%CE%BA%CE%AE%CF%82-%CE%94%CE%B7%CE%BC%CE%BF%CE%BA%CF%81%CE%B1%CF%84%CE%AF%CE%B1%CF%82-%CE%B1%CF%81%CF%87%CE%B9%CE%B5%CF%80%CE%AF%CF%83%CE%BA%CE%BF%CF%80%CE%BF%CF%85-%CE%9C%CE%B1%CE%BA%CE%AC%CF%81%CE%B9%CE%BF%CF%82-%CE%93%E2%80%99-1950-1977"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Старая Какопетрия",
+      "coordinates": {
+        "lat": 34.986418,
+        "lon": 32.904651
+      },
+      "address": "Palea Kakopetria, Kakopetria, Nicosia District, Cyprus",
+      "category": "historic_quarter",
+      "facts": [
+        "Какопетрия расположена в долине Солеа в горном массиве Троодос.",
+        "Старая часть деревни с узкими мощёными улицами, традиционными домами и деревянными балконами восстановлена и имеет статус охраняемого культурного наследия.",
+        "Кластер старой Какопетрии включает церковь Преображения, музей «Линос» и местные водяные мельницы."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Исторический квартал осматривается пешком; улицы узкие и мощёные, поэтому оставляйте автомобиль на разрешённой парковке за пределами проходов.",
+      "sources": [
+        {
+          "title": "Kakopetria village — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/villages-rural/kakopetria-village-2/"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Церковь Преображения Спасителя в Какопетрии",
+      "coordinates": {
+        "lat": 34.986282,
+        "lon": 32.904794
+      },
+      "address": "Palea Kakopetria, Kakopetria, Nicosia District, Cyprus",
+      "category": "church",
+      "facts": [
+        "Церковь Преображения Спасителя находится в центре старой Какопетрии.",
+        "Visit Cyprus выделяет её как одну из достопримечательностей исторической части деревни.",
+        "Это приходская церковь Какопетрии, а не одноимённая объект Всемирного наследия в Палайхори."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Действующий храм: посещение зависит от церковного режима; осматривайте снаружи, если вход закрыт, и соблюдайте правила одежды и тишины.",
+      "sources": [
+        {
+          "title": "Kakopetria village — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/villages-rural/kakopetria-village-2/"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Музей «Линос» в Какопетрии",
+      "coordinates": {
+        "lat": 34.986604,
+        "lon": 32.904289
+      },
+      "address": "Linou Street, Palea Kakopetria, Nicosia District, Cyprus",
+      "category": "museum",
+      "facts": [
+        "Музей «Линос» размещён в здании на улице Старой Какопетрии.",
+        "Его три тематических раздела посвящены вину, хлебу и оливковому маслу.",
+        "Музей связывает традиционные сельские занятия с жилой архитектурой старого квартала."
+      ],
+      "dates": [],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Муниципальный сайт указывает адрес на улице Old Kakopetria Street. Перед визитом проверьте доступность по телефону +357 22 922323: опубликованные часы на региональном туристическом сайте — понедельник–пятница 07:30–15:00.",
+      "sources": [
+        {
+          "title": "Linos Museum — Kakopetria Community Council",
+          "url": "https://kakopetria.org.cy/en/museums-len/linos-len.html"
+        },
+        {
+          "title": "Linos Museum — Visit Solea",
+          "url": "https://www.visitsolea.com/linos-museum/?lang=de"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Водяная мельница Милос-тис-Гоньяс",
+      "coordinates": {
+        "lat": 34.988091,
+        "lon": 32.90665
+      },
+      "address": "By Agios Nikolaos River, Kakopetria, Nicosia District, Cyprus",
+      "category": "industrial_heritage",
+      "facts": [
+        "Милос-тис-Гоньяс построена на левом берегу реки Агиос-Николаос, притока Каркотиса.",
+        "Мельница использовалась для помола пшеницы и ячменя.",
+        "Она прекратила работу после Второй мировой войны и была восстановлена в 1980 году.",
+        "Рядом находится каменный мост Гефири-Милу-Гоньяс."
+      ],
+      "dates": [
+        "1754 — по данным Visit Cyprus, начало работы мельницы.",
+        "После Второй мировой войны — прекращение работы.",
+        "1980 — восстановление."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Туристический объект у реки и дороги; муниципальный источник не публикует часы посещения. Осматривайте снаружи, не заходите на частную территорию и будьте осторожны у воды.",
+      "sources": [
+        {
+          "title": "Watermills — Kakopetria Community Council",
+          "url": "https://kakopetria.org.cy/en/attractions-len/watermills-len.html"
+        },
+        {
+          "title": "Kakopetria village — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/villages-rural/kakopetria-village-2/"
+        }
+      ],
+      "llm_coordinates": null
+    },
+    {
+      "name": "Церковь Агиос-Николаос-тис-Стегис",
+      "coordinates": {
+        "lat": 34.977336,
+        "lon": 32.889522
+      },
+      "address": "Solea Valley, 5 km from Kakopetria, Nicosia District, Cyprus",
+      "category": "unesco_church",
+      "facts": [
+        "Церковь Святого Николая Под Крышей находится в долине Солеа, в 5 км от Какопетрии, и входит в объект Всемирного наследия ЮНЕСКО.",
+        "Это крестово-купольная церковь бывшего монастыря; её вторую, крутую деревянную крышу устроили для защиты от погоды.",
+        "Храм относится к XI веку и полностью покрыт настенными росписями XI–XVII веков.",
+        "Монастырь сложился в конце XIII — начале XIV века, пришёл в упадок в XVIII веке и перестал действовать к концу XIX века."
+      ],
+      "dates": [
+        "XI век — датировка церкви.",
+        "Конец XIII — начало XIV века — датировка монастыря.",
+        "XI–XVII века — диапазон сохранившихся росписей.",
+        "Конец XIX века — монастырь прекратил работу."
+      ],
+      "people": [],
+      "legends": [],
+      "disputed": [],
+      "next_leg": null,
+      "access_info": "Вход бесплатный, есть доступ для кресла-коляски. Опубликованные часы различаются между версиями официальной страницы и могут меняться; перед выездом уточните по телефону +357 99 484423 или +357 22 922583. Закрыто в государственные праздники.",
+      "sources": [
+        {
+          "title": "Agios Nikolaos tis Stegis Church — Visit Cyprus",
+          "url": "https://www.visitcyprus.com/discover-cyprus/culture/sites-and-monuments/agios-nikolaos-tis-stegis-church/"
+        },
+        {
+          "title": "Agios Nikolaos tis Stegis Church — Visit Cyprus (rural)",
+          "url": "https://www.visitcyprus.com/discover-cyprus/rural/sites-monuments/agios-nikolaos-tis-stegis-church-2/"
+        }
+      ],
+      "llm_coordinates": null
+    }
+  ]
+}

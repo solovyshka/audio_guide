@@ -1,0 +1,14 @@
+[Unit]
+Description=Reverse SSH tunnel FIREBAT audio-guide :8090 to VDS :18090
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=solovyshka
+ExecStart=/usr/bin/ssh -N -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o StrictHostKeyChecking=accept-new -R 127.0.0.1:18090:127.0.0.1:8090 root@135.106.218.22
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

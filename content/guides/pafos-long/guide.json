@@ -1,11 +1,16 @@
 {
   "id": "pafos-long",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "title": "Пафос · длинный",
   "subtitle": "Неа-Пафос: парк, гавань, музеи Ктимы и гробницы царей",
   "city": "Пафос",
   "region": "район Пафос, Кипр",
   "language": "ru",
+  "routeMode": "walking",
+  "routeDistanceKm": 7.9,
+  "estimatedDurationMin": 300,
+  "routeNotice": "Длинный пеший маршрут между Ктимой и Като-Пафосом; участок к Гробницам царей самый протяжённый.",
+  "reviewedAt": "2026-09-25",
   "center": {
     "lat": 34.7754,
     "lon": 32.4218

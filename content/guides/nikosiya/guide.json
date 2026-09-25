@@ -1,11 +1,16 @@
 {
   "id": "nikosiya",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "title": "Никосия",
   "subtitle": "Венецианские стены, старый город и история разделённой столицы",
   "city": "Никосия",
   "region": "Республика Кипр, район Никосия",
   "language": "ru",
+  "routeMode": "walking",
+  "routeDistanceKm": 2.2,
+  "estimatedDurationMin": 120,
+  "routeNotice": "Пеший маршрут по южной части старого города внутри венецианских стен.",
+  "reviewedAt": "2026-09-25",
   "center": {
     "lat": 35.1698,
     "lon": 33.3619

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../api/client.dart';
+import '../content/content_pack.dart';
 import '../maps/city_map.dart';
 import '../models/city.dart';
 import '../models/generate_job.dart';
@@ -56,13 +57,17 @@ class _CityScreenState extends State<CityScreen>
       _error = null;
     });
     try {
-      final city = await widget.api.getCity(widget.cityId);
+      var city = ContentPack.instance.city(widget.cityId);
+      city ??= await widget.api.getCity(widget.cityId);
       await GuideCache.instance.saveCity(city);
       if (_guides.isEmpty) {
-        try {
-          _guides = await widget.api.listGuides();
-        } catch (_) {
-          _guides = await GuideCache.instance.localCatalog();
+        _guides = ContentPack.instance.guides;
+        if (_guides.isEmpty) {
+          try {
+            _guides = await widget.api.listGuides();
+          } catch (_) {
+            _guides = await GuideCache.instance.localCatalog();
+          }
         }
       }
       if (!mounted) {

@@ -1,11 +1,16 @@
 {
   "id": "limasol-long",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "title": "Лимасол · длинный",
   "subtitle": "Старый город, замок, набережная Молос и марина",
   "city": "Лимасол",
   "region": "Республика Кипр, округ Лимасол",
   "language": "ru",
+  "routeMode": "walking",
+  "routeDistanceKm": 4.1,
+  "estimatedDurationMin": 210,
+  "routeNotice": "Пеший маршрут по центру Лимасола; музеи и храмы потребуют дополнительного времени.",
+  "reviewedAt": "2026-09-25",
   "center": {
     "lat": 34.675,
     "lon": 33.042

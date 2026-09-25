@@ -1,11 +1,16 @@
 {
   "id": "pafos",
-  "contentVersion": 1,
+  "contentVersion": 2,
   "title": "Пафос",
   "subtitle": "Античный Неа-Пафос, мозаики и средневековая гавань",
   "city": "Пафос",
   "region": "район Пафос, Кипр",
   "language": "ru",
+  "routeMode": "walking",
+  "routeDistanceKm": 1.6,
+  "estimatedDurationMin": 120,
+  "routeNotice": "Пеший маршрут по Като-Пафосу; заложите дополнительное время на археологический парк.",
+  "reviewedAt": "2026-09-25",
   "center": {
     "lat": 34.7754,
     "lon": 32.4218

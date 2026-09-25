@@ -2,15 +2,15 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../config.dart';
 import '../models/city.dart';
 import '../models/generate_job.dart';
 import '../models/guide.dart';
+import '../net/api_door.dart';
 import '../update/app_release.dart';
 
 class GuideApi {
   GuideApi({String? baseUrl})
-      : baseUrl = (baseUrl ?? apiBase).replaceAll(RegExp(r'/$'), '');
+      : baseUrl = (baseUrl ?? ApiDoor.current).replaceAll(RegExp(r'/$'), '');
 
   final String baseUrl;
 
@@ -45,7 +45,7 @@ class GuideApi {
     if (response.statusCode != 200) {
       throw Exception('Город не найден');
     }
-    return jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+    return _jsonMap(response);
   }
 
   Future<City> getCity(String id) async {
@@ -57,7 +57,7 @@ class GuideApi {
     if (response.statusCode != 200) {
       throw Exception('Гид не найден');
     }
-    return jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+    return _jsonMap(response);
   }
 
   Future<Guide> getGuide(String id) async {
@@ -139,9 +139,14 @@ class GuideApi {
     if (response.statusCode != 200) {
       return null;
     }
+    return AppRelease.fromJson(_jsonMap(response));
+  }
+
+  Map<String, dynamic> _jsonMap(http.Response response) {
     final payload =
         jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-    return AppRelease.fromJson(payload);
+    ApiDoor.pinTree(payload);
+    return payload;
   }
 
   List<GuideSummary> _decodeGuides(http.Response response) {
