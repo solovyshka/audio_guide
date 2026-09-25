@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-09-25T08:45:38Z",
+  "updatedAt": "2026-09-25T18:30:00Z",
   "guides": [
     {
       "id": "gazgoldernaya",
@@ -606,6 +606,32 @@
       "routeDistanceKm": 44.2,
       "estimatedDurationMin": 480,
       "routeNotice": "Автомобильный маршрут по четырём удалённым кластерам; перед поездкой проверяйте состояние горных дорог.",
+      "reviewedAt": "2026-09-25"
+    },
+    {
+      "id": "cyprus",
+      "title": "Кипр — общий гид по острову",
+      "subtitle": "Античные города, горные деревни, морские пейзажи, specialty-кофе и кипрская кухня",
+      "aliases": [
+        "Кипр",
+        "Республика Кипр",
+        "Cyprus",
+        "Κύπρος",
+        "гид по Кипру"
+      ],
+      "city": "Кипр",
+      "region": "Республика Кипр",
+      "center": {
+        "lat": 35.0,
+        "lon": 33.2
+      },
+      "stopsCount": 22,
+      "durationSec": 756,
+      "language": "ru",
+      "guidePath": "guides/cyprus/guide.json",
+      "contentVersion": 1,
+      "routeMode": "mixed",
+      "routeNotice": "Островной путеводитель на несколько дней; собирайте остановки в отдельные поездки по районам.",
       "reviewedAt": "2026-09-25"
     }
   ],

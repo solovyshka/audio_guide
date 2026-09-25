@@ -12,6 +12,6 @@
   "cityIds": ["nikosiya", "larnaka", "limasol", "pafos"],
   "placeIds": ["lefkara"],
   "routeIds": ["troodos", "kurion-kolossi"],
-  "overviewGuideId": null,
-  "contentVersion": 1
+  "overviewGuideId": "cyprus",
+  "contentVersion": 2
 }
