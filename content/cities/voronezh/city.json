@@ -1,6 +1,9 @@
 {
   "id": "voronezh",
-  "contentVersion": 2,
+  "contentVersion": 3,
+  "entryType": "city",
+  "countryId": "russia",
+  "regionId": "ru-black-earth",
   "title": "Воронеж",
   "subtitle": "Петровская верфь, водохранилище и город воинской славы",
   "city": "Воронеж",

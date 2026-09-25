@@ -1,6 +1,9 @@
 {
   "id": "nikosiya",
-  "contentVersion": 4,
+  "contentVersion": 5,
+  "entryType": "city",
+  "countryId": "cyprus",
+  "regionId": null,
   "title": "Никосия",
   "subtitle": "Ледра, венецианские стены и разделённая столица",
   "city": "Никосия",

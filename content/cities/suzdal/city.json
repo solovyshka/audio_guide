@@ -1,6 +1,9 @@
 {
   "id": "suzdal",
-  "contentVersion": 2,
+  "contentVersion": 3,
+  "entryType": "city",
+  "countryId": "russia",
+  "regionId": "ru-golden-ring",
   "title": "Суздаль",
   "subtitle": "Кремль, Каменка и монастыри Золотого кольца",
   "city": "Суздаль",

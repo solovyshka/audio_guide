@@ -1,0 +1,17 @@
+{
+  "id": "china",
+  "type": "country",
+  "title": "Китай",
+  "subtitle": "Исторические области, мегаполисы и культурные ландшафты",
+  "summary": "Материалы по Китаю организованы через крупные туристические регионы. Первым собран регион Цзяннань и дельта Янцзы.",
+  "countryCode": "CN",
+  "navigationMode": "regional",
+  "center": {"lat": 35.0, "lon": 103.0},
+  "aliases": ["КНР", "China", "中国"],
+  "childAreaIds": ["cn-jiangnan"],
+  "cityIds": [],
+  "placeIds": [],
+  "routeIds": [],
+  "overviewGuideId": null,
+  "contentVersion": 1
+}

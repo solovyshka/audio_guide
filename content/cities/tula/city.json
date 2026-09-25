@@ -1,6 +1,9 @@
 {
   "id": "tula",
-  "contentVersion": 2,
+  "contentVersion": 3,
+  "entryType": "city",
+  "countryId": "russia",
+  "regionId": "ru-central",
   "title": "Тула",
   "subtitle": "Кремль, оружие, пряник и набережная Упы",
   "city": "Тула",

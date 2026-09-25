@@ -1,6 +1,9 @@
 {
   "id": "troick",
-  "contentVersion": 2,
+  "contentVersion": 3,
+  "entryType": "city",
+  "countryId": "russia",
+  "regionId": "ru-moscow",
   "title": "Троицк",
   "subtitle": "От усадебного парка и фабрики к научному центру Москвы",
   "city": "Троицк",

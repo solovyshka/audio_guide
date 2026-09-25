@@ -1,0 +1,18 @@
+{
+  "id": "cn-jiangnan",
+  "type": "region",
+  "title": "Цзяннань и дельта Янцзы",
+  "subtitle": "Каналы, классические сады и водные города",
+  "summary": "Историко-культурный регион к югу от нижнего течения Янцзы, известный каналами, садами и городской культурой.",
+  "parentId": "china",
+  "countryCode": "CN",
+  "navigationMode": "flat",
+  "center": {"lat": 31.23, "lon": 120.58},
+  "aliases": ["Цзяннань", "Jiangnan", "江南", "дельта Янцзы"],
+  "childAreaIds": [],
+  "cityIds": ["suchzhou"],
+  "placeIds": [],
+  "routeIds": [],
+  "overviewGuideId": null,
+  "contentVersion": 1
+}

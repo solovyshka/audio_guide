@@ -1,0 +1,18 @@
+{
+  "id": "ru-golden-ring",
+  "type": "region",
+  "title": "Золотое кольцо",
+  "subtitle": "Древние города Северо-Восточной Руси",
+  "summary": "Исторические города с кремлями, монастырями, торговыми площадями и традиционными ремёслами.",
+  "parentId": "russia",
+  "countryCode": "RU",
+  "navigationMode": "flat",
+  "center": {"lat": 56.42, "lon": 40.45},
+  "aliases": ["Golden Ring", "Золотое кольцо России"],
+  "childAreaIds": [],
+  "cityIds": ["suzdal"],
+  "placeIds": [],
+  "routeIds": [],
+  "overviewGuideId": null,
+  "contentVersion": 1
+}

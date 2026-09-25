@@ -124,8 +124,8 @@ Future<_Piece> _getRange(
       request.headers['Accept'] = '*/*';
       request.headers['Cache-Control'] = 'no-cache';
       final response = await client.send(request).timeout(
-        const Duration(seconds: 30),
-      );
+            const Duration(seconds: 30),
+          );
       if (response.statusCode != 200 && response.statusCode != 206) {
         throw Exception('Не удалось скачать (${response.statusCode})');
       }

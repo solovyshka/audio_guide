@@ -78,8 +78,7 @@ class _GuideYandexMapState extends State<GuideYandexMap>
     _drawStops(moveCamera: true);
   }
 
-  double get _dpr =>
-      View.of(context).devicePixelRatio;
+  double get _dpr => View.of(context).devicePixelRatio;
 
   void _drawStops({bool moveCamera = false}) {
     final mapWindow = _mapWindow;

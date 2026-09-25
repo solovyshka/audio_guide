@@ -165,12 +165,9 @@ class _MapSwitcher extends StatelessWidget {
       child: TextButton(
         onPressed: () => onChanged(value),
         style: TextButton.styleFrom(
-          foregroundColor: selected
-              ? Colors.white
-              : const Color(0xFF1F4B3A),
-          backgroundColor: selected
-              ? const Color(0xFF1F4B3A)
-              : Colors.transparent,
+          foregroundColor: selected ? Colors.white : const Color(0xFF1F4B3A),
+          backgroundColor:
+              selected ? const Color(0xFF1F4B3A) : Colors.transparent,
           minimumSize: Size.zero,
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),

@@ -1,0 +1,17 @@
+{
+  "id": "cyprus",
+  "type": "country",
+  "title": "Кипр",
+  "subtitle": "Античные города, горные деревни и Средиземное море",
+  "summary": "Компактная страна, где городские прогулки, археологические комплексы и горные маршруты удобно соединять автомобильными поездками.",
+  "countryCode": "CY",
+  "navigationMode": "flat",
+  "center": {"lat": 35.0, "lon": 33.2},
+  "aliases": ["Республика Кипр", "Cyprus", "Κύπρος"],
+  "childAreaIds": [],
+  "cityIds": ["nikosiya", "larnaka", "limasol", "pafos"],
+  "placeIds": ["lefkara"],
+  "routeIds": ["troodos", "kurion-kolossi"],
+  "overviewGuideId": null,
+  "contentVersion": 1
+}

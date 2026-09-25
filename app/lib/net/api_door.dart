@@ -31,8 +31,10 @@ class ApiDoor {
 
   static Future<String> select() async {
     final probes = await Future.wait(doors.map(_probe));
-    final ok = [for (final item in probes) if (item != null) item]
-      ..sort((a, b) => a.elapsed.compareTo(b.elapsed));
+    final ok = [
+      for (final item in probes)
+        if (item != null) item
+    ]..sort((a, b) => a.elapsed.compareTo(b.elapsed));
     if (ok.isNotEmpty) {
       current = ok.first.base;
     }
@@ -70,7 +72,8 @@ class ApiDoor {
           !uri.path.startsWith('$prefix/')) {
         continue;
       }
-      final rest = prefix.isEmpty ? uri.path : uri.path.substring(prefix.length);
+      final rest =
+          prefix.isEmpty ? uri.path : uri.path.substring(prefix.length);
       final pinned = '${_normalize(door)}$rest';
       if (!uri.hasQuery) {
         return pinned;

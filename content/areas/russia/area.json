@@ -1,0 +1,22 @@
+{
+  "id": "russia",
+  "type": "country",
+  "title": "Россия",
+  "subtitle": "Города и маршруты от столичного региона до Черноземья",
+  "summary": "Большая страна собрана через туристические регионы, чтобы не смешивать удалённые города и маршруты в одном списке.",
+  "countryCode": "RU",
+  "navigationMode": "regional",
+  "center": {"lat": 58.0, "lon": 50.0},
+  "aliases": ["Российская Федерация", "Russia"],
+  "childAreaIds": [
+    "ru-moscow",
+    "ru-golden-ring",
+    "ru-central",
+    "ru-black-earth"
+  ],
+  "cityIds": [],
+  "placeIds": [],
+  "routeIds": [],
+  "overviewGuideId": null,
+  "contentVersion": 1
+}

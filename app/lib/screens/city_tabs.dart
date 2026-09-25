@@ -67,10 +67,13 @@ class CityTabs extends StatelessWidget {
             children: [
               _history(context),
               _present(context),
-              _places(context, city.sights, 'Городские достопримечательности пока не собраны'),
-              _places(context, city.nature, 'Парки и смотровые пока не собраны'),
+              _places(context, city.sights,
+                  'Городские достопримечательности пока не собраны'),
+              _places(
+                  context, city.nature, 'Парки и смотровые пока не собраны'),
               _places(context, city.culture, 'Музеи и театры пока не собраны'),
-              _places(context, city.leisure, 'Кофе, кондитерские и рестораны пока не собраны'),
+              _places(context, city.leisure,
+                  'Кофе, кондитерские и рестораны пока не собраны'),
               _guideTab(context, city.guides.short, 'Короткий аудиогид'),
               _guideTab(context, city.guides.long, 'Длинный аудиогид'),
             ],
@@ -175,9 +178,7 @@ class CityTabs extends StatelessWidget {
       return _empty(context, '$title ещё не собран');
     }
     final summary = _guide(guideId);
-    final minutes = summary == null
-        ? null
-        : (summary.durationSec / 60).ceil();
+    final minutes = summary == null ? null : (summary.durationSec / 60).ceil();
     final cache = GuideCache.instance;
     final downloading = cache.isDownloading(guideId);
     final downloaded = cache.isDownloaded(guideId);

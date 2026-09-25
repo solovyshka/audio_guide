@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from app.config import settings
-from app.models import City, CitySummary, Guide, GuideSummary, city_from_package, guide_from_package
+from app.models import AreaSummary, City, CitySummary, Guide, GuideSummary, city_from_package, guide_from_package
 
 
 def _catalog_path() -> Path:
@@ -81,18 +81,33 @@ def _city_summary(raw: dict) -> CitySummary:
         language=raw.get("language", "ru"),
         reviewed_at=raw.get("reviewedAt"),
         source_urls=raw.get("sourceUrls") or [],
+        entry_type=raw.get("entryType", "city"),
+        country_id=raw.get("countryId"),
+        region_id=raw.get("regionId"),
     )
 
 
 def load_cities() -> list[CitySummary]:
-    path = _catalog_path()
-    if not path.exists():
-        return []
-    payload = json.loads(path.read_text(encoding="utf-8"))
-    items = payload.get("cities")
-    if isinstance(items, list) and items:
-        return [_city_summary(raw) for raw in items if isinstance(raw, dict) and raw.get("id") != "gazgoldernaya"]
-    return []
+    catalog_path = _catalog_path()
+    order: list[str] = []
+    if catalog_path.exists():
+        payload = json.loads(catalog_path.read_text(encoding="utf-8"))
+        order = [
+            raw["id"]
+            for raw in payload.get("cities") or []
+            if isinstance(raw, dict) and raw.get("id")
+        ]
+    cities_by_id: dict[str, CitySummary] = {}
+    for path in sorted((settings.content_dir / "cities").glob("*/city.json")):
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        city_id = raw.get("id")
+        if city_id and city_id != "gazgoldernaya":
+            cities_by_id[city_id] = _city_summary(raw)
+    cities = [cities_by_id[city_id] for city_id in order if city_id in cities_by_id]
+    cities.extend(
+        city for city_id, city in cities_by_id.items() if city_id not in order
+    )
+    return cities
 
 
 def load_city(city_id: str) -> City | None:
@@ -120,3 +135,25 @@ def search_cities(query: str) -> list[CitySummary]:
             scored.append((60, item))
     scored.sort(key=lambda pair: pair[0], reverse=True)
     return [item for _, item in scored]
+
+
+def _area_summary(raw: dict) -> AreaSummary:
+    return AreaSummary.model_validate(raw)
+
+
+def load_areas() -> list[AreaSummary]:
+    root = settings.content_dir / "areas"
+    if not root.exists():
+        return []
+    areas = []
+    for path in sorted(root.glob("*/area.json")):
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        areas.append(_area_summary(raw))
+    return areas
+
+
+def load_area(area_id: str) -> AreaSummary | None:
+    path = settings.content_dir / "areas" / area_id / "area.json"
+    if not path.exists():
+        return None
+    return _area_summary(json.loads(path.read_text(encoding="utf-8")))

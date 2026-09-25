@@ -1,6 +1,9 @@
 {
   "id": "kolomna",
-  "contentVersion": 5,
+  "contentVersion": 6,
+  "entryType": "city",
+  "countryId": "russia",
+  "regionId": "ru-moscow",
   "title": "Коломна",
   "subtitle": "Кремль, посад, пастила и Москва-река",
   "city": "Коломна",

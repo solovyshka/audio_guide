@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../api/client.dart';
+import '../models/area.dart';
 import '../models/city.dart';
 import '../models/guide.dart';
 import '../net/api_door.dart';
@@ -16,15 +17,33 @@ class ContentPack {
 
   List<City> _cities = [];
   List<Guide> _guides = [];
+  List<AreaSummary> _areas = [];
 
   List<CitySummary> get cities => _cities;
 
   List<Guide> get guides => _guides;
 
+  List<AreaSummary> get areas => _areas;
+
+  List<AreaSummary> get countries =>
+      _areas.where((item) => item.isCountry).toList();
+
   Future<void> load() async {
     final saved = await ContentPackStore.read();
-    final raw = saved ?? await rootBundle.loadString('assets/content/pack.json');
-    _apply(jsonDecode(raw));
+    final bundled = jsonDecode(
+      await rootBundle.loadString('assets/content/pack.json'),
+    );
+    if (saved == null) {
+      _apply(bundled);
+      return;
+    }
+    final stored = jsonDecode(saved);
+    if (stored is Map<String, dynamic> && bundled is Map<String, dynamic>) {
+      if (stored['areas'] is! List || (stored['areas'] as List).isEmpty) {
+        stored['areas'] = bundled['areas'];
+      }
+    }
+    _apply(stored);
   }
 
   City? city(String id) {
@@ -45,6 +64,17 @@ class ContentPack {
     return null;
   }
 
+  AreaSummary? area(String id) {
+    for (final item in _areas) {
+      if (item.id == id) {
+        return item;
+      }
+    }
+    return null;
+  }
+
+  CitySummary? citySummary(String id) => city(id);
+
   List<CitySummary> search(String query) {
     final needle = query.trim().toLowerCase();
     if (needle.isEmpty) {
@@ -64,6 +94,33 @@ class ContentPack {
   }
 
   Future<void> refresh(GuideApi api) async {
+    final areas = <Map<String, dynamic>>[];
+    try {
+      for (final item in await api.listAreas()) {
+        areas.add(await api.getAreaJson(item.id));
+      }
+    } catch (_) {
+      areas.addAll(
+        _areas.map((item) => <String, dynamic>{
+              'id': item.id,
+              'type': item.type.name,
+              'title': item.title,
+              'subtitle': item.subtitle,
+              'summary': item.summary,
+              'parentId': item.parentId,
+              'countryCode': item.countryCode,
+              'navigationMode': item.navigationMode,
+              'center': {'lat': item.center.lat, 'lon': item.center.lon},
+              'aliases': item.aliases,
+              'childAreaIds': item.childAreaIds,
+              'cityIds': item.cityIds,
+              'placeIds': item.placeIds,
+              'routeIds': item.routeIds,
+              'overviewGuideId': item.overviewGuideId,
+              'contentVersion': item.contentVersion,
+            }),
+      );
+    }
     final listed = await api.listCities();
     final cities = <Map<String, dynamic>>[];
     for (final item in listed) {
@@ -90,20 +147,30 @@ class ContentPack {
         await addGuide(item.id);
       }
     } catch (_) {}
-    final text = jsonEncode({'cities': cities, 'guides': guides});
+    final text = jsonEncode({
+      'version': 2,
+      'areas': areas,
+      'cities': cities,
+      'guides': guides,
+    });
     await ContentPackStore.write(text);
     _apply(jsonDecode(text));
   }
 
   void _apply(Object? raw) {
     final pack = raw is Map<String, dynamic> ? raw : <String, dynamic>{};
+    _areas = (pack['areas'] as List<dynamic>? ?? [])
+        .whereType<Map<String, dynamic>>()
+        .map(AreaSummary.fromJson)
+        .toList();
     _cities = (pack['cities'] as List<dynamic>? ?? [])
         .whereType<Map<String, dynamic>>()
         .map(City.fromJson)
         .toList();
     _guides = (pack['guides'] as List<dynamic>? ?? [])
         .whereType<Map>()
-        .map((item) => Guide.fromJson(_withAudio(Map<String, dynamic>.from(item))))
+        .map((item) =>
+            Guide.fromJson(_withAudio(Map<String, dynamic>.from(item))))
         .toList();
   }
 }

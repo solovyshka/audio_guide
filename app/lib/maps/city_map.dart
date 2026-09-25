@@ -69,8 +69,7 @@ class _CityMapState extends State<CityMap> {
     final user = UserLocation.instance.fix;
     final points = <LatLng>[
       if (user != null) LatLng(user.lat, user.lon),
-      for (final place in widget.city.mapPlaces)
-        LatLng(place.lat, place.lon),
+      for (final place in widget.city.mapPlaces) LatLng(place.lat, place.lon),
     ];
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || points.isEmpty) {

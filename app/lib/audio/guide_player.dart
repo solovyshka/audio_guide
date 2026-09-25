@@ -12,11 +12,13 @@ class GuidePlayer {
   Stream<PlayerState> get playerStateStream => _player.playerStateStream;
   Stream<Duration> get positionStream => _player.positionStream;
   bool get playing => _player.playing;
-  Track? get current =>
-      _playlist.isEmpty ? null : _playlist[index.clamp(0, _playlist.length - 1)];
+  Track? get current => _playlist.isEmpty
+      ? null
+      : _playlist[index.clamp(0, _playlist.length - 1)];
 
   Future<void> load(Guide guide) async {
-    _playlist = guide.playlist.where((track) => track.audioUrl != null).toList();
+    _playlist =
+        guide.playlist.where((track) => track.audioUrl != null).toList();
     index = 0;
     if (_playlist.isEmpty) {
       return;

@@ -37,23 +37,22 @@ Future<ui.Image> paintStopMarker({
       ..strokeWidth = (active ? 3.2 : 2.2) * devicePixelRatio
       ..isAntiAlias = true,
   );
-  final paragraph =
-      (ui.ParagraphBuilder(
-              ui.ParagraphStyle(
-                textAlign: TextAlign.center,
-                fontWeight: FontWeight.w700,
-                fontSize: size * (number > 9 ? 0.38 : 0.46),
-              ),
-            )
-            ..pushStyle(
-              ui.TextStyle(
-                color: active ? _activeText : _idleText,
-                fontWeight: FontWeight.w700,
-              ),
-            )
-            ..addText('$number'))
-          .build()
-        ..layout(ui.ParagraphConstraints(width: size.toDouble()));
+  final paragraph = (ui.ParagraphBuilder(
+    ui.ParagraphStyle(
+      textAlign: TextAlign.center,
+      fontWeight: FontWeight.w700,
+      fontSize: size * (number > 9 ? 0.38 : 0.46),
+    ),
+  )
+        ..pushStyle(
+          ui.TextStyle(
+            color: active ? _activeText : _idleText,
+            fontWeight: FontWeight.w700,
+          ),
+        )
+        ..addText('$number'))
+      .build()
+    ..layout(ui.ParagraphConstraints(width: size.toDouble()));
   canvas.drawParagraph(
     paragraph,
     Offset(0, (size - paragraph.height) / 2),

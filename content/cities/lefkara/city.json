@@ -1,6 +1,9 @@
 {
   "id": "lefkara",
-  "contentVersion": 2,
+  "contentVersion": 3,
+  "entryType": "place",
+  "countryId": "cyprus",
+  "regionId": null,
   "title": "Лефкара",
   "subtitle": "Кружево лефкаритика, серебро и каменные улицы",
   "city": "Лефкара",

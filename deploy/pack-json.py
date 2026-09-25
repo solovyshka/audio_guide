@@ -33,12 +33,22 @@ def main() -> None:
     for path in sorted((CONTENT / "guides").glob("*/guide.json")):
         guides.append(load(path))
 
+    areas = []
+    for path in sorted((CONTENT / "areas").glob("*/area.json")):
+        areas.append(load(path))
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(
-        json.dumps({"cities": cities, "guides": guides}, ensure_ascii=False) + "\n",
+        json.dumps(
+            {"version": 2, "areas": areas, "cities": cities, "guides": guides},
+            ensure_ascii=False,
+        )
+        + "\n",
         encoding="utf-8",
     )
-    print(f"{OUT} cities={len(cities)} guides={len(guides)}")
+    print(
+        f"{OUT} areas={len(areas)} cities={len(cities)} guides={len(guides)}"
+    )
 
 
 if __name__ == "__main__":

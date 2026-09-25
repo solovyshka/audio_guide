@@ -1,6 +1,9 @@
 {
   "id": "pafos",
-  "contentVersion": 4,
+  "contentVersion": 5,
+  "entryType": "city",
+  "countryId": "cyprus",
+  "regionId": null,
   "title": "Пафос",
   "subtitle": "Неа-Пафос, мозаики ЮНЕСКО и средневековая гавань",
   "city": "Пафос",

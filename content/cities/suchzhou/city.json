@@ -1,6 +1,9 @@
 {
   "id": "suchzhou",
-  "contentVersion": 2,
+  "contentVersion": 3,
+  "entryType": "city",
+  "countryId": "china",
+  "regionId": "cn-jiangnan",
   "title": "Сучжоу",
   "subtitle": "Классические сады, каналы и старый город Цзяннани",
   "city": "Сучжоу",

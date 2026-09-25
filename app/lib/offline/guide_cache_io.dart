@@ -125,6 +125,9 @@ class GuideCache extends ChangeNotifier {
         'subtitle': city.subtitle,
         'city': city.city,
         'region': city.region,
+        'entryType': city.entryType,
+        'countryId': city.countryId,
+        'regionId': city.regionId,
         'aliases': city.aliases,
         'center': {'lat': city.center.lat, 'lon': city.center.lon},
         'guides': {

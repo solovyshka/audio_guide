@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../models/area.dart';
 import '../models/city.dart';
 import '../models/generate_job.dart';
 import '../models/guide.dart';
@@ -30,6 +31,26 @@ class GuideApi {
   Future<List<CitySummary>> listCities() async {
     final response = await http.get(Uri.parse('$baseUrl/cities'));
     return _decodeCities(response);
+  }
+
+  Future<List<AreaSummary>> listAreas() async {
+    final response = await http.get(Uri.parse('$baseUrl/areas'));
+    if (response.statusCode != 200) {
+      throw Exception('Сервер недоступен (${response.statusCode})');
+    }
+    final payload =
+        jsonDecode(utf8.decode(response.bodyBytes)) as List<dynamic>;
+    return payload
+        .map((item) => AreaSummary.fromJson(item as Map<String, dynamic>))
+        .toList();
+  }
+
+  Future<Map<String, dynamic>> getAreaJson(String id) async {
+    final response = await http.get(Uri.parse('$baseUrl/areas/$id'));
+    if (response.statusCode != 200) {
+      throw Exception('Территория не найдена');
+    }
+    return _jsonMap(response);
   }
 
   Future<List<CitySummary>> searchCities(String query) async {
@@ -64,7 +85,8 @@ class GuideApi {
     return Guide.fromJson(await getGuideJson(id));
   }
 
-  Future<GenerateJob> startGenerate(String city, {String length = 'short'}) async {
+  Future<GenerateJob> startGenerate(String city,
+      {String length = 'short'}) async {
     final response = await http.post(
       Uri.parse('$baseUrl/guides/generate'),
       headers: {'Content-Type': 'application/json'},
@@ -85,7 +107,8 @@ class GuideApi {
       body: jsonEncode({'city': city}),
     );
     if (response.statusCode != 200 && response.statusCode != 202) {
-      throw Exception(_errorMessage(response, 'Не удалось начать сборку города'));
+      throw Exception(
+          _errorMessage(response, 'Не удалось начать сборку города'));
     }
     return GenerateJob.fromJson(
       jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
@@ -95,8 +118,7 @@ class GuideApi {
   Future<GenerateJob> generateStatus(String jobId) async {
     final response = await http.get(Uri.parse('$baseUrl/cities/jobs/$jobId'));
     if (response.statusCode == 404) {
-      final fallback =
-          await http.get(Uri.parse('$baseUrl/guides/jobs/$jobId'));
+      final fallback = await http.get(Uri.parse('$baseUrl/guides/jobs/$jobId'));
       return _decodeJob(fallback);
     }
     return _decodeJob(response);
@@ -104,7 +126,8 @@ class GuideApi {
 
   GenerateJob _decodeJob(http.Response response) {
     if (response.statusCode != 200) {
-      throw Exception(_errorMessage(response, 'Не удалось узнать статус сборки'));
+      throw Exception(
+          _errorMessage(response, 'Не удалось узнать статус сборки'));
     }
     return GenerateJob.fromJson(
       jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
@@ -153,7 +176,8 @@ class GuideApi {
     if (response.statusCode != 200) {
       throw Exception('Сервер недоступен (${response.statusCode})');
     }
-    final payload = jsonDecode(utf8.decode(response.bodyBytes)) as List<dynamic>;
+    final payload =
+        jsonDecode(utf8.decode(response.bodyBytes)) as List<dynamic>;
     return payload
         .map((item) => GuideSummary.fromJson(item as Map<String, dynamic>))
         .toList();
@@ -163,7 +187,8 @@ class GuideApi {
     if (response.statusCode != 200) {
       throw Exception('Сервер недоступен (${response.statusCode})');
     }
-    final payload = jsonDecode(utf8.decode(response.bodyBytes)) as List<dynamic>;
+    final payload =
+        jsonDecode(utf8.decode(response.bodyBytes)) as List<dynamic>;
     return payload
         .map((item) => CitySummary.fromJson(item as Map<String, dynamic>))
         .toList();

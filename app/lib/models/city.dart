@@ -148,6 +148,9 @@ class CitySummary {
     this.contentVersion = 1,
     this.reviewedAt,
     this.sourceUrls = const [],
+    this.entryType = 'city',
+    this.countryId,
+    this.regionId,
   });
 
   final String id;
@@ -161,6 +164,9 @@ class CitySummary {
   final int contentVersion;
   final String? reviewedAt;
   final List<String> sourceUrls;
+  final String entryType;
+  final String? countryId;
+  final String? regionId;
 
   factory CitySummary.fromJson(Map<String, dynamic> json) {
     return CitySummary(
@@ -180,6 +186,9 @@ class CitySummary {
       sourceUrls: (json['sourceUrls'] as List<dynamic>? ?? [])
           .whereType<String>()
           .toList(),
+      entryType: json['entryType'] as String? ?? 'city',
+      countryId: json['countryId'] as String?,
+      regionId: json['regionId'] as String?,
     );
   }
 }
@@ -197,6 +206,9 @@ class City extends CitySummary {
     super.contentVersion,
     super.reviewedAt,
     super.sourceUrls,
+    super.entryType,
+    super.countryId,
+    super.regionId,
     this.history = const CityHistory(),
     this.present = const CityPresent(),
     this.sights = const [],
@@ -259,6 +271,9 @@ class City extends CitySummary {
       contentVersion: summary.contentVersion,
       reviewedAt: summary.reviewedAt,
       sourceUrls: summary.sourceUrls,
+      entryType: summary.entryType,
+      countryId: summary.countryId,
+      regionId: summary.regionId,
       history: CityHistory.fromJson(json['history'] as Map<String, dynamic>?),
       present: CityPresent.fromJson(json['present'] as Map<String, dynamic>?),
       sights: places('sights'),

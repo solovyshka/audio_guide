@@ -1,6 +1,9 @@
 {
   "id": "larnaka",
-  "contentVersion": 4,
+  "contentVersion": 5,
+  "entryType": "city",
+  "countryId": "cyprus",
+  "regionId": null,
   "title": "Ларнака",
   "subtitle": "Китион, Святой Лазарь, Финикудес и солёное озеро",
   "city": "Ларнака",

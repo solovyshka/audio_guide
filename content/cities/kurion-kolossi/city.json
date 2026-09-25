@@ -1,6 +1,9 @@
 {
   "id": "kurion-kolossi",
-  "contentVersion": 1,
+  "contentVersion": 2,
+  "entryType": "route",
+  "countryId": "cyprus",
+  "regionId": null,
   "title": "Курион и Колосси",
   "subtitle": "Античный город на скале, средневековый замок и сахарные плантации",
   "city": "Курион и Колосси",

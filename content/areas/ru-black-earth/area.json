@@ -1,0 +1,18 @@
+{
+  "id": "ru-black-earth",
+  "type": "region",
+  "title": "Черноземье",
+  "subtitle": "Города Центрально-Чернозёмного региона",
+  "summary": "Южная часть Центральной России с плодородными землями, крупными промышленными городами и важной военной историей.",
+  "parentId": "russia",
+  "countryCode": "RU",
+  "navigationMode": "flat",
+  "center": {"lat": 51.66, "lon": 39.2},
+  "aliases": ["Центральное Черноземье", "Black Earth Region"],
+  "childAreaIds": [],
+  "cityIds": ["voronezh"],
+  "placeIds": [],
+  "routeIds": [],
+  "overviewGuideId": null,
+  "contentVersion": 1
+}

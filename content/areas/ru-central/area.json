@@ -1,0 +1,18 @@
+{
+  "id": "ru-central",
+  "type": "region",
+  "title": "Центральная Россия",
+  "subtitle": "Старинные города к югу от Москвы",
+  "summary": "Города центральной части страны, связанные с обороной, ремёслами и промышленной историей.",
+  "parentId": "russia",
+  "countryCode": "RU",
+  "navigationMode": "flat",
+  "center": {"lat": 54.19, "lon": 37.62},
+  "aliases": ["Центр России", "Central Russia"],
+  "childAreaIds": [],
+  "cityIds": ["tula"],
+  "placeIds": [],
+  "routeIds": [],
+  "overviewGuideId": null,
+  "contentVersion": 1
+}

@@ -13,6 +13,7 @@ import '../offline/guide_cache.dart';
 import '../update/app_release.dart';
 import '../update/app_updater.dart';
 import '../update/update_banner.dart';
+import 'area_screen.dart';
 import 'city_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   AppRelease? _update;
   GenerateJob? _job;
   bool _refreshingJson = false;
+  int _sectionIndex = 0;
 
   @override
   void initState() {
@@ -293,9 +295,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final showingCountries = _sectionIndex == 0;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Города'),
+        title: Text(showingCountries ? 'Страны' : 'Города'),
         actions: [
           PopupMenuButton<String>(
             tooltip: 'Меню',
@@ -331,37 +334,97 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-            child: TextField(
-              controller: _search,
-              textInputAction: TextInputAction.search,
-              onSubmitted: _searchCities,
-              decoration: InputDecoration(
-                hintText: 'Город',
-                prefixIcon: const Icon(Icons.search),
-                suffixIcon: IconButton(
-                  onPressed: _listening ? _speech.stop : _listen,
-                  icon: Icon(_listening ? Icons.mic : Icons.mic_none),
-                ),
-                border: const OutlineInputBorder(),
+      body: showingCountries ? _countriesBody() : _citiesBody(),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _sectionIndex,
+        onDestinationSelected: (index) => setState(() => _sectionIndex = index),
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.public_outlined),
+            selectedIcon: Icon(Icons.public),
+            label: 'Страны',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.location_city_outlined),
+            selectedIcon: Icon(Icons.location_city),
+            label: 'Города',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _citiesBody() {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+          child: TextField(
+            controller: _search,
+            textInputAction: TextInputAction.search,
+            onSubmitted: _searchCities,
+            decoration: InputDecoration(
+              hintText: 'Город',
+              prefixIcon: const Icon(Icons.search),
+              suffixIcon: IconButton(
+                onPressed: _listening ? _speech.stop : _listen,
+                icon: Icon(_listening ? Icons.mic : Icons.mic_none),
+              ),
+              border: const OutlineInputBorder(),
+            ),
+          ),
+        ),
+        if (_update != null) UpdateBanner(release: _update!),
+        if (_offline)
+          const Material(
+            color: Color(0xFFE8E4DC),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Text('Нет сети — показаны сохранённые города'),
+            ),
+          ),
+        Expanded(child: _body()),
+      ],
+    );
+  }
+
+  Widget _countriesBody() {
+    if (_loading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    final countries = ContentPack.instance.countries;
+    if (countries.isEmpty) {
+      return const Center(child: Text('Страны пока не собраны'));
+    }
+    return ListView.separated(
+      itemCount: countries.length,
+      separatorBuilder: (_, __) => const Divider(height: 1),
+      itemBuilder: (context, index) {
+        final country = countries[index];
+        return ListTile(
+          leading: const Icon(Icons.public_outlined),
+          title: Text(country.title),
+          subtitle: Text(
+            [
+              if (country.subtitle != null) country.subtitle,
+              country.navigationMode == 'regional'
+                  ? '${country.childAreaIds.length} регионов'
+                  : '${country.cityIds.length} городов · '
+                      '${country.placeIds.length + country.routeIds.length} мест и маршрутов',
+            ].whereType<String>().join('\n'),
+          ),
+          isThreeLine: country.subtitle != null,
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) => AreaScreen(
+                api: widget.api,
+                areaId: country.id,
               ),
             ),
           ),
-          if (_update != null) UpdateBanner(release: _update!),
-          if (_offline)
-            const Material(
-              color: Color(0xFFE8E4DC),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Text('Нет сети — показаны сохранённые города'),
-              ),
-            ),
-          Expanded(child: _body()),
-        ],
-      ),
+        );
+      },
     );
   }
 

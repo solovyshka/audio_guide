@@ -110,6 +110,9 @@ class CitySummary(BaseModel):
     language: str = "ru"
     reviewed_at: str | None = Field(default=None, alias="reviewedAt")
     source_urls: list[str] = Field(default_factory=list, alias="sourceUrls")
+    entry_type: str = Field(default="city", alias="entryType")
+    country_id: str | None = Field(default=None, alias="countryId")
+    region_id: str | None = Field(default=None, alias="regionId")
 
     model_config = ConfigDict(populate_by_name=True, ser_json_by_alias=True)
 
@@ -121,6 +124,27 @@ class City(CitySummary):
     nature: list[CityPlace] = []
     culture: list[CityPlace] = []
     leisure: list[CityPlace] = []
+
+
+class AreaSummary(BaseModel):
+    id: str
+    type: str
+    title: str
+    subtitle: str | None = None
+    summary: str = ""
+    parent_id: str | None = Field(default=None, alias="parentId")
+    country_code: str | None = Field(default=None, alias="countryCode")
+    navigation_mode: str = Field(default="flat", alias="navigationMode")
+    center: LatLon
+    aliases: list[str] = []
+    child_area_ids: list[str] = Field(default_factory=list, alias="childAreaIds")
+    city_ids: list[str] = Field(default_factory=list, alias="cityIds")
+    place_ids: list[str] = Field(default_factory=list, alias="placeIds")
+    route_ids: list[str] = Field(default_factory=list, alias="routeIds")
+    overview_guide_id: str | None = Field(default=None, alias="overviewGuideId")
+    content_version: int = Field(default=1, alias="contentVersion")
+
+    model_config = ConfigDict(populate_by_name=True, ser_json_by_alias=True)
 
 
 def public_audio_url(base: str, guide_id: str, audio_path: str | None) -> str | None:
@@ -243,6 +267,9 @@ def city_from_package(raw: dict[str, Any]) -> City:
         language=raw.get("language", "ru"),
         reviewed_at=raw.get("reviewedAt"),
         source_urls=raw.get("sourceUrls") or [],
+        entry_type=raw.get("entryType", "city"),
+        country_id=raw.get("countryId"),
+        region_id=raw.get("regionId"),
         history=HistoryBlock(
             founded=history_raw.get("founded") or "",
             summary=history_raw.get("summary") or "",

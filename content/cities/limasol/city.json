@@ -1,6 +1,9 @@
 {
   "id": "limasol",
-  "contentVersion": 4,
+  "contentVersion": 5,
+  "entryType": "city",
+  "countryId": "cyprus",
+  "regionId": null,
   "title": "Лимасол",
   "subtitle": "Старый город, замок, Молос и марина",
   "city": "Лимасол",

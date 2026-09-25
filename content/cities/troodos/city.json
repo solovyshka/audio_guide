@@ -1,6 +1,9 @@
 {
   "id": "troodos",
-  "contentVersion": 1,
+  "contentVersion": 2,
+  "entryType": "route",
+  "countryId": "cyprus",
+  "regionId": null,
   "title": "Троодос",
   "subtitle": "Омодос, горные тропы, Киккский монастырь и старая Какопетрия",
   "city": "Троодос",

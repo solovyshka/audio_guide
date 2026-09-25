@@ -1,0 +1,18 @@
+{
+  "id": "ru-moscow",
+  "type": "region",
+  "title": "Москва и Подмосковье",
+  "subtitle": "Столица, наукоград и исторические города вокруг неё",
+  "summary": "Москва и ближайшие города Московского региона, доступные для отдельных прогулок и поездок выходного дня.",
+  "parentId": "russia",
+  "countryCode": "RU",
+  "navigationMode": "flat",
+  "center": {"lat": 55.55, "lon": 38.0},
+  "aliases": ["Московский регион", "Москва и Московская область"],
+  "childAreaIds": [],
+  "cityIds": ["moscow", "troick", "kolomna"],
+  "placeIds": [],
+  "routeIds": [],
+  "overviewGuideId": null,
+  "contentVersion": 1
+}
