@@ -23,6 +23,7 @@ http.Client downloadClient({
 Future<void> downloadFile({
   required http.Client client,
   required String url,
+  List<String> fallbackUrls = const [],
   required File dest,
   int chunkSize = 512 * 1024,
   int attempts = 10,
@@ -54,7 +55,14 @@ Future<void> downloadFile({
     }
   }
 
-  final uri = Uri.parse(url);
+  final urls = <Uri>[];
+  final seenUrls = <String>{};
+  for (final value in [url, ...fallbackUrls]) {
+    if (seenUrls.add(value)) {
+      urls.add(Uri.parse(value));
+    }
+  }
+  var sourceIndex = 0;
   RandomAccessFile? raf;
   try {
     raf = await part.open(mode: FileMode.writeOnlyAppend);
@@ -68,11 +76,13 @@ Future<void> downloadFile({
       }
       final piece = await _getRange(
         client,
-        uri,
+        urls,
+        sourceIndex: sourceIndex,
         start: received,
         length: want,
         attempts: attempts,
       );
+      sourceIndex = piece.sourceIndex;
       total ??= piece.total;
       if (piece.bytes.isEmpty) {
         break;
@@ -103,20 +113,24 @@ Future<void> downloadFile({
 }
 
 class _Piece {
-  const _Piece(this.bytes, this.total);
+  const _Piece(this.bytes, this.total, this.sourceIndex);
   final Uint8List bytes;
   final int? total;
+  final int sourceIndex;
 }
 
 Future<_Piece> _getRange(
   http.Client client,
-  Uri url, {
+  List<Uri> urls, {
+  required int sourceIndex,
   required int start,
   required int length,
   required int attempts,
 }) async {
   Object? lastError;
   for (var attempt = 0; attempt < attempts; attempt++) {
+    final candidateIndex = (sourceIndex + attempt) % urls.length;
+    final url = urls[candidateIndex];
     try {
       final request = http.Request('GET', url);
       request.headers['User-Agent'] = kDownloadUserAgent;
@@ -152,7 +166,7 @@ Future<_Piece> _getRange(
       if (data.length > length) {
         data = Uint8List.fromList(data.sublist(0, length));
       }
-      return _Piece(data, total);
+      return _Piece(data, total, candidateIndex);
     } catch (error) {
       lastError = error;
       await Future<void>.delayed(

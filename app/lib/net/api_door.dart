@@ -61,8 +61,8 @@ class ApiDoor {
       return url;
     }
     final roots = [...doors]..sort((a, b) => b.length.compareTo(a.length));
-    for (final door in roots) {
-      final root = Uri.parse(door);
+    for (final sourceDoor in roots) {
+      final root = Uri.parse(sourceDoor);
       if (uri.host != root.host || uri.scheme != root.scheme) {
         continue;
       }
@@ -74,13 +74,27 @@ class ApiDoor {
       }
       final rest =
           prefix.isEmpty ? uri.path : uri.path.substring(prefix.length);
-      final pinned = '${_normalize(door)}$rest';
+      final pinned = '${_normalize(door ?? current)}$rest';
       if (!uri.hasQuery) {
         return pinned;
       }
       return '$pinned?${uri.query}';
     }
     return url;
+  }
+
+  /// Returns the same public resource through every configured door, with the
+  /// currently selected door first. External URLs are left untouched.
+  static List<String> failoverUrls(String url) {
+    final seen = <String>{};
+    final result = <String>[];
+    for (final door in [current, ...doors]) {
+      final candidate = pin(url, door: door);
+      if (seen.add(candidate)) {
+        result.add(candidate);
+      }
+    }
+    return result;
   }
 
   static void pinTree(dynamic node) {

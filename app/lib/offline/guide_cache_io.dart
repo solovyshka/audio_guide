@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import '../api/client.dart';
 import '../models/city.dart';
 import '../models/guide.dart';
+import '../net/api_door.dart';
 import '../net/chunked_download.dart';
 import 'download_progress.dart';
 
@@ -292,6 +293,7 @@ class GuideCache extends ChangeNotifier {
         await downloadFile(
           client: client,
           url: track.url,
+          fallbackUrls: ApiDoor.failoverUrls(track.url),
           dest: File('${staging.path}/$relative'),
         );
       }
@@ -307,6 +309,7 @@ class GuideCache extends ChangeNotifier {
           await downloadFile(
             client: client,
             url: mapUrl,
+            fallbackUrls: ApiDoor.failoverUrls(mapUrl),
             dest: File('${staging.path}/map.png'),
           );
           files['map'] = 'map.png';
