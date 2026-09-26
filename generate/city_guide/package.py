@@ -139,6 +139,14 @@ def upsert_catalog(guide: CityGuide) -> None:
         "guidePath": f"guides/{guide.id}/guide.json",
         "contentVersion": guide.contentVersion,
     }
+    optional = {
+        "routeMode": guide.routeMode,
+        "routeDistanceKm": guide.routeDistanceKm,
+        "estimatedDurationMin": guide.estimatedDurationMin,
+        "routeNotice": guide.routeNotice,
+        "reviewedAt": guide.reviewedAt,
+    }
+    entry.update({key: value for key, value in optional.items() if value is not None})
     guides = data.setdefault("guides", [])
     for i, item in enumerate(guides):
         if item.get("id") == guide.id:

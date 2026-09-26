@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
+import sys
 from pathlib import Path
 from typing import List
 
@@ -13,6 +15,7 @@ from generate.city_guide.package import (
     guide_package_ready,
     load_city,
     load_guide,
+    load_research,
     save_json,
     upsert_catalog,
     write_city,
@@ -20,6 +23,7 @@ from generate.city_guide.package import (
 )
 from generate.city_guide.length import guide_id_for, parse_length, profile
 from generate.city_guide.prompts import (
+    COUNTRY_DOSSIER_SYSTEM,
     DOSSIER_SYSTEM,
     fix_system,
     qa_system,
@@ -29,6 +33,7 @@ from generate.city_guide.prompts import (
 from generate.city_guide.schemas import (
     CityDossier,
     CityDossierGen,
+    CountryDossierGen,
     CityGuide,
     CityGuides,
     CityPlace,
@@ -689,3 +694,144 @@ def run_api_city_batch(
         print(f"GUIDE_ID={short_id}")
     print(f"Готово: {folder / 'city.json'}")
     return folder
+
+
+_COUNTRY_SECTIONS = ("history", "present", "sights", "nature", "culture", "leisure")
+
+
+def _country_area_path(area_id: str) -> Path:
+    return Path(__file__).resolve().parents[2] / "content" / "areas" / area_id / "area.json"
+
+
+def _country_dossier_ready(area: dict) -> bool:
+    history = area.get("history") or {}
+    present = area.get("present") or {}
+    return bool(
+        str(history.get("summary") or "").strip()
+        and str(present.get("summary") or "").strip()
+        and all(area.get(key) for key in ("sights", "nature", "culture", "leisure"))
+    )
+
+
+def _validate_country_area(area: dict) -> None:
+    missing = [key for key in _COUNTRY_SECTIONS if not area.get(key)]
+    if missing:
+        raise RuntimeError("В досье страны нет разделов: " + ", ".join(missing))
+    minimums = {"sights": 10, "nature": 5, "culture": 6, "leisure": 6}
+    for key, minimum in minimums.items():
+        count = len(area.get(key) or [])
+        if count < minimum:
+            raise RuntimeError(f"Раздел {key}: {count} карточек, нужно не меньше {minimum}")
+    guide_id = str(area.get("overviewGuideId") or "").strip()
+    if not guide_id:
+        raise RuntimeError("У страны не задан overviewGuideId")
+    guide_path = Path(__file__).resolve().parents[2] / "content" / "guides" / guide_id / "guide.json"
+    research_path = guide_path.parent / f"{guide_id}.research.json"
+    if not guide_path.exists() or not research_path.exists():
+        raise RuntimeError(f"Нет пакета общего гида {guide_id}")
+    guide = load_guide(guide_path)
+    research = load_research(research_path)
+    if len(guide.stops) != len(research.stops) or len(guide.stops) < 15:
+        raise RuntimeError("Общий гид страны должен иметь минимум 15 совпадающих остановок")
+
+
+def research_country_dossier(client, country: str) -> CountryDossierGen:
+    prompt = f"""
+Собери досье страны: {country}.
+
+Сохрани ровно городскую структуру разделов, но расширь объём для масштаба
+всей страны. Подборка должна покрывать основные географические части страны,
+а не только столицу. Кофейни и рестораны распределяй между главными городами.
+"""
+    return parse(
+        client,
+        MODEL,
+        COUNTRY_DOSSIER_SYSTEM,
+        prompt,
+        CountryDossierGen,
+        web=True,
+    )
+
+
+def _merge_country_dossier(area: dict, dossier: CountryDossierGen) -> dict:
+    updated = dict(area)
+    updated.update(
+        {
+            "title": dossier.title,
+            "subtitle": dossier.subtitle,
+            "center": dump(dossier.center),
+            "aliases": list(dict.fromkeys([*(area.get("aliases") or []), *dossier.aliases])),
+            "history": dump(dossier.history),
+            "present": dump(dossier.present),
+            "sights": [dump(item) for item in dossier.sights],
+            "nature": [dump(item) for item in dossier.nature],
+            "culture": [dump(item) for item in dossier.culture],
+            "leisure": [dump(item) for item in dossier.leisure],
+            "sourceUrls": dossier.sourceUrls,
+        }
+    )
+    updated["contentVersion"] = int(area.get("contentVersion") or 0) + 1
+    return updated
+
+
+def run_api_country_batch(
+    area_id: str,
+    *,
+    country: str | None = None,
+    refresh_dossier: bool = False,
+    tts: bool = True,
+    tts_backend: str = "silero",
+    tts_voice: str = "xenia",
+) -> Path:
+    area_path = _country_area_path(area_id)
+    if not area_path.exists():
+        raise RuntimeError(f"Территория не найдена: {area_id}")
+    area = json.loads(area_path.read_text(encoding="utf-8"))
+    if area.get("type") != "country":
+        raise RuntimeError(f"{area_id} — не страна")
+
+    if refresh_dossier or not _country_dossier_ready(area):
+        name = (country or area.get("title") or area_id).strip()
+        print(f"[1/4] Досье страны: {name}")
+        _require_openai_network()
+        area = _merge_country_dossier(area, research_country_dossier(_client(), name))
+        area_path.write_text(
+            json.dumps(area, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+    else:
+        print(f"[1/4] Досье {area_id} уже есть, не переписываю")
+
+    print("[2/4] Проверяю структуру и общий гид")
+    _validate_country_area(area)
+    guide_id = area["overviewGuideId"]
+    guide_path = Path(__file__).resolve().parents[2] / "content" / "guides" / guide_id / "guide.json"
+    guide = load_guide(guide_path)
+    upsert_catalog(guide)
+
+    if tts:
+        from generate.tts.guide_synth import synthesize_guide
+
+        print(f"[3/4] TTS {tts_backend}/{tts_voice}")
+        synthesize_guide(
+            guide_path,
+            guide_path.parent,
+            backend_name=tts_backend,
+            voice=tts_voice or None,
+            only_missing=True,
+        )
+        upsert_catalog(load_guide(guide_path))
+    else:
+        print("[3/4] TTS пропущен")
+
+    print("[4/4] Собираю офлайн-пакет")
+    root = Path(__file__).resolve().parents[2]
+    subprocess.run(
+        [sys.executable, str(root / "deploy" / "pack-json.py")],
+        cwd=root,
+        check=True,
+    )
+    print(f"AREA_ID={area_id}")
+    print(f"GUIDE_ID={guide_id}")
+    print(f"Готово: {area_path}")
+    return area_path.parent

@@ -143,6 +143,14 @@ class AreaSummary(BaseModel):
     route_ids: list[str] = Field(default_factory=list, alias="routeIds")
     overview_guide_id: str | None = Field(default=None, alias="overviewGuideId")
     content_version: int = Field(default=1, alias="contentVersion")
+    history: HistoryBlock = Field(default_factory=HistoryBlock)
+    present: PresentBlock = Field(default_factory=PresentBlock)
+    sights: list[CityPlace] = Field(default_factory=list)
+    nature: list[CityPlace] = Field(default_factory=list)
+    culture: list[CityPlace] = Field(default_factory=list)
+    leisure: list[CityPlace] = Field(default_factory=list)
+    reviewed_at: str | None = Field(default=None, alias="reviewedAt")
+    source_urls: list[str] = Field(default_factory=list, alias="sourceUrls")
 
     model_config = ConfigDict(populate_by_name=True, ser_json_by_alias=True)
 

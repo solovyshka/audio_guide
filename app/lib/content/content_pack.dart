@@ -118,6 +118,27 @@ class ContentPack {
               'routeIds': item.routeIds,
               'overviewGuideId': item.overviewGuideId,
               'contentVersion': item.contentVersion,
+              'history': {
+                'founded': item.history.founded,
+                'summary': item.history.summary,
+                'events': item.history.events
+                    .map((event) => {
+                          'year': event.year,
+                          'text': event.text,
+                        })
+                    .toList(),
+              },
+              'present': {
+                'summary': item.present.summary,
+                'population': item.present.population,
+                'economy': item.present.economy,
+              },
+              'sights': item.sights.map(_placeJson).toList(),
+              'nature': item.nature.map(_placeJson).toList(),
+              'culture': item.culture.map(_placeJson).toList(),
+              'leisure': item.leisure.map(_placeJson).toList(),
+              'reviewedAt': item.reviewedAt,
+              'sourceUrls': item.sourceUrls,
             }),
       );
     }
@@ -174,6 +195,15 @@ class ContentPack {
         .toList();
   }
 }
+
+Map<String, dynamic> _placeJson(CityPlace place) => {
+      'id': place.id,
+      'name': place.name,
+      'lat': place.lat,
+      'lon': place.lon,
+      'kind': place.kind,
+      'summary': place.summary,
+    };
 
 Map<String, dynamic> _withAudio(Map<String, dynamic> guide) {
   final id = guide['id'];

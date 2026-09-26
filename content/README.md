@@ -30,6 +30,29 @@ python -m generate.city_guide api "Суздаль" --length short
 python -m generate.city_guide api "Суздаль" --length long --no-tts
 ```
 
+## Общий гид небольшой страны
+
+Страна хранит ту же публичную структуру, что и город: `history`, `present`,
+`sights`, `nature`, `culture`, `leisure`. История и современная справка длиннее,
+а подборки покрывают всю страну. Один общий маршрут задаётся через
+`overviewGuideId` в `content/areas/{id}/area.json`.
+
+Сборка Кипра без переозвучки:
+
+```
+python -m generate.city_guide country cyprus --no-tts
+```
+
+Полная сборка с Silero или обновление досье через OpenAI:
+
+```
+python -m generate.city_guide country cyprus --name "Кипр" --backend silero --voice xenia
+python -m generate.city_guide country cyprus --name "Кипр" --refresh-dossier --no-tts
+```
+
+Команда проверяет шесть разделов, исследование и общий гид, обновляет каталог,
+при необходимости создаёт аудио и всегда пересобирает офлайн-пакет приложения.
+
 ## Озвучка
 
 ```

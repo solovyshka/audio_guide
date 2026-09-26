@@ -44,6 +44,7 @@ def main(argv: list[str] | None = None) -> None:
     guide.add_argument("--backend", default="edge")
     guide.add_argument("--voice", default="")
     guide.add_argument("--out-dir", type=Path)
+    guide.add_argument("--only-missing", action="store_true")
 
     args = parser.parse_args(argv)
     if args.cmd == "list":
@@ -109,6 +110,7 @@ def _guide(args) -> None:
         out_dir,
         backend_name=args.backend,
         voice=args.voice or None,
+        only_missing=args.only_missing,
     )
 
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-09-25T18:30:00Z",
+  "updatedAt": "2026-09-26T04:56:20Z",
   "guides": [
     {
       "id": "gazgoldernaya",
@@ -626,13 +626,13 @@
         "lon": 33.2
       },
       "stopsCount": 22,
-      "durationSec": 756,
+      "durationSec": 706,
       "language": "ru",
       "guidePath": "guides/cyprus/guide.json",
-      "contentVersion": 1,
+      "contentVersion": 2,
       "routeMode": "mixed",
-      "routeNotice": "Островной путеводитель на несколько дней; собирайте остановки в отдельные поездки по районам.",
-      "reviewedAt": "2026-09-25"
+      "routeNotice": "Это островной путеводитель на несколько дней, а не единый маршрут. Собирайте остановки в отдельные поездки по районам; на Кипре левостороннее движение, а режим природных троп и памятников нужно проверять перед выездом.",
+      "reviewedAt": "2026-09-26"
     }
   ],
   "cities": [

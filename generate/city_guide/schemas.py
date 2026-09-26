@@ -208,3 +208,55 @@ class CityDossierGen(Strict):
         if extra:
             raise ValueError("Природа: только park или viewpoint, не " + ", ".join(extra))
         return self
+
+
+class CountryHistoryBlockGen(Strict):
+    founded: str
+    summary: str = Field(min_length=900, max_length=5000)
+    events: List[HistoryEvent] = Field(min_length=8, max_length=18)
+
+
+class CountryPresentBlockGen(Strict):
+    summary: str = Field(min_length=500, max_length=3000)
+    population: str
+    economy: str
+
+
+class CountryDossierGen(Strict):
+    """Country dossier with the same public sections as a city dossier."""
+
+    title: str
+    subtitle: str
+    aliases: List[str]
+    center: Coordinates
+    history: CountryHistoryBlockGen
+    present: CountryPresentBlockGen
+    sights: List[CityPlace] = Field(min_length=10, max_length=30)
+    nature: List[CityPlace] = Field(min_length=5, max_length=24)
+    culture: List[CityPlace] = Field(min_length=6, max_length=20)
+    leisure: List[CityPlace] = Field(min_length=6, max_length=30)
+    sourceUrls: List[str] = Field(min_length=3, max_length=40)
+
+    @model_validator(mode="after")
+    def place_kinds(self):
+        allowed = {
+            "sights": {"sight"},
+            "nature": {"park", "viewpoint"},
+            "culture": {"museum", "theater", "culture"},
+            "leisure": {"coffee", "pastry", "restaurant"},
+        }
+        problems: list[str] = []
+        for field, kinds in allowed.items():
+            values = getattr(self, field)
+            extra = sorted(
+                {
+                    (item.kind or "").strip().lower()
+                    for item in values
+                    if (item.kind or "").strip().lower() not in kinds
+                }
+            )
+            if extra:
+                problems.append(f"{field}: {', '.join(extra)}")
+        if problems:
+            raise ValueError("Неверные kind в досье страны: " + "; ".join(problems))
+        return self

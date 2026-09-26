@@ -63,6 +63,17 @@ def main(argv: list[str] | None = None) -> None:
     p_api.add_argument("--backend", default="silero")
     p_api.add_argument("--voice", default="xenia")
 
+    p_country = sub.add_parser(
+        "country",
+        help="Досье страны + существующий общий гид + TTS + pack.json",
+    )
+    p_country.add_argument("area_id")
+    p_country.add_argument("--name", default="")
+    p_country.add_argument("--refresh-dossier", action="store_true")
+    p_country.add_argument("--no-tts", action="store_true")
+    p_country.add_argument("--backend", default="silero")
+    p_country.add_argument("--voice", default="xenia")
+
     p_list = sub.add_parser(
         "list-cities",
         help="Показать очередь generate/cities.txt",
@@ -92,6 +103,7 @@ def main(argv: list[str] | None = None) -> None:
             "leisure",
             "sights",
             "nature",
+            "country-dossier",
         ],
     )
     p_prompt.add_argument(
@@ -147,6 +159,19 @@ def main(argv: list[str] | None = None) -> None:
             )
         return
 
+    if args.cmd == "country":
+        from generate.city_guide.openai_pipeline import run_api_country_batch
+
+        run_api_country_batch(
+            args.area_id,
+            country=args.name or None,
+            refresh_dossier=args.refresh_dossier,
+            tts=not args.no_tts,
+            tts_backend=args.backend,
+            tts_voice=args.voice,
+        )
+        return
+
     if args.cmd == "list-cities":
         path = args.file
         if not path.exists():
@@ -194,6 +219,7 @@ def main(argv: list[str] | None = None) -> None:
             "leisure": P.LEISURE_RESEARCH,
             "sights": P.SIGHTS_RESEARCH,
             "nature": P.NATURE_RESEARCH,
+            "country-dossier": P.COUNTRY_DOSSIER_SYSTEM,
         }
         print(mapping[args.name])
         return

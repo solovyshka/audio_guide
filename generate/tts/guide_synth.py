@@ -14,6 +14,7 @@ def synthesize_guide(
     *,
     backend_name: str = "silero",
     voice: str | None = None,
+    only_missing: bool = False,
 ) -> Path:
     """Write wav/mp3 next to a guide.json and update durationSec / audioPath."""
     guide_path = guide_path.resolve()
@@ -33,6 +34,11 @@ def synthesize_guide(
             item.get("audioPath") or f"audio/{fallback_name}.{backend.info.extension}"
         )
         dest = audio_dir / f"{relative.stem}.{backend.info.extension}"
+        previous_seconds = int(item.get("durationSec") or 0)
+        if only_missing and dest.is_file() and previous_seconds > 0:
+            total += previous_seconds
+            print(f"{dest.name}\t{previous_seconds}s\tskip")
+            return
         seconds = backend.synthesize(item["text"], dest, voice=voice)
         item["audioPath"] = f"audio/{dest.name}"
         item["durationSec"] = seconds
