@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-09-26T05:04:29Z",
+  "updatedAt": "2026-09-26T08:26:40Z",
   "guides": [
     {
       "id": "gazgoldernaya",
@@ -46,7 +46,7 @@
         "lon": 38.762
       },
       "stopsCount": 13,
-      "durationSec": 841,
+      "durationSec": 520,
       "language": "ru",
       "guidePath": "guides/kolomna/guide.json",
       "contentVersion": 2
@@ -66,7 +66,7 @@
         "lon": 38.76374
       },
       "stopsCount": 18,
-      "durationSec": 805,
+      "durationSec": 813,
       "language": "ru",
       "guidePath": "guides/kolomna-long/guide.json",
       "contentVersion": 2
@@ -89,7 +89,7 @@
         "lon": 39.2006
       },
       "stopsCount": 8,
-      "durationSec": 293,
+      "durationSec": 294,
       "language": "ru",
       "guidePath": "guides/voronezh/guide.json",
       "contentVersion": 1
@@ -112,7 +112,7 @@
         "lon": 40.449
       },
       "stopsCount": 8,
-      "durationSec": 431,
+      "durationSec": 438,
       "language": "ru",
       "guidePath": "guides/suzdal/guide.json",
       "contentVersion": 1
@@ -134,7 +134,7 @@
         "lon": 33.6353
       },
       "stopsCount": 8,
-      "durationSec": 297,
+      "durationSec": 301,
       "language": "ru",
       "guidePath": "guides/larnaka/guide.json",
       "contentVersion": 2
@@ -156,7 +156,7 @@
         "lon": 32.4218
       },
       "stopsCount": 8,
-      "durationSec": 280,
+      "durationSec": 286,
       "language": "ru",
       "guidePath": "guides/pafos/guide.json",
       "contentVersion": 2
@@ -177,7 +177,7 @@
         "lon": 33.3619
       },
       "stopsCount": 8,
-      "durationSec": 267,
+      "durationSec": 269,
       "language": "ru",
       "guidePath": "guides/nikosiya/guide.json",
       "contentVersion": 2
@@ -198,7 +198,7 @@
         "lon": 37.6241
       },
       "stopsCount": 8,
-      "durationSec": 278,
+      "durationSec": 281,
       "language": "ru",
       "guidePath": "guides/moscow/guide.json",
       "contentVersion": 1
@@ -241,7 +241,7 @@
         "lon": 37.3062
       },
       "stopsCount": 8,
-      "durationSec": 271,
+      "durationSec": 274,
       "language": "ru",
       "guidePath": "guides/troick/guide.json",
       "contentVersion": 1
@@ -262,7 +262,7 @@
         "lon": 33.042
       },
       "stopsCount": 8,
-      "durationSec": 280,
+      "durationSec": 286,
       "language": "ru",
       "guidePath": "guides/limasol/guide.json",
       "contentVersion": 2
@@ -281,7 +281,7 @@
         "lon": 37.617348
       },
       "stopsCount": 11,
-      "durationSec": 371,
+      "durationSec": 376,
       "language": "ru",
       "guidePath": "guides/tula/guide.json",
       "contentVersion": 2
@@ -301,7 +301,7 @@
         "lon": 37.620578
       },
       "stopsCount": 13,
-      "durationSec": 401,
+      "durationSec": 403,
       "language": "ru",
       "guidePath": "guides/tula-long/guide.json",
       "contentVersion": 2
@@ -323,7 +323,7 @@
         "lon": 40.449
       },
       "stopsCount": 17,
-      "durationSec": 898,
+      "durationSec": 912,
       "language": "ru",
       "guidePath": "guides/suzdal-long/guide.json",
       "contentVersion": 1
@@ -343,7 +343,7 @@
         "lon": 39.2006
       },
       "stopsCount": 20,
-      "durationSec": 801,
+      "durationSec": 803,
       "language": "ru",
       "guidePath": "guides/voronezh-long/guide.json",
       "contentVersion": 1
@@ -364,7 +364,7 @@
         "lon": 37.3062
       },
       "stopsCount": 15,
-      "durationSec": 588,
+      "durationSec": 589,
       "language": "ru",
       "guidePath": "guides/troick-long/guide.json",
       "contentVersion": 1
@@ -386,7 +386,7 @@
         "lon": 37.6241
       },
       "stopsCount": 20,
-      "durationSec": 840,
+      "durationSec": 850,
       "language": "ru",
       "guidePath": "guides/moscow-long/guide.json",
       "contentVersion": 1
@@ -408,7 +408,7 @@
         "lon": 33.6353
       },
       "stopsCount": 17,
-      "durationSec": 721,
+      "durationSec": 729,
       "language": "ru",
       "guidePath": "guides/larnaka-long/guide.json",
       "contentVersion": 2
@@ -434,7 +434,7 @@
         "lon": 32.4218
       },
       "stopsCount": 17,
-      "durationSec": 698,
+      "durationSec": 714,
       "language": "ru",
       "guidePath": "guides/pafos-long/guide.json",
       "contentVersion": 2
@@ -455,7 +455,7 @@
         "lon": 33.3619
       },
       "stopsCount": 18,
-      "durationSec": 719,
+      "durationSec": 728,
       "language": "ru",
       "guidePath": "guides/nikosiya-long/guide.json",
       "contentVersion": 2
@@ -477,7 +477,7 @@
         "lon": 33.042
       },
       "stopsCount": 16,
-      "durationSec": 649,
+      "durationSec": 655,
       "language": "ru",
       "guidePath": "guides/limasol-long/guide.json",
       "contentVersion": 2
@@ -522,7 +522,7 @@
         "lon": 33.3085
       },
       "stopsCount": 8,
-      "durationSec": 300,
+      "durationSec": 301,
       "language": "ru",
       "guidePath": "guides/lefkara/guide.json",
       "contentVersion": 2
@@ -544,7 +544,7 @@
         "lon": 33.3068524
       },
       "stopsCount": 15,
-      "durationSec": 535,
+      "durationSec": 540,
       "language": "ru",
       "guidePath": "guides/lefkara-long/guide.json",
       "contentVersion": 2
@@ -569,7 +569,7 @@
         "lon": 32.91
       },
       "stopsCount": 20,
-      "durationSec": 672,
+      "durationSec": 670,
       "language": "ru",
       "guidePath": "guides/kurion-kolossi/guide.json",
       "contentVersion": 2,
@@ -598,7 +598,7 @@
         "lon": 32.880879
       },
       "stopsCount": 15,
-      "durationSec": 527,
+      "durationSec": 528,
       "language": "ru",
       "guidePath": "guides/troodos/guide.json",
       "contentVersion": 2,
