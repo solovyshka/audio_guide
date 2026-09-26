@@ -4,6 +4,7 @@ import 'package:latlong2/latlong.dart';
 
 import '../models/city.dart';
 import 'location_hint.dart';
+import 'map_controls.dart';
 import 'stop_chip.dart';
 import 'user_dot.dart';
 import 'user_location.dart';
@@ -43,7 +44,35 @@ class _CityMapState extends State<CityMap> {
     if (oldWidget.city.id != widget.city.id) {
       _didCenter = false;
       _centerIfNeeded();
+      return;
     }
+    if (oldWidget.selectedId != widget.selectedId &&
+        widget.selectedId != null) {
+      _centerSelected();
+    }
+  }
+
+  void _centerSelected() {
+    if (!_mapReady) {
+      return;
+    }
+    CityPlace? selected;
+    for (final place in widget.city.mapPlaces) {
+      if (place.id == widget.selectedId) {
+        selected = place;
+        break;
+      }
+    }
+    if (selected == null) {
+      return;
+    }
+    final point = LatLng(selected.lat, selected.lon);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) {
+        return;
+      }
+      _controller.move(point, _controller.camera.zoom.clamp(16, 19));
+    });
   }
 
   @override
@@ -87,6 +116,27 @@ class _CityMapState extends State<CityMap> {
         ),
       );
     });
+  }
+
+  void _zoom(double delta) {
+    if (!_mapReady) {
+      return;
+    }
+    _controller.move(
+      _controller.camera.center,
+      (_controller.camera.zoom + delta).clamp(3, 19),
+    );
+  }
+
+  Future<void> _locate() async {
+    final user = await UserLocation.instance.refresh();
+    if (!mounted || !_mapReady || user == null) {
+      return;
+    }
+    _controller.move(
+      LatLng(user.lat, user.lon),
+      _controller.camera.zoom.clamp(15, 19),
+    );
   }
 
   IconData _icon(PlaceGroup group) {
@@ -136,34 +186,70 @@ class _CityMapState extends State<CityMap> {
                   for (final place in places)
                     Marker(
                       point: LatLng(place.lat, place.lon),
-                      width: 28,
-                      height: 28,
+                      width: place.id == widget.selectedId ? 150 : 32,
+                      height: place.id == widget.selectedId ? 66 : 32,
                       alignment: Alignment.center,
                       child: GestureDetector(
                         onTap: () => widget.onPlaceTap(place),
-                        child: Container(
-                          width: 28,
-                          height: 28,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: place.id == widget.selectedId
-                                ? activeFill
-                                : idleFill,
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: place.id == widget.selectedId
-                                  ? activeStroke
-                                  : idleStroke,
-                              width: 2,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: place.id == widget.selectedId ? 42 : 30,
+                              height: place.id == widget.selectedId ? 42 : 30,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: place.id == widget.selectedId
+                                    ? activeFill
+                                    : idleFill,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: place.id == widget.selectedId
+                                      ? activeStroke
+                                      : idleStroke,
+                                  width: place.id == widget.selectedId ? 3 : 2,
+                                ),
+                                boxShadow: place.id == widget.selectedId
+                                    ? const [
+                                        BoxShadow(
+                                          color: Color(0x551F4B3A),
+                                          blurRadius: 8,
+                                        ),
+                                      ]
+                                    : null,
+                              ),
+                              child: Icon(
+                                _icon(place.group),
+                                size: place.id == widget.selectedId ? 21 : 15,
+                                color: place.id == widget.selectedId
+                                    ? activeText
+                                    : idleStroke,
+                              ),
                             ),
-                          ),
-                          child: Icon(
-                            _icon(place.group),
-                            size: 14,
-                            color: place.id == widget.selectedId
-                                ? activeText
-                                : idleStroke,
-                          ),
+                            if (place.id == widget.selectedId)
+                              Container(
+                                constraints:
+                                    const BoxConstraints(maxWidth: 146),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 6,
+                                  vertical: 2,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xF2FFE59A),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Text(
+                                  place.name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    color: Color(0xFF17392C),
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ),
+                          ],
                         ),
                       ),
                     ),
@@ -187,6 +273,15 @@ class _CityMapState extends State<CityMap> {
                 child: LocationHint(),
               ),
             ),
+          Positioned(
+            right: 10,
+            bottom: 48,
+            child: MapControls(
+              onZoomIn: () => _zoom(1),
+              onZoomOut: () => _zoom(-1),
+              onLocate: _locate,
+            ),
+          ),
         ],
       ),
     );

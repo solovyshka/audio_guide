@@ -282,6 +282,7 @@ class _CityScreenState extends State<CityScreen>
             guides: _guides,
             offline: _offline,
             selectedPlaceId: _selectedPlaceId,
+            onPlaceTap: _onPlaceTap,
             onGenerate: _startGenerate,
           ),
         ),

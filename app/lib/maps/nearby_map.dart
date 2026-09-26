@@ -4,6 +4,7 @@ import 'package:latlong2/latlong.dart';
 
 import '../models/guide.dart';
 import 'location_hint.dart';
+import 'map_controls.dart';
 import 'stop_chip.dart';
 import 'user_dot.dart';
 import 'user_location.dart';
@@ -120,6 +121,27 @@ class _NearbyMapState extends State<NearbyMap> {
     });
   }
 
+  void _zoom(double delta) {
+    if (!_mapReady) {
+      return;
+    }
+    _controller.move(
+      _controller.camera.center,
+      (_controller.camera.zoom + delta).clamp(3, 19),
+    );
+  }
+
+  Future<void> _locate() async {
+    final user = await UserLocation.instance.refresh();
+    if (!mounted || !_mapReady || user == null) {
+      return;
+    }
+    _controller.move(
+      LatLng(user.lat, user.lon),
+      _controller.camera.zoom.clamp(15, 19),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = UserLocation.instance.fix;
@@ -221,6 +243,15 @@ class _NearbyMapState extends State<NearbyMap> {
                 child: LocationHint(),
               ),
             ),
+          Positioned(
+            right: 10,
+            bottom: 48,
+            child: MapControls(
+              onZoomIn: () => _zoom(1),
+              onZoomOut: () => _zoom(-1),
+              onLocate: _locate,
+            ),
+          ),
         ],
       ),
     );

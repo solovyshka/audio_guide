@@ -201,18 +201,56 @@ class _StopList extends StatelessWidget {
       itemBuilder: (context, index) {
         final track = items[index];
         final selected = index == currentIndex;
-        return ListTile(
-          selected: selected,
-          selectedTileColor: const Color(0x1F1F4B3A),
-          leading: CircleAvatar(
-            backgroundColor:
-                selected ? const Color(0xFF1F4B3A) : const Color(0xFFE8E4DC),
-            foregroundColor: selected ? Colors.white : const Color(0xFF1F4B3A),
-            child: Text(index == 0 ? 'i' : '$index'),
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
+          margin: EdgeInsets.fromLTRB(
+            selected ? 8 : 12,
+            3,
+            selected ? 8 : 12,
+            3,
           ),
-          title: Text(track.title),
-          subtitle: Text('${track.durationSec} сек'),
-          onTap: () => onTap(index),
+          decoration: BoxDecoration(
+            color: selected
+                ? const Color(0xFFFFE59A)
+                : Theme.of(context).colorScheme.surface,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: selected
+                  ? const Color(0xFF1F4B3A)
+                  : Theme.of(context).colorScheme.outlineVariant,
+              width: selected ? 2 : 1,
+            ),
+          ),
+          child: Material(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(12),
+            clipBehavior: Clip.antiAlias,
+            child: ListTile(
+              selected: selected,
+              leading: CircleAvatar(
+                backgroundColor: selected
+                    ? const Color(0xFF1F4B3A)
+                    : const Color(0xFFE8E4DC),
+                foregroundColor:
+                    selected ? Colors.white : const Color(0xFF1F4B3A),
+                child: Text(index == 0 ? 'i' : '$index'),
+              ),
+              title: Text(
+                track.title,
+                style: TextStyle(
+                  fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
+                ),
+              ),
+              subtitle: Text('${track.durationSec} сек'),
+              trailing: selected
+                  ? const Icon(
+                      Icons.play_circle_fill,
+                      color: Color(0xFF1F4B3A),
+                    )
+                  : null,
+              onTap: () => onTap(index),
+            ),
+          ),
         );
       },
     );

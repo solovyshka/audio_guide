@@ -7,6 +7,7 @@ import 'package:yandex_maps_mapkit_lite/mapkit_factory.dart';
 import 'package:yandex_maps_mapkit_lite/yandex_map.dart';
 
 import '../models/guide.dart';
+import 'map_controls.dart';
 import 'marker_icon.dart';
 import 'user_location.dart';
 
@@ -32,6 +33,7 @@ class _GuideYandexMapState extends State<GuideYandexMap>
     with WidgetsBindingObserver {
   MapWindow? _mapWindow;
   final List<MapObjectTapListener> _tapListeners = [];
+  PlacemarkMapObject? _userPlacemark;
   bool _didMoveCamera = false;
 
   @override
@@ -50,11 +52,12 @@ class _GuideYandexMapState extends State<GuideYandexMap>
     }
     if (oldWidget.currentIndex != widget.currentIndex) {
       _drawStops();
+      _centerSelectedStop();
       return;
     }
     if (oldWidget.user?.lat != widget.user?.lat ||
         oldWidget.user?.lon != widget.user?.lon) {
-      _drawStops();
+      _drawUser();
     }
   }
 
@@ -86,6 +89,7 @@ class _GuideYandexMapState extends State<GuideYandexMap>
       return;
     }
     mapWindow.map.mapObjects.clear();
+    _userPlacemark = null;
     _tapListeners.clear();
     for (final stop in widget.guide.stops) {
       final active = stop.order == widget.currentIndex;
@@ -126,19 +130,7 @@ class _GuideYandexMapState extends State<GuideYandexMap>
       }
       placemark.addTapListener(listener);
     }
-    final user = widget.user;
-    if (user != null) {
-      final me = mapWindow.map.mapObjects.addPlacemark()
-        ..geometry = Point(latitude: user.lat, longitude: user.lon)
-        ..zIndex = 200;
-      me.setIconWithStyle(
-        mk_image.ImageProvider(
-          () => paintUserMarker(devicePixelRatio: _dpr),
-          id: 'user-dot',
-        ),
-        IconStyle(anchor: const math.Point(0.5, 0.5)),
-      );
-    }
+    _drawUser();
     if (moveCamera || !_didMoveCamera) {
       _didMoveCamera = true;
       mapWindow.map.move(
@@ -155,9 +147,102 @@ class _GuideYandexMapState extends State<GuideYandexMap>
     }
   }
 
+  void _drawUser() {
+    final mapWindow = _mapWindow;
+    final user = widget.user;
+    if (mapWindow == null || user == null) {
+      return;
+    }
+    final point = Point(latitude: user.lat, longitude: user.lon);
+    final existing = _userPlacemark;
+    if (existing != null) {
+      existing.geometry = point;
+      return;
+    }
+    final me = mapWindow.map.mapObjects.addPlacemark()
+      ..geometry = point
+      ..zIndex = 200;
+    me.setIconWithStyle(
+      mk_image.ImageProvider(
+        () => paintUserMarker(devicePixelRatio: _dpr),
+        id: 'user-dot',
+      ),
+      IconStyle(anchor: const math.Point(0.5, 0.5)),
+    );
+    _userPlacemark = me;
+  }
+
+  void _zoom(double delta) {
+    final map = _mapWindow?.map;
+    if (map == null) {
+      return;
+    }
+    final current = map.cameraPosition;
+    map.move(
+      CameraPosition(
+        current.target,
+        zoom: (current.zoom + delta).clamp(3, 21),
+        azimuth: current.azimuth,
+        tilt: current.tilt,
+      ),
+    );
+  }
+
+  Future<void> _locate() async {
+    final user = await UserLocation.instance.refresh();
+    final map = _mapWindow?.map;
+    if (!mounted || user == null || map == null) {
+      return;
+    }
+    final current = map.cameraPosition;
+    map.move(
+      CameraPosition(
+        Point(latitude: user.lat, longitude: user.lon),
+        zoom: current.zoom.clamp(15, 21),
+        azimuth: 0,
+        tilt: current.tilt,
+      ),
+    );
+  }
+
+  void _centerSelectedStop() {
+    final map = _mapWindow?.map;
+    if (map == null || widget.currentIndex <= 0) {
+      return;
+    }
+    for (final stop in widget.guide.stops) {
+      if (stop.order != widget.currentIndex) {
+        continue;
+      }
+      final current = map.cameraPosition;
+      map.move(
+        CameraPosition(
+          Point(latitude: stop.lat, longitude: stop.lon),
+          zoom: current.zoom.clamp(16, 21),
+          azimuth: current.azimuth,
+          tilt: current.tilt,
+        ),
+      );
+      return;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return YandexMap(onMapCreated: _onMapCreated);
+    return Stack(
+      children: [
+        YandexMap(onMapCreated: _onMapCreated),
+        Positioned(
+          right: 10,
+          bottom: 48,
+          child: MapControls(
+            onZoomIn: () => _zoom(1),
+            onZoomOut: () => _zoom(-1),
+            onLocate: _locate,
+          ),
+        ),
+      ],
+    );
   }
 }
 

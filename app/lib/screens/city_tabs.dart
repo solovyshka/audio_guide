@@ -16,6 +16,7 @@ class CityTabs extends StatelessWidget {
     required this.guides,
     required this.offline,
     required this.onGenerate,
+    required this.onPlaceTap,
     this.selectedPlaceId,
   });
 
@@ -25,6 +26,7 @@ class CityTabs extends StatelessWidget {
   final List<GuideSummary> guides;
   final bool offline;
   final VoidCallback onGenerate;
+  final ValueChanged<CityPlace> onPlaceTap;
   final String? selectedPlaceId;
 
   GuideSummary? _guide(String? id) {
@@ -157,17 +159,71 @@ class CityTabs extends StatelessWidget {
     if (places.isEmpty) {
       return _empty(context, empty);
     }
-    return ListView.separated(
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(vertical: 6),
       itemCount: places.length,
-      separatorBuilder: (_, __) => const Divider(height: 1),
       itemBuilder: (context, index) {
         final place = places[index];
         final selected = place.id == selectedPlaceId;
-        return ListTile(
-          selected: selected,
-          title: Text(place.name),
-          subtitle: place.summary.isEmpty ? null : Text(place.summary),
-          isThreeLine: place.summary.length > 80,
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
+          margin: EdgeInsets.fromLTRB(
+            selected ? 8 : 12,
+            3,
+            selected ? 8 : 12,
+            3,
+          ),
+          decoration: BoxDecoration(
+            color: selected
+                ? const Color(0xFFFFE59A)
+                : Theme.of(context).colorScheme.surface,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: selected
+                  ? const Color(0xFF1F4B3A)
+                  : Theme.of(context).colorScheme.outlineVariant,
+              width: selected ? 2 : 1,
+            ),
+            boxShadow: selected
+                ? const [
+                    BoxShadow(
+                      color: Color(0x331F4B3A),
+                      blurRadius: 10,
+                      offset: Offset(0, 3),
+                    ),
+                  ]
+                : null,
+          ),
+          child: Material(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(12),
+            clipBehavior: Clip.antiAlias,
+            child: ListTile(
+              selected: selected,
+              selectedColor: const Color(0xFF17392C),
+              leading: Icon(
+                selected ? Icons.location_on : Icons.place_outlined,
+                color: selected
+                    ? const Color(0xFF1F4B3A)
+                    : Theme.of(context).colorScheme.outline,
+              ),
+              title: Text(
+                place.name,
+                style: TextStyle(
+                  fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
+                ),
+              ),
+              subtitle: place.summary.isEmpty ? null : Text(place.summary),
+              trailing: selected
+                  ? const Icon(
+                      Icons.check_circle,
+                      color: Color(0xFF1F4B3A),
+                    )
+                  : null,
+              isThreeLine: place.summary.length > 80,
+              onTap: () => onPlaceTap(place),
+            ),
+          ),
         );
       },
     );

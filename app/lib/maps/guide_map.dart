@@ -64,6 +64,9 @@ class _GuideMapState extends State<GuideMap> {
     if (wanted == MapViewMode.yandex && _hasYandex) {
       return MapViewMode.yandex;
     }
+    if (wanted == null && _hasYandex) {
+      return MapViewMode.yandex;
+    }
     return MapViewMode.osm;
   }
 
@@ -150,8 +153,8 @@ class _MapSwitcher extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            _chip('OSM', MapViewMode.osm),
             if (hasYandex) _chip('Яндекс', MapViewMode.yandex),
+            _chip('OSM', MapViewMode.osm),
           ],
         ),
       ),

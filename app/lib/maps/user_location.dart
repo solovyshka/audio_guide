@@ -9,11 +9,13 @@ class UserFix {
     required this.lat,
     required this.lon,
     this.accuracy,
+    this.timestamp,
   });
 
   final double lat;
   final double lon;
   final double? accuracy;
+  final DateTime? timestamp;
 }
 
 enum UserLocationPhase { idle, locating, ready, denied, disabled }
@@ -32,6 +34,7 @@ class UserLocation extends ChangeNotifier with WidgetsBindingObserver {
   Timer? _watchdog;
   bool _forceManager = false;
   bool _observing = false;
+  bool _probing = false;
 
   Future<void> attach() async {
     _leases += 1;
@@ -54,6 +57,23 @@ class UserLocation extends ChangeNotifier with WidgetsBindingObserver {
     await _ensureStarted();
   }
 
+  Future<UserFix?> refresh() async {
+    await _ensureStarted();
+    if (_probing) {
+      return fix;
+    }
+    _probing = true;
+    try {
+      await _probe(false);
+      if (_isStale) {
+        await _probe(true);
+      }
+      return fix;
+    } finally {
+      _probing = false;
+    }
+  }
+
   Future<void> openSettings() {
     if (phase == UserLocationPhase.disabled) {
       return Geolocator.openLocationSettings();
@@ -66,14 +86,7 @@ class UserLocation extends ChangeNotifier with WidgetsBindingObserver {
     if (state != AppLifecycleState.resumed || _leases <= 0) {
       return;
     }
-    if (_sub == null) {
-      unawaited(_ensureStarted());
-      return;
-    }
-    if (fix == null) {
-      unawaited(_probe(false));
-      unawaited(_probe(true));
-    }
+    unawaited(refresh());
   }
 
   Future<void> _ensureStarted() async {
@@ -115,6 +128,11 @@ class UserLocation extends ChangeNotifier with WidgetsBindingObserver {
         return;
       }
 
+      if (!await Geolocator.isLocationServiceEnabled()) {
+        _setPhase(UserLocationPhase.disabled);
+        return;
+      }
+
       await _tryLastKnown(false);
       await _tryLastKnown(true);
 
@@ -123,21 +141,23 @@ class UserLocation extends ChangeNotifier with WidgetsBindingObserver {
       unawaited(_probe(true));
 
       _watchdog?.cancel();
-      _watchdog = Timer(const Duration(seconds: 6), () {
-        if (_leases == 0 || fix != null) {
+      _watchdog = Timer.periodic(const Duration(seconds: 10), (_) {
+        if (_leases == 0 || !_isStale || _probing) {
           return;
         }
-        _listen(forceManager: true);
-        unawaited(_probe(true));
+        unawaited(_recoverStalePosition());
       });
-
-      if (!await Geolocator.isLocationServiceEnabled() && fix == null) {
-        _setPhase(UserLocationPhase.disabled);
-      }
     } catch (_) {
       if (fix == null) {
         _setPhase(UserLocationPhase.disabled);
       }
+    }
+  }
+
+  Future<void> _recoverStalePosition() async {
+    await refresh();
+    if (_isStale && _leases > 0) {
+      _listen(forceManager: true);
     }
   }
 
@@ -183,7 +203,8 @@ class UserLocation extends ChangeNotifier with WidgetsBindingObserver {
   }
 
   void _setFix(Position position, {required bool lastKnown}) {
-    final age = DateTime.now().toUtc().difference(position.timestamp.toUtc());
+    final timestamp = position.timestamp.toUtc();
+    final age = DateTime.now().toUtc().difference(timestamp);
     if (lastKnown) {
       if (fix != null) {
         return;
@@ -191,7 +212,12 @@ class UserLocation extends ChangeNotifier with WidgetsBindingObserver {
       if (age > const Duration(seconds: 20) || position.accuracy > 25) {
         return;
       }
-    } else if (fix != null &&
+    } else if (fix?.timestamp != null &&
+        timestamp
+            .isBefore(fix!.timestamp!.subtract(const Duration(seconds: 2)))) {
+      return;
+    } else if (!_isStale &&
+        fix != null &&
         fix!.accuracy != null &&
         position.accuracy > (fix!.accuracy! + 25) &&
         age < const Duration(seconds: 2)) {
@@ -201,10 +227,18 @@ class UserLocation extends ChangeNotifier with WidgetsBindingObserver {
       lat: position.latitude,
       lon: position.longitude,
       accuracy: position.accuracy,
+      timestamp: timestamp,
     );
-    _watchdog?.cancel();
-    _watchdog = null;
     _setPhase(UserLocationPhase.ready);
+  }
+
+  bool get _isStale {
+    final timestamp = fix?.timestamp;
+    if (timestamp == null) {
+      return true;
+    }
+    return DateTime.now().toUtc().difference(timestamp) >
+        const Duration(seconds: 15);
   }
 
   void _setPhase(UserLocationPhase next) {
