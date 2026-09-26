@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-09-26T04:56:20Z",
+  "updatedAt": "2026-09-26T05:04:29Z",
   "guides": [
     {
       "id": "gazgoldernaya",
@@ -626,7 +626,7 @@
         "lon": 33.2
       },
       "stopsCount": 22,
-      "durationSec": 706,
+      "durationSec": 827,
       "language": "ru",
       "guidePath": "guides/cyprus/guide.json",
       "contentVersion": 2,
