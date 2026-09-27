@@ -1,12 +1,13 @@
 from __future__ import annotations
 
+import os
 import tempfile
 from pathlib import Path
 from urllib.error import URLError
 from urllib.request import urlopen
 
 from generate.tts.accent_ru import mark_stress
-from generate.tts.audio import concat_wavs, duration_wav, split_text
+from generate.tts.audio import concat_wavs, duration_wav, split_speech_text
 from generate.tts.base import BackendInfo
 from generate.tts.normalize_ru import expand_for_silero
 
@@ -14,6 +15,7 @@ DEFAULT_VOICE = "xenia"
 SAMPLE_VOICES = ("xenia", "aidar", "baya", "kseniya", "eugene")
 SAMPLE_RATE = 48000
 CHUNK_LIMIT = 900
+ACCENT_MODE_ENV = "SILERO_ACCENT_MODE"
 CACHE = Path(__file__).resolve().parents[2] / ".models"
 GENERATE_ROOT = Path(__file__).resolve().parents[2]
 
@@ -59,19 +61,43 @@ class SileroBackend:
         model, device = self._load()
         speaker = voice or DEFAULT_VOICE
         spoken = expand_for_silero(text)
-        chunks = [mark_stress(chunk) for chunk in split_text(spoken, CHUNK_LIMIT)]
+        accent_mode = os.environ.get(ACCENT_MODE_ENV, "auto").strip().lower()
+        if accent_mode not in {"auto", "external"}:
+            raise ValueError(
+                f"{ACCENT_MODE_ENV} должен быть auto или external, а не {accent_mode!r}",
+            )
+        speech_chunks = split_speech_text(spoken, CHUNK_LIMIT)
+        chunks = [
+            mark_stress(chunk.text) if accent_mode == "external" else chunk.text
+            for chunk in speech_chunks
+        ]
         dest.parent.mkdir(parents=True, exist_ok=True)
         if len(chunks) == 1:
-            self._write_chunk(model, device, chunks[0], speaker, dest)
+            self._write_chunk(
+                model,
+                device,
+                chunks[0],
+                speaker,
+                dest,
+                auto_accent=accent_mode == "auto",
+            )
             return duration_wav(dest)
 
         with tempfile.TemporaryDirectory() as tmp:
             parts: list[Path] = []
             for index, chunk in enumerate(chunks):
                 part = Path(tmp) / f"{index:02d}.wav"
-                self._write_chunk(model, device, chunk, speaker, part)
+                self._write_chunk(
+                    model,
+                    device,
+                    chunk,
+                    speaker,
+                    part,
+                    auto_accent=accent_mode == "auto",
+                )
                 parts.append(part)
-            return concat_wavs(parts, dest)
+            pauses = [chunk.pause_after_ms for chunk in speech_chunks[:-1]]
+            return concat_wavs(parts, dest, pauses_ms=pauses)
 
     def _load(self):
         if self._model is not None:
@@ -91,7 +117,16 @@ class SileroBackend:
         self.loaded_name = path.name
         return model, device
 
-    def _write_chunk(self, model, device, text: str, speaker: str, dest: Path) -> None:
+    def _write_chunk(
+        self,
+        model,
+        device,
+        text: str,
+        speaker: str,
+        dest: Path,
+        *,
+        auto_accent: bool,
+    ) -> None:
         import numpy as np
         import torch
         import wave
@@ -102,7 +137,11 @@ class SileroBackend:
             "sample_rate": SAMPLE_RATE,
         }
         try:
-            audio = model.apply_tts(**kwargs, put_accent=True, put_yo=True)
+            audio = model.apply_tts(
+                **kwargs,
+                put_accent=auto_accent,
+                put_yo=True,
+            )
         except TypeError:
             audio = model.apply_tts(**kwargs)
         if not torch.is_tensor(audio):

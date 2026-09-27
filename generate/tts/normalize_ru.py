@@ -44,21 +44,95 @@ _ROMAN_CENTURY = re.compile(
 )
 _ROMAN_AFTER_LOCATIVE_NAME = re.compile(
     rf"(\b(?:при|о|об)\s+(?:(?:императоре|короле|царе|папе)\s+)?"
-    rf"[А-ЯЁ][а-яё]+)(\s+)({_ROMAN})(?![A-Za-z])"
+    rf"[А-ЯЁ][а-яё]+)(\s+)({_ROMAN})(?![A-Za-z])",
+    re.IGNORECASE,
 )
 _ROMAN_TOKEN = re.compile(
     rf"(?<![A-Za-z])({_ROMAN})(?![A-Za-z])",
     re.IGNORECASE,
 )
+_NUMBER_TOKEN = r"(?:\d{1,3}(?:[ \u00a0]\d{3})+|\d+)"
+_GENITIVE_NUMBER = re.compile(
+    rf"\b(около|более|менее|свыше|до|от)(\s+)({_NUMBER_TOKEN})"
+    r"(?![\d.,:–—-])",
+    re.IGNORECASE,
+)
+_CARDINAL_NUMBER = re.compile(
+    rf"(?<![\d.,:–—-])({_NUMBER_TOKEN})(?![\d.,:–—-])",
+)
+
+_CARDINAL_GENITIVE = {
+    "ноль": "нуля",
+    "один": "одного",
+    "одна": "одной",
+    "два": "двух",
+    "две": "двух",
+    "три": "трёх",
+    "четыре": "четырёх",
+    "пять": "пяти",
+    "шесть": "шести",
+    "семь": "семи",
+    "восемь": "восьми",
+    "девять": "девяти",
+    "десять": "десяти",
+    "одиннадцать": "одиннадцати",
+    "двенадцать": "двенадцати",
+    "тринадцать": "тринадцати",
+    "четырнадцать": "четырнадцати",
+    "пятнадцать": "пятнадцати",
+    "шестнадцать": "шестнадцати",
+    "семнадцать": "семнадцати",
+    "восемнадцать": "восемнадцати",
+    "девятнадцать": "девятнадцати",
+    "двадцать": "двадцати",
+    "тридцать": "тридцати",
+    "сорок": "сорока",
+    "пятьдесят": "пятидесяти",
+    "шестьдесят": "шестидесяти",
+    "семьдесят": "семидесяти",
+    "восемьдесят": "восьмидесяти",
+    "девяносто": "девяноста",
+    "сто": "ста",
+    "двести": "двухсот",
+    "триста": "трёхсот",
+    "четыреста": "четырёхсот",
+    "пятьсот": "пятисот",
+    "шестьсот": "шестисот",
+    "семьсот": "семисот",
+    "восемьсот": "восьмисот",
+    "девятьсот": "девятисот",
+    "тысяча": "тысячи",
+    "тысячи": "тысяч",
+    "миллион": "миллиона",
+    "миллиона": "миллионов",
+    "миллиард": "миллиарда",
+    "миллиарда": "миллиардов",
+}
 
 
 def expand_for_silero(text: str) -> str:
-    """Turn dates, years and Roman numerals into words for Silero only."""
+    """Turn numbers, dates, years and Roman numerals into spoken Russian."""
     text = expand_roman_numerals(text)
     text = _RANGE.sub(_range_repl, text)
     text = _DATE.sub(_date_repl, text)
     text = _YEAR_CASE.sub(_year_repl, text)
+    text = _GENITIVE_NUMBER.sub(_genitive_number_repl, text)
+    text = _CARDINAL_NUMBER.sub(_cardinal_number_repl, text)
     return text
+
+
+def _number_value(token: str) -> int:
+    return int(token.replace(" ", "").replace("\u00a0", ""))
+
+
+def _cardinal_number_repl(match: re.Match[str]) -> str:
+    return num2words(_number_value(match.group(1)), lang="ru")
+
+
+def _genitive_number_repl(match: re.Match[str]) -> str:
+    words = num2words(_number_value(match.group(3)), lang="ru").split()
+    declined = [_CARDINAL_GENITIVE.get(word, word) for word in words]
+    return f"{match.group(1)}{match.group(2)}{' '.join(declined)}"
 
 
 def expand_roman_numerals(text: str) -> str:
@@ -121,6 +195,13 @@ def _year_repl(match: re.Match[str]) -> str:
 
 
 def _roman_range_century_repl(match: re.Match[str]) -> str:
+    century_word = match.group(5).lower()
+    if century_word in {"века", "веков"}:
+        left = _roman_ordinal(match.group(1), "gent")
+        right = _roman_ordinal(match.group(3), "nom")
+        if not left or not right:
+            return match.group(0)
+        return f"с {left} по {right} век"
     left = _roman_ordinal(match.group(1), _century_case(match.group(5)))
     right = _roman_ordinal(match.group(3), _century_case(match.group(5)))
     if not left or not right:

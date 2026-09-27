@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../config.dart';
 import '../models/city.dart';
+import 'available.dart';
+import 'city_yandex_view.dart';
 import 'location_hint.dart';
 import 'map_controls.dart';
+import 'map_view_mode.dart';
+import 'map_view_prefs.dart';
+import 'map_view_switcher.dart';
 import 'stop_chip.dart';
 import 'user_dot.dart';
 import 'user_location.dart';
@@ -26,20 +32,135 @@ class CityMap extends StatefulWidget {
 }
 
 class _CityMapState extends State<CityMap> {
+  late MapViewMode _mode = _fallback(null);
+
+  bool get _hasYandex => yandexMapsSupported && mapkitApiKey.isNotEmpty;
+
+  @override
+  void initState() {
+    super.initState();
+    _restore();
+    UserLocation.instance.attach();
+  }
+
+  @override
+  void didUpdateWidget(CityMap oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.city.id != widget.city.id) {
+      setState(() => _mode = _fallback(_mode));
+    }
+  }
+
+  @override
+  void dispose() {
+    UserLocation.instance.detach();
+    super.dispose();
+  }
+
+  Future<void> _restore() async {
+    final saved = await MapViewPrefs.load();
+    if (!mounted) {
+      return;
+    }
+    setState(() => _mode = _fallback(saved));
+  }
+
+  MapViewMode _fallback(MapViewMode? wanted) {
+    if (wanted == MapViewMode.yandex && _hasYandex) {
+      return MapViewMode.yandex;
+    }
+    if (wanted == null && _hasYandex) {
+      return MapViewMode.yandex;
+    }
+    return MapViewMode.osm;
+  }
+
+  Future<void> _select(MapViewMode mode) async {
+    setState(() => _mode = mode);
+    await MapViewPrefs.save(mode);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: UserLocation.instance,
+      builder: (context, _) {
+        final user = UserLocation.instance.fix;
+        return Stack(
+          children: [
+            Positioned.fill(child: _body(user)),
+            Positioned(
+              top: 8,
+              left: 8,
+              right: 8,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: MapViewSwitcher(
+                  mode: _mode,
+                  hasYandex: _hasYandex,
+                  onChanged: _select,
+                ),
+              ),
+            ),
+            const Positioned(
+              left: 8,
+              right: 8,
+              bottom: 8,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: LocationHint(),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _body(UserFix? user) {
+    switch (_mode) {
+      case MapViewMode.yandex:
+        return CityYandexMap(
+          city: widget.city,
+          selectedId: widget.selectedId,
+          onPlaceTap: widget.onPlaceTap,
+          user: user,
+        );
+      case MapViewMode.osm:
+        return _CityOsmMap(
+          city: widget.city,
+          selectedId: widget.selectedId,
+          onPlaceTap: widget.onPlaceTap,
+          user: user,
+        );
+    }
+  }
+}
+
+class _CityOsmMap extends StatefulWidget {
+  const _CityOsmMap({
+    required this.city,
+    this.selectedId,
+    required this.onPlaceTap,
+    this.user,
+  });
+
+  final City city;
+  final String? selectedId;
+  final ValueChanged<CityPlace> onPlaceTap;
+  final UserFix? user;
+
+  @override
+  State<_CityOsmMap> createState() => _CityOsmMapState();
+}
+
+class _CityOsmMapState extends State<_CityOsmMap> {
   final _controller = MapController();
   bool _didCenter = false;
   bool _mapReady = false;
 
   @override
-  void initState() {
-    super.initState();
-    UserLocation.instance
-      ..addListener(_onLocation)
-      ..attach();
-  }
-
-  @override
-  void didUpdateWidget(CityMap oldWidget) {
+  void didUpdateWidget(_CityOsmMap oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.city.id != widget.city.id) {
       _didCenter = false;
@@ -77,17 +198,8 @@ class _CityMapState extends State<CityMap> {
 
   @override
   void dispose() {
-    UserLocation.instance
-      ..removeListener(_onLocation)
-      ..detach();
     _controller.dispose();
     super.dispose();
-  }
-
-  void _onLocation() {
-    if (mounted) {
-      setState(() {});
-    }
   }
 
   void _centerIfNeeded() {
@@ -95,7 +207,7 @@ class _CityMapState extends State<CityMap> {
       return;
     }
     _didCenter = true;
-    final user = UserLocation.instance.fix;
+    final user = widget.user;
     final points = <LatLng>[
       if (user != null) LatLng(user.lat, user.lon),
       for (final place in widget.city.mapPlaces) LatLng(place.lat, place.lon),
@@ -154,7 +266,7 @@ class _CityMapState extends State<CityMap> {
 
   @override
   Widget build(BuildContext context) {
-    final user = UserLocation.instance.fix;
+    final user = widget.user;
     final places = widget.city.mapPlaces;
     return ColoredBox(
       color: const Color(0xFFE8E4DC),
@@ -265,14 +377,6 @@ class _CityMapState extends State<CityMap> {
               ),
             ],
           ),
-          if (user == null)
-            const Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 10),
-                child: LocationHint(),
-              ),
-            ),
           Positioned(
             right: 10,
             bottom: 48,
